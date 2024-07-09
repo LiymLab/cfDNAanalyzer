@@ -175,7 +175,10 @@ Orientation-aware cfDNA fragmentation values across the regions.<br>
 
 ## Versions of packages in our environment:
 
+
 ### Python:
+```
+python                         3.7.16<br>
 alembic                        1.8.1
 anyio                          3.5.0
 appdirs                        1.4.4
@@ -367,8 +370,11 @@ xgboost                        1.6.2
 yagmail                        0.15.293
 zipp                           3.11.0
 zstandard                      0.19.0
+```
 
 ### R:
+```
+R                              4.3.0<br>
 DescTools                      0.99.40
 zoo                            1.8.12
 plyr                           1.8.9
@@ -382,9 +388,11 @@ optparse                       1.7.4
 httr                           1.4.7
 tidyverse                      2.0.0
 RCurl                          1.98-1.14
-BiocManager                    
+BiocManager                    3.18.1
+```
 
 ### BiocManager packages
+```
 HMMcopy
 GenomeInfoDb 
 GenomicRanges
@@ -393,3 +401,4 @@ GenomicAlignments
 biovizBase
 BSgenome.Hsapiens.UCSC.hg19
 BSgenome.Hsapiens.UCSC.hg38
+```
