@@ -116,14 +116,18 @@ sample.seg.txt<br>
 Same as sample.seg but also includes subclonal status of segments (0=clonal, 1=subclonal). Format not compatible with IGV.<br>
 
 ### Feature nucleosome occupancy and fuzziness
-meanfuziness.tsv
-Mean fuziness value across the regions.
-occupancy.tsv
-Occupancy value across the regions.
-pool/<sampleID>.smooth.positions.xls
-File containing the protein binding positions defined in input file.
-pool/<sampleID>.smooth.wig
-Wig format files containing protein occupancy values across the regions.
+meanfuziness.tsv<br>
+Mean fuziness value across the regions.<br>
+<br>
+occupancy.tsv<br>
+Occupancy value across the regions.<br>
+<br>
+pool/<sampleID>.smooth.positions.xls<br>
+File containing the protein binding positions defined in input file.<br>
+<br>
+pool/<sampleID>.smooth.wig<br>
+Wig format files containing protein occupancy values across the regions.<br>
+
 
 ### Feature TSS coverage
 average_coverage.txt
