@@ -40,6 +40,7 @@ This tool only accepts the bam file as the input file type. You need to provide 
   -o  PATH                Output directory for all results. Default: [./]
   -F                      CfDNA features, including CNV, NOF, TSS, WPS, EM, FP, NP, PFE and OCF; if not provided then will extract all the features. Default: [NULL]
   -f                      Type of reference fasta file, including hg19 and hg38. Default: [hg38]
+  -r  File                Reference fasta file. Default: [NULL]  
   -s                      Type of sequencing method, including pair and single. Default: [pair]
   -b  File                Region bed file. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
 
@@ -174,6 +175,13 @@ Orientation-aware cfDNA fragmentation values across the regions.<br>
 
 
 ## Versions of packages in our environment:
+```
+conda                          23.1.0
+samtools                       1.3.1
+bedtools                       2.29.2
+deeptools                      3.5.1
+```
+
 
 
 ### Python:
