@@ -85,10 +85,10 @@ bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,E
 
 ### Note: 
 The following features can not process single-end bam files：
-(1) fragmentation profile
-(2) nucleosome profile
-(3) promoter fragmentation entropy
-(4) orientation-aware cfDNA fragmentation
+(1) fragmentation profile<br>
+(2) nucleosome profile<br>
+(3) promoter fragmentation entropy<br>
+(4) orientation-aware cfDNA fragmentation<br>
 
 
 ## Output file for every feature
