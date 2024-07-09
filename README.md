@@ -98,79 +98,79 @@ The following features can not process single-end bam files:<br>
 ```CNV.wig```<br>
 Wig file extracted from input file.<br>
 <br>
-sample/<br>
+```sample/```<br>
 Directory of plots<br>
 <br>
-sample.cna.seg<br>
+```sample.cna.seg```<br>
 Estimated copy number, log ratio, and subclone status for each bin/window.<br>
 <br>
-sample.correctedDepth.txt<br>
+```sample.correctedDepth.txt```<br>
 Log2 ratio of each bin/window after correction for GC and mappability biases.<br>
 <br>
-sample.params.txt<br>
+```sample.params.txt```<br>
 Final converged parameters for optimal solution. Also contains table of converged parameters for all solutions.<br>
 <br>
-sample.seg<br>
+```sample.seg```<br>
 Segments called by the Viterbi algorithm. Format is compatible with IGV.<br>
 <br>
-sample.seg.txt<br>
+```sample.seg.txt```<br>
 Same as sample.seg but also includes subclonal status of segments (0=clonal, 1=subclonal). Format not compatible with IGV.<br>
 
 ### Feature nucleosome occupancy and fuzziness
-meanfuziness.tsv<br>
+```meanfuziness.tsv```<br>
 Mean fuziness value across the regions.<br>
 <br>
-occupancy.bed<br>
+```occupancy.bed```<br>
 Occupancy value across the regions.<br>
 <br>
-pooled/&lt;sampleID&gt;.smooth.positions.xls<br>
+```pooled/&lt;sampleID&gt;.smooth.positions.xls```<br>
 File containing the protein binding positions defined in input file.<br>
 <br>
-pooled/&lt;sampleID&gt;.smooth.wig<br>
+```pooled/&lt;sampleID&gt;.smooth.wig```<br>
 Wig format files containing protein occupancy values across the regions.<br>
 
 
 ### Feature TSS coverage
-average_coverage.txt<br>
+```average_coverage.txt```<br>
 Average coverage values across the regions.<br>
 <br>
-coverage.npz<br>
+```coverage.npz```<br>
 Npz file produced by deeptools.<br>
 
 ### Feature WPS
-WPS.txt<br>
+```WPS.txt```<br>
 Average WPS values across the regions.<br>
 
 ### Feature end motif frequency and diversity
-end_motif_frequency.txt<br>
+```end_motif_frequency.txt```<br>
 256 end motifs' frequency for input file.<br>
 <br>
-mds.txt<br>
+```mds.txt```<br>
 Motif diversity score for input file.<br>
 
 ### Feature fragmentation profile
-FragmentationProfile.txt<br>
+```FragmentationProfile.txt```<br>
 Short reads number, long reads number and short/long ratio across the regions.<br>
 
 ### Feature nucleosome profile
-NucleosomeProfile.txt<br>
+```NucleosomeProfile.txt```<br>
 3 features(mean_coverage, central_coverage, amplitude) extracted from Nucleosome profile.<br>
 <br>
-plots/<site_list>.pdf<br>
+```plots/<site_list>.pdf```<br>
 Coverage profile for all samples for a given site list.<br>
 <br>
-&lt;sampleID&gt;/&lt;sampleID&gt;.GC_corrected.coverage.tsv<br>
+```&lt;sampleID&gt;/&lt;sampleID&gt;.GC_corrected.coverage.tsv```<br>
 GC corrected nucleosome profiles and metadata for each site list.<br>
 <br>
-&lt;sampleID&gt;/&lt;sampleID&gt;.uncorrected.coverage.tsv<br>
+```&lt;sampleID&gt;/&lt;sampleID&gt;.uncorrected.coverage.tsv```<br>
 Nucleosome profiles and metadata for each site list.<br>
 
 ### Feature promoter fragmentation entropy
-pfe.matrix.merged.by.0.txt<br>
+```pfe.matrix.merged.by.0.txt```<br>
 Promoter fragmentation entropy values across the regions.<br>
 
 ### Feature orientation-aware cfDNA fragmentation
-ocf.matrix.merged.by.0.txt<br>
+```ocf.matrix.merged.by.0.txt```<br>
 Orientation-aware cfDNA fragmentation values across the regions.<br>
 
 
