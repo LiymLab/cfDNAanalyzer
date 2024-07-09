@@ -130,42 +130,47 @@ Wig format files containing protein occupancy values across the regions.<br>
 
 
 ### Feature TSS coverage
-average_coverage.txt
-Average coverage values across the regions.
-coverage.npz
-Npz file produced by deeptools.
+average_coverage.txt<br>
+Average coverage values across the regions.<br>
+<br>
+coverage.npz<br>
+Npz file produced by deeptools.<br>
 
 ### Feature WPS
-WPS.txt
-Average WPS valus across the regions.
+WPS.txt<br>
+Average WPS valus across the regions.<br>
 
 ### Feature end motif frequency and diversity
-end_motif_frequency.txt
-256 end motifs' frequency for input file.
-mds.txt
-Motif diversity score for input file.
+end_motif_frequency.txt<br>
+256 end motifs' frequency for input file.<br>
+<br>
+mds.txt<br>
+Motif diversity score for input file.<br>
 
 ### Feature fragmentation profile
-FragmentationProfile.txt
-Short reads number, long reads number and short/long ratio across the regions.
+FragmentationProfile.txt<br>
+Short reads number, long reads number and short/long ratio across the regions.<br>
 
 ### Feature nucleosome profile
-NucleosomeProfile.txt
-3 features(mean_coverage, central_coverage, amplitude) extracted from Nucleosome profile.
-plots/<site_list>.pdf
-Coverage profile for all samples for a given site list.
-<sampleID>/<sampleID>.GC_corrected.coverage.tsv
-GC corrected nucleosome profiles and metadata for each site list.
-<sampleID>/<sampleID>.uncorrected.coverage.tsv
-Nucleosome profiles and metadata for each site list.
+NucleosomeProfile.txt<br>
+3 features(mean_coverage, central_coverage, amplitude) extracted from Nucleosome profile.<br>
+<br>
+plots/<site_list>.pdf<br>
+Coverage profile for all samples for a given site list.<br>
+<br>
+<sampleID>/<sampleID>.GC_corrected.coverage.tsv<br>
+GC corrected nucleosome profiles and metadata for each site list.<br>
+<br>
+<sampleID>/<sampleID>.uncorrected.coverage.tsv<br>
+Nucleosome profiles and metadata for each site list.<br>
 
 ### Feature promoter fragmentation entropy
-pfe.matrix.merged.by.0.txt
-Promoter fragmentation entropy values across the regions.
+pfe.matrix.merged.by.0.txt<br>
+Promoter fragmentation entropy values across the regions.<br>
 
 ### Feature orientation-aware cfDNA fragmentation
-ocf.matrix.merged.by.0.txt
-Orientation-aware cfDNA fragmentation values across the regions.
+ocf.matrix.merged.by.0.txt<br>
+Orientation-aware cfDNA fragmentation values across the regions.<br>
 
 
 ## Versions of packages in our environment:
