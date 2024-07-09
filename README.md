@@ -158,10 +158,10 @@ NucleosomeProfile.txt<br>
 plots/<site_list>.pdf<br>
 Coverage profile for all samples for a given site list.<br>
 <br>
-<sampleID>/<sampleID>.GC_corrected.coverage.tsv<br>
+&lt;sampleID&gt;/&lt;sampleID&gt;.GC_corrected.coverage.tsv<br>
 GC corrected nucleosome profiles and metadata for each site list.<br>
 <br>
-<sampleID>/<sampleID>.uncorrected.coverage.tsv<br>
+&lt;sampleID&gt;/&lt;sampleID&gt;.uncorrected.coverage.tsv<br>
 Nucleosome profiles and metadata for each site list.<br>
 
 ### Feature promoter fragmentation entropy
