@@ -8,7 +8,7 @@ Before using our tool, we advise using our packaged conda environment and runnin
 First, navigate to the directory cfDNAanalyzer/ and run the following commands:
 ```conda create -n cfDNAanalyzer --clone ./envs/cfDNAanalyzer
 conda activate cfDNAanalyzer
-Rscript install_R_packages.R
+Rscript install_R_packages.R```
 
 If you want to use the feature CNV, you need to install the HMMCopy. Please navigate to the directory cfDNAanalyzer/ and run the following commands.
 cd ./ichorCNA/hmmcopy_utils
