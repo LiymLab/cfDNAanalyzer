@@ -122,10 +122,10 @@ Mean fuziness value across the regions.<br>
 occupancy.tsv<br>
 Occupancy value across the regions.<br>
 <br>
-pool/<sampleID>.smooth.positions.xls<br>
+pool/&lt;sampleID&gt;.smooth.positions.xls<br>
 File containing the protein binding positions defined in input file.<br>
 <br>
-pool/<sampleID>.smooth.wig<br>
+pool/&lt;sampleID&gt;.smooth.wig<br>
 Wig format files containing protein occupancy values across the regions.<br>
 
 
