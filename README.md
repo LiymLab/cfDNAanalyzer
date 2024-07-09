@@ -74,7 +74,8 @@ This tool only accepts the bam file as the input file type. You need to provide 
   -D  INT                 Number of bp downstreams the TSS sites. Default: [1000]  
   -p  File                Either the selector bed file or a no header bed file around the TSS sites in the tssinfo file; 
                           if not provided then will use TSS 2k file provided by the paper of promoter fragmentation entropy. Default:                           [NULL] (Parameter -U/-D and -p can not set together).
-                          
+```
+                        
 ### Run cfDNAtools
 The easiest way to manually run cfDNAanalyzer is to use cfDNAanalyzer.sh provided in the cfDNAanalyzer directory. Here is an example of how to launch the shell script from the command line:
 bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -f hg19 -s pair -b ./End_motif_frequency/tss_2k_regions.bed > ./cfDNAanalyzer.log 
