@@ -84,7 +84,7 @@ bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,E
 
 
 ### Note: 
-The following features can not process single-end bam files：
+The following features can not process single-end bam files:<br>
 (1) fragmentation profile<br>
 (2) nucleosome profile<br>
 (3) promoter fragmentation entropy<br>
@@ -94,20 +94,20 @@ The following features can not process single-end bam files：
 ## Output file for every feature
 
 ### Feature copy number variation
-CNV.wig
-Wig file extracted from input file.
-<sampleID>/
-Directory of plots
-sample.cna.seg
-Estimated copy number, log ratio, and subclone status for each bin/window.
-sample.correctedDepth.txt
-Log2 ratio of each bin/window after correction for GC and mappability biases.
-sample.params.txt
-Final converged parameters for optimal solution. Also contains table of converged parameters for all solutions.
-sample.seg
-Segments called by the Viterbi algorithm. Format is compatible with IGV.
-sample.seg.txt
-Same as sample.seg but also includes subclonal status of segments (0=clonal, 1=subclonal). Format not compatible with IGV.
+CNV.wig<br>
+Wig file extracted from input file.<br>
+<sampleID>/<br>
+Directory of plots<br>
+sample.cna.seg<br>
+Estimated copy number, log ratio, and subclone status for each bin/window.<br>
+sample.correctedDepth.txt<br>
+Log2 ratio of each bin/window after correction for GC and mappability biases.<br>
+sample.params.txt<br>
+Final converged parameters for optimal solution. Also contains table of converged parameters for all solutions.<br>
+sample.seg<br>
+Segments called by the Viterbi algorithm. Format is compatible with IGV.<br>
+sample.seg.txt<br>
+Same as sample.seg but also includes subclonal status of segments (0=clonal, 1=subclonal). Format not compatible with IGV.<br>
 
 ### Feature nucleosome occupancy and fuzziness
 meanfuziness.tsv
