@@ -1,5 +1,5 @@
 # cfDNAanalyzer
-This is an integrated tool for extracting the features of cfDNA, including copy number variation(CNV), nucleosome occupancy and fuzziness(NOF), TSS coverage(TSS), windowed protection score(WPS), end motif frequency and diversity(EM), fragmentation profile(FP), nucleosome profile(NP), promoter fragmentation entropy(PFE), and orientation-aware cfDNA fragmentation(OCF).
+This is an integrated tool for extracting the features of cfDNA, including copy number variation(CNV), nucleosome occupancy and fuzziness(NOF), TSS coverage(TSS), windowed protection score(WPS), end motif frequency and diversity(EM), fragmentation profile(FP), nucleosome profile(NP), promoter fragmentation entropy(PFE) and orientation-aware cfDNA fragmentation(OCF).
 
 ## Description
 
@@ -19,7 +19,7 @@ cmake .
 make
 ```
 
-If you want to use the feature End motif frequency and diversity or feature Nucleosome profile, you need to download the reference genome from the link below (hg38 for example), unzip it (the download may take ~10 minutes):
+If you want to use the feature End motif frequency and diversity or feature Nucleosome profile, you need to download the reference genome from the link below (hg38 for example) and unzip it (the download may take ~10 minutes):
 ```
 wget http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
 gunzip hg38.fa.gz
@@ -31,7 +31,7 @@ This tool only accepts the bam file as the input file type. You need to provide 
 
 ### Usage：
 ```
-   bash cfDNAanalyzer.sh -I <InputTxt> -o <OutputDirectory> -F <Features> -f <ReferenceType> -s <SequencingMethod> -b <RegionBed> [Options]
+   bash cfDNAanalyzer.sh -I <InputTxt> -o <OutputDirectory> -F <Features> -f <ReferenceType> -r <Reference.fa> -s <SequencingMethod> -b <RegionBed> [Options]
 ```
    
 ### Options: 
@@ -78,9 +78,9 @@ This tool only accepts the bam file as the input file type. You need to provide 
 ```
                         
 ### Run cfDNAanalyzer
-The easiest way to manually run cfDNAanalyzer is to use cfDNAanalyzer.sh provided in the cfDNAanalyzer directory. Here is an example of how to launch the shell script from the command line:
+The easiest way to manually run cfDNAanalyzer is to use cfDNAanalyzer.sh provided in the cfDNAanalyzer/ directory. Here is an example of how to launch the shell script from the command line:
 ```
-bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -f hg19 -s pair -b ./End_motif_frequency/tss_2k_regions.bed > ./cfDNAanalyzer.log
+bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -f hg19 -r <Reference.fa> -s pair -b ./End_motif_frequency/tss_2k_regions.bed > ./cfDNAanalyzer.log
 ``` 
 
 
@@ -120,13 +120,13 @@ Same as sample.seg but also includes subclonal status of segments (0=clonal, 1=s
 meanfuziness.tsv<br>
 Mean fuziness value across the regions.<br>
 <br>
-occupancy.tsv<br>
+occupancy.bed<br>
 Occupancy value across the regions.<br>
 <br>
-pool/&lt;sampleID&gt;.smooth.positions.xls<br>
+pooled/&lt;sampleID&gt;.smooth.positions.xls<br>
 File containing the protein binding positions defined in input file.<br>
 <br>
-pool/&lt;sampleID&gt;.smooth.wig<br>
+pooled/&lt;sampleID&gt;.smooth.wig<br>
 Wig format files containing protein occupancy values across the regions.<br>
 
 
@@ -139,7 +139,7 @@ Npz file produced by deeptools.<br>
 
 ### Feature WPS
 WPS.txt<br>
-Average WPS valus across the regions.<br>
+Average WPS values across the regions.<br>
 
 ### Feature end motif frequency and diversity
 end_motif_frequency.txt<br>
@@ -176,10 +176,10 @@ Orientation-aware cfDNA fragmentation values across the regions.<br>
 
 ## Tools needed for cfDNAanalyzer
 ```
-conda                          23.1.0
-samtools                       1.3.1
 bedtools                       2.29.2
+conda                          23.1.0
 deeptools                      3.5.1
+samtools                       1.3.1
 ```
 
 
