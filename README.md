@@ -97,7 +97,7 @@ The following features can not process single-end bam files:<br>
 CNV.wig<br>
 Wig file extracted from input file.<br>
 <br>
-<sampleID>/<br>
+sample/<br>
 Directory of plots<br>
 <br>
 sample.cna.seg<br>
