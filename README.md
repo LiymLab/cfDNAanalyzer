@@ -96,16 +96,22 @@ The following features can not process single-end bam files:<br>
 ### Feature copy number variation
 CNV.wig<br>
 Wig file extracted from input file.<br>
+<br>
 <sampleID>/<br>
 Directory of plots<br>
+<br>
 sample.cna.seg<br>
 Estimated copy number, log ratio, and subclone status for each bin/window.<br>
+<br>
 sample.correctedDepth.txt<br>
 Log2 ratio of each bin/window after correction for GC and mappability biases.<br>
+<br>
 sample.params.txt<br>
 Final converged parameters for optimal solution. Also contains table of converged parameters for all solutions.<br>
+<br>
 sample.seg<br>
 Segments called by the Viterbi algorithm. Format is compatible with IGV.<br>
+<br>
 sample.seg.txt<br>
 Same as sample.seg but also includes subclonal status of segments (0=clonal, 1=subclonal). Format not compatible with IGV.<br>
 
