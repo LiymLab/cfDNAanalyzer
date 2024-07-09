@@ -174,7 +174,7 @@ ocf.matrix.merged.by.0.txt<br>
 Orientation-aware cfDNA fragmentation values across the regions.<br>
 
 
-## Versions of packages in our environment:
+## Tools needed for cfDNAanalyzer
 ```
 conda                          23.1.0
 samtools                       1.3.1
@@ -183,7 +183,7 @@ deeptools                      3.5.1
 ```
 
 
-
+## Versions of packages in our environment:
 ### Python:
 ```
 python                         3.7.16
