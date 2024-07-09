@@ -178,7 +178,7 @@ Orientation-aware cfDNA fragmentation values across the regions.<br>
 
 ### Python:
 ```
-python                         3.7.16<br>
+python                         3.7.16
 alembic                        1.8.1
 anyio                          3.5.0
 appdirs                        1.4.4
@@ -374,7 +374,7 @@ zstandard                      0.19.0
 
 ### R:
 ```
-R                              4.3.0<br>
+R                              4.3.0
 DescTools                      0.99.40
 zoo                            1.8.12
 plyr                           1.8.9
