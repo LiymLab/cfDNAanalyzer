@@ -19,11 +19,10 @@ cmake .
 make
 ```
 
-If you want to use the feature End motif frequency and diversity or feature Nucleosome profile, you need to download the reference genome from the link below (hg38 for example), unzip it, and put it in cfDNAanalyzer/input (the download may take ~10 minutes):
+If you want to use the feature End motif frequency and diversity or feature Nucleosome profile, you need to download the reference genome from the link below (hg38 for example), unzip it (the download may take ~10 minutes):
 ```
 wget http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
 gunzip hg38.fa.gz
-mv hg38.fa cfDNAanalyzer/input
 ```
 
 ### Input and output
@@ -36,12 +35,13 @@ This tool only accepts the bam file as the input file type. You need to provide 
 ```
    
 ### Options: 
+```
   -I  File                Input bam file list. Default: [ ]
   -o  PATH                Output directory for all results. Default: [./]
-  -F                      CfDNA features, including CNV, NOF, TSS, WPS, EM, FP, NP, PFE and OCF; if not provided then will extract all                           the features. Default: [NULL]
+  -F                      CfDNA features, including CNV, NOF, TSS, WPS, EM, FP, NP, PFE and OCF; if not provided then will extract all the features. Default: [NULL]
   -f                      Type of reference fasta file, including hg19 and hg38. Default: [hg38]
   -s                      Type of sequencing method, including pair and single. Default: [pair]
-  -b  File                Region bed file. This bed file must be a TAB-delimited bed3 file without any header. if not provided then                             will use +/- 1kb region from TSS sites. Default: [NULL]
+  -b  File                Region bed file. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
 
 
 -- feature copy number variation
