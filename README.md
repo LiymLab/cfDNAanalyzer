@@ -12,7 +12,7 @@ conda activate cfDNAanalyzer
 Rscript install_R_packages.R
 ```
 
-If you want to use the feature CNV, you need to install the HMMCopy. Please navigate to the directory cfDNAanalyzer/ and run the following commands.
+If you want to use the feature CNV, you need to install the HMMCopy. Please navigate to the directory ```cfDNAanalyzer/``` and run the following commands.
 ```
 cd ./ichorCNA/hmmcopy_utils
 cmake .
@@ -78,7 +78,7 @@ This tool only accepts the bam file as the input file type. You need to provide 
 ```
                         
 ### Run cfDNAanalyzer
-The easiest way to manually run cfDNAanalyzer is to use cfDNAanalyzer.sh provided in the cfDNAanalyzer/ directory. Here is an example of how to launch the shell script from the command line:
+The easiest way to manually run cfDNAanalyzer is to use ```cfDNAanalyzer.sh``` provided in the ```cfDNAanalyzer/``` directory. Here is an example of how to launch the shell script from the command line:
 ```
 bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -f hg19 -r <Reference.fa> -s pair -b ./End_motif_frequency/tss_2k_regions.bed > ./cfDNAanalyzer.log
 ``` 
@@ -95,7 +95,7 @@ The following features can not process single-end bam files:<br>
 ## Output file for every feature
 
 ### Feature copy number variation
-CNV.wig<br>
+```CNV.wig```<br>
 Wig file extracted from input file.<br>
 <br>
 sample/<br>
