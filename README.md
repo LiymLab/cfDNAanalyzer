@@ -5,7 +5,7 @@ This is an integrated tool for extracting the features of cfDNA, including copy 
 
 ### Environment and installation
 Before using our tool, we advise using our packaged conda environment and running the script ```install_R_packages.R``` to avoid package version conflicts and the following errors. 
-First, navigate to the directory cfDNAanalyzer/ and run the following commands:
+First, navigate to the directory ```cfDNAanalyzer/``` and run the following commands:
 ```
 conda create -n cfDNAanalyzer --clone ./envs/cfDNAanalyzer
 conda activate cfDNAanalyzer
@@ -123,10 +123,10 @@ Mean fuziness value across the regions.<br>
 ```occupancy.bed```<br>
 Occupancy value across the regions.<br>
 <br>
-```pooled/&lt;sampleID&gt;.smooth.positions.xls```<br>
+```pooled/<sampleID>.smooth.positions.xls```<br>
 File containing the protein binding positions defined in input file.<br>
 <br>
-```pooled/&lt;sampleID&gt;.smooth.wig```<br>
+```pooled/<sampleID>.smooth.wig```<br>
 Wig format files containing protein occupancy values across the regions.<br>
 
 
@@ -159,10 +159,10 @@ Short reads number, long reads number and short/long ratio across the regions.<b
 ```plots/<site_list>.pdf```<br>
 Coverage profile for all samples for a given site list.<br>
 <br>
-```&lt;sampleID&gt;/&lt;sampleID&gt;.GC_corrected.coverage.tsv```<br>
+```<sampleID>/<sampleID>.GC_corrected.coverage.tsv```<br>
 GC corrected nucleosome profiles and metadata for each site list.<br>
 <br>
-```&lt;sampleID&gt;/&lt;sampleID&gt;.uncorrected.coverage.tsv```<br>
+```<sampleID>/<sampleID>.uncorrected.coverage.tsv```<br>
 Nucleosome profiles and metadata for each site list.<br>
 
 ### Feature promoter fragmentation entropy
