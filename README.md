@@ -13,21 +13,27 @@ Rscript install_R_packages.R
 ```
 
 If you want to use the feature CNV, you need to install the HMMCopy. Please navigate to the directory cfDNAanalyzer/ and run the following commands.
+```
 cd ./ichorCNA/hmmcopy_utils
 cmake .
 make
+```
 
 If you want to use the feature End motif frequency and diversity or feature Nucleosome profile, you need to download the reference genome from the link below (hg38 for example), unzip it, and put it in cfDNAanalyzer/input (the download may take ~10 minutes):
+```
 wget http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
 gunzip hg38.fa.gz
 mv hg38.fa cfDNAanalyzer/input
+```
 
 ### Input and output
 This tool only accepts the bam file as the input file type. You need to provide a text file containing the path of your bam files in each line. We will create a folder for each bam file in the output directory. Every bam file's single feature will be output to a folder.
 
 
 ### Usage：
+```
    bash cfDNAanalyzer.sh -I <InputTxt> -o <OutputDirectory> -F <Features> -f <ReferenceType> -s <SequencingMethod> -b <RegionBed> [Options]
+```
    
 ### Options: 
   -I  File                Input bam file list. Default: [ ]
