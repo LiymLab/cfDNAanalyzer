@@ -61,7 +61,7 @@ This tool only accepts the bam file as the input file type. You need to provide 
   
 -- feature Nucleosome profile
   -l  PATH                Path of site list. This path must only contain site list for nucleosome profile analysis.
-                          And each site file must contain two columns. The chromosome column must have "Chrom"" as the header and the                           site column must have "position"" as the header; 
+                          And each site file must contain two columns. The chromosome column must have "Chrom"" as the header and the site column must have "position"" as the header; 
                           if not provided then will use 377 site lists provided by the paper of nucleosome profile. Default: [NULL]
 
 -- feature promoter fragmentation entropy or orientation-aware cfDNA fragmentation
@@ -69,16 +69,18 @@ This tool only accepts the bam file as the input file type. You need to provide 
                           (3) Hugo symbol of the gene corresponding to the TSS, (4) Category 
                           (*negativeControl* must exist, other categories are not important), (5) gene 
                           transcript strand (+1/-1) and (6) a column for TSS ID; 
-                          if not provided then will use TSS information file provided by the paper of promoter fragmentation entropy.                           Default: [NULL]
+                          if not provided then will use TSS information file provided by the paper of promoter fragmentation entropy. Default: [NULL]
   -U  INT                 Number of bp upstreams the TSS sites. Default: [1000]
   -D  INT                 Number of bp downstreams the TSS sites. Default: [1000]  
   -p  File                Either the selector bed file or a no header bed file around the TSS sites in the tssinfo file; 
-                          if not provided then will use TSS 2k file provided by the paper of promoter fragmentation entropy. Default:                           [NULL] (Parameter -U/-D and -p can not set together).
+                          if not provided then will use TSS 2k file provided by the paper of promoter fragmentation entropy. Default: [NULL] (Parameter -U/-D and -p can not set together).
 ```
                         
 ### Run cfDNAtools
 The easiest way to manually run cfDNAanalyzer is to use cfDNAanalyzer.sh provided in the cfDNAanalyzer directory. Here is an example of how to launch the shell script from the command line:
-bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -f hg19 -s pair -b ./End_motif_frequency/tss_2k_regions.bed > ./cfDNAanalyzer.log 
+```
+bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -f hg19 -s pair -b ./End_motif_frequency/tss_2k_regions.bed > ./cfDNAanalyzer.log
+``` 
 
 
 ### Note: 
