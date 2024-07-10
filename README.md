@@ -137,7 +137,7 @@ Average coverage values across the regions.<br>
 ```coverage.npz```<br>
 Npz file produced by deeptools.<br>
 
-### Feature WPS
+### Feature windowed protection score
 ```WPS.txt```<br>
 Average WPS values across the regions.<br>
 
