@@ -118,10 +118,10 @@ Same as sample.seg but also includes subclonal status of segments (0=clonal, 1=s
 
 ### Feature nucleosome occupancy and fuzziness
 ```meanfuziness.tsv```<br>
-Mean fuziness value across the regions.<br>
+Mean fuziness values across the regions.<br>
 <br>
 ```occupancy.bed```<br>
-Occupancy value across the regions.<br>
+Occupancy values across the regions.<br>
 <br>
 ```pooled/<sampleID>.smooth.positions.xls```<br>
 File containing the protein binding positions defined in input file.<br>
