@@ -1,5 +1,5 @@
 # cfDNAanalyzer
-This is an integrated tool for extracting the genetic or epigenetic features of cfDNA from a bam file. These features can be extracted for whole genome, like <u>C</u>opy number variation(CNV); or for given regions, like nucleosome occupancy and fuzziness(NOF), windowed protection score(WPS), end motif frequency and diversity(EM), fragmentation profile(FP), nucleosome profile(NP), promoter fragmentation entropy(PFE), and orientation-aware cfDNA fragmentation(OCF); or for specific Transcription Start Sites (TSS), like 
+This is an integrated tool for extracting the genetic or epigenetic features of cfDNA from a bam file. These features can be extracted for whole genome, like <u>C<\u>opy number variation(CNV); or for given regions, like nucleosome occupancy and fuzziness(NOF), windowed protection score(WPS), end motif frequency and diversity(EM), fragmentation profile(FP), nucleosome profile(NP), promoter fragmentation entropy(PFE), and orientation-aware cfDNA fragmentation(OCF); or for specific Transcription Start Sites (TSS), like 
 
 ## Description
 
