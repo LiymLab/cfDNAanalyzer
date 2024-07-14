@@ -1,5 +1,5 @@
 # cfDNAanalyzer
-This is an integrated tool for extracting the genetic or epigenetic features of cfDNA from a bam file. These features can be extracted for whole genome, like Copy Number Variation (CNV); or for given regions, like Nucleosome Occupancy and Fuzziness (NOF), Windowed Protection Score (WPS), End Motif frequency and diversity (EM), Fragmentation Profile (FP), Nucleosome Profile (NP), Promoter Fragmentation Entropy (PFE), and Orientation-aware CfDNA Fragmentation (OCF); or for specific Transcription Start Sites (TSS), like TSS coverage (TSS). For the extracted features, this tool also offers a customized pipeline for the downstream application, like cancer detection or tumor subtype classification. 
+This is an integrated tool for extracting the genetic or epigenetic features of cfDNA from a bam file. These features can be extracted for the whole genome, like Copy Number Variation (CNV), or for given regions, like Nucleosome Occupancy and Fuzziness (NOF), Windowed Protection Score (WPS), End Motif frequency and diversity (EM), Fragmentation Profile (FP), Nucleosome Profile (NP), Promoter Fragmentation Entropy (PFE), and Orientation-aware CfDNA Fragmentation (OCF), or for specific Transcription Start Sites (TSS), like TSS coverage (TSS). For the extracted features, this tool also offers a customized pipeline for downstream applications, like cancer detection or tumor subtype classification. 
 
 ## Description
 
@@ -25,12 +25,6 @@ If you want to use the feature CNV, you need to install the HMMCopy. Please navi
 cd ./ichorCNA/hmmcopy_utils
 cmake .
 make
-```
-
-If you want to use the feature End motif frequency and diversity or feature Nucleosome profile, you need to download the reference genome from the link below (hg38 for example) and unzip it (the download may take ~10 minutes):
-```
-wget http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
-gunzip hg38.fa.gz
 ```
 
 ### Input and output
