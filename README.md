@@ -3,6 +3,14 @@ This is an integrated tool for extracting the genetic or epigenetic features of 
 
 ## Description
 
+### Tools needed for cfDNAanalyzer
+```
+bedtools                       2.29.2
+conda                          23.1.0
+deeptools                      3.5.1
+samtools                       1.3.1
+```
+
 ### Environment and installation
 Before using our tool, we advise using our packaged conda environment and running the script ```install_R_packages.R``` to avoid package version conflicts and the following errors.<br> 
 First, navigate to the directory ```cfDNAanalyzer/``` and run the following commands:
@@ -173,14 +181,6 @@ Promoter fragmentation entropy values across the regions.<br>
 ```ocf.matrix.merged.by.0.txt```<br>
 Orientation-aware cfDNA fragmentation values across the regions.<br>
 
-
-## Tools needed for cfDNAanalyzer
-```
-bedtools                       2.29.2
-conda                          23.1.0
-deeptools                      3.5.1
-samtools                       1.3.1
-```
 
 
 ## Versions of packages in our environment:
