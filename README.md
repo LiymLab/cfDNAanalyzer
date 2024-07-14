@@ -5,7 +5,7 @@ This is an integrated tool for extracting the genetic or epigenetic features of 
 
 
 ### Environment and installation
-Before using our tool, we advise using our packaged conda environment and running the script ```install_R_packages.R``` to avoid package version conflicts and the following errors.<br> 
+Before using this tool, we advise using our packaged conda environment and running the script ```install_R_packages.R``` to avoid package version conflicts and the following errors.<br> 
 First, navigate to the directory ```cfDNAanalyzer/``` and run the following commands:
 ```
 conda create -n cfDNAanalyzer --clone ./envs/cfDNAanalyzer
