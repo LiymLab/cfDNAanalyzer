@@ -95,8 +95,7 @@ The following features can not process single-end bam files:<br>
 Wig file extracted from input bam file.<br>
 <br>
 ```sample.cna.seg```<br>
-Estimated copy number, log ratio, and subclone status for each bin/window.<br>
-Each raw represents the estimated copy number, log ratio, and subclone status for each bin.
+Each raw represents the estimated copy number, log ratio, and subclone status for each bin.<br>
 "chr" column represents 
 <br>
 
