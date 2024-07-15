@@ -94,26 +94,38 @@ The following features can not process single-end bam files:<br>
 ```CNV.wig```<br>
 Wig file extracted from input bam file.<br>
 <br>
-```sample.cna.seg```<br>
-Each raw represents the estimated copy number, log ratio, and subclone status for each bin.<br>
+```CNV.txt```<br>
 "chr" column represents the chromosome where each bin is located.<br>
-"start" column represents the starting site of the chromosome.<br>
-
+"start" column represents the starting site of a bin.<br>
+"end" column represents the ending site of a bin.<br>
+"sample.copy.number" column represents the estimated copy number in each bin.<br>
 <br>
 
 
 ### Feature nucleosome occupancy and fuzziness
 ```meanfuziness.tsv```<br>
-Mean fuziness values across the regions.<br>
+"chr" column represents the chromosome where each region is located.<br>
+"start" column represents the starting site of a region.<br>
+"end" column represents the ending site of a region.<br>
+"meanfuziness" column represents the mean fuziness value for each region.<br>
 <br>
 ```occupancy.bed```<br>
-Occupancy values across the regions.<br>
+"chr" column represents the chromosome where each region is located.<br>
+"start" column represents the starting site of a region.<br>
+"end" column represents the ending site of a region.<br>
+"ID" column represents the specific id for each region.<br>
+"occupancy" column represents the occupancy value for each region.<br>
 <br>
 ```pooled/<sampleID>.smooth.positions.xls```<br>
-File containing the protein binding positions defined in input file.<br>
+"chr" column represents the chromosome where each region is located.<br>
+"start" column represents the starting site of a region.<br>
+"end" column represents the ending site of a region.<br>
+"smt_pos" column represents the occupancy summit point for each region.<br>
+"smt_value" column represents the occupancy value at smt_pos.<br>
+"fuzziness_score" column represents the fuzziness score for each region.<br>
 <br>
 ```pooled/<sampleID>.smooth.wig```<br>
-Wig format files containing protein occupancy values across the regions.<br>
+Wig format files containing protein occupancy values at 10 base pairs across the whole genome.<br>
 
 
 ### Feature TSS coverage
