@@ -21,13 +21,6 @@ deeptools                      3.5.1
 samtools                       1.3.1
 ```
 
-If you want to use the feature CNV, you need to install the HMMCopy. Please navigate to the directory ```cfDNAanalyzer/``` and run the following commands.
-```
-cd ./ichorCNA/hmmcopy_utils
-cmake .
-make
-```
-
 ### Input and output
 This tool only accepts the bam file as the input file type. You need to provide a text file containing the path of your bam files in each line. We will create a folder for each bam file in the output directory. Every bam file's single feature will be output to a folder.
 
@@ -43,7 +36,7 @@ This tool only accepts the bam file as the input file type. You need to provide 
   -o  PATH                Output directory for all results. Default: [./]
   -F                      CfDNA features, including CNV, NOF, TSS, WPS, EM, FP, NP, PFE and OCF; if not provided then will extract all the features. Default: [NULL]
   -f                      Type of reference fasta file, including hg19 and hg38. Default: [hg38]
-  -r  File                Reference fasta file. Default: [NULL]  
+  -r  File                Reference fasta file. For example, if you want to use hg38 reference, you can download it from http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz. Default: [NULL] 
   -s                      Type of sequencing method, including pair and single. Default: [pair]
   -b  File                Region bed file. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
 
@@ -99,7 +92,7 @@ The following features can not process single-end bam files:<br>
 
 ### Feature copy number variation
 ```CNV.wig```<br>
-Wig file extracted from input file.<br>
+Wig file extracted from input bam file.<br>
 <br>
 ```sample/```<br>
 Directory of plots<br>
