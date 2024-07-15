@@ -164,25 +164,24 @@ Motif diversity score for input file.<br>
 
 ### Feature nucleosome profile
 ```NucleosomeProfile.txt```<br>
-
-3 features(mean_coverage, central_coverage, amplitude) extracted from Nucleosome profile.<br>
+"site_name" column represents the name of each site list.<br>
+"mean_coverage" column represents the mean coverage for each site list.<br>
+"central_coverage" column represents the central coverage for each site list.<br>
+"amplitude" column represents the amplitude for each site list.<br>
 <br>
 ```plots/<site_list>.pdf```<br>
-Coverage profile for all samples for a given site list.<br>
-<br>
-```<sampleID>/<sampleID>.GC_corrected.coverage.tsv```<br>
-GC corrected nucleosome profiles and metadata for each site list.<br>
-<br>
-```<sampleID>/<sampleID>.uncorrected.coverage.tsv```<br>
-Nucleosome profiles and metadata for each site list.<br>
+Coverage profile for input bam file for given site lists.<br>
+
 
 ### Feature promoter fragmentation entropy
-```pfe.matrix.merged.by.0.txt```<br>
-Promoter fragmentation entropy values across the regions.<br>
+```PFE.txt```<br>
+"TSS_ID" column represents the id of each TSS 2k region.<br>
+"PFE" column represents promoter fragmentation entropy value for each TSS 2k region.<br>
 
 ### Feature orientation-aware cfDNA fragmentation
-```ocf.matrix.merged.by.0.txt```<br>
-Orientation-aware cfDNA fragmentation values across the regions.<br>
+```OCF.txt```<br>
+"TSS_ID" column represents the id of each TSS 2k region.<br>
+"OCF_Ratio" column represents orientation-aware cfDNA fragmentation ratio for each TSS 2k region.<br>
 
 
 
