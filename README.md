@@ -81,7 +81,7 @@ bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,E
 
 
 ### Note: 
-The following features can not process single-end bam files:<br>
+The following features are specific for pair-end bam files:<br>
 (1) fragmentation profile<br>
 (2) nucleosome profile<br>
 (3) promoter fragmentation entropy<br>
