@@ -96,7 +96,9 @@ Wig file extracted from input bam file.<br>
 <br>
 ```sample.cna.seg```<br>
 Each raw represents the estimated copy number, log ratio, and subclone status for each bin.<br>
-"chr" column represents 
+"chr" column represents the chromosome where each bin is located.<br>
+"start" column represents the starting site of the chromosome.<br>
+
 <br>
 
 
