@@ -130,14 +130,21 @@ Wig format files containing protein occupancy values at 10 base pairs across the
 
 ### Feature TSS coverage
 ```average_coverage.txt```<br>
-Average coverage values across the regions.<br>
+"chr" column represents the chromosome where each region is located.<br>
+"start" column represents the starting site of a region.<br>
+"end" column represents the ending site of a region.<br>
+"coverage" column represents average coverage value for each region.<br>
 <br>
 ```coverage.npz```<br>
 Npz file produced by deeptools.<br>
 
 ### Feature windowed protection score
 ```WPS.txt```<br>
-Average WPS values across the regions.<br>
+"chr" column represents the chromosome where each region is located.<br>
+"start" column represents the starting site of a region.<br>
+"end" column represents the ending site of a region.<br>
+"long_WPS" column represents windowed protection score of long reads for each region.<br>
+"short_WPS" column represents windowed protection score of short reads for each region.<br>
 
 ### Feature end motif frequency and diversity
 ```end_motif_frequency.txt```<br>
@@ -147,11 +154,17 @@ Average WPS values across the regions.<br>
 Motif diversity score for input file.<br>
 
 ### Feature fragmentation profile
-```FragmentationProfile.txt```<br>
-Short reads number, long reads number and short/long ratio across the regions.<br>
+```Fragmentation_Profile.txt```<br>
+"seqnames" column represents the chromosome where each region is located.<br>
+"start" column represents the starting site of a region.<br>
+"end" column represents the ending site of a region.<br>
+"short" column represents number of short reads identified in a region.<br>
+"long" column represents number of long reads identified in a region.<br>
+"ratio" column represents short/long ratio for each region.<br>
 
 ### Feature nucleosome profile
 ```NucleosomeProfile.txt```<br>
+
 3 features(mean_coverage, central_coverage, amplitude) extracted from Nucleosome profile.<br>
 <br>
 ```plots/<site_list>.pdf```<br>
