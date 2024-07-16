@@ -4,7 +4,7 @@ This is an integrated tool for extracting the genetic or epigenetic features of 
 ## Description
 ### Features can be extracted from this tool
 #### Features can be extracted for the whole genome
-##### <ins>C</ins>opy <ins>N</ins>umber <ins>V</ins>ariation (CNV) [https://www.nature.com/articles/s41467-017-00965-y](https://www.nature.com/articles/s41467-017-00965-y)
+##### <ins>C</ins>opy <ins>N</ins>umber <ins>V</ins>ariation (CNV)     [<ins>https://www.nature.com/articles/s41467-017-00965-y</ins>](https://www.nature.com/articles/s41467-017-00965-y)
 
 ### Environment and installation
 Before using this tool, we advise using our packaged conda environment and running the script ```install_R_packages.R``` to avoid package version conflicts and the following errors.<br> 
