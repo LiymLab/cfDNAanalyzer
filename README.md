@@ -3,6 +3,7 @@ This is an integrated tool for extracting the genetic or epigenetic features of 
 
 ## Description
 
+### Features can be extracted from this tool
 
 ### Environment and installation
 Before using this tool, we advise using our packaged conda environment and running the script ```install_R_packages.R``` to avoid package version conflicts and the following errors.<br> 
