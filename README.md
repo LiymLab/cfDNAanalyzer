@@ -16,7 +16,7 @@ This is an integrated tool for extracting the genetic or epigenetic features of 
 ##### <ins>O</ins>rientation-aware <ins>C</ins>fDNA <ins>F</ins>ragmentation (OCF) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>http://www.genome.org/cgi/doi/10.1101/gr.242719.118</ins>](http://www.genome.org/cgi/doi/10.1101/gr.242719.118)
 
 #### Features can be extracted for specific Transcription Start Sites
-##### <ins>TSS</ins> coverage (TSS) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.nature.com/articles/s41467-017-00965-y</ins>](https://www.nature.com/articles/s41467-017-00965-y)
+##### <ins>TSS</ins> coverage (TSS) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.nature.com/articles/ng.3648</ins>](https://www.nature.com/articles/ng.3648)
 
 ### Environment and installation
 Before using this tool, we advise using our packaged conda environment and running the script ```install_R_packages.R``` to avoid package version conflicts and the following errors.<br> 
