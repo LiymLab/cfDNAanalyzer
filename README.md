@@ -13,17 +13,19 @@ Nucleosome occupancy along every basepair in the genome is defined as the fracti
 ##### <ins>W</ins>indowed <ins>P</ins>rotection <ins>S</ins>core (WPS) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>http://dx.doi.org/10.1016/j.cell.2015.11.050</ins>](http://dx.doi.org/10.1016/j.cell.2015.11.050)
 A per-base WPS is calculated by subtracting the number of fragment endpoints within a window from the number of fragments completely spanning the window. High WPS values indicate increased protection of DNA from digestion; low values indicate that DNA is unprotected.
 ##### <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.pnas.org/doi/10.1073/pnas.2220982120</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120)
-End motifs were determined from the terminal 4-nucleotide sequence, i.e., 4-mer end motif, at each 5′ fragment end of cfDNA molecules. End motif frequency of each of the motifs (i.e., a total of 256 motifs) was determined from the total number of fragment ends.
-End motif diversity is the normalized Shannon entropy of the categorical distribution of all possible end-motif 4-mers.
+End motifs were determined from the terminal 4-nucleotide sequence, i.e., 4-mer end motif, at each 5′ fragment end of cfDNA molecules. End motif frequency of each of the motifs (i.e., a total of 256 motifs) was determined from the total number of fragment ends.<br>
+End motif diversity is the normalized Shannon entropy of the categorical distribution of all possible end-motif k-mers.
 ##### <ins>F</ins>ragmentation <ins>P</ins>rofile (FP) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://doi.org/10.1038/s41586-019-1272-6</ins>](https://doi.org/10.1038/s41586-019-1272-6)
-
+Fragmentation profile is the number of short reads(100–150 bp), the number of long reads(151–220 bp) and short/long ratio in a region.
 ##### <ins>N</ins>ucleosome <ins>P</ins>rofile (NP) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.nature.com/articles/s41467-022-35076-w</ins>](https://www.nature.com/articles/s41467-022-35076-w)
+Nucleosome profile is the distribution of nucleosomes in extracellular DNA in a site list, and we extracted 3 features from each coverage profile. "central coverage" is the coverage value from ± 30 bp of central site. "mean coverage" is the coverage value from ± 1000 bp of central site. The amplitude of the nucleosome peaks surrounding the central site is calculated by using a Fast Fourier Transform on the window ±960 bp from the central site.
 ##### <ins>P</ins>romoter <ins>F</ins>ragmentation <ins>E</ins>ntropy (PFE) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://doi.org/10.1038/s41587-022-01222-4</ins>](https://doi.org/10.1038/s41587-022-01222-4)
+Promoter fragmentation entropy is the Shannon entropy of fragments around the ± 1000 bp of transcription start sites.
 ##### <ins>O</ins>rientation-aware <ins>C</ins>fDNA <ins>F</ins>ragmentation (OCF) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>http://www.genome.org/cgi/doi/10.1101/gr.242719.118</ins>](http://www.genome.org/cgi/doi/10.1101/gr.242719.118)
-
+Orientation-aware cfDNA fragmentation is the differential phasing of upstream (U) and downstream (D) fragment ends in tissue-specific open chromatin regions.
 #### 3.Features can be extracted for specific Transcription Start Sites
 ##### <ins>TSS</ins> coverage (TSS) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.nature.com/articles/ng.3648</ins>](https://www.nature.com/articles/ng.3648)
-
+TSS coverage is the coverage around transcription start sites.
 ### Environment and installation
 Before using this tool, we advise using our packaged conda environment and running the script ```install_R_packages.R``` to avoid package version conflicts and the following errors.<br> 
 First, navigate to the directory ```cfDNAanalyzer/``` and run the following commands:
