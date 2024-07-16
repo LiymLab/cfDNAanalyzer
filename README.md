@@ -13,7 +13,10 @@ Nucleosome occupancy along every basepair in the genome is defined as the fracti
 ##### <ins>W</ins>indowed <ins>P</ins>rotection <ins>S</ins>core (WPS) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>http://dx.doi.org/10.1016/j.cell.2015.11.050</ins>](http://dx.doi.org/10.1016/j.cell.2015.11.050)
 A per-base WPS is calculated by subtracting the number of fragment endpoints within a window from the number of fragments completely spanning the window. High WPS values indicate increased protection of DNA from digestion; low values indicate that DNA is unprotected.
 ##### <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.pnas.org/doi/10.1073/pnas.2220982120</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120)
+End motifs were determined from the terminal 4-nucleotide sequence, i.e., 4-mer end motif, at each 5′ fragment end of cfDNA molecules. End motif frequency of each of the motifs (i.e., a total of 256 motifs) was determined from the total number of fragment ends.
+End motif diversity is the normalized Shannon entropy of the categorical distribution of all possible end-motif 4-mers.
 ##### <ins>F</ins>ragmentation <ins>P</ins>rofile (FP) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://doi.org/10.1038/s41586-019-1272-6</ins>](https://doi.org/10.1038/s41586-019-1272-6)
+
 ##### <ins>N</ins>ucleosome <ins>P</ins>rofile (NP) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.nature.com/articles/s41467-022-35076-w</ins>](https://www.nature.com/articles/s41467-022-35076-w)
 ##### <ins>P</ins>romoter <ins>F</ins>ragmentation <ins>E</ins>ntropy (PFE) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://doi.org/10.1038/s41587-022-01222-4</ins>](https://doi.org/10.1038/s41587-022-01222-4)
 ##### <ins>O</ins>rientation-aware <ins>C</ins>fDNA <ins>F</ins>ragmentation (OCF) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>http://www.genome.org/cgi/doi/10.1101/gr.242719.118</ins>](http://www.genome.org/cgi/doi/10.1101/gr.242719.118)
