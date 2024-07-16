@@ -62,6 +62,7 @@ This tool only accepts the bam file as the input file type. You need to provide 
    
 ### Options: 
 ```
+-- Options for all the features
   -I  File                Input bam file list. Default: [ ]
   -o  PATH                Output directory for all results. Default: [./]
   -F                      CfDNA features, including CNV, NOF, TSS, WPS, EM, FP, NP, PFE and OCF; if not provided then will extract all the features. Default: [NULL]
@@ -71,14 +72,11 @@ This tool only accepts the bam file as the input file type. You need to provide 
   -b  File                Region bed file. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
 
 
--- feature copy number variation
+-- Options for copy number variation
   -c  INT                 Total clonal CN states. Default: [7]
-
--- feature TSS coverage 
-  -u  INT                 Number of bp upstreams the TSS sites. Default: [1000]
-  -d  INT                 Number of bp downstreams the TSS sites. Default: [1000]
+  -B  INT                 Number of kb for bin size, including 10, 50, 500, 1000. Default: [1000]
   
--- feature windowed protection score
+-- Options for windowed protection score
   -x  INT                 Minimum length of reads identified as long reads. Default: [120]
   -X  INT                 Maximum length of reads identified as long reads. Default: [180]
   -w  INT                 Size of window to extract WPS for long reads. Default: [120]
@@ -86,12 +84,12 @@ This tool only accepts the bam file as the input file type. You need to provide 
   -M  INT                 Maximum length of reads identified as short reads. Default: [80]
   -W  INT                 Size of window to extract WPS for short reads. Default: [16]
   
--- feature Nucleosome profile
+-- Options for Nucleosome profile
   -l  PATH                Path of site list. This path must only contain site list for nucleosome profile analysis.
                           And each site file must contain two columns. The chromosome column must have "Chrom"" as the header and the site column must have "position"" as the header; 
                           if not provided then will use 377 site lists provided by the paper of nucleosome profile. Default: [NULL]
 
--- feature promoter fragmentation entropy or orientation-aware cfDNA fragmentation
+-- Options for promoter fragmentation entropy or orientation-aware cfDNA fragmentation
   -T  File                TSS information files. The file must have five columns: (1) chromosome, (2) 1-base TSS coordinate, 
                           (3) Hugo symbol of the gene corresponding to the TSS, (4) Category 
                           (*negativeControl* must exist, other categories are not important), (5) gene 
@@ -101,6 +99,10 @@ This tool only accepts the bam file as the input file type. You need to provide 
   -D  INT                 Number of bp downstreams the TSS sites. Default: [1000]  
   -p  File                Either the selector bed file or a no header bed file around the TSS sites in the tssinfo file; 
                           if not provided then will use TSS 2k file provided by the paper of promoter fragmentation entropy. Default: [NULL] (Parameter -U/-D and -p can not set together).
+
+-- Options for TSS coverage 
+  -u  INT                 Number of bp upstreams the TSS sites. Default: [1000]
+  -d  INT                 Number of bp downstreams the TSS sites. Default: [1000]
 ```
                         
 ### Run cfDNAanalyzer
