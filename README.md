@@ -8,6 +8,8 @@ This is an integrated tool for extracting the genetic or epigenetic features of 
 
 #### Features can be extracted for given regions
 ##### <ins>N</ins>ucleosome <ins>O</ins>ccupancy and <ins>F</ins>uzziness (NOF) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.researchsquare.com/article/rs-1889126/v1</ins>](https://www.researchsquare.com/article/rs-1889126/v1)
+Nucleosome occupancy along every basepair in the genome is defined as the fraction of cells from the population in which the basepair is occupied by any histone octamer.
+
 ##### <ins>W</ins>indowed <ins>P</ins>rotection <ins>S</ins>core (WPS) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>http://dx.doi.org/10.1016/j.cell.2015.11.050</ins>](http://dx.doi.org/10.1016/j.cell.2015.11.050)
 ##### <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.pnas.org/doi/10.1073/pnas.2220982120</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120)
 ##### <ins>F</ins>ragmentation <ins>P</ins>rofile (FP) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://doi.org/10.1038/s41586-019-1272-6</ins>](https://doi.org/10.1038/s41586-019-1272-6)
