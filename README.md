@@ -11,6 +11,7 @@ This is an integrated tool for extracting the genetic or epigenetic features of 
 Nucleosome occupancy along every basepair in the genome is defined as the fraction of cells from the population in which the basepair is occupied by any histone octamer.
 
 ##### <ins>W</ins>indowed <ins>P</ins>rotection <ins>S</ins>core (WPS) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>http://dx.doi.org/10.1016/j.cell.2015.11.050</ins>](http://dx.doi.org/10.1016/j.cell.2015.11.050)
+A per-base WPS is calculated by subtracting the number of fragment endpoints within a window from the number of fragments completely spanning the window. High WPS values indicate increased protection of DNA from digestion; low values indicate that DNA is unprotected.
 ##### <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.pnas.org/doi/10.1073/pnas.2220982120</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120)
 ##### <ins>F</ins>ragmentation <ins>P</ins>rofile (FP) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://doi.org/10.1038/s41586-019-1272-6</ins>](https://doi.org/10.1038/s41586-019-1272-6)
 ##### <ins>N</ins>ucleosome <ins>P</ins>rofile (NP) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.nature.com/articles/s41467-022-35076-w</ins>](https://www.nature.com/articles/s41467-022-35076-w)
