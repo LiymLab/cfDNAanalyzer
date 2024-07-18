@@ -179,11 +179,13 @@ Npz file produced by deeptools.<br>
 "short_WPS" column represents windowed protection score of short reads for each region.<br>
 
 ### Feature end motif frequency and diversity
-```end_motif_frequency.txt```<br>
-256 end motifs' frequency for input file.<br>
+```all_motifs_frequency.txt```<br>
+Summary motif frequency for all the regions.<br>
 <br>
-```mds.txt```<br>
-Motif diversity score for input file.<br>
+```all_motifs_mds.txt```<br>
+Summary motif diversity score for all the regions.<br>
+```region_<index>_motif_frequency_and_mds.txt```<br>
+Motif frequency and diversity score for one region.<br>
 
 ### Feature fragmentation profile
 ```Fragmentation_Profile.txt```<br>
