@@ -123,14 +123,14 @@ The following features are specific for pair-end bam files:<br>
 ## Output file for every feature
 
 ### Feature copy number variation
-```CNV.wig```<br>
-Wig file extracted from input bam file.<br>
-<br>
 ```CNV.txt```<br>
 "chr" column represents the chromosome where each bin is located.<br>
 "start" column represents the starting site of a bin.<br>
 "end" column represents the ending site of a bin.<br>
 "sample.copy.number" column represents the estimated copy number in each bin.<br>
+<br>
+```CNV.wig```<br>
+Wig file extracted from input bam file.<br>
 <br>
 
 
