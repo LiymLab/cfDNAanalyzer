@@ -166,9 +166,6 @@ Wig format files containing protein occupancy values at 10 base pairs across the
 "start" column represents the starting site of a region.<br>
 "end" column represents the ending site of a region.<br>
 "coverage" column represents average coverage value for each region.<br>
-<br>
-```coverage.npz```<br>
-Npz file produced by deeptools.<br>
 
 ### Feature windowed protection score
 ```WPS.txt```<br>
