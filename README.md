@@ -84,7 +84,7 @@ This tool only accepts the bam file as the input file type. You need to provide 
   -M  INT                 Maximum length of reads identified as short reads. Default: [80]
   -W  INT                 Size of window to extract WPS for short reads. Default: [16]
   
--- Options for Nucleosome profile
+-- Options for nucleosome profile
   -l  PATH                Path of site list. This path must only contain site list for nucleosome profile analysis.
                           And each site file must contain two columns. The chromosome column must have "Chrom"" as the header and the site column must have "position"" as the header; 
                           if not provided then will use 377 site lists provided by the paper of nucleosome profile. Default: [NULL]
