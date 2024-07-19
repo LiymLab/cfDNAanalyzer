@@ -132,6 +132,7 @@ The following features are specific for pair-end bam files:<br>
 ![CNV.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721310992220.png)<br>
 ```CNV.wig```<br>
 Wig file extracted from input bam file.<br>
+![CNV.wig](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311015152.png)<br>
 <br>
 
 
@@ -141,6 +142,7 @@ Wig file extracted from input bam file.<br>
 "start" column represents the starting site of a region.<br>
 "end" column represents the ending site of a region.<br>
 "meanfuziness" column represents the mean fuziness value for each region.<br>
+![meanfuziness.tsv](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311045217.png)<br>
 <br>
 ```occupancy.bed```<br>
 "chr" column represents the chromosome where each region is located.<br>
