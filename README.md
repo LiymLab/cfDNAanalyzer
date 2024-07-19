@@ -128,8 +128,8 @@ The following features are specific for pair-end bam files:<br>
 "start" column represents the starting site of a bin.<br>
 "end" column represents the ending site of a bin.<br>
 "sample.copy.number" column represents the estimated copy number in each bin.<br>
-<br>
 ![CNV.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721310992220.png)<br>
+<br>
 ```CNV.wig```<br>
 Wig file extracted from input bam file.<br>
 ![CNV.wig](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311015152.png)<br>
@@ -150,6 +150,7 @@ Wig file extracted from input bam file.<br>
 "end" column represents the ending site of a region.<br>
 "ID" column represents the specific id for each region.<br>
 "occupancy" column represents the occupancy value for each region.<br>
+![occupancy.bed](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311077440.png)<br>
 <br>
 ```pooled/<sampleID>.smooth.positions.xls```<br>
 "chr" column represents the chromosome where each region is located.<br>
@@ -158,9 +159,11 @@ Wig file extracted from input bam file.<br>
 "smt_pos" column represents the occupancy summit point for each region.<br>
 "smt_value" column represents the occupancy value at smt_pos.<br>
 "fuzziness_score" column represents the fuzziness score for each region.<br>
+![pooled/<sampleID>.smooth.positions.xls](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311120508.png)<br>
 <br>
 ```pooled/<sampleID>.smooth.wig```<br>
 Wig format files containing protein occupancy values at 10 base pairs across the whole genome.<br>
+![pooled/<sampleID>.smooth.wig](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311139442.png)<br>
 
 
 ### Feature TSS coverage
@@ -169,6 +172,7 @@ Wig format files containing protein occupancy values at 10 base pairs across the
 "start" column represents the starting site of a region.<br>
 "end" column represents the ending site of a region.<br>
 "coverage" column represents average coverage value for each region.<br>
+![average_coverage.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311175396.png)<br>
 
 ### Feature windowed protection score
 ```WPS.txt```<br>
@@ -177,16 +181,20 @@ Wig format files containing protein occupancy values at 10 base pairs across the
 "end" column represents the ending site of a region.<br>
 "long_WPS" column represents windowed protection score of long reads for each region.<br>
 "short_WPS" column represents windowed protection score of short reads for each region.<br>
+![WPS.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311508400.png)<br>
 
 ### Feature end motif frequency and diversity
 ```all_motifs_frequency.txt```<br>
 Summary motif frequency for all the regions.<br>
+![all_motifs_frequency.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311555448.png)<br>
 <br>
 ```all_motifs_mds.txt```<br>
 Summary motif diversity score for all the regions.<br>
+![all_motifs_mds.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311576594.png)<br>
 <br>
 ```region_<index>_motif_frequency_and_mds.txt```<br>
 Motif frequency and diversity score for one region.<br>
+![region_<index>_motif_frequency_and_mds.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311608092.png)<br>
 
 ### Feature fragmentation profile
 ```Fragmentation_Profile.txt```<br>
@@ -196,6 +204,7 @@ Motif frequency and diversity score for one region.<br>
 "short" column represents number of short reads identified in a region.<br>
 "long" column represents number of long reads identified in a region.<br>
 "ratio" column represents short/long ratio for each region.<br>
+![Fragmentation_Profile.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311645495.png)<br>
 
 ### Feature nucleosome profile
 ```NucleosomeProfile.txt```<br>
@@ -203,6 +212,7 @@ Motif frequency and diversity score for one region.<br>
 "mean_coverage" column represents the mean coverage for each site list.<br>
 "central_coverage" column represents the central coverage for each site list.<br>
 "amplitude" column represents the amplitude for each site list.<br>
+![NucleosomeProfile.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311675968.png)<br>
 <br>
 ```plots/<site_list>.pdf```<br>
 Coverage profile for input bam file for given site lists.<br>
@@ -212,11 +222,13 @@ Coverage profile for input bam file for given site lists.<br>
 ```PFE.txt```<br>
 "TSS_ID" column represents the id of each TSS 2k region.<br>
 "PFE" column represents promoter fragmentation entropy value for each TSS 2k region.<br>
+![PFE.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311706499.png)<br>
 
 ### Feature orientation-aware cfDNA fragmentation
 ```OCF.txt```<br>
 "TSS_ID" column represents the id of each TSS 2k region.<br>
 "OCF_Ratio" column represents orientation-aware cfDNA fragmentation ratio for each TSS 2k region.<br>
+![OCF.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311738958.png)<br>
 
 
 
