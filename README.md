@@ -2,8 +2,8 @@
 This is an integrated tool for extracting the genetic or epigenetic features of cfDNA from a bam file. These features can be extracted for the whole genome, like <ins>C</ins>opy <ins>N</ins>umber <ins>V</ins>ariation (CNV), or for given regions, like <ins>N</ins>ucleosome <ins>O</ins>ccupancy and <ins>F</ins>uzziness (NOF), <ins>W</ins>indowed <ins>P</ins>rotection <ins>S</ins>core (WPS), <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM), <ins>F</ins>ragmentation <ins>P</ins>rofile (FP), <ins>N</ins>ucleosome <ins>P</ins>rofile (NP), <ins>P</ins>romoter <ins>F</ins>ragmentation <ins>E</ins>ntropy (PFE), and <ins>O</ins>rientation-aware <ins>C</ins>fDNA <ins>F</ins>ragmentation (OCF), or for specific Transcription Start Sites (TSS), like <ins>TSS</ins> coverage (TSS). For the extracted features, this tool also offers a customized pipeline for downstream applications, like cancer detection or tumor subtype classification. 
 
 ## Description
-### Features extracted from this tool
-#### 1.Features can be extracted for the whole genome
+### Features can be extracted from this tool
+#### 1.Features extracted for the whole genome
 ##### <ins>C</ins>opy <ins>N</ins>umber <ins>V</ins>ariation (CNV) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.nature.com/articles/s41467-017-00965-y</ins>](https://www.nature.com/articles/s41467-017-00965-y)
 Copy number variation is the number of copy variation in a region.
 
