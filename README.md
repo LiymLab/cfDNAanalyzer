@@ -2,12 +2,12 @@
 This is an integrated tool for extracting the genetic or epigenetic features of cfDNA from a bam file. These features can be extracted for the whole genome, like <ins>C</ins>opy <ins>N</ins>umber <ins>V</ins>ariation (CNV), or for given regions, like <ins>N</ins>ucleosome <ins>O</ins>ccupancy and <ins>F</ins>uzziness (NOF), <ins>W</ins>indowed <ins>P</ins>rotection <ins>S</ins>core (WPS), <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM), <ins>F</ins>ragmentation <ins>P</ins>rofile (FP), <ins>N</ins>ucleosome <ins>P</ins>rofile (NP), <ins>P</ins>romoter <ins>F</ins>ragmentation <ins>E</ins>ntropy (PFE), and <ins>O</ins>rientation-aware <ins>C</ins>fDNA <ins>F</ins>ragmentation (OCF), or for specific Transcription Start Sites (TSS), like <ins>TSS</ins> coverage (TSS). For the extracted features, this tool also offers a customized pipeline for downstream applications, like cancer detection or tumor subtype classification. 
 
 ## Description
-### Features can be extracted from this tool
+### Features extracted from this tool
 #### 1.Features can be extracted for the whole genome
 ##### <ins>C</ins>opy <ins>N</ins>umber <ins>V</ins>ariation (CNV) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.nature.com/articles/s41467-017-00965-y</ins>](https://www.nature.com/articles/s41467-017-00965-y)
 Copy number variation is the number of copy variation in a region.
 
-#### 2.Features can be extracted for given regions
+#### 2.Features extracted for given regions
 ##### <ins>N</ins>ucleosome <ins>O</ins>ccupancy and <ins>F</ins>uzziness (NOF) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.researchsquare.com/article/rs-1889126/v1</ins>](https://www.researchsquare.com/article/rs-1889126/v1)
 Nucleosome occupancy, which reflects the frequency with which nucleosomes occupy a given DNA region in a cell population.<br>
 Nucleosome fuzziness, which is defined as the deviation of nucleosome positions within a region in a cell population and could reflect cell heterogeneity at the chromatin level.
@@ -31,7 +31,7 @@ Promoter fragmentation entropy is the Shannon entropy of fragments around the ±
 ##### <ins>O</ins>rientation-aware <ins>C</ins>fDNA <ins>F</ins>ragmentation (OCF) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>http://www.genome.org/cgi/doi/10.1101/gr.242719.118</ins>](http://www.genome.org/cgi/doi/10.1101/gr.242719.118)
 Orientation-aware cfDNA fragmentation is the differential phasing of upstream (U) and downstream (D) fragment ends in tissue-specific open chromatin regions.
 
-#### 3.Features can be extracted for specific Transcription Start Sites
+#### 3.Features extracted for specific Transcription Start Sites
 ##### <ins>TSS</ins> coverage (TSS) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.nature.com/articles/ng.3648</ins>](https://www.nature.com/articles/ng.3648)
 TSS coverage is the coverage around transcription start sites.
 ### Environment and installation
