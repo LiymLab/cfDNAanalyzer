@@ -129,6 +129,7 @@ The following features are specific for pair-end bam files:<br>
 "end" column represents the ending site of a bin.<br>
 "sample.copy.number" column represents the estimated copy number in each bin.<br>
 <br>
+![CNV.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721310992220.png)<br>
 ```CNV.wig```<br>
 Wig file extracted from input bam file.<br>
 <br>
