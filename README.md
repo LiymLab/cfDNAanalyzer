@@ -75,7 +75,11 @@ This tool only accepts the bam file as the input file type. You need to provide 
 -- Options for copy number variation
   -c  INT                 Total clonal CN states. Default: [7]
   -B  INT                 Number of kb for bin size, including 10, 50, 500, 1000. Default: [1000]
-  
+  --addCNV                Addtional parameters for for copy number variation. Default: [NULL] 
+
+-- Options for nucleosome occupancy and fuzziness
+  --addNOF                Addtional parameters for nucleosome occupancy and fuzziness. Default: [NULL] 
+
 -- Options for windowed protection score
   -x  INT                 Minimum length of reads identified as long reads. Default: [120]
   -X  INT                 Maximum length of reads identified as long reads. Default: [180]
@@ -99,12 +103,15 @@ This tool only accepts the bam file as the input file type. You need to provide 
   -D  INT                 Number of bp downstreams the TSS sites. Default: [1000]  
   -p  File                Either the selector bed file or a no header bed file around the TSS sites in the tssinfo file; 
                           if not provided then will use TSS 2k file provided by the paper of promoter fragmentation entropy. Default: [NULL] (Parameter -U/-D and -p can not set together).
+  --addEpicSeq            Addtional parameters for Epic Seq. Default: [NULL] 
 
 -- Options for TSS coverage 
   -u  INT                 Number of bp upstreams the TSS sites. Default: [1000]
   -d  INT                 Number of bp downstreams the TSS sites. Default: [1000]
   -S  File                Region bed file around transcription start sites. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
                           (Parameter -u/-d and -S can not be set together)
+  --addbamCoverage        Addtional parameters for bamCoverage command of deeptools. Default: [NULL] 
+  --addmultiBigwigSummary Addtional parameters for multiBigwigSummary command of deeptools. Default: [NULL]
 ```
                         
 ### Run cfDNAanalyzer
