@@ -8,7 +8,7 @@ For the extracted features, this tool also offers a customized pipeline for down
 ## Description
 ### Features can be extracted from this tool
 #### 1.Features extracted for the whole genome
-&nbsp;&nbsp;&nbsp;1.1Copy Number Variation([<ins>Adalsteinsson et al, 2017</ins>](https://www.nature.com/articles/s41467-017-00965-y))
+&nbsp;&nbsp;&nbsp;1.1Copy Number Variation([<ins>Adalsteinsson et al, 2017</ins>](https://www.nature.com/articles/s41467-017-00965-y))<br>
 &nbsp;&nbsp;&nbsp;Copy number variation is the number of copy variation in a region.
 
 #### 2.Features extracted for given regions
