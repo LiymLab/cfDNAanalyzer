@@ -8,13 +8,13 @@ For the extracted features, this tool also offers a customized pipeline for down
 ## Description
 ### Features can be extracted from this tool
 #### 1.Features extracted for the whole genome
-&nbsp;&nbsp;&nbsp;1.1Copy Number Variation([<ins>Adalsteinsson et al, 2017</ins>](https://www.nature.com/articles/s41467-017-00965-y))<br>
+&nbsp;&nbsp;&nbsp;1.1 Copy Number Variation ([<ins>Adalsteinsson et al, 2017</ins>](https://www.nature.com/articles/s41467-017-00965-y))<br>
 &nbsp;&nbsp;&nbsp;Copy number variation is the number of copy variation in a region.
 
 #### 2.Features extracted for given regions
-##### <ins>N</ins>ucleosome <ins>O</ins>ccupancy and <ins>F</ins>uzziness (NOF) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.researchsquare.com/article/rs-1889126/v1</ins>](https://www.researchsquare.com/article/rs-1889126/v1)
-Nucleosome occupancy, which reflects the frequency with which nucleosomes occupy a given DNA region in a cell population.<br>
-Nucleosome fuzziness, which is defined as the deviation of nucleosome positions within a region in a cell population and could reflect cell heterogeneity at the chromatin level.
+&nbsp;&nbsp;&nbsp;2.1 Nucleosome Occupancy and Fuzziness ([<ins>Li et al, 2024</ins>](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10790422/))<br>
+&nbsp;&nbsp;&nbsp;Nucleosome occupancy, which reflects the frequency with which nucleosomes occupy a given DNA region in a cell population.<br>
+&nbsp;&nbsp;&nbsp;Nucleosome fuzziness, which is defined as the deviation of nucleosome positions within a region in a cell population and could reflect cell heterogeneity at the chromatin level.
 
 ##### <ins>W</ins>indowed <ins>P</ins>rotection <ins>S</ins>core (WPS) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>http://dx.doi.org/10.1016/j.cell.2015.11.050</ins>](http://dx.doi.org/10.1016/j.cell.2015.11.050)
 A per-base WPS is calculated by subtracting the number of fragment endpoints within a window from the number of fragments completely spanning the window. High WPS values indicate increased protection of DNA from digestion; low values indicate that DNA is unprotected.
