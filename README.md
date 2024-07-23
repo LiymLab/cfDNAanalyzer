@@ -117,7 +117,7 @@ This tool only accepts the bam file as the input file type. You need to provide 
   -u  INT                       Number of bp upstreams the TSS sites. Default: [1000]
   -d  INT                       Number of bp downstreams the TSS sites. Default: [1000]
   -S  FILE                      Region bed file around transcription start sites. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
-                             (Parameter -u/-d and -S can not be set together)
+                                (Parameter -u/-d and -S can not be set together)
   --addbamCoverage  STR         Addtional parameters for bamCoverage command of deeptools. Default: [NULL] 
   --addmultiBigwigSummary  STR  Addtional parameters for multiBigwigSummary command of deeptools. Default: [NULL]
 ```
