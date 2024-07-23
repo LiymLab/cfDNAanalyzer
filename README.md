@@ -261,7 +261,7 @@ chr1	893670	895670	0.33
 "long_WPS" column is windowed protection score of long reads for each region.<br>
 "short_WPS" column is windowed protection score of short reads for each region.<br>
 ```r
-chr  start  end  long_WPS  short_WPS
+chr    start    end    long_WPS    short_WPS
 chr1	68091	70091	-0.781609	0
 chr1	138379	140379	-1.94753	0.0164918
 chr1	366640	368640	-0.338331	0
