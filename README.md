@@ -135,7 +135,13 @@ bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,E
 "start" column is the starting site of a bin.<br>
 "end" column is the ending site of a bin.<br>
 "sample.copy.number" column is the estimated copy number in each bin.<br>
-![CNV.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721310992220.png)<br>
+```
+fixedStep chrom=chr1 start=1 step=1000000 span=1000000
+1792
+4523
+5506
+5241
+```
 <br>
 ```CNV.wig```<br>
 Wig file extracted from input bam file.<br>
