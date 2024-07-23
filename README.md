@@ -34,7 +34,7 @@ For the extracted features, this tool also offers a customized pipeline for down
 
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.6 Orientation-aware CfDNA Fragmentation ([<ins>Sun et al, 2019</ins>](https://genome.cshlp.org/content/29/3/418.long))
 * Orientation-aware cfDNA fragmentation is the differential phasing of upstream and downstream fragment ends in tissue-specific open chromatin regions.
-* 
+
 #### 3.Features extracted for specific Transcription Start Sites
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 Promoter Fragmentation Entropy ([<ins>Esfahani et al, 2022</ins>](https://doi.org/10.1038/s41587-022-01222-4))
 * Promoter fragmentation entropy is the Shannon entropy of fragments around the ± 1000 bp of transcription start sites.
