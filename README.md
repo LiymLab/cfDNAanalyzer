@@ -147,6 +147,8 @@ chr	start	end	sample.copy.number
 1	9000001	10000000  2
 1	10000001  11000000  2
 ```
+
+<br>
 ```CNV.wig```<br>
 Wig file extracted from input bam file.<br>
 ```r
