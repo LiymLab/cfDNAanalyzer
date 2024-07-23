@@ -59,9 +59,6 @@ deeptools                      3.5.1
 samtools                       1.3.1
 ```
 
-### Input and output
-This tool only accepts the bam file as the input file type. You need to provide a text file containing the path of your bam files in each line. We will create a folder for each bam file in the output directory. Every bam file's single feature will be output to a folder.
-
 
 ### Usage：
 ```
@@ -71,9 +68,10 @@ This tool only accepts the bam file as the input file type. You need to provide 
 ### Options: 
 ```
 -- Options for all the features
-  -I  FILE                      Input bam file list. Default: [ ]
-  -o  PATH                      Output directory for all results. Default: [./]
+  -I  FILE                      Input bam file list. This tool only accepts the bam file as the input file type. You need to provide a text file containing the path of your bam files in each line. Default: [NULL]
+  -o  PATH                      Output directory for all results. We will create a folder for each bam file in the output directory. Every bam file's single feature will be output to a folder. Default: [./]
   -F  STR                       CfDNA features, including CNV, NOF, TSS, WPS, EM, FP, NP, PFE and OCF; if not provided then will extract all the features. Default: [NULL]
+                                The following features are specific for pair-end bam files: fragmentation profile, nucleosome profile, promoter fragmentation entropy, orientation-aware cfDNA fragmentation.
 
 
 
@@ -127,14 +125,6 @@ The easiest way to manually run cfDNAanalyzer is to use ```cfDNAanalyzer.sh``` p
 ```
 bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -f hg19 -r <Reference.fa> -s pair -b ./End_motif_frequency/tss_2k_regions.bed > ./cfDNAanalyzer.log
 ``` 
-
-
-### Note: 
-The following features are specific for pair-end bam files:<br>
-(1) fragmentation profile<br>
-(2) nucleosome profile<br>
-(3) promoter fragmentation entropy<br>
-(4) orientation-aware cfDNA fragmentation<br>
 
 
 ## Output file for every feature
