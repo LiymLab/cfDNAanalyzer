@@ -19,7 +19,7 @@ For the extracted features, this tool also offers a customized pipeline for down
   </ul>
 </li>
 <li>
-  <a href="#Output file for every feature">Output file for every feature</a>
+  <a href="#Output-file-for-every-feature">Output file for every feature</a>
   <ul>
     <li><a href="#Features-can-be-extracted-from-this-tool">Features can be extracted from this tool</a></li>
     <li><a href="#Environment-and-installation">Environment and installation</a></li>
@@ -259,26 +259,6 @@ fixedStep chrom=chr1 start=1  step=10 span=10
 0.0
 ```
 
-
-### Feature TSS coverage
-```average_coverage.txt```<br>
-"chr" column is the chromosome where each region is located.<br>
-"start" column is the starting site of a region.<br>
-"end" column is the ending site of a region.<br>
-"coverage" column is average coverage value for each region.<br>
-```r
-chr	start	end	coverage
-chr1	68091	70091	1.8115
-chr1	138379	140379	5.7315
-chr1	366640	368640	0.79
-chr1	621053	623053	1.95
-chr1	738137	740137	1.4055
-chr1	817043	819043	3.057
-chr1	860118	862118	1.061
-chr1	865445	867445	0.8
-chr1	893670	895670	0.33
-```
-
 ### Feature windowed protection score
 ```WPS.txt```<br>
 "chr" column is the chromosome where each region is located.<br>
@@ -377,6 +357,22 @@ HEY1.hg38.10000.txt	1.01042	1.03988	0.81144
 ```plots/<site_list>.pdf```<br>
 Coverage profile for input bam file for given site lists.<br>
 
+### Feature orientation-aware cfDNA fragmentation
+```OCF.txt```<br>
+"TSS_ID" column is the id of each TSS 2k region.<br>
+"OCF_Ratio" column is orientation-aware cfDNA fragmentation ratio for each TSS 2k region.<br>
+```r
+TSS_ID	OCF_Ratio
+A1BG_1	-0.142857142857143
+A1CF_1	-0.2
+A2M_1	0.333333333333333
+A2ML1_1	0.333333333333333
+A3GALT2_1  -0.75
+A4GALT_1  -0.2
+A4GNT_1	0
+AAAS_1	0.333333333333333
+AACS_1	-0.2
+```
 
 ### Feature promoter fragmentation entropy
 ```PFE.txt```<br>
@@ -395,22 +391,26 @@ AAAS_1	0.341169890073755
 AACS_1	0.342021289789175
 ```
 
-### Feature orientation-aware cfDNA fragmentation
-```OCF.txt```<br>
-"TSS_ID" column is the id of each TSS 2k region.<br>
-"OCF_Ratio" column is orientation-aware cfDNA fragmentation ratio for each TSS 2k region.<br>
+### Feature TSS coverage
+```average_coverage.txt```<br>
+"chr" column is the chromosome where each region is located.<br>
+"start" column is the starting site of a region.<br>
+"end" column is the ending site of a region.<br>
+"coverage" column is average coverage value for each region.<br>
 ```r
-TSS_ID	OCF_Ratio
-A1BG_1	-0.142857142857143
-A1CF_1	-0.2
-A2M_1	0.333333333333333
-A2ML1_1	0.333333333333333
-A3GALT2_1  -0.75
-A4GALT_1  -0.2
-A4GNT_1	0
-AAAS_1	0.333333333333333
-AACS_1	-0.2
+chr	start	end	coverage
+chr1	68091	70091	1.8115
+chr1	138379	140379	5.7315
+chr1	366640	368640	0.79
+chr1	621053	623053	1.95
+chr1	738137	740137	1.4055
+chr1	817043	819043	3.057
+chr1	860118	862118	1.061
+chr1	865445	867445	0.8
+chr1	893670	895670	0.33
 ```
+
+
 
 ## Versions of packages in our environment:
 ### Python:
