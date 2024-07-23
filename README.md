@@ -16,7 +16,6 @@ For the extracted features, this tool also offers a customized pipeline for down
 * Nucleosome occupancy, which reflects the frequency with which nucleosomes occupy a given DNA region in a cell population.<br>
 * Nucleosome fuzziness, which is defined as the deviation of nucleosome positions within a region in a cell population and could reflect cell heterogeneity at the chromatin level.<br>
 
-
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Windowed Protection Score ([<ins>Snyder et al, 2016</ins>](https://www.cell.com/cell/fulltext/S0092-8674(15)01569-X?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS009286741501569X%3Fshowall%3Dtrue))
 * A per-base WPS is calculated by subtracting the number of fragment endpoints within a window from the number of fragments completely spanning the window. High WPS values indicate increased protection of DNA from digestion; low values indicate that DNA is unprotected.
 
@@ -31,17 +30,18 @@ For the extracted features, this tool also offers a customized pipeline for down
 * Nucleosome profile is the distribution of nucleosomes in extracellular DNA in a site list, and we extracted 3 features from each coverage profile.
    * "central coverage" is the coverage value from ± 30 bp of central site.
    * "mean coverage" is the coverage value from ± 1000 bp of central site.
-   * The amplitude of the nucleosome peaks surrounding the central site is calculated by using a Fast Fourier Transform on the window ±960 bp from the central site.
+   * The amplitude of the nucleosome peaks surrounding the central site is calculated by using a Fast Fourier Transform on the window ± 960 bp from the central site.
 
-##### <ins>P</ins>romoter <ins>F</ins>ragmentation <ins>E</ins>ntropy (PFE) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://doi.org/10.1038/s41587-022-01222-4</ins>](https://doi.org/10.1038/s41587-022-01222-4)
-Promoter fragmentation entropy is the Shannon entropy of fragments around the ± 1000 bp of transcription start sites.
-
-##### <ins>O</ins>rientation-aware <ins>C</ins>fDNA <ins>F</ins>ragmentation (OCF) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>http://www.genome.org/cgi/doi/10.1101/gr.242719.118</ins>](http://www.genome.org/cgi/doi/10.1101/gr.242719.118)
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.6Orientation-aware CfDNA Fragmentation ([<ins>http://www.genome.org/cgi/doi/10.1101/gr.242719.118</ins>](http://www.genome.org/cgi/doi/10.1101/gr.242719.118))
 Orientation-aware cfDNA fragmentation is the differential phasing of upstream (U) and downstream (D) fragment ends in tissue-specific open chromatin regions.
 
 #### 3.Features extracted for specific Transcription Start Sites
 ##### <ins>TSS</ins> coverage (TSS) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.nature.com/articles/ng.3648</ins>](https://www.nature.com/articles/ng.3648)
 TSS coverage is the coverage around transcription start sites.
+
+##### <ins>P</ins>romoter <ins>F</ins>ragmentation <ins>E</ins>ntropy (PFE) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://doi.org/10.1038/s41587-022-01222-4</ins>](https://doi.org/10.1038/s41587-022-01222-4)
+Promoter fragmentation entropy is the Shannon entropy of fragments around the ± 1000 bp of transcription start sites.
+
 ### Environment and installation
 Before using this tool, we advise using our packaged conda environment and running the script ```install_R_packages.R``` to avoid package version conflicts and the following errors.<br> 
 First, navigate to the directory ```cfDNAanalyzer/``` and run the following commands:
