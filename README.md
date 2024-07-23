@@ -9,12 +9,12 @@ For the extracted features, this tool also offers a customized pipeline for down
 ### Features can be extracted from this tool
 #### 1.Features extracted for the whole genome
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Copy Number Variation ([<ins>Adalsteinsson et al, 2017</ins>](https://www.nature.com/articles/s41467-017-00965-y))<br>
-* Copy number variation is the number of copy variation in a region.
+* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copy number variation is the number of copy variation in a region.
 
 #### 2.Features extracted for given regions
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Nucleosome Occupancy and Fuzziness ([<ins>Li et al, 2024</ins>](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10790422/))<br>
-* Nucleosome occupancy, which reflects the frequency with which nucleosomes occupy a given DNA region in a cell population.<br>
-* Nucleosome fuzziness, which is defined as the deviation of nucleosome positions within a region in a cell population and could reflect cell heterogeneity at the chromatin level.<br>
+* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nucleosome occupancy, which reflects the frequency with which nucleosomes occupy a given DNA region in a cell population.<br>
+* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nucleosome fuzziness, which is defined as the deviation of nucleosome positions within a region in a cell population and could reflect cell heterogeneity at the chromatin level.<br>
 
 
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Windowed Protection Score ([<ins>Snyder et al, 2016</ins>](https://www.cell.com/cell/fulltext/S0092-8674(15)01569-X?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS009286741501569X%3Fshowall%3Dtrue))
