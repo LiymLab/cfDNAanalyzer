@@ -271,19 +271,42 @@ chr1	817043	819043	-1.27236	0
 chr1	860118	862118	-0.188906	0
 chr1	865445	867445	-0.332834	0
 chr1	893670	895670	-0.146427	0
+```
 
 ### Feature end motif frequency and diversity
 ```all_motifs_frequency.txt```<br>
 Summary motif frequency for all the regions.<br>
-![all_motifs_frequency.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311555448.png)<br>
-<br>
+```r
+Motif   Frequency
+CTAT    0.0030392622975323673
+ATAG    0.0030392622975323673
+TATT    0.0059179091631653994
+AATA    0.0059179091631653994
+ATTA    0.0048532138590239365
+TAAT    0.0048532138590239365
+TTAT    0.00530396391450145
+ATAA    0.00530396391450145
+TATC    0.0026101367116673144
+```
 ```all_motifs_mds.txt```<br>
 Summary motif diversity score for all the regions.<br>
-![all_motifs_mds.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311576594.png)<br>
-<br>
+```r
+MDS     0.9747882739505999
+```
 ```region_<index>_motif_frequency_and_mds.txt```<br>
 Motif frequency and diversity score for one region.<br>
-![region_<index>_motif_frequency_and_mds.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311608092.png)<br>
+```r
+Motif   Frequency
+CTAT    0.006259389083625438
+ATAG    0.006259389083625438
+TATT    0.009764646970455683
+AATA    0.009764646970455683
+ATTA    0.008763144717075613
+TAAT    0.008763144717075613
+TTAT    0.011266900350525789
+ATAA    0.011266900350525789
+TATC    0.005758637956935403
+```
 
 ### Feature fragmentation profile
 ```Fragmentation_Profile.txt```<br>
@@ -293,7 +316,18 @@ Motif frequency and diversity score for one region.<br>
 "short" column is number of short reads identified in a region.<br>
 "long" column is number of long reads identified in a region.<br>
 "ratio" column is short/long ratio for each region.<br>
-![Fragmentation_Profile.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311645495.png)<br>
+```r
+seqnames	start	end	short	long	ratio
+chr1	738137	740137	1	3	0.333333333333333
+chr1	817043	819043	5	5	1
+chr1	865445	867445	1	3	0.333333333333333
+chr1	893670	895670	1	1	1
+chr1	916497	918497	1	4	0.25
+chr1	947803	949803	2	4	0.5
+chr1	1050478	1052478	1	1	1
+chr1	1140951	1142951	1	3	0.333333333333333
+chr1	1148512	1150512	3	2	1.5
+```
 
 ### Feature nucleosome profile
 ```NucleosomeProfile.txt```<br>
@@ -301,7 +335,18 @@ Motif frequency and diversity score for one region.<br>
 "mean_coverage" column is the mean coverage for each site list.<br>
 "central_coverage" column is the central coverage for each site list.<br>
 "amplitude" column is the amplitude for each site list.<br>
-![NucleosomeProfile.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311675968.png)<br>
+```r
+site_name	mean_coverage	central_coverage	amplitude
+IKZF1.hg38.10000.txt	0.99428	1.01050	0.45213
+TCF7L1.hg38.10000.txt	1.00737	1.03907	0.20425
+NKX3-1.hg38.10000.txt	0.99402	1.00351	0.27422
+ZSCAN4.hg38.10000.txt	0.99694	0.96824	0.62736
+ZNF324.hg38.10000.txt	0.99915	0.97439	0.49796
+OSR2.hg38.10000.txt	1.00190	1.03863	0.43505
+FOXA1.hg38.10000.txt	0.99277	1.00712	0.27473
+MAFG.hg38.10000.txt	1.00207	0.98347	0.79326
+HEY1.hg38.10000.txt	1.01042	1.03988	0.81144
+```
 <br>
 ```plots/<site_list>.pdf```<br>
 Coverage profile for input bam file for given site lists.<br>
@@ -311,15 +356,35 @@ Coverage profile for input bam file for given site lists.<br>
 ```PFE.txt```<br>
 "TSS_ID" column is the id of each TSS 2k region.<br>
 "PFE" column is promoter fragmentation entropy value for each TSS 2k region.<br>
-![PFE.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311706499.png)<br>
+```r
+TSS_ID	PFE
+A1BG_1	0.341049657283462
+A1CF_1	0.34067802945418
+A2M_1	0.340071343470199
+A2ML1_1	0.339540877323118
+A3GALT2_1	0.34133890610363
+A4GALT_1	0.338760558643257
+A4GNT_1	0.340589330348338
+AAAS_1	0.341169890073755
+AACS_1	0.342021289789175
+```
 
 ### Feature orientation-aware cfDNA fragmentation
 ```OCF.txt```<br>
 "TSS_ID" column is the id of each TSS 2k region.<br>
 "OCF_Ratio" column is orientation-aware cfDNA fragmentation ratio for each TSS 2k region.<br>
-![OCF.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311738958.png)<br>
-
-
+```r
+TSS_ID	OCF_Ratio
+A1BG_1	-0.142857142857143
+A1CF_1	-0.2
+A2M_1	0.333333333333333
+A2ML1_1	0.333333333333333
+A3GALT2_1	-0.75
+A4GALT_1	-0.2
+A4GNT_1	0
+AAAS_1	0.333333333333333
+AACS_1	-0.2
+```
 
 ## Versions of packages in our environment:
 ### Python:
