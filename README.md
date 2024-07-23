@@ -21,9 +21,9 @@ For the extracted features, this tool also offers a customized pipeline for down
 <li>
   <a href="#Output-file-for-every-feature">Output file for every feature</a>
   <ul>
-    <li><a href="#Features-can-be-extracted-from-this-tool">Features can be extracted from this tool</a></li>
-    <li><a href="#Environment-and-installation">Environment and installation</a></li>
-    <li><a href="#Tools-needed-for-cfDNAanalyzer">Tools needed for cfDNAanalyzer</a></li>
+    <li><a href="#copy number variation">copy number variation</a></li>
+    <li><a href="#nucleosome occupancy and fuzziness">nucleosome occupancy and fuzziness</a></li>
+    <li><a href="#windowed protection score">windowed protection score</a></li>
     <li><a href="#Usage">Usage</a></li>
     <li><a href="#Options">Options</a></li>
     <li><a href="#Run-cfDNAanalyzer">Run cfDNAanalyzer</a></li>
@@ -155,7 +155,7 @@ bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,E
 
 ## Output file for every feature
 
-### Feature copy number variation
+### Copy number variation
 ```CNV.txt```<br>
 "chr" column is the chromosome where each bin is located.<br>
 "start" column is the starting site of a bin.<br>
@@ -189,7 +189,7 @@ fixedStep chrom=chr1 start=1 step=1000000 span=1000000
 ```
 
 
-### Feature nucleosome occupancy and fuzziness
+### Nucleosome occupancy and fuzziness
 ```meanfuziness.tsv```<br>
 "chr" column is the chromosome where each region is located.<br>
 "start" column is the starting site of a region.<br>
@@ -259,7 +259,7 @@ fixedStep chrom=chr1 start=1  step=10 span=10
 0.0
 ```
 
-### Feature windowed protection score
+### Windowed protection score
 ```WPS.txt```<br>
 "chr" column is the chromosome where each region is located.<br>
 "start" column is the starting site of a region.<br>
@@ -279,7 +279,7 @@ chr1	865445	867445	-0.332834	0
 chr1	893670	895670	-0.146427	0
 ```
 
-### Feature end motif frequency and diversity
+### End motif frequency and diversity
 ```all_motifs_frequency.txt```<br>
 Summary motif frequency for all the regions.<br>
 ```r
@@ -314,7 +314,7 @@ ATAA    0.011266900350525789
 TATC    0.005758637956935403
 ```
 
-### Feature fragmentation profile
+### Fragmentation profile
 ```Fragmentation_Profile.txt```<br>
 "seqnames" column is the chromosome where each region is located.<br>
 "start" column is the starting site of a region.<br>
@@ -335,7 +335,7 @@ chr1	1140951	1142951	1	3	0.333333333333333
 chr1	1148512	1150512	3	2	1.5
 ```
 
-### Feature nucleosome profile
+### Nucleosome profile
 ```NucleosomeProfile.txt```<br>
 "site_name" column is the name of each site list.<br>
 "mean_coverage" column is the mean coverage for each site list.<br>
@@ -357,7 +357,7 @@ HEY1.hg38.10000.txt	1.01042	1.03988	0.81144
 ```plots/<site_list>.pdf```<br>
 Coverage profile for input bam file for given site lists.<br>
 
-### Feature orientation-aware cfDNA fragmentation
+### Orientation-aware cfDNA fragmentation
 ```OCF.txt```<br>
 "TSS_ID" column is the id of each TSS 2k region.<br>
 "OCF_Ratio" column is orientation-aware cfDNA fragmentation ratio for each TSS 2k region.<br>
@@ -374,7 +374,7 @@ AAAS_1	0.333333333333333
 AACS_1	-0.2
 ```
 
-### Feature promoter fragmentation entropy
+### Promoter fragmentation entropy
 ```PFE.txt```<br>
 "TSS_ID" column is the id of each TSS 2k region.<br>
 "PFE" column is promoter fragmentation entropy value for each TSS 2k region.<br>
@@ -391,7 +391,7 @@ AAAS_1	0.341169890073755
 AACS_1	0.342021289789175
 ```
 
-### Feature TSS coverage
+### TSS coverage
 ```average_coverage.txt```<br>
 "chr" column is the chromosome where each region is located.<br>
 "start" column is the starting site of a region.<br>
