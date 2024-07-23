@@ -162,7 +162,6 @@ fixedStep chrom=chr1 start=1 step=1000000 span=1000000
 6511
 4859
 ```
-<br>
 
 
 ### Feature nucleosome occupancy and fuzziness
