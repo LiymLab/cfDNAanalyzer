@@ -206,11 +206,32 @@ chr1	893670	895670	region_9	1.32
 "smt_pos" column is the occupancy summit point for each region.<br>
 "smt_value" column is the occupancy value at smt_pos.<br>
 "fuzziness_score" column is the fuzziness score for each region.<br>
-![pooled/<sampleID>.smooth.positions.xls](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311120508.png)<br>
-<br>
+```
+chr     start   end     smt_pos smt_value       fuzziness_score
+chr1    10011   10151   10081   24.0    56.2199218395978
+chr1    10161   10301   10231   56.0    52.17928320347469
+chr1    10301   10441   10371   48.0    52.888443917362515
+chr1    11651   11791   11721   16.0    33.147857967067466
+chr1    11931   12071   12001   16.0    53.334280294623404
+chr1    12041   12181   12111   16.0    53.27415502117644
+chr1    12671   12811   12741   8.0     37.3875124467585
+chr1    13041   13181   13111   16.0    33.147857967067466
+chr1    13441   13581   13511   56.0    42.90872331572411
+```
 ```pooled/<sampleID>.smooth.wig```<br>
 Wig format files containing protein occupancy values at 10 base pairs across the whole genome.<br>
-![pooled/<sampleID>.smooth.wig](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311139442.png)<br>
+```
+fixedStep chrom=chr1 start=1  step=10 span=10
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+```
 
 
 ### Feature TSS coverage
