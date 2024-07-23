@@ -5,6 +5,8 @@ This is an integrated tool for extracting the genetic or epigenetic features of 
 &nbsp;3.for specific Transcription Start Sites (TSS), like <ins>P</ins>romoter <ins>F</ins>ragmentation <ins>E</ins>ntropy (PFE) and <ins>TSS</ins> <ins>C</ins>overage (TSSC).<br> 
 For the extracted features, this tool also offers a customized pipeline for downstream applications, like cancer detection or tumor subtype classification. 
 
+<summary><h2>Table of Contents</h2></summary>
+
 ## Description
 ### Features can be extracted from this tool
 #### 1.Features extracted for the whole genome
