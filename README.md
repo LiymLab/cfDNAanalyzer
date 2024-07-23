@@ -21,13 +21,23 @@ For the extracted features, this tool also offers a customized pipeline for down
 <li>
   <a href="#Output-file-for-every-feature">Output file for every feature</a>
   <ul>
-    <li><a href="#copy number variation">copy number variation</a></li>
-    <li><a href="#nucleosome occupancy and fuzziness">nucleosome occupancy and fuzziness</a></li>
-    <li><a href="#windowed protection score">windowed protection score</a></li>
-    <li><a href="#Usage">Usage</a></li>
-    <li><a href="#Options">Options</a></li>
-    <li><a href="#Run-cfDNAanalyzer">Run cfDNAanalyzer</a></li>
-    <li><a href="#Options">Options</a></li>
+    <li><a href="#Copy-number-variation">Copy number variation</a></li>
+    <li><a href="#Nucleosome-occupancy-and-fuzziness">Nucleosome occupancy and fuzziness</a></li>
+    <li><a href="#Windowed-protection-score">Windowed protection score</a></li>
+    <li><a href="#End-motif-frequency-and-diversity">End motif frequency and diversity</a></li>
+    <li><a href="#Fragmentation-profile">Fragmentation profile</a></li>
+    <li><a href="#Nucleosome-profile">Nucleosome profile</a></li>
+    <li><a href="#Orientation-aware-cfDNA-fragmentation">Orientation-aware cfDNA fragmentation</a></li>
+    <li><a href="#Promoter-fragmentation-entropy">Promoter fragmentation entropy</a></li>
+    <li><a href="#TSS-coverage">TSS coverage</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#Versions-of-packages-in-our-environment">Versions of packages in our environment</a>
+  <ul>
+    <li><a href="#Python">Python</a></li>
+    <li><a href="#R">R</a></li>
+    <li><a href="#BiocManager-packages">BiocManager packages</a></li>
   </ul>
 </li>
 
@@ -353,7 +363,6 @@ FOXA1.hg38.10000.txt	0.99277	1.00712	0.27473
 MAFG.hg38.10000.txt	1.00207	0.98347	0.79326
 HEY1.hg38.10000.txt	1.01042	1.03988	0.81144
 ```
-<br>
 ```plots/<site_list>.pdf```<br>
 Coverage profile for input bam file for given site lists.<br>
 
