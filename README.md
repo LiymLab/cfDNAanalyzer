@@ -37,7 +37,7 @@ For the extracted features, this tool also offers a customized pipeline for down
 
 #### 3.Features extracted for specific Transcription Start Sites
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 Promoter Fragmentation Entropy ([<ins>Esfahani et al, 2022</ins>](https://doi.org/10.1038/s41587-022-01222-4))
-* Promoter fragmentation entropy is the Shannon entropy of fragments around the ± 1000 bp of transcription start sites.
+* Promoter fragmentation entropy is the Shannon entropy of fragments around ± 1000 bp of transcription start sites.
   
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 TSS coverage ([<ins>Ulz et al, 2016</ins>](https://www.nature.com/articles/ng.3648))
 * TSS coverage is the coverage around transcription start sites.
