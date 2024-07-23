@@ -75,11 +75,6 @@ This tool only accepts the bam file as the input file type. You need to provide 
   -o  PATH                      Output directory for all results. Default: [./]
   -F  STR                       CfDNA features, including CNV, NOF, TSS, WPS, EM, FP, NP, PFE and OCF; if not provided then will extract all the features. Default: [NULL]
 
-  -f  STR                       Type of reference fasta file, including hg19 and hg38. Default: [hg38]
-  -r  FILE                      Reference fasta file. For example, if you want to use hg38 reference, you can download it from http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz. Default: [NULL] 
-  -s  STR                       Type of sequencing method, including pair and single. Default: [pair]
-  -b  FILE                      Region bed file. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
-
 
 
 -- Options for copy number variation
@@ -94,28 +89,28 @@ This tool only accepts the bam file as the input file type. You need to provide 
   --addNOF  STR                 Addtional parameters for nucleosome occupancy and fuzziness. Default: [NULL] 
 
 -- Options for windowed protection score
+  -b  FILE                      Region bed file. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
   -x  INT                       Minimum length of reads identified as long reads. Default: [120]
   -X  INT                       Maximum length of reads identified as long reads. Default: [180]
   -w  INT                       Size of window to extract WPS for long reads. Default: [120]
   -m  INT                       Minimum length of reads identified as short reads. Default: [35]
   -M  INT                       Maximum length of reads identified as short reads. Default: [80]
   -W  INT                       Size of window to extract WPS for short reads. Default: [16]
-  
+
+-- Options for end motif frequency and diversity
+  -r  FILE                      Reference fasta file. For example, if you want to use hg38 reference, you can download it from http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz. Default: [NULL]
+  -b  FILE                      Region bed file. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
+
+-- Options for fragmentation profile
+  -f  STR                       Type of reference fasta file, including hg19 and hg38. Default: [hg38]
+  -b  FILE                      Region bed file. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
+
 -- Options for nucleosome profile
   -l  PATH                      Path of site list. This path must only contain site list for nucleosome profile analysis.
                                 And each site file must contain two columns. The chromosome column must have "Chrom"" as the header and the site column must have "position"" as the header; 
                                 if not provided then will use 377 site lists provided by the paper of nucleosome profile. Default: [NULL]
 
 -- Options for promoter fragmentation entropy or orientation-aware cfDNA fragmentation
-  -T  FILE                      TSS information files. The file must have five columns: (1) chromosome, (2) 1-base TSS coordinate, 
-                                (3) Hugo symbol of the gene corresponding to the TSS, (4) Category 
-                                (*negativeControl* must exist, other categories are not important), (5) gene 
-                                transcript strand (+1/-1) and (6) a column for TSS ID; 
-                                if not provided then will use TSS information file provided by the paper of promoter fragmentation entropy. Default: [NULL]
-  -U  INT                       Number of bp upstreams the TSS sites. Default: [1000]
-  -D  INT                       Number of bp downstreams the TSS sites. Default: [1000]  
-  -p  FILE                      Either the selector bed file or a no header bed file around the TSS sites in the tssinfo file; 
-                                if not provided then will use TSS 2k file provided by the paper of promoter fragmentation entropy. Default: [NULL] (Parameter -U/-D and -p can not set together).
   --addEpicSeq  STR             Addtional parameters for Epic Seq. Default: [NULL] 
 
 -- Options for TSS coverage 
