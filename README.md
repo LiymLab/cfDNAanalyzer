@@ -26,7 +26,7 @@ For the extracted features, this tool also offers a customized pipeline for down
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4 Fragmentation Profile ([<ins>Cristiano et al, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
 * Fragmentation profile is number of short reads(100–150 bp), number of long reads(151–220 bp) and short/long ratio in a region.
 
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5 Nucleosome Profile ([<ins>https://www.nature.com/articles/s41467-022-35076-w</ins>](https://www.nature.com/articles/s41467-022-35076-w))
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5 Nucleosome Profile ([<ins>Doebley et al, 2022</ins>](https://www.nature.com/articles/s41467-022-35076-w))
 * Nucleosome profile is the distribution of nucleosomes in extracellular DNA in a site list, and we extracted 3 features from each coverage profile.
    * "central coverage" is the coverage value from ± 30 bp of central site.
    * "mean coverage" is the coverage value from ± 1000 bp of central site.
