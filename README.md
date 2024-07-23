@@ -18,6 +18,18 @@ For the extracted features, this tool also offers a customized pipeline for down
     <li><a href="#Options">Options</a></li>
   </ul>
 </li>
+<li>
+  <a href="#Output file for every feature">Output file for every feature</a>
+  <ul>
+    <li><a href="#Features-can-be-extracted-from-this-tool">Features can be extracted from this tool</a></li>
+    <li><a href="#Environment-and-installation">Environment and installation</a></li>
+    <li><a href="#Tools-needed-for-cfDNAanalyzer">Tools needed for cfDNAanalyzer</a></li>
+    <li><a href="#Usage">Usage</a></li>
+    <li><a href="#Options">Options</a></li>
+    <li><a href="#Run-cfDNAanalyzer">Run cfDNAanalyzer</a></li>
+    <li><a href="#Options">Options</a></li>
+  </ul>
+</li>
 
 ## Description
 ### Features can be extracted from this tool
