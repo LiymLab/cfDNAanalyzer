@@ -2,7 +2,7 @@
 This is an integrated tool for extracting the genetic or epigenetic features of cfDNA from a bam file. These features can be extracted <br>
 &nbsp;1.for the whole genome, like <ins>C</ins>opy <ins>N</ins>umber <ins>V</ins>ariation (CNV);<br>
 &nbsp;2.for given regions, like <ins>N</ins>ucleosome <ins>O</ins>ccupancy and <ins>F</ins>uzziness (NOF), <ins>W</ins>indowed <ins>P</ins>rotection <ins>S</ins>core (WPS), <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM), <ins>F</ins>ragmentation <ins>P</ins>rofile (FP), <ins>N</ins>ucleosome <ins>P</ins>rofile (NP), and <ins>O</ins>rientation-aware <ins>C</ins>fDNA <ins>F</ins>ragmentation (OCF);<br>
-&nbsp;3.for specific Transcription Start Sites (TSS), like <ins>P</ins>romoter <ins>F</ins>ragmentation <ins>E</ins>ntropy (PFE) and <ins>TSS</ins> <ins>c</ins>overage (TSSC).<br> 
+&nbsp;3.for specific Transcription Start Sites (TSS), like <ins>P</ins>romoter <ins>F</ins>ragmentation <ins>E</ins>ntropy (PFE) and <ins>TSS</ins> <ins>C</ins>overage (TSSC).<br> 
 For the extracted features, this tool also offers a customized pipeline for downstream applications, like cancer detection or tumor subtype classification. 
 
 ## Description
