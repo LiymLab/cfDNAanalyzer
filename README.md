@@ -15,7 +15,6 @@ For the extracted features, this tool also offers a customized pipeline for down
     <li><a href="#Usage">Usage</a></li>
     <li><a href="#Options">Options</a></li>
     <li><a href="#Run-cfDNAanalyzer">Run cfDNAanalyzer</a></li>
-    <li><a href="#Options">Options</a></li>
   </ul>
 </li>
 <li>
