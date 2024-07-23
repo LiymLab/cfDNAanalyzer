@@ -65,7 +65,7 @@ This tool only accepts the bam file as the input file type. You need to provide 
 
 ### Usage：
 ```
-   bash cfDNAanalyzer.sh -I <InputTxt> -o <OutputDirectory> -F <Features> -f <ReferenceType> -r <Reference.fa> -s <SequencingMethod> -b <RegionBed> [Options]
+   bash cfDNAanalyzer.sh -I <InputTxt> -o <OutputDirectory> -F <Features> [Options]
 ```
    
 ### Options: 
@@ -74,18 +74,23 @@ This tool only accepts the bam file as the input file type. You need to provide 
   -I  FILE                      Input bam file list. Default: [ ]
   -o  PATH                      Output directory for all results. Default: [./]
   -F  STR                       CfDNA features, including CNV, NOF, TSS, WPS, EM, FP, NP, PFE and OCF; if not provided then will extract all the features. Default: [NULL]
+
   -f  STR                       Type of reference fasta file, including hg19 and hg38. Default: [hg38]
   -r  FILE                      Reference fasta file. For example, if you want to use hg38 reference, you can download it from http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz. Default: [NULL] 
   -s  STR                       Type of sequencing method, including pair and single. Default: [pair]
   -b  FILE                      Region bed file. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
 
 
+
 -- Options for copy number variation
+  -f  STR                       Type of reference fasta file, including hg19 and hg38. Default: [hg38]
   -c  INT                       Total clonal CN states. Default: [7]
   -B  INT                       Number of kb for bin size, including 10, 50, 500, 1000. Default: [1000]
   --addCNV  STR                 Addtional parameters for for copy number variation. Default: [NULL] 
 
 -- Options for nucleosome occupancy and fuzziness
+  -f  STR                       Type of reference fasta file, including hg19 and hg38. Default: [hg38]
+  -b  FILE                      Region bed file. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
   --addNOF  STR                 Addtional parameters for nucleosome occupancy and fuzziness. Default: [NULL] 
 
 -- Options for windowed protection score
