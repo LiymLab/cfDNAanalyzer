@@ -6,7 +6,7 @@ This is an integrated tool for extracting the genetic or epigenetic features of 
 For the extracted features, this tool also offers a customized pipeline for downstream applications, like cancer detection or tumor subtype classification. 
 
 <summary><h2>Table of Contents</h2></summary>
-
+<li><a href="## Description">Description</a></li>
 ## Description
 ### Features can be extracted from this tool
 #### 1.Features extracted for the whole genome
