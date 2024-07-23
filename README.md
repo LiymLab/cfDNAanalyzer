@@ -15,7 +15,8 @@ For the extracted features, this tool also offers a customized pipeline for down
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Nucleosome Occupancy and Fuzziness ([<ins>Li et al, 2024</ins>](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10790422/))<br>
 * Nucleosome occupancy, which reflects the frequency with which nucleosomes occupy a given DNA region in a cell population.<br>
 * Nucleosome fuzziness, which is defined as the deviation of nucleosome positions within a region in a cell population and could reflect cell heterogeneity at the chromatin level.<br>
-<br>
+
+
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Windowed Protection Score ([<ins>Snyder et al, 2016</ins>](https://www.cell.com/cell/fulltext/S0092-8674(15)01569-X?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS009286741501569X%3Fshowall%3Dtrue))
 * A per-base WPS is calculated by subtracting the number of fragment endpoints within a window from the number of fragments completely spanning the window. High WPS values indicate increased protection of DNA from digestion; low values indicate that DNA is unprotected.
 
