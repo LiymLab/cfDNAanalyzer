@@ -105,7 +105,7 @@ samtools                       1.3.1
 -- Options for all the features
   -I  FILE                      Input bam file list. This tool only accepts the bam file as the input file type. You need to provide a text file containing the path of your bam files in each line. Default: [NULL]
   -o  PATH                      Output directory for all results. We will create a folder for each bam file in the output directory. Every bam file's single feature will be output to a folder. Default: [./]
-  -F  STR                       CfDNA features, including CNV, NOF, TSS, WPS, EM, FP, NP, PFE and OCF; if not provided then will extract all the features. Default: [NULL]
+  -F  STR                       CfDNA features, including CNV, NOF, WPS, EM, FP, NP, OCF, PFE and TSSC ; if not provided then will extract all the features. Default: [NULL]
                                 The following features are specific for pair-end bam files: fragmentation profile, nucleosome profile, promoter fragmentation entropy, orientation-aware cfDNA fragmentation.
 
 
