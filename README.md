@@ -146,7 +146,7 @@ chr	start	end	sample.copy.number
 1	8000001	9000000	2
 1	9000001	10000000  2
 1	10000001  11000000  2
-```<br>
+```
 ```CNV.wig```<br>
 Wig file extracted from input bam file.<br>
 ```r
@@ -169,16 +169,36 @@ fixedStep chrom=chr1 start=1 step=1000000 span=1000000
 "start" column is the starting site of a region.<br>
 "end" column is the ending site of a region.<br>
 "meanfuziness" column is the mean fuziness value for each region.<br>
-![meanfuziness.tsv](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311045217.png)<br>
-<br>
+```r
+chr	start	end	meanfuziness
+chr1 68091 70091 33.4683
+chr1 138379 140379 48.2868
+chr1 366640 368640 37.744
+chr1 621053 623053 44.8007
+chr1 738137 740137 45.5157
+chr1 817043 819043 49.6678
+chr1 860118 862118 50.1261
+chr1 865445 867445 45.8941
+chr1 893670 895670 33.1479
+```
 ```occupancy.bed```<br>
 "chr" column is the chromosome where each region is located.<br>
 "start" column is the starting site of a region.<br>
 "end" column is the ending site of a region.<br>
 "ID" column is the specific id for each region.<br>
 "occupancy" column is the occupancy value for each region.<br>
-![occupancy.bed](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311077440.png)<br>
-<br>
+```r
+chr	start	end	ID	occupancy
+chr1	68091	70091	region_1	6.616
+chr1	138379	140379	region_2	19.206
+chr1	366640	368640	region_3	2.88
+chr1	621053	623053	region_4	6.48
+chr1	738137	740137	region_5	4.754
+chr1	817043	819043	region_6	10.736
+chr1	860118	862118	region_7	3.236
+chr1	865445	867445	region_8	3.04
+chr1	893670	895670	region_9	1.32
+```
 ```pooled/<sampleID>.smooth.positions.xls```<br>
 "chr" column is the chromosome where each region is located.<br>
 "start" column is the starting site of a region.<br>
