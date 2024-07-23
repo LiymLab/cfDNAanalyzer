@@ -12,27 +12,27 @@ For the extracted features, this tool also offers a customized pipeline for down
 * Copy number variation is the number of copy variation in a region.
 
 #### 2.Features extracted for given regions
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Nucleosome Occupancy and Fuzziness ([<ins>Li et al, 2024</ins>](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10790422/))<br>
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Nucleosome Occupancy and Fuzziness ([<ins>Li et al, 2024</ins>](https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-023-01280-6))<br>
 * Nucleosome occupancy, which reflects the frequency with which nucleosomes occupy a given DNA region in a cell population.<br>
 * Nucleosome fuzziness, which is defined as the deviation of nucleosome positions within a region in a cell population and could reflect cell heterogeneity at the chromatin level.<br>
 
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Windowed Protection Score ([<ins>Snyder et al, 2016</ins>](https://www.cell.com/cell/fulltext/S0092-8674(15)01569-X?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS009286741501569X%3Fshowall%3Dtrue))
 * A per-base WPS is calculated by subtracting the number of fragment endpoints within a window from the number of fragments completely spanning the window. High WPS values indicate increased protection of DNA from digestion; low values indicate that DNA is unprotected.
 
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3End Motif frequency and diversity ([<ins>Zhou et al, 2023</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120))
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3 End Motif frequency and diversity ([<ins>Zhou et al, 2023</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120))
 * End motifs were determined from the terminal 4-nucleotide sequence, i.e., 4-mer end motif, at each 5′ fragment end of cfDNA molecules. End motif frequency of each of the motifs (i.e., a total of 256 motifs) was determined from the total number of fragment ends.<br>
 * End motif diversity is the normalized Shannon entropy of the categorical distribution of all possible end-motif k-mers.
 
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4Fragmentation Profile ([<ins>Cristiano et al, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4 Fragmentation Profile ([<ins>Cristiano et al, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
 * Fragmentation profile is number of short reads(100–150 bp), number of long reads(151–220 bp) and short/long ratio in a region.
 
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5Nucleosome Profile ([<ins>https://www.nature.com/articles/s41467-022-35076-w</ins>](https://www.nature.com/articles/s41467-022-35076-w))
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5 Nucleosome Profile ([<ins>https://www.nature.com/articles/s41467-022-35076-w</ins>](https://www.nature.com/articles/s41467-022-35076-w))
 * Nucleosome profile is the distribution of nucleosomes in extracellular DNA in a site list, and we extracted 3 features from each coverage profile.
    * "central coverage" is the coverage value from ± 30 bp of central site.
    * "mean coverage" is the coverage value from ± 1000 bp of central site.
    * The amplitude of the nucleosome peaks surrounding the central site is calculated by using a Fast Fourier Transform on the window ± 960 bp from the central site.
 
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.6Orientation-aware CfDNA Fragmentation ([<ins>http://www.genome.org/cgi/doi/10.1101/gr.242719.118</ins>](http://www.genome.org/cgi/doi/10.1101/gr.242719.118))
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.6 Orientation-aware CfDNA Fragmentation ([<ins></ins>](http://www.genome.org/cgi/doi/10.1101/gr.242719.118))
 Orientation-aware cfDNA fragmentation is the differential phasing of upstream (U) and downstream (D) fragment ends in tissue-specific open chromatin regions.
 
 #### 3.Features extracted for specific Transcription Start Sites
