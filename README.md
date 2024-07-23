@@ -20,15 +20,18 @@ For the extracted features, this tool also offers a customized pipeline for down
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Windowed Protection Score ([<ins>Snyder et al, 2016</ins>](https://www.cell.com/cell/fulltext/S0092-8674(15)01569-X?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS009286741501569X%3Fshowall%3Dtrue))
 * A per-base WPS is calculated by subtracting the number of fragment endpoints within a window from the number of fragments completely spanning the window. High WPS values indicate increased protection of DNA from digestion; low values indicate that DNA is unprotected.
 
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End Motif frequency and diversity ([<ins>Zhou et al, 2023</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120))
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3End Motif frequency and diversity ([<ins>Zhou et al, 2023</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120))
 * End motifs were determined from the terminal 4-nucleotide sequence, i.e., 4-mer end motif, at each 5′ fragment end of cfDNA molecules. End motif frequency of each of the motifs (i.e., a total of 256 motifs) was determined from the total number of fragment ends.<br>
 * End motif diversity is the normalized Shannon entropy of the categorical distribution of all possible end-motif k-mers.
 
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fragmentation Profile ([<ins>Cristiano et al, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4Fragmentation Profile ([<ins>Cristiano et al, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
 * Fragmentation profile is number of short reads(100–150 bp), number of long reads(151–220 bp) and short/long ratio in a region.
 
-##### <ins>N</ins>ucleosome <ins>P</ins>rofile (NP) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.nature.com/articles/s41467-022-35076-w</ins>](https://www.nature.com/articles/s41467-022-35076-w)
-Nucleosome profile is the distribution of nucleosomes in extracellular DNA in a site list, and we extracted 3 features from each coverage profile. "central coverage" is the coverage value from ± 30 bp of central site. "mean coverage" is the coverage value from ± 1000 bp of central site. The amplitude of the nucleosome peaks surrounding the central site is calculated by using a Fast Fourier Transform on the window ±960 bp from the central site.
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5Nucleosome Profile ([<ins>https://www.nature.com/articles/s41467-022-35076-w</ins>](https://www.nature.com/articles/s41467-022-35076-w))
+* Nucleosome profile is the distribution of nucleosomes in extracellular DNA in a site list, and we extracted 3 features from each coverage profile.
+   * "central coverage" is the coverage value from ± 30 bp of central site.
+   * "mean coverage" is the coverage value from ± 1000 bp of central site.
+   * The amplitude of the nucleosome peaks surrounding the central site is calculated by using a Fast Fourier Transform on the window ±960 bp from the central site.
 
 ##### <ins>P</ins>romoter <ins>F</ins>ragmentation <ins>E</ins>ntropy (PFE) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://doi.org/10.1038/s41587-022-01222-4</ins>](https://doi.org/10.1038/s41587-022-01222-4)
 Promoter fragmentation entropy is the Shannon entropy of fragments around the ± 1000 bp of transcription start sites.
