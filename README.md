@@ -20,7 +20,7 @@ For the extracted features, this tool also offers a customized pipeline for down
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Windowed Protection Score ([<ins>Snyder et al, 2016</ins>](https://www.cell.com/cell/fulltext/S0092-8674(15)01569-X?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS009286741501569X%3Fshowall%3Dtrue))
 * A per-base WPS is calculated by subtracting the number of fragment endpoints within a window from the number of fragments completely spanning the window. High WPS values indicate increased protection of DNA from digestion; low values indicate that DNA is unprotected.
 
-##### End Motif frequency and diversity ([<ins>Zhou et al, 2023</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120))
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End Motif frequency and diversity ([<ins>Zhou et al, 2023</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120))
 * End motifs were determined from the terminal 4-nucleotide sequence, i.e., 4-mer end motif, at each 5′ fragment end of cfDNA molecules. End motif frequency of each of the motifs (i.e., a total of 256 motifs) was determined from the total number of fragment ends.<br>
 * End motif diversity is the normalized Shannon entropy of the categorical distribution of all possible end-motif k-mers.
 
