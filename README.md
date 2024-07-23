@@ -150,7 +150,6 @@ chr	start	end	sample.copy.number
 <br>
 ```CNV.wig```<br>
 Wig file extracted from input bam file.<br>
-![CNV.wig](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311015152.png)<br>
 ```r
 fixedStep chrom=chr1 start=1 step=1000000 span=1000000
 1792
