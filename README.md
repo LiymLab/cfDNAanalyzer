@@ -32,15 +32,15 @@ For the extracted features, this tool also offers a customized pipeline for down
    * "mean coverage" is the coverage value from ± 1000 bp of central site.
    * The amplitude of the nucleosome peaks surrounding the central site is calculated by using a Fast Fourier Transform on the window ± 960 bp from the central site.
 
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.6 Orientation-aware CfDNA Fragmentation ([<ins></ins>](http://www.genome.org/cgi/doi/10.1101/gr.242719.118))
-Orientation-aware cfDNA fragmentation is the differential phasing of upstream (U) and downstream (D) fragment ends in tissue-specific open chromatin regions.
-
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.6 Orientation-aware CfDNA Fragmentation ([<ins>Sun et al, 2019</ins>](https://genome.cshlp.org/content/29/3/418.long))
+* Orientation-aware cfDNA fragmentation is the differential phasing of upstream and downstream fragment ends in tissue-specific open chromatin regions.
+* 
 #### 3.Features extracted for specific Transcription Start Sites
-##### <ins>TSS</ins> coverage (TSS) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://www.nature.com/articles/ng.3648</ins>](https://www.nature.com/articles/ng.3648)
-TSS coverage is the coverage around transcription start sites.
-
-##### <ins>P</ins>romoter <ins>F</ins>ragmentation <ins>E</ins>ntropy (PFE) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<ins>https://doi.org/10.1038/s41587-022-01222-4</ins>](https://doi.org/10.1038/s41587-022-01222-4)
-Promoter fragmentation entropy is the Shannon entropy of fragments around the ± 1000 bp of transcription start sites.
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 Promoter Fragmentation Entropy ([<ins>Esfahani et al, 2022</ins>](https://doi.org/10.1038/s41587-022-01222-4))
+* Promoter fragmentation entropy is the Shannon entropy of fragments around the ± 1000 bp of transcription start sites.
+  
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 TSS coverage ([<ins>Ulz et al, 2016</ins>](https://www.nature.com/articles/ng.3648))
+* TSS coverage is the coverage around transcription start sites.
 
 ### Environment and installation
 Before using this tool, we advise using our packaged conda environment and running the script ```install_R_packages.R``` to avoid package version conflicts and the following errors.<br> 
