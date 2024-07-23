@@ -206,7 +206,7 @@ chr1	893670	895670	region_9	1.32
 "smt_pos" column is the occupancy summit point for each region.<br>
 "smt_value" column is the occupancy value at smt_pos.<br>
 "fuzziness_score" column is the fuzziness score for each region.<br>
-```
+```r
 chr     start   end     smt_pos smt_value       fuzziness_score
 chr1    10011   10151   10081   24.0    56.2199218395978
 chr1    10161   10301   10231   56.0    52.17928320347469
@@ -220,7 +220,7 @@ chr1    13441   13581   13511   56.0    42.90872331572411
 ```
 ```pooled/<sampleID>.smooth.wig```<br>
 Wig format files containing protein occupancy values at 10 base pairs across the whole genome.<br>
-```
+```r
 fixedStep chrom=chr1 start=1  step=10 span=10
 0.0
 0.0
@@ -240,7 +240,18 @@ fixedStep chrom=chr1 start=1  step=10 span=10
 "start" column is the starting site of a region.<br>
 "end" column is the ending site of a region.<br>
 "coverage" column is average coverage value for each region.<br>
-![average_coverage.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311175396.png)<br>
+```r
+chr	start	end	coverage
+chr1	68091	70091	1.8115
+chr1	138379	140379	5.7315
+chr1	366640	368640	0.79
+chr1	621053	623053	1.95
+chr1	738137	740137	1.4055
+chr1	817043	819043	3.057
+chr1	860118	862118	1.061
+chr1	865445	867445	0.8
+chr1	893670	895670	0.33
+```
 
 ### Feature windowed protection score
 ```WPS.txt```<br>
@@ -249,7 +260,17 @@ fixedStep chrom=chr1 start=1  step=10 span=10
 "end" column is the ending site of a region.<br>
 "long_WPS" column is windowed protection score of long reads for each region.<br>
 "short_WPS" column is windowed protection score of short reads for each region.<br>
-![WPS.txt](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/1721311508400.png)<br>
+```r
+chr  start  end  long_WPS  short_WPS
+chr1	68091	70091	-0.781609	0
+chr1	138379	140379	-1.94753	0.0164918
+chr1	366640	368640	-0.338331	0
+chr1	621053	623053	-0.909045	0
+chr1	738137	740137	-0.298851	0
+chr1	817043	819043	-1.27236	0
+chr1	860118	862118	-0.188906	0
+chr1	865445	867445	-0.332834	0
+chr1	893670	895670	-0.146427	0
 
 ### Feature end motif frequency and diversity
 ```all_motifs_frequency.txt```<br>
