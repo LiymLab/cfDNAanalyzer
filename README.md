@@ -182,7 +182,7 @@ chr	start	end	sample.copy.number
 1	9000001	10000000  2
 1	10000001  11000000  2
 ```
-
+&nbsp;
 ```CNV.wig```<br>
 Wig file extracted from input bam file.<br>
 ```r
@@ -217,7 +217,7 @@ chr1 860118 862118 50.1261
 chr1 865445 867445 45.8941
 chr1 893670 895670 33.1479
 ```
-
+&nbsp;
 ```occupancy.bed```<br>
 "chr" column is the chromosome where each region is located.<br>
 "start" column is the starting site of a region.<br>
@@ -236,7 +236,7 @@ chr1	860118	862118	region_7	3.236
 chr1	865445	867445	region_8	3.04
 chr1	893670	895670	region_9	1.32
 ```
-
+&nbsp;
 ```pooled/<sampleID>.smooth.positions.xls```<br>
 "chr" column is the chromosome where each region is located.<br>
 "start" column is the starting site of a region.<br>
@@ -256,7 +256,7 @@ chr1    12671   12811   12741   8.0     37.3875124467585
 chr1    13041   13181   13111   16.0    33.147857967067466
 chr1    13441   13581   13511   56.0    42.90872331572411
 ```
-
+&nbsp;
 ```pooled/<sampleID>.smooth.wig```<br>
 Wig format files containing protein occupancy values at 10 base pairs across the whole genome.<br>
 ```r
