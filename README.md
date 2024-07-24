@@ -78,8 +78,8 @@ Additionally, the tool offers a customized pipeline for downstream applications 
 * TSS Coverage refers to the read coverage in the region surrounding transcription start sites (TSS).
 
 ### Environment and installation
-Before using this tool, we advise using our packaged conda environment and running the script ```install_R_packages.R``` to avoid package version conflicts and the following errors.<br> 
-First, navigate to the directory ```cfDNAanalyzer/``` and run the following commands:
+Before using this tool, we recommend setting up the packaged conda environment and running the ```install_R_packages.R``` script to prevent package version conflicts and potential errors.<br> 
+First, navigate to the directory ```cfDNAanalyzer/``` and execute the following commands:
 ```
 conda create -n cfDNAanalyzer --clone ./envs/cfDNAanalyzer
 conda activate cfDNAanalyzer
