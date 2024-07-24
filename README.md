@@ -1,9 +1,9 @@
 # cfDNAanalyzer
 This tool provides integrated extraction of genetic and epigenetic features from cfDNA BAM files. Features can be extracted in the following ways: <br>
-&nbsp;&nbsp;1.**Whole Genome**: Includes <ins>C</ins>opy <ins>N</ins>umber <ins>V</ins>ariation (CNV);<br>
-&nbsp;&nbsp;2.for given regions, like <ins>N</ins>ucleosome <ins>O</ins>ccupancy and <ins>F</ins>uzziness (NOF), <ins>W</ins>indowed <ins>P</ins>rotection <ins>S</ins>core (WPS), <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM), <ins>F</ins>ragmentation <ins>P</ins>rofile (FP), <ins>N</ins>ucleosome <ins>P</ins>rofile (NP), and <ins>O</ins>rientation-aware <ins>C</ins>fDNA <ins>F</ins>ragmentation (OCF);<br>
-&nbsp;&nbsp;3.for specific Transcription Start Sites (TSS), like <ins>P</ins>romoter <ins>F</ins>ragmentation <ins>E</ins>ntropy (PFE) and <ins>TSS</ins> <ins>C</ins>overage (TSSC).<br> 
-For the extracted features, this tool also offers a customized pipeline for downstream applications, like cancer detection or tumor subtype classification. 
+&nbsp;&nbsp;1.**Whole Genome**: Includes <ins>C</ins>opy <ins>N</ins>umber <ins>V</ins>ariation (CNV).<br>
+&nbsp;&nbsp;2.**Specific Regions**: Includes <ins>N</ins>ucleosome <ins>O</ins>ccupancy and <ins>F</ins>uzziness (NOF), <ins>W</ins>indowed <ins>P</ins>rotection <ins>S</ins>core (WPS), <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM), <ins>F</ins>ragmentation <ins>P</ins>rofile (FP), <ins>N</ins>ucleosome <ins>P</ins>rofile (NP), and <ins>O</ins>rientation-aware <ins>C</ins>fDNA <ins>F</ins>ragmentation (OCF).<br>
+&nbsp;&nbsp;3.**Transcription Start Sites (TSS)**: Includes <ins>P</ins>romoter <ins>F</ins>ragmentation <ins>E</ins>ntropy (PFE) and <ins>TSS</ins> <ins>C</ins>overage (TSSC).<br> 
+Additionally, the tool offers a customized pipeline for downstream applications such as cancer detection and tumor subtype classification.
 
 <summary><h2>Table of Contents</h2></summary>
 <li>
