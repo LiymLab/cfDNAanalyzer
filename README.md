@@ -307,11 +307,13 @@ TTAT    0.00530396391450145
 ATAA    0.00530396391450145
 TATC    0.0026101367116673144
 ```
+&nbsp;<br>
 ```all_motifs_mds.txt```<br>
 Summary motif diversity score for all the regions.<br>
 ```r
 MDS     0.9747882739505999
 ```
+&nbsp;<br>
 ```region_<index>_motif_frequency_and_mds.txt```<br>
 Motif frequency and diversity score for one region.<br>
 ```r
@@ -366,6 +368,7 @@ FOXA1.hg38.10000.txt	0.99277	1.00712	0.27473
 MAFG.hg38.10000.txt	1.00207	0.98347	0.79326
 HEY1.hg38.10000.txt	1.01042	1.03988	0.81144
 ```
+&nbsp;<br>
 ```plots/<site_list>.pdf```<br>
 Coverage profile for input bam file for given site lists.<br>
 
