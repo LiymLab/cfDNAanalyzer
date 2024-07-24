@@ -44,7 +44,7 @@ Additionally, the tool offers a customized pipeline for downstream applications 
 ### Features can be extracted from this tool
 #### 1.Features extracted for the whole genome
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Copy Number Variation ([<ins>Adalsteinsson et al, 2017</ins>](https://www.nature.com/articles/s41467-017-00965-y))<br>
-* Copy number variation is the number of copy variation in a region.
+* Copy number variation refers to the variation in the number of copies of a particular region of the genome. This can include duplications or deletions of segments of DNA, which may affect gene function and contribute to genetic diversity and disease susceptibility.
 
 #### 2.Features extracted for given regions
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Nucleosome Occupancy and Fuzziness ([<ins>Li et al, 2024</ins>](https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-023-01280-6))<br>
@@ -59,7 +59,7 @@ Additionally, the tool offers a customized pipeline for downstream applications 
 * End motif diversity is the normalized Shannon entropy of the categorical distribution of all possible end-motif k-mers.
 
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4 Fragmentation Profile ([<ins>Cristiano et al, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
-* Fragmentation profile is number of short reads(100–150 bp), number of long reads(151–220 bp) and short/long ratio in a region.
+* Fragmentation profile describes the distribution of cfDNA fragment lengths within a specified region. It is the ratio of short reads (100–150 bp) to long reads (151–220 bp). 
 
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5 Nucleosome Profile ([<ins>Doebley et al, 2022</ins>](https://www.nature.com/articles/s41467-022-35076-w))
 * Nucleosome profile is the distribution of nucleosomes in extracellular DNA in a site list, and we extracted 3 features from each coverage profile.
@@ -72,10 +72,10 @@ Additionally, the tool offers a customized pipeline for downstream applications 
 
 #### 3.Features extracted for specific Transcription Start Sites
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 Promoter Fragmentation Entropy ([<ins>Esfahani et al, 2022</ins>](https://doi.org/10.1038/s41587-022-01222-4))
-* Promoter fragmentation entropy is the Shannon entropy of fragments around ± 1000 bp of transcription start sites.
+* Promoter Fragmentation Entropy quantifies the diversity of cfDNA fragments around the transcription start sites (TSS) of active genes. PFE is calculated by estimating the Shannon entropy of cfDNA fragments where both ends are located within ±1 kb of the TSS, totaling a 2 kb region around each gene’s TSS.
   
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 TSS coverage ([<ins>Ulz et al, 2016</ins>](https://www.nature.com/articles/ng.3648))
-* TSS coverage is the coverage around transcription start sites.
+* TSS Coverage refers to the read coverage in the region surrounding transcription start sites (TSS).
 
 ### Environment and installation
 Before using this tool, we advise using our packaged conda environment and running the script ```install_R_packages.R``` to avoid package version conflicts and the following errors.<br> 
