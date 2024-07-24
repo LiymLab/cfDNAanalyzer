@@ -59,7 +59,7 @@ Additionally, the tool offers a customized pipeline for downstream applications 
 * End motif diversity is the normalized Shannon entropy of the categorical distribution of all possible end-motif k-mers.
 
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4 Fragmentation Profile ([<ins>Cristiano et al, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
-* Fragmentation profile describes the distribution of cfDNA fragment lengths within a specified region. It is the ratio of short reads (100–150 bp) to long reads (151–220 bp). 
+* Fragmentation profile describes the distribution of cfDNA fragment lengths. It is the ratio of short reads (100–150 bp) to long reads (151–220 bp) within a specified region.. 
 
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5 Nucleosome Profile ([<ins>Doebley et al, 2022</ins>](https://www.nature.com/articles/s41467-022-35076-w))
 * Nucleosome profile is the distribution of nucleosomes in extracellular DNA in a site list, and we extracted 3 features from each coverage profile.
