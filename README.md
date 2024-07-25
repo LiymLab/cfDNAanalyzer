@@ -74,7 +74,7 @@ Additionally, the tool offers a customized pipeline for downstream applications 
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 Promoter Fragmentation Entropy ([<ins>Esfahani et al, 2022</ins>](https://doi.org/10.1038/s41587-022-01222-4))
 * Promoter Fragmentation Entropy quantifies the diversity of cfDNA fragments around the transcription start sites (TSS) of active genes. PFE is calculated by estimating the Shannon entropy of cfDNA fragments where both ends are located within ±1 kb of the TSS, totaling a 2 kb region around each gene’s TSS.
   
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 TSS coverage ([<ins>Ulz et al, 2016</ins>](https://www.nature.com/articles/ng.3648))
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 TSS Coverage ([<ins>Ulz et al, 2016</ins>](https://www.nature.com/articles/ng.3648))
 * TSS Coverage refers to the read coverage in the region surrounding transcription start sites (TSS).
 
 ### Environment and installation
@@ -109,49 +109,49 @@ samtools                       1.3.1
                                 Note: The following features are specific to paired-end BAM files: Fragmentation Profile (FP), Nucleosome Profile (NP), Promoter Fragmentation Entropy (PFE), and Orientation-aware CfDNA Fragmentation (OCF).
 
 
--- Options for copy number variation
+-- Options for Copy Number Variation
   -f  STR                       Reference FASTA file type. Options include hg19 and hg38. Default: [hg38]
   -c  INT                       Total number of clonal CN states. Default: [7]
   -B  INT                       Bin size in kilobases. Options include 10, 50, 500, and 1000 kb. Default: [1000]
-  --addCNV  STR                 Additional parameters for Copy Number Variation (CNV) analysis. Default: [NULL]
+  --addCNV  STR                 Additional parameters for Copy Number Variation analysis. Default: [NULL]
 
--- Options for nucleosome occupancy and fuzziness
+-- Options for Nucleosome Occupancy and Fuzziness
   -f  STR                       Reference FASTA file type. Options include hg19 and hg38. Default: [hg38]
   -b  FILE                      Path to a BED file specifying regions. The file must be a TAB-delimited BED3 file without a header. If not provided, ±1 kb regions around TSS will be used. Default: [NULL]
-  --addNOF  STR                 Additional parameters for Nucleosome Occupancy and Fuzziness (NOF) analysis. Default: [NULL]
+  --addNOF  STR                 Additional parameters for Nucleosome Occupancy and Fuzziness analysis. Default: [NULL]
 
--- Options for windowed protection score
+-- Options for Windowed Protection Score
   -b  FILE                      Path to a BED file specifying regions. The file must be a TAB-delimited BED3 file without a header. If not provided, ±1 kb regions around TSS will be used. Default: [NULL]
   -x  INT                       Minimum length for identifying long reads. Default: [120]
   -X  INT                       Maximum length for identifying long reads. Default: [180]
-  -w  INT                       Window size for extracting Windowed Protection Score (WPS) for long reads. Default: [120]
+  -w  INT                       Window size for extracting Windowed Protection Score for long reads. Default: [120]
   -m  INT                       Minimum length for identifying short reads. Default: [35]
   -M  INT                       Maximum length for identifying short reads. Default: [80]
-  -W  INT                       Window size for extracting Windowed Protection Score (WPS) for short reads. Default: [16]
+  -W  INT                       Window size for extracting Windowed Protection Score for short reads. Default: [16]
 
--- Options for end motif frequency and diversity
+-- Options for End Motif frequency and diversity
   -r  FILE                      Reference FASTA file. For example, to use the hg38 reference, download it from http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz. Default: [NULL]
   -b  FILE                      Path to a BED file specifying regions. The file must be a TAB-delimited BED3 file without a header. If not provided, ±1 kb regions around TSS will be used. Default: [NULL]
 
--- Options for fragmentation profile
+-- Options for Fragmentation Profile
   -f  STR                       Reference FASTA file type. Options include hg19 and hg38. Default: [hg38]
   -b  FILE                      Path to a BED file specifying regions. The file must be a TAB-delimited BED3 file without a header. If not provided, ±1 kb regions around TSS will be used. Default: [NULL]
 
--- Options for nucleosome profile
-  -l  PATH                      PATH Path to a site list file for Nucleosome Profile (NP) analysis. The file must have two columns: "Chrom" for the chromosome and "position" for the site position. If not provided, the tool will use 
-                                the 377 site lists from the referenced nucleosome profile paper. Default: [NULL]
+-- Options for Nucleosome Profile
+  -l  PATH                      PATH Path to a site list file for Nucleosome Profile analysis. The file must have two columns: "Chrom" for the chromosome and "position" for the site position. If not provided, the tool will use 
+                                the 377 site lists from the referenced Nucleosome Profile paper. Default: [NULL]
 
--- Options for promoter fragmentation entropy or orientation-aware cfDNA fragmentation
+-- Options for Promoter Fragmentation Entropy or Orientation-aware CfDNA Fragmentation
   --addEpicSeq  STR             Addtional parameters for Epic Seq analysis. Default: [NULL] 
 
--- Options for TSS coverage 
+-- Options for TSS Coverage 
   -u  INT                       Number of base pairs upstream of TSS. Default: [1000]
   -d  INT                       Number of base pairs downstream of TSS. Default: [1000]
   -S  FILE                      Path to a BED file specifying regions around TSS. The file must be a TAB-delimited BED3 file without a header. If not provided, ±1 kb regions around TSS will be used. 
                                 Default: [NULL]
                                 (Note: Parameters -u/-d and -S cannot be used together.)
-  --addbamCoverage  STR         Additional parameters for the `bamCoverage` command of deeptools. Default: [NULL] 
-  --addmultiBigwigSummary  STR  Additional parameters for the `multiBigwigSummary` command of deeptools. Default: [NULL]
+  --addbamCoverage  STR         Additional parameters for the "bamCoverage" command of deeptools. Default: [NULL] 
+  --addmultiBigwigSummary  STR  Additional parameters for the "multiBigwigSummary" command of deeptools. Default: [NULL]
 ```
                         
 ### Run cfDNAanalyzer
@@ -163,7 +163,7 @@ bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,E
 
 ## Output file for every feature
 
-### Copy number variation
+### Copy Number Variation
 ```CNV.txt```<br>
 "chr" column is the chromosome where each bin is located.<br>
 "start" column is the starting site of a bin.<br>
@@ -198,7 +198,7 @@ fixedStep chrom=chr1 start=1 step=1000000 span=1000000
 ```
 
 
-### Nucleosome occupancy and fuzziness
+### Nucleosome Occupancy and Fuzziness
 ```meanfuziness.tsv```<br>
 "chr" column is the chromosome where each region is located.<br>
 "start" column is the starting site of a region.<br>
@@ -271,7 +271,7 @@ fixedStep chrom=chr1 start=1  step=10 span=10
 0.0
 ```
 
-### Windowed protection score
+### Windowed Protection Score
 ```WPS.txt```<br>
 "chr" column is the chromosome where each region is located.<br>
 "start" column is the starting site of a region.<br>
@@ -291,7 +291,7 @@ chr1	865445	867445	-0.332834	0
 chr1	893670	895670	-0.146427	0
 ```
 
-### End motif frequency and diversity
+### End Motif frequency and diversity
 ```all_motifs_frequency.txt```<br>
 Summary motif frequency for all the regions.<br>
 ```r
@@ -328,7 +328,7 @@ ATAA    0.011266900350525789
 TATC    0.005758637956935403
 ```
 
-### Fragmentation profile
+### Fragmentation Profile
 ```Fragmentation_Profile.txt```<br>
 "seqnames" column is the chromosome where each region is located.<br>
 "start" column is the starting site of a region.<br>
@@ -349,7 +349,7 @@ chr1	1140951	1142951	1	3	0.333333333333333
 chr1	1148512	1150512	3	2	1.5
 ```
 
-### Nucleosome profile
+### Nucleosome Profile
 ```NucleosomeProfile.txt```<br>
 "site_name" column is the name of each site list.<br>
 "mean_coverage" column is the mean coverage for each site list.<br>
@@ -371,7 +371,7 @@ HEY1.hg38.10000.txt	1.01042	1.03988	0.81144
 ```plots/<site_list>.pdf```<br>
 Coverage profile for input bam file for given site lists.<br>
 
-### Orientation-aware cfDNA fragmentation
+### Orientation-aware CfDNA Fragmentation
 ```OCF.txt```<br>
 "TSS_ID" column is the id of each TSS 2k region.<br>
 "OCF_Ratio" column is orientation-aware cfDNA fragmentation ratio for each TSS 2k region.<br>
@@ -388,7 +388,7 @@ AAAS_1	0.333333333333333
 AACS_1	-0.2
 ```
 
-### Promoter fragmentation entropy
+### Promoter Fragmentation Entropy
 ```PFE.txt```<br>
 "TSS_ID" column is the id of each TSS 2k region.<br>
 "PFE" column is promoter fragmentation entropy value for each TSS 2k region.<br>
@@ -405,7 +405,7 @@ AAAS_1	0.341169890073755
 AACS_1	0.342021289789175
 ```
 
-### TSS coverage
+### TSS Coverage
 ```average_coverage.txt```<br>
 "chr" column is the chromosome where each region is located.<br>
 "start" column is the starting site of a region.<br>
