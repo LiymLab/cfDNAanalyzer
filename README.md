@@ -44,35 +44,35 @@ Additionally, the tool offers a customized pipeline for downstream applications 
 ### Features can be extracted from this tool
 #### 1.Features extracted for the whole genome
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Copy Number Variation ([<ins>Adalsteinsson et al, 2017</ins>](https://www.nature.com/articles/s41467-017-00965-y))<br>
-* Copy number variation refers to the variation in the number of copies of a particular region of the genome. This can include duplications or deletions of segments of DNA, which may affect gene function and contribute to genetic diversity and disease susceptibility.
+* Copy Number Variation refers to the variation in the number of copies of a particular region of the genome. This can include duplications or deletions of segments of DNA, which may affect gene function and contribute to genetic diversity and disease susceptibility.
 
 #### 2.Features extracted for given regions
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Nucleosome Occupancy and Fuzziness ([<ins>Li et al, 2024</ins>](https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-023-01280-6))<br>
-* Nucleosome occupancy, which reflects the frequency with which nucleosomes occupy a given DNA region in a cell population.<br>
-* Nucleosome fuzziness, which is defined as the deviation of nucleosome positions within a region in a cell population and could reflect cell heterogeneity at the chromatin level.<br>
+* Nucleosome Occupancy, which reflects the frequency with which nucleosomes occupy a given DNA region in a cell population.<br>
+* Nucleosome Fuzziness, which is defined as the deviation of nucleosome positions within a region in a cell population and could reflect cell heterogeneity at the chromatin level.<br>
 
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Windowed Protection Score ([<ins>Snyder et al, 2016</ins>](https://www.cell.com/cell/fulltext/S0092-8674(15)01569-X?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS009286741501569X%3Fshowall%3Dtrue))
-* A per-base WPS is calculated by subtracting the number of fragment endpoints within a window from the number of fragments completely spanning the window. High WPS values indicate increased protection of DNA from digestion; low values indicate that DNA is unprotected.
+* A per-base Windowed Protection Score is calculated by subtracting the number of fragment endpoints within a window from the number of fragments completely spanning the window. High Windowed Protection Score values indicate increased protection of DNA from digestion; low values indicate that DNA is unprotected.
 
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3 End Motif frequency and diversity ([<ins>Zhou et al, 2023</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120))
-* End motifs were determined from the terminal 4-nucleotide sequence, i.e., 4-mer end motif, at each 5′ fragment end of cfDNA molecules. End motif frequency of each of the motifs (i.e., a total of 256 motifs) was determined from the total number of fragment ends.<br>
-* End motif diversity is the normalized Shannon entropy of the categorical distribution of all possible end-motif k-mers.
+* End motifs were determined from the terminal 4-nucleotide sequence, i.e., 4-mer end motif, at each 5′ fragment end of cfDNA molecules. End Motif frequency of each of the motifs (i.e., a total of 256 motifs) was determined from the total number of fragment ends.<br>
+* End Motif diversity is the normalized Shannon entropy of the categorical distribution of all possible end-motif k-mers.
 
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4 Fragmentation Profile ([<ins>Cristiano et al, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
-* Fragmentation profile describes the distribution of cfDNA fragment lengths. It is the ratio of short reads (100–150 bp) to long reads (151–220 bp) within a specified region.. 
+* Fragmentation Profile describes the distribution of cfDNA fragment lengths. It is the ratio of short reads (100–150 bp) to long reads (151–220 bp) within a specified region.. 
 
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5 Nucleosome Profile ([<ins>Doebley et al, 2022</ins>](https://www.nature.com/articles/s41467-022-35076-w))
-* Nucleosome profile is the distribution of nucleosomes in extracellular DNA in a site list, and we extracted 3 features from each coverage profile.
+* Nucleosome Profile is the distribution of nucleosomes in extracellular DNA in a site list, and we extracted 3 features from each coverage profile.
    * "central coverage" is the coverage value from ± 30 bp of central site.
    * "mean coverage" is the coverage value from ± 1000 bp of central site.
    * The amplitude of the nucleosome peaks surrounding the central site is calculated by using a Fast Fourier Transform on the window ± 960 bp from the central site.
 
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.6 Orientation-aware CfDNA Fragmentation ([<ins>Sun et al, 2019</ins>](https://genome.cshlp.org/content/29/3/418.long))
-* Orientation-aware cfDNA fragmentation is the differential phasing of upstream and downstream fragment ends in tissue-specific open chromatin regions.
+* Orientation-aware CfDNA Fragmentation is the differential phasing of upstream and downstream fragment ends in tissue-specific open chromatin regions.
 
 #### 3.Features extracted for specific Transcription Start Sites
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 Promoter Fragmentation Entropy ([<ins>Esfahani et al, 2022</ins>](https://doi.org/10.1038/s41587-022-01222-4))
-* Promoter Fragmentation Entropy quantifies the diversity of cfDNA fragments around the transcription start sites (TSS) of active genes. PFE is calculated by estimating the Shannon entropy of cfDNA fragments where both ends are located within ±1 kb of the TSS, totaling a 2 kb region around each gene’s TSS.
+* Promoter Fragmentation Entropy quantifies the diversity of cfDNA fragments around the transcription start sites (TSS) of active genes. Promoter Fragmentation Entropy is calculated by estimating the Shannon entropy of cfDNA fragments where both ends are located within ±1 kb of the TSS, totaling a 2 kb region around each gene’s TSS.
   
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 TSS Coverage ([<ins>Ulz et al, 2016</ins>](https://www.nature.com/articles/ng.3648))
 * TSS Coverage refers to the read coverage in the region surrounding transcription start sites (TSS).
