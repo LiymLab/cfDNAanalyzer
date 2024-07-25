@@ -165,10 +165,10 @@ bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,E
 
 ### Copy Number Variation
 ```CNV.txt```<br>
-"chr" column is the chromosome where each bin is located.<br>
-"start" column is the starting site of a bin.<br>
-"end" column is the ending site of a bin.<br>
-"sample.copy.number" column is the estimated copy number in each bin.<br>
+The "chr" column specifies the chromosome on which each bin is located.<br>
+The "start" column represents the starting position of each bin.<br>
+The "end" column represents the ending position of each bin.<br>
+The "sample.copy.number" column represents the estimated copy number for each bin.<br>
 ```r
 chr	start	end	sample.copy.number
 1	1000001	2000000	2
@@ -200,10 +200,10 @@ fixedStep chrom=chr1 start=1 step=1000000 span=1000000
 
 ### Nucleosome Occupancy and Fuzziness
 ```meanfuziness.tsv```<br>
-"chr" column is the chromosome where each region is located.<br>
-"start" column is the starting site of a region.<br>
-"end" column is the ending site of a region.<br>
-"meanfuziness" column is the mean fuziness value for each region.<br>
+The "chr" column specifies the chromosome on which each region is located.<br>
+The "start" column represents the starting position of each region.<br>
+The "end" column represents the ending position of each region.<br>
+The "meanfuziness" column represents the average fuzziness value for each region.<br>
 ```r
 chr  start  end  meanfuziness
 chr1 68091 70091 33.4683
@@ -218,11 +218,11 @@ chr1 893670 895670 33.1479
 ```
 &nbsp;<br>
 ```occupancy.bed```<br>
-"chr" column is the chromosome where each region is located.<br>
-"start" column is the starting site of a region.<br>
-"end" column is the ending site of a region.<br>
-"ID" column is the specific id for each region.<br>
-"occupancy" column is the occupancy value for each region.<br>
+The "chr" column specifies the chromosome on which each region is located.<br>
+The "start" column represents the starting position of each region.<br>
+The "end" column represents the ending position of each region.<br>
+The "ID" column provides a unique identifier for each region.<br>
+The "occupancy" column represents the occupancy value for each region.<br>
 ```r
 chr	start	end	ID	occupancy
 chr1	68091	70091	region_1	6.616
@@ -237,12 +237,12 @@ chr1	893670	895670	region_9	1.32
 ```
 &nbsp;<br>
 ```pooled/<sampleID>.smooth.positions.xls```<br>
-"chr" column is the chromosome where each region is located.<br>
-"start" column is the starting site of a region.<br>
-"end" column is the ending site of a region.<br>
-"smt_pos" column is the occupancy summit point for each region.<br>
-"smt_value" column is the occupancy value at smt_pos.<br>
-"fuzziness_score" column is the fuzziness score for each region.<br>
+The "chr" column specifies the chromosome on which each region is located.<br>
+The "start" column represents the starting position of each region.<br>
+The "end" column represents the ending position of each region.<br>
+The "smt_pos" column represents the occupancy summit point for each region.<br>
+The "smt_value" column represents the occupancy value at the summit point (smt_pos).<br>
+The "fuzziness_score" column represents the fuzziness score for each region.<br>
 ```r
 chr     start   end     smt_pos smt_value       fuzziness_score
 chr1    10011   10151   10081   24.0    56.2199218395978
@@ -257,7 +257,7 @@ chr1    13441   13581   13511   56.0    42.90872331572411
 ```
 &nbsp;<br>
 ```pooled/<sampleID>.smooth.wig```<br>
-Wig format files containing protein occupancy values at 10 base pairs across the whole genome.<br>
+Wig format files containing protein occupancy values at 10 base pair intervals across the entire genome.<br>
 ```r
 fixedStep chrom=chr1 start=1  step=10 span=10
 0.0
@@ -273,11 +273,11 @@ fixedStep chrom=chr1 start=1  step=10 span=10
 
 ### Windowed Protection Score
 ```WPS.txt```<br>
-"chr" column is the chromosome where each region is located.<br>
-"start" column is the starting site of a region.<br>
-"end" column is the ending site of a region.<br>
-"long_WPS" column is windowed protection score of long reads for each region.<br>
-"short_WPS" column is windowed protection score of short reads for each region.<br>
+The "chr" column specifies the chromosome on which each region is located.<br>
+The "start" column represents the starting position of each region.<br>
+The "end" column represents the ending position of each region.<br>
+The "long_WPS" column represents the Windowed Protection Score for long reads in each region.<br>
+The "short_WPS" column represents the Windowed Protection Score for short reads in each region.<br>
 ```r
 chr    start    end    long_WPS    short_WPS
 chr1	68091	70091	-0.781609	0
@@ -293,7 +293,7 @@ chr1	893670	895670	-0.146427	0
 
 ### End Motif frequency and diversity
 ```all_motifs_frequency.txt```<br>
-Summary motif frequency for all the regions.<br>
+Summary of motif frequency across all regions.<br>
 ```r
 Motif   Frequency
 CTAT    0.0030392622975323673
@@ -308,13 +308,13 @@ TATC    0.0026101367116673144
 ```
 &nbsp;<br>
 ```all_motifs_mds.txt```<br>
-Summary motif diversity score for all the regions.<br>
+Summary of motif diversity scores across all regions.<br>
 ```r
 MDS     0.9747882739505999
 ```
 &nbsp;<br>
 ```region_<index>_motif_frequency_and_mds.txt```<br>
-Motif frequency and diversity score for one region.<br>
+Motif frequency and diversity score for each region in the BED file.<br>
 ```r
 Motif   Frequency
 CTAT    0.006259389083625438
@@ -330,12 +330,12 @@ TATC    0.005758637956935403
 
 ### Fragmentation Profile
 ```Fragmentation_Profile.txt```<br>
-"seqnames" column is the chromosome where each region is located.<br>
-"start" column is the starting site of a region.<br>
-"end" column is the ending site of a region.<br>
-"short" column is number of short reads identified in a region.<br>
-"long" column is number of long reads identified in a region.<br>
-"ratio" column is short/long ratio for each region.<br>
+The "chr" column specifies the chromosome on which each region is located.<br>
+The "start" column represents the starting position of each region.<br>
+The "end" column represents the ending position of each region.<br>
+The "short" column represents the number of short reads identified in each region.<br>
+The "long" column represents the number of long reads identified in each region.<br>
+The "ratio" column represents the ratio of short reads to long reads for each region.<br>
 ```r
 seqnames	start	end	short	long	ratio
 chr1	738137	740137	1	3	0.333333333333333
@@ -351,10 +351,10 @@ chr1	1148512	1150512	3	2	1.5
 
 ### Nucleosome Profile
 ```NucleosomeProfile.txt```<br>
-"site_name" column is the name of each site list.<br>
-"mean_coverage" column is the mean coverage for each site list.<br>
-"central_coverage" column is the central coverage for each site list.<br>
-"amplitude" column is the amplitude for each site list.<br>
+The "site_name" column specifies the name of each site list.<br>
+The "mean_coverage" column represents the mean coverage for each site list.<br>
+The "central_coverage" column represents the central coverage for each site list..<br>
+The "amplitude" column represents the amplitude for each site list.<br>
 ```r
 site_name	mean_coverage	central_coverage	amplitude
 IKZF1.hg38.10000.txt	0.99428	1.01050	0.45213
@@ -369,12 +369,12 @@ HEY1.hg38.10000.txt	1.01042	1.03988	0.81144
 ```
 &nbsp;<br>
 ```plots/<site_list>.pdf```<br>
-Coverage profile for input bam file for given site lists.<br>
+Coverage profile for the input BAM file based on the provided site lists.<br>
 
 ### Orientation-aware CfDNA Fragmentation
 ```OCF.txt```<br>
-"TSS_ID" column is the id of each TSS 2k region.<br>
-"OCF_Ratio" column is orientation-aware cfDNA fragmentation ratio for each TSS 2k region.<br>
+The "TSS_ID" column is the id of each TSS 2k region.<br>
+The "OCF_Ratio" column is orientation-aware cfDNA fragmentation ratio for each TSS 2k region.<br>
 ```r
 TSS_ID	OCF_Ratio
 A1BG_1	-0.142857142857143
@@ -390,8 +390,8 @@ AACS_1	-0.2
 
 ### Promoter Fragmentation Entropy
 ```PFE.txt```<br>
-"TSS_ID" column is the id of each TSS 2k region.<br>
-"PFE" column is promoter fragmentation entropy value for each TSS 2k region.<br>
+The "TSS_ID" column represents the identifier for each 2 kb TSS region.<br>
+The "PFE" column represents the Promoter Fragmentation Entropy value for each 2 kb TSS region.<br>
 ```r
 TSS_ID	PFE
 A1BG_1	0.341049657283462
@@ -407,10 +407,10 @@ AACS_1	0.342021289789175
 
 ### TSS Coverage
 ```average_coverage.txt```<br>
-"chr" column is the chromosome where each region is located.<br>
-"start" column is the starting site of a region.<br>
-"end" column is the ending site of a region.<br>
-"coverage" column is average coverage value for each region.<br>
+The "chr" column specifies the chromosome on which each region is located.<br>
+The "start" column represents the starting position of each region.<br>
+The "end" column represents the ending position of each region.<br>
+The "coverage" column represents the average coverage value for each region.<br>
 ```r
 chr	start	end	coverage
 chr1	68091	70091	1.8115
