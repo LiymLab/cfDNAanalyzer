@@ -20,15 +20,15 @@ Additionally, the tool offers a customized pipeline for downstream applications 
 <li>
   <a href="#Output-file-for-every-feature">Output file for every feature</a>
   <ul>
-    <li><a href="#Copy-Number-Variation">Copy number variation</a></li>
-    <li><a href="#Nucleosome-Occupancy-and-Fuzziness">Nucleosome occupancy and fuzziness</a></li>
-    <li><a href="#Windowed-Protection-Score">Windowed protection score</a></li>
-    <li><a href="#End-Motif-frequency-and-diversity">End motif frequency and diversity</a></li>
-    <li><a href="#Fragmentation-Profile">Fragmentation profile</a></li>
-    <li><a href="#Nucleosome-Profile">Nucleosome profile</a></li>
-    <li><a href="#Orientation-aware-CfDNA-Fragmentation">Orientation-aware cfDNA fragmentation</a></li>
-    <li><a href="#Promoter-Fragmentation-Entropy">Promoter fragmentation entropy</a></li>
-    <li><a href="#TSS-Coverage">TSS coverage</a></li>
+    <li><a href="#Copy-Number-Variation">Copy Number Variation</a></li>
+    <li><a href="#Nucleosome-Occupancy-and-Fuzziness">Nucleosome Occupancy and Fuzziness</a></li>
+    <li><a href="#Windowed-Protection-Score">Windowed Protection Score</a></li>
+    <li><a href="#End-Motif-frequency-and-diversity">End Motif frequency and diversity</a></li>
+    <li><a href="#Fragmentation-Profile">Fragmentation Profile</a></li>
+    <li><a href="#Nucleosome-Profile">Nucleosome Profile</a></li>
+    <li><a href="#Orientation-aware-CfDNA-Fragmentation">Orientation-aware CfDNA Fragmentation</a></li>
+    <li><a href="#Promoter-Fragmentation-Entropy">Promoter Fragmentation Entropy</a></li>
+    <li><a href="#TSS-Coverage">TSS Coverage</a></li>
   </ul>
 </li>
 <li>
