@@ -103,57 +103,55 @@ samtools                       1.3.1
 ### Options: 
 ```
 -- Options for all the features
-  -I  FILE                      Input bam file list. This tool only accepts the bam file as the input file type. You need to provide a text file containing the path of your bam files in each line. Default: [NULL]
-  
-  -o  PATH                      Output directory for all results. We will create a folder for each bam file in the output directory. Every bam file's single feature will be output to a folder. Default: [./]
-  -F  STR                       CfDNA features, including CNV, NOF, WPS, EM, FP, NP, OCF, PFE and TSSC ; if not provided then will extract all the features. Default: [NULL]
-                                The following features are specific for pair-end bam files: fragmentation profile, nucleosome profile, promoter fragmentation entropy, orientation-aware cfDNA fragmentation.
-
+  -I  FILE                      Path to a text file listing input BAM files. This tool accepts only BAM files. The text file should contain one BAM file path per line. Default: [NULL]  
+  -o  PATH                      Directory for output results. A separate folder will be created for each BAM file within this directory, with each folder containing the extracted features for that BAM file. Default: [./]
+  -F  STR                       Specify cfDNA features to extract, including CNV, NOF, WPS, EM, FP, NP, OCF, PFE, and TSSC. If not specified, all available features will be extracted. Default: [NULL]
+                                Note: The following features are specific to paired-end BAM files: Fragmentation Profile (FP), Nucleosome Profile (NP), Promoter Fragmentation Entropy (PFE), and Orientation-aware CfDNA Fragmentation (OCF).
 
 
 -- Options for copy number variation
-  -f  STR                       Type of reference fasta file, including hg19 and hg38. Default: [hg38]
-  -c  INT                       Total clonal CN states. Default: [7]
-  -B  INT                       Number of kb for bin size, including 10, 50, 500, 1000. Default: [1000]
-  --addCNV  STR                 Addtional parameters for for copy number variation. Default: [NULL] 
+  -f  STR                       Reference FASTA file type. Options include hg19 and hg38. Default: [hg38]
+  -c  INT                       Total number of clonal CN states. Default: [7]
+  -B  INT                       Bin size in kilobases. Options include 10, 50, 500, and 1000 kb. Default: [1000]
+  --addCNV  STR                 Additional parameters for Copy Number Variation (CNV) analysis. Default: [NULL]
 
 -- Options for nucleosome occupancy and fuzziness
-  -f  STR                       Type of reference fasta file, including hg19 and hg38. Default: [hg38]
-  -b  FILE                      Region bed file. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
-  --addNOF  STR                 Addtional parameters for nucleosome occupancy and fuzziness. Default: [NULL] 
+  -f  STR                       Reference FASTA file type. Options include hg19 and hg38. Default: [hg38]
+  -b  FILE                      Path to a BED file specifying regions. The file must be a TAB-delimited BED3 file without a header. If not provided, ±1 kb regions around TSS will be used. Default: [NULL]
+  --addNOF  STR                 Additional parameters for Nucleosome Occupancy and Fuzziness (NOF) analysis. Default: [NULL]
 
 -- Options for windowed protection score
-  -b  FILE                      Region bed file. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
-  -x  INT                       Minimum length of reads identified as long reads. Default: [120]
-  -X  INT                       Maximum length of reads identified as long reads. Default: [180]
-  -w  INT                       Size of window to extract WPS for long reads. Default: [120]
-  -m  INT                       Minimum length of reads identified as short reads. Default: [35]
-  -M  INT                       Maximum length of reads identified as short reads. Default: [80]
-  -W  INT                       Size of window to extract WPS for short reads. Default: [16]
+  -b  FILE                      Path to a BED file specifying regions. The file must be a TAB-delimited BED3 file without a header. If not provided, ±1 kb regions around TSS will be used. Default: [NULL]
+  -x  INT                       Minimum length for identifying long reads. Default: [120]
+  -X  INT                       Maximum length for identifying long reads. Default: [180]
+  -w  INT                       Window size for extracting Windowed Protection Score (WPS) for long reads. Default: [120]
+  -m  INT                       Minimum length for identifying short reads. Default: [35]
+  -M  INT                       Maximum length for identifying short reads. Default: [80]
+  -W  INT                       Window size for extracting Windowed Protection Score (WPS) for short reads. Default: [16]
 
 -- Options for end motif frequency and diversity
-  -r  FILE                      Reference fasta file. For example, if you want to use hg38 reference, you can download it from http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz. Default: [NULL]
-  -b  FILE                      Region bed file. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
+  -r  FILE                      Reference FASTA file. For example, to use the hg38 reference, download it from http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz. Default: [NULL]
+  -b  FILE                      Path to a BED file specifying regions. The file must be a TAB-delimited BED3 file without a header. If not provided, ±1 kb regions around TSS will be used. Default: [NULL]
 
 -- Options for fragmentation profile
-  -f  STR                       Type of reference fasta file, including hg19 and hg38. Default: [hg38]
-  -b  FILE                      Region bed file. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
+  -f  STR                       Reference FASTA file type. Options include hg19 and hg38. Default: [hg38]
+  -b  FILE                      Path to a BED file specifying regions. The file must be a TAB-delimited BED3 file without a header. If not provided, ±1 kb regions around TSS will be used. Default: [NULL]
 
 -- Options for nucleosome profile
-  -l  PATH                      Path of site list. This path must only contain site list for nucleosome profile analysis.
-                                And each site file must contain two columns. The chromosome column must have "Chrom"" as the header and the site column must have "position"" as the header; 
-                                if not provided then will use 377 site lists provided by the paper of nucleosome profile. Default: [NULL]
+  -l  PATH                      PATH Path to a site list file for Nucleosome Profile (NP) analysis. The file must have two columns: "Chrom" for the chromosome and "position" for the site position. If not provided, the tool will use 
+                                the 377 site lists from the referenced nucleosome profile paper. Default: [NULL]
 
 -- Options for promoter fragmentation entropy or orientation-aware cfDNA fragmentation
-  --addEpicSeq  STR             Addtional parameters for Epic Seq. Default: [NULL] 
+  --addEpicSeq  STR             Addtional parameters for Epic Seq analysis. Default: [NULL] 
 
 -- Options for TSS coverage 
-  -u  INT                       Number of bp upstreams the TSS sites. Default: [1000]
-  -d  INT                       Number of bp downstreams the TSS sites. Default: [1000]
-  -S  FILE                      Region bed file around transcription start sites. This bed file must be a TAB-delimited bed3 file without any header. if not provided then will use +/- 1kb region from TSS sites. Default: [NULL]
-                                (Parameter -u/-d and -S can not be set together)
-  --addbamCoverage  STR         Addtional parameters for bamCoverage command of deeptools. Default: [NULL] 
-  --addmultiBigwigSummary  STR  Addtional parameters for multiBigwigSummary command of deeptools. Default: [NULL]
+  -u  INT                       Number of base pairs upstream of TSS. Default: [1000]
+  -d  INT                       Number of base pairs downstream of TSS. Default: [1000]
+  -S  FILE                      Path to a BED file specifying regions around TSS. The file must be a TAB-delimited BED3 file without a header. If not provided, ±1 kb regions around TSS will be used. 
+                                Default: [NULL]
+                                (Note: Parameters -u/-d and -S cannot be used together.)
+  --addbamCoverage  STR         Additional parameters for the `bamCoverage` command of deeptools. Default: [NULL] 
+  --addmultiBigwigSummary  STR  Additional parameters for the `multiBigwigSummary` command of deeptools. Default: [NULL]
 ```
                         
 ### Run cfDNAanalyzer
