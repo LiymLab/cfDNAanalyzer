@@ -46,7 +46,7 @@ Additionally, the tool offers a customized pipeline for downstream applications 
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Copy Number Variation ([<ins>Adalsteinsson et al, 2017</ins>](https://www.nature.com/articles/s41467-017-00965-y))<br>
 * Copy Number Variation refers to the variation in the number of copies of a particular region of the genome. This can include duplications or deletions of segments of DNA, which may affect gene function and contribute to genetic diversity and disease susceptibility.
 
-#### 2.Features extracted for given regions
+#### 2.Features extracted for Specific regions
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Nucleosome Occupancy and Fuzziness ([<ins>Li et al, 2024</ins>](https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-023-01280-6))<br>
 * Nucleosome Occupancy, which reflects the frequency with which nucleosomes occupy a given DNA region in a cell population.<br>
 * Nucleosome Fuzziness, which is defined as the deviation of nucleosome positions within a region in a cell population and could reflect cell heterogeneity at the chromatin level.<br>
