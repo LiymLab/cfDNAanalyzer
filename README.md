@@ -428,7 +428,7 @@ chr1	893670	895670	0.33
 
 ## Versions of packages in our environment:
 ### Python:
-```
+```r
 python                         3.7.16
 
 alembic                        1.8.1
@@ -625,7 +625,7 @@ zstandard                      0.19.0
 ```
 
 ### R:
-```
+```r
 R                              4.3.0
 
 DescTools                      0.99.40
@@ -645,7 +645,7 @@ BiocManager                    3.18.1
 ```
 
 ### BiocManager packages
-```
+```r
 HMMcopy
 GenomeInfoDb 
 GenomicRanges
