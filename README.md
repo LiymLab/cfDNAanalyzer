@@ -41,7 +41,7 @@ Additionally, the tool offers a customized pipeline for downstream applications 
 </li>
 
 ## Description
-### Features can be extracted from this tool
+### Features can be extracted from cfDNAanalyzer
 #### 1.Features extracted for the whole genome
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Copy Number Variation ([<ins>Adalsteinsson et al, 2017</ins>](https://www.nature.com/articles/s41467-017-00965-y))<br>
 * Copy Number Variation refers to the variation in the number of copies of a particular region of the genome. This can include duplications or deletions of segments of DNA, which may affect gene function and contribute to genetic diversity and disease susceptibility.
