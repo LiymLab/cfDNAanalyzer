@@ -105,7 +105,7 @@ samtools                       1.3.1
 -- Options for all the features
   -I  FILE                      Path to a text file listing input BAM files. This tool accepts only BAM files. The text file should contain one BAM file path per line. Default: [NULL]  
   -o  PATH                      Directory for output results. A separate folder will be created for each BAM file within this directory, with each folder containing the extracted features for that BAM file. Default: [./]
-  -F  STR                       Specify cfDNA features to extract, including CNV, NOF, WPS, EM, FP, NP, OCF, PFE, and TSSC. If not specified, all available features will be extracted. Default: [NULL]
+  -F  STR                       CfDNA features to extract, including CNV, NOF, WPS, EM, FP, NP, OCF, PFE, and TSSC. If not specified, all available features will be extracted. Default: [NULL]
                                 Note: The following features are specific to paired-end BAM files: Fragmentation Profile (FP), Nucleosome Profile (NP), Promoter Fragmentation Entropy (PFE), and Orientation-aware CfDNA Fragmentation (OCF).
 
 
