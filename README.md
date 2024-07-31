@@ -330,7 +330,7 @@ TATC    0.005758637956935403
 
 ### Fragmentation Profile
 ```Fragmentation_Profile.txt```<br>
-The "chr" column specifies the chromosome on which each region is located.<br>
+The "seqnames" column specifies the chromosome on which each region is located.<br>
 The "start" column represents the starting position of each region.<br>
 The "end" column represents the ending position of each region.<br>
 The "short" column represents the number of short reads identified in each region.<br>
