@@ -87,7 +87,7 @@ Rscript install_R_packages.R
 ```
 
 ### Tools needed for cfDNAanalyzer
-```
+```r
 bedtools                       2.29.2
 conda                          23.1.0
 deeptools                      3.5.1
