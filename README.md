@@ -1,34 +1,22 @@
 # cfDNAanalyzer
-This tool provides extraction of genetic and epigenetic features from cfDNA BAM files. Features can be extracted in the following ways: <br>
-1.**Whole Genome**: Includes <ins>C</ins>opy <ins>N</ins>umber <ins>V</ins>ariation (CNV).<br>
-2.**Specific Regions**: Includes <ins>N</ins>ucleosome <ins>O</ins>ccupancy and <ins>F</ins>uzziness (NOF), <ins>W</ins>indowed <ins>P</ins>rotection <ins>S</ins>core (WPS), <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM), <ins>F</ins>ragmentation <ins>P</ins>rofile (FP), <ins>N</ins>ucleosome <ins>P</ins>rofile (NP), and <ins>O</ins>rientation-aware <ins>C</ins>fDNA <ins>F</ins>ragmentation (OCF).<br>
-3.**Transcription Start Sites (TSS)**: Includes <ins>P</ins>romoter <ins>F</ins>ragmentation <ins>E</ins>ntropy (PFE) and <ins>TSS</ins> <ins>C</ins>overage (TSSC).<br> 
-Additionally, the tool offers a customized pipeline for downstream applications such as cancer detection and tumor subtype classification.
+cfDNAanalyzer (<ins>c</ins>ell-<ins>f</ins>ree <ins>DNA</ins> sequencing data <ins>analyzer</ins>) is a toolkit for cfDNA whole-genome sequencing data analysis which includes two main parts: (1) the extraction of genomic and fragmentatomic features at whole-genome or genomic-region levels;(2) the processing of extracted features and the building of machine learning models for disease detection and classification.   
 
 <summary><h2>Table of Contents</h2></summary>
 <li>
   <a href="#Description">Description</a>
   <ul>
-    <li><a href="#Features-can-be-extracted-from-cfDNAanalyzer">Features can be extracted from cfDNAanalyzer</a></li>
-    <li><a href="#Environment-and-installation">Environment and installation</a></li>
-    <li><a href="#Tools-needed-for-cfDNAanalyzer">Tools needed for cfDNAanalyzer</a></li>
+    <li><a href="#Environment-and-installation">Environment requirement and installation</a></li>
+    <li><a href="#Supported-features">Supported features</a></li>
+    <li><a href="#Supported-models">Supported feature processing methods and machine learning models</a></li>
     <li><a href="#Usage">Usage</a></li>
-    <li><a href="#Options">Options</a></li>
-    <li><a href="#Run-cfDNAanalyzer">Run cfDNAanalyzer</a></li>
+    <li><a href="#Run-example">Run the usage example</a></li>
   </ul>
 </li>
 <li>
-  <a href="#Output-file-for-every-feature">Output file for every feature</a>
+  <a href="#Output-files">Output files</a>
   <ul>
-    <li><a href="#Copy-Number-Variation">Copy Number Variation</a></li>
-    <li><a href="#Nucleosome-Occupancy-and-Fuzziness">Nucleosome Occupancy and Fuzziness</a></li>
-    <li><a href="#Windowed-Protection-Score">Windowed Protection Score</a></li>
-    <li><a href="#End-Motif-frequency-and-diversity">End Motif frequency and diversity</a></li>
-    <li><a href="#Fragmentation-Profile">Fragmentation Profile</a></li>
-    <li><a href="#Nucleosome-Profile">Nucleosome Profile</a></li>
-    <li><a href="#Orientation-aware-CfDNA-Fragmentation">Orientation-aware CfDNA Fragmentation</a></li>
-    <li><a href="#Promoter-Fragmentation-Entropy">Promoter Fragmentation Entropy</a></li>
-    <li><a href="#TSS-Coverage">TSS Coverage</a></li>
+    <li><a href="#Features">Features</a></li>
+    <li><a href="#Classification-results">Disease detection and classification</a></li>
   </ul>
 </li>
 <li>
@@ -36,342 +24,222 @@ Additionally, the tool offers a customized pipeline for downstream applications 
   <ul>
     <li><a href="#Python">Python</a></li>
     <li><a href="#R">R</a></li>
-    <li><a href="#BiocManager-packages">BiocManager packages</a></li>
   </ul>
+</li>
+<li>
+  <a href="#Contact">Contact</a>
 </li>
 
 ## Description
-### Features can be extracted from cfDNAanalyzer
-#### 1.Features extracted for the whole genome
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Copy Number Variation ([<ins>Adalsteinsson et al, 2017</ins>](https://www.nature.com/articles/s41467-017-00965-y))<br>
-* Copy Number Variation refers to the variation in the number of copies of a particular region of the genome. This can include duplications or deletions of segments of DNA, which may affect gene function and contribute to genetic diversity and disease susceptibility.
-
-#### 2.Features extracted for Specific regions
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Nucleosome Occupancy and Fuzziness ([<ins>Li et al, 2024</ins>](https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-023-01280-6))<br>
-* Nucleosome Occupancy, which reflects the frequency with which nucleosomes occupy a given DNA region in a cell population.<br>
-* Nucleosome Fuzziness, which is defined as the deviation of nucleosome positions within a region in a cell population and could reflect cell heterogeneity at the chromatin level.<br>
-
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Windowed Protection Score ([<ins>Snyder et al, 2016</ins>](https://www.cell.com/cell/fulltext/S0092-8674(15)01569-X?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS009286741501569X%3Fshowall%3Dtrue))
-* A per-base Windowed Protection Score is calculated by subtracting the number of fragment endpoints within a window from the number of fragments completely spanning the window. High Windowed Protection Score values indicate increased protection of DNA from digestion; low values indicate that DNA is unprotected.
-
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3 End Motif frequency and diversity ([<ins>Zhou et al, 2023</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120))
-* End motifs were determined from the terminal 4-nucleotide sequence, i.e., 4-mer end motif, at each 5′ fragment end of cfDNA molecules. End Motif frequency of each of the motifs (i.e., a total of 256 motifs) was determined from the total number of fragment ends.<br>
-* End Motif diversity is the normalized Shannon entropy of the categorical distribution of all possible end-motif k-mers.
-
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4 Fragmentation Profile ([<ins>Cristiano et al, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
-* Fragmentation Profile describes the distribution of cfDNA fragment lengths. It is the ratio of short reads (100–150 bp) to long reads (151–220 bp) within a specified region.. 
-
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5 Nucleosome Profile ([<ins>Doebley et al, 2022</ins>](https://www.nature.com/articles/s41467-022-35076-w))
-* Nucleosome Profile is the distribution of nucleosomes in extracellular DNA in a site list, and we extracted 3 features from each coverage profile.
-   * "central coverage" is the coverage value from ± 30 bp of central site.
-   * "mean coverage" is the coverage value from ± 1000 bp of central site.
-   * The amplitude of the nucleosome peaks surrounding the central site is calculated by using a Fast Fourier Transform on the window ± 960 bp from the central site.
-
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.6 Orientation-aware CfDNA Fragmentation ([<ins>Sun et al, 2019</ins>](https://genome.cshlp.org/content/29/3/418.long))
-* Orientation-aware CfDNA Fragmentation is the differential phasing of upstream and downstream fragment ends in tissue-specific open chromatin regions.
-
-#### 3.Features extracted for specific Transcription Start Sites
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 Promoter Fragmentation Entropy ([<ins>Esfahani et al, 2022</ins>](https://doi.org/10.1038/s41587-022-01222-4))
-* Promoter Fragmentation Entropy quantifies the diversity of cfDNA fragments around the transcription start sites (TSS) of active genes. Promoter Fragmentation Entropy is calculated by estimating the Shannon entropy of cfDNA fragments where both ends are located within ±1 kb of the TSS, totaling a 2 kb region around each gene’s TSS.
-  
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 TSS Coverage ([<ins>Ulz et al, 2016</ins>](https://www.nature.com/articles/ng.3648))
-* TSS Coverage refers to the read coverage in the region surrounding transcription start sites (TSS).
-
-### Environment and installation
-Before using this tool, we recommend setting up the packaged conda environment and running the ```install_R_packages.R``` script to prevent package version conflicts and potential errors.<br> 
-First, navigate to the directory ```cfDNAanalyzer/``` and execute the following commands:
+### Environment requirement and installation
+Please ensure [<ins>samtools (v1.3.1)</ins>](https://github.com/samtools/samtools), [<ins>bedtools (v2.29.2)</ins>](https://bedtools.readthedocs.io/en/latest/index.html), and [<ins>deeptools (3.5.1)</ins>](https://github.com/deeptools/deepTools) are in your environment. Then, you can install the toolkit following the steps below:
 ```
+git clone https://github.com/LiymLab/cfDNAanalyzer.git
+cd cfDNAanalyzer/
 conda create -n cfDNAanalyzer --clone ./envs/cfDNAanalyzer
 conda activate cfDNAanalyzer
 Rscript install_R_packages.R
 ```
+### Supported features
+### 1. Features for whole genome:
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 <ins>C</ins>opy <ins>N</ins>umber <ins>A</ins>lterations (CNA) ([<ins>Adalsteinsson *et al, Nat Commun*, 2017</ins>](https://www.nature.com/articles/s41467-017-00965-y))<br>
+* Copy number alterations comprise deletions or amplifications of a particular region of the genome, with a size as low as a few kilobases up to entire chromosomes. 
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2 <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM) ([<ins>Zhou et al, 2023</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120))
+* End motifs are the terminal n-nucleotide sequence (4-mer end motif in this toolkit) at each 5′ fragment end of cfDNA molecules. End motif frequency refers to the frequency of all 256 4-mer end motifs.<br>
+* End motif diversity is the normalized Shannon entropy of the categorical distribution of all possible 4-mer end-motifs of all cfDNA fragments.
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3 <ins>F</ins>ragmentation <ins>P</ins>rofile (FP) ([<ins>Cristiano *et al,Nature*, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
+* Fragmentation profile describes fragmentation patterns of cfDNA across the genome, which is the fraction of small cfDNA fragments (100–150 bp) to larger cfDNA fragments (151–220 bp) for each 5Mb window across the genome.
 
-### Tools needed for cfDNAanalyzer
-```r
-bedtools                       2.29.2
-conda                          23.1.0
-deeptools                      3.5.1
-samtools                       1.3.1
+### 2. Features for specific regions: 
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 <ins>N</ins>ucleosome <ins>O</ins>ccupancy and <ins>F</ins>uzziness (NOF) ([<ins>Li *et al, Genome Med*, 2024</ins>](https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-023-01280-6))<br>
+* Nucleosome occupancy reflects the frequency with which nucleosomes occupy a given genomic region in a cell population. Nucleosome occupancy for a specific region is calculated as the average occupancy values of all based in this region.<br>
+* Nucleosome fuzziness is defined as the deviation of nucleosome positions within a region in a cell population and could reflect cell heterogeneity at the chromatin level. Nucleosome fuzziness for a specific region is calculated as the average fuzziness of all the nucleosomes whose center is located within the region.<br>
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 <ins>N</ins>ucleosome <ins>P</ins>rofile (NP) ([<ins>Doebley *et al, Nat Commun*, 2022</ins>](https://www.nature.com/articles/s41467-022-35076-w))
+* Nucleosome profile is a composite coverage profile computed as the mean of the GC-corrected cfDNA fragment midpoint coverage across a set of sites (Binding sites sets of 377 transcription factors as the dafalut). For each set of sites, three features are identified from the coverage profile:
+   * (1) The average coverage value from ± 30 bp of the central site of each set (central coverage).
+   * (2) The average coverage value from ± 1000 bp of the central site of each set (mean coverage).
+   * (3) The overall nucleosome peak amplitude is calculated by using a Fast Fourier Transform on the window ± 960 bp from the site and taking the amplitude of the 10th frequency term (amplitude).
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3 <ins>W</ins>indowed <ins>P</ins>rotection <ins>S</ins>core (WPS) ([<ins>Snyder *et al, Cell*, 2016</ins>](https://doi.org/10.1016/j.cell.2015.11.050))
+* Windowed Protection Score is the number of DNA fragments completely spanning a window centered at a given genomic coordinate minus the number of fragments with an endpoint within that same window. WPS can be calculated using long fragments (120–180 bp; 120 bp window) or short fragments (35–80 bp; 16 bp window). The WPS for a specific region is defined as the average WPS of all bases in this region. High WPS values indicate increased protection of DNA from digestion while low values indicate that DNA is unprotected.
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4 <ins>O</ins>rientation-aware <ins>C</ins>fDNA <ins>F</ins>ragmentation (OCF) ([<ins>Sun *et al, Genome Res.*, 2019</ins>](https://genome.cshlp.org/content/29/3/418.long))
+* Orientation-aware cfDNA fragmentation is the differences of read densities of the upstream and downstream fragment ends in specific genomic regions.
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5 <ins>E</ins>nd <ins>M</ins>otif frequency and diversity for <ins>R</ins>egions (EMR)([<ins>Zhou et al, 2023</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120))
+* We introduced end motif frequency and diversity for regions, which is defined as the frequency and diversity of all 256 4-mer end motifs for each region.<br>
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.6 <ins>F</ins>ragmentation <ins>P</ins>rofile for <ins>R</ins>egions (FPR) ([<ins>Cristiano *et al,Nature*, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
+* We introduced fragmentation profile for regions, which is defined as the fraction of small cfDNA fragments (100–150 bp) to larger cfDNA fragments (151–220 bp) for each region.
+
+### 3. Features for transcription start sites (TSSs): 
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 <ins>P</ins>romoter <ins>F</ins>ragmentation <ins>E</ins>ntropy (PFE) ([<ins>Esfahani *et al, Nat Biotechnol*, 2022</ins>](https://doi.org/10.1038/s41587-022-01222-4))<br>
+* PFE quantifies the diversity of cfDNA fragment lengths around the TSSs of genes. It is calculated by a modified Shannon index for cfDNA fragments where both ends fell within ±1 kb of the TSS. Then this cfDNA entropy measure is adjusted using a Dirichlet-multinomial model for normalization.
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 <ins>TSS</ins> <ins>C</ins>overage (TSSC) ([<ins>Ulz *et al, Nat Genet*, 2016</ins>](https://www.nature.com/articles/ng.3648))
+* TSS Coverage refers to the cfDNA sequencing read coverage in the region surrounding TSSs.
+
+### Supported feature processing methods and machine learning models
+
+### Usage
+```ruby
+   bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options]
+``` 
+#### Options: 
 ```
+-- General options
+  -I  FILE      A text file containing all input BAM files with one BAM file per line. 
+                BAM files generated using both Bowtie2 and BWA are accepted.  
+  -o  PATH      Output directory for all the results. Default: [./]
+  -F  STR       Features to extract, including CNA, NOF, WPS, EM, EMR, FP, FPR, NP, OCF, PFE, and TSSC. 
+                Features should be set as strings separated by comma, e.g., CNA,NOF. 
+                Default: All available features will be extracted.
+                Note: The following features are specifically designed for paired-end sequencing data: FP, FPR, NP, PFE, and OCF.
+  -g  STR       Genome version of input BAM files (hg19/hg38). Default: [hg38] 
+  -b  FILE      A BED3 file specifying the regions to calculate features for specific regions.
+                The file should contain three TAB-delimited columns: chromosome start end.              
 
+-- Options specific for Copy Number Alterations (CNA)
+  -B  INT       Bin size in kilobases (10, 50, 500, or 1000). Default: [1000]
+  --CNA  STR    Additional parameter setting for software ichorCNA. The full parameter list is available by running xxx. [optional]
 
-### Usage：
-```
-   bash cfDNAanalyzer.sh -I <InputTxt> -o <OutputDirectory> -F <Features> [Options]
-```
-   
-### Options: 
-```
--- Options for all the features
-  -I  FILE                      Path to a text file listing input BAM files. This tool accepts only BAM files. The text file should contain one BAM file path per line. Default: [NULL]  
-  -o  PATH                      Directory for output results. A separate folder will be created for each BAM file within this directory, with each folder containing the extracted features for that BAM file. Default: [./]
-  -F  STR                       CfDNA features to extract, including CNV, NOF, WPS, EM, FP, NP, OCF, PFE, and TSSC. If not specified, all available features will be extracted. Default: [NULL]
-                                Note: The following features are specific to paired-end BAM files: Fragmentation Profile (FP), Nucleosome Profile (NP), Promoter Fragmentation Entropy (PFE), and Orientation-aware CfDNA Fragmentation (OCF).
+-- Options specific for Nucleosome Occupancy and Fuzziness (NOF)
+  --NOF  STR    Additional parameter setting for software DANPOS2. The full parameter list is available by running xxx. [optional]
 
+-- Options specific for Windowed Protection Score (WPS)
+  -x  INT       Min fragment length used for long fragments WPS calculation. Default: [120]
+  -X  INT       Max fragment length used for long fragments WPS calculation. Default: [180]
+  -w  INT       Window size for long fragments WPS calculation. Default: [120]
+  -m  INT       Min fragment length used for short fragments WPS calculation. Default: [35]
+  -M  INT       Max fragment length used for short fragments WPS calculation. Default: [80]
+  -W  INT       Window size for short fragments WPS calculation. Default: [16]
 
--- Options for Copy Number Variation
-  -f  STR                       Reference FASTA file type. Options include hg19 and hg38. Default: [hg38]
-  -c  INT                       Total number of clonal CN states. Default: [7]
-  -B  INT                       Bin size in kilobases. Options include 10, 50, 500, and 1000 kb. Default: [1000]
-  --addCNV  STR                 Additional parameters for Copy Number Variation analysis. Default: [NULL]
+-- Options specific for End Motif frequency and diversity (EM)
+  -f  FILE      Reference genome in FASTA format. For example, hg38 reference genome can be downloaded from http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz.
 
--- Options for Nucleosome Occupancy and Fuzziness
-  -f  STR                       Reference FASTA file type. Options include hg19 and hg38. Default: [hg38]
-  -b  FILE                      Path to a BED file specifying regions. The file must be a TAB-delimited BED3 file without a header. If not provided, ±1 kb regions around TSS will be used. Default: [NULL]
-  --addNOF  STR                 Additional parameters for Nucleosome Occupancy and Fuzziness analysis. Default: [NULL]
+-- Options specific for Nucleosome Profile (NP)
+  -l  DIR       Directory containing a list of files with each file for a set of sites.
+                The file must have at least two columns with the following column names: "Chrom" for the chromosome name and "position" for the site positions. If not provided, the 377 TF binding site lists from the referenced Nucleosome Profile paper will be used (xxx). 
 
--- Options for Windowed Protection Score
-  -b  FILE                      Path to a BED file specifying regions. The file must be a TAB-delimited BED3 file without a header. If not provided, ±1 kb regions around TSS will be used. Default: [NULL]
-  -x  INT                       Minimum length for identifying long reads. Default: [120]
-  -X  INT                       Maximum length for identifying long reads. Default: [180]
-  -w  INT                       Window size for extracting Windowed Protection Score for long reads. Default: [120]
-  -m  INT                       Minimum length for identifying short reads. Default: [35]
-  -M  INT                       Maximum length for identifying short reads. Default: [80]
-  -W  INT                       Window size for extracting Windowed Protection Score for short reads. Default: [16]
+-- Options for Promoter Fragmentation Entropy (PFE)
+  --PFE  STR    Addtional parameter setting for PFE analysis. The full parameter list is available by running xxx.[optional]
 
--- Options for End Motif frequency and diversity
-  -r  FILE                      Reference FASTA file. For example, to use the hg38 reference, download it from http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz. Default: [NULL]
-  -b  FILE                      Path to a BED file specifying regions. The file must be a TAB-delimited BED3 file without a header. If not provided, ±1 kb regions around TSS will be used. Default: [NULL]
-
--- Options for Fragmentation Profile
-  -f  STR                       Reference FASTA file type. Options include hg19 and hg38. Default: [hg38]
-  -b  FILE                      Path to a BED file specifying regions. The file must be a TAB-delimited BED3 file without a header. If not provided, ±1 kb regions around TSS will be used. Default: [NULL]
-
--- Options for Nucleosome Profile
-  -l  PATH                      PATH Path to a site list file for Nucleosome Profile analysis. The file must have two columns: "Chrom" for the chromosome and "position" for the site position. If not provided, the tool will use 
-                                the 377 site lists from the referenced Nucleosome Profile paper. Default: [NULL]
-
--- Options for Promoter Fragmentation Entropy or Orientation-aware CfDNA Fragmentation
-  --addEpicSeq  STR             Addtional parameters for Epic Seq analysis. Default: [NULL] 
-
--- Options for TSS Coverage 
-  -u  INT                       Number of base pairs upstream of TSS. Default: [1000]
-  -d  INT                       Number of base pairs downstream of TSS. Default: [1000]
-  -S  FILE                      Path to a BED file specifying regions around TSS. The file must be a TAB-delimited BED3 file without a header. If not provided, ±1 kb regions around TSS will be used. 
-                                Default: [NULL]
-                                (Note: Parameters -u/-d and -S cannot be used together.)
-  --addbamCoverage  STR         Additional parameters for the "bamCoverage" command of deeptools. Default: [NULL] 
-  --addmultiBigwigSummary  STR  Additional parameters for the "multiBigwigSummary" command of deeptools. Default: [NULL]
+-- Options for TSS Coverage (TSSC)
+  -u  INT                    Number of base pairs upstream of TSS used for calculating TSSC. Default: [1000]
+  -d  INT                    Number of base pairs downstream of TSS used for calculating TSSC. Default: [1000]
+  -S  FILE                   A BED6 file specifying the coordinates of TSSs used for calculating TSSC.  
+  --bamCoverage  STR         Additional parameter seting for the "bamCoverage" command of deeptools. [optional] 
+  --multiBigwigSummary  STR  Additional parameter seting for the "multiBigwigSummary" command of deeptools. [optional]
 ```
                         
-### Run cfDNAanalyzer
-The easiest way to manually run cfDNAanalyzer is to use ```cfDNAanalyzer.sh``` provided in the ```cfDNAanalyzer/``` directory. Here is an example of how to launch the shell script from the command line:
+### Run the usage example
+You can directly run cfDNAanalyzer by ```cfDNAanalyzer.sh``` provided in the ```cfDNAanalyzer/``` directory with the example files in xxx.
 ```
-bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -f hg19 -r <Reference.fa> -s pair -b ./End_motif_frequency/tss_2k_regions.bed > ./cfDNAanalyzer.log
+bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -g hg19 -f <Reference.fa> -b ./End_motif_frequency/tss_2k_regions.bed > ./cfDNAanalyzer.log
 ``` 
 
-
-## Output file for every feature
-
-### Copy Number Variation
-```CNV.txt```<br>
-The "chr" column specifies the chromosome on which each bin is located.<br>
-The "start" column represents the starting position of each bin.<br>
-The "end" column represents the ending position of each bin.<br>
-The "sample.copy.number" column represents the estimated copy number for each bin.<br>
+## Output files
+### Features
+#### Copy Number Alterations (CNA)
+```CNV.txt``` is xxx with four columns specifying the chromosome, start coordinate, end coordinate, and the estimated copy number for each bin. 
 ```r
 chr	start	end	sample.copy.number
 1	1000001	2000000	2
 1	2000001	3000000	2
 1	4000001	5000000	2
-1	5000001	6000000	2
-1	6000001	7000000	2
-1	7000001	8000000	2
-1	8000001	9000000	2
-1	9000001	10000000  2
-1	10000001  11000000  2
 ```
-&nbsp;<br>
-```CNV.wig```<br>
-Wig file extracted from input bam file.<br>
+```CNV.wig``` stores xxx.<br>
 ```r
 fixedStep chrom=chr1 start=1 step=1000000 span=1000000
 1792
 4523
 5506
-5241
-6946
-6993
-5691
-6511
-4859
 ```
 
-
-### Nucleosome Occupancy and Fuzziness
-```meanfuziness.tsv```<br>
-The "chr" column specifies the chromosome on which each region is located.<br>
-The "start" column represents the starting position of each region.<br>
-The "end" column represents the ending position of each region.<br>
-The "meanfuziness" column represents the average fuzziness value for each region.<br>
-```r
-chr  start  end  meanfuziness
-chr1 68091 70091 33.4683
-chr1 138379 140379 48.2868
-chr1 366640 368640 37.744
-chr1 621053 623053 44.8007
-chr1 738137 740137 45.5157
-chr1 817043 819043 49.6678
-chr1 860118 862118 50.1261
-chr1 865445 867445 45.8941
-chr1 893670 895670 33.1479
-```
-&nbsp;<br>
-```occupancy.bed```<br>
-The "chr" column specifies the chromosome on which each region is located.<br>
-The "start" column represents the starting position of each region.<br>
-The "end" column represents the ending position of each region.<br>
-The "ID" column provides a unique identifier for each region.<br>
-The "occupancy" column represents the occupancy value for each region.<br>
+#### Nucleosome Occupancy and Fuzziness (NOF)
+```occupancy.bed``` stores the nucleosome occupancy features with five columns specifying the chromosome, start coordinate, end coordinate, region ID, and occupany value for each region.
 ```r
 chr	start	end	ID	occupancy
 chr1	68091	70091	region_1	6.616
 chr1	138379	140379	region_2	19.206
 chr1	366640	368640	region_3	2.88
-chr1	621053	623053	region_4	6.48
-chr1	738137	740137	region_5	4.754
-chr1	817043	819043	region_6	10.736
-chr1	860118	862118	region_7	3.236
-chr1	865445	867445	region_8	3.04
-chr1	893670	895670	region_9	1.32
 ```
 &nbsp;<br>
-```pooled/<sampleID>.smooth.positions.xls```<br>
-The "chr" column specifies the chromosome on which each region is located.<br>
-The "start" column represents the starting position of each region.<br>
-The "end" column represents the ending position of each region.<br>
-The "smt_pos" column represents the occupancy summit point for each region.<br>
-The "smt_value" column represents the occupancy value at the summit point (smt_pos).<br>
-The "fuzziness_score" column represents the fuzziness score for each region.<br>
+```meanfuziness.tsv``` stores the nucleosome fuzziness features with four columns specifying the chromosome, start coordinate, end coordinate, and the average fuzziness value for each region.
+```r
+chr  start  end  meanfuziness
+chr1 68091 70091 33.4683
+chr1 138379 140379 48.2868
+chr1 366640 368640 37.744
+```
+&nbsp;<br>
+```pooled/<sampleID>.smooth.wig``` stores the occupancy values across the entire genome for each processed BAM file.<br>
+```r
+fixedStep chrom=chr1 start=1  step=10 span=10
+0.0
+3.0
+5.2
+```
+&nbsp;<br>
+```pooled/<sampleID>.smooth.positions.xls``` store the fuzziness values of all identified nucleosomes in each processed BAM file. This file has six columns specifying the chromosome, start coordinate, end coordinate, summit position, occupancy value at the summit position, and fuzziness score for each nucleosome.
 ```r
 chr     start   end     smt_pos smt_value       fuzziness_score
 chr1    10011   10151   10081   24.0    56.2199218395978
 chr1    10161   10301   10231   56.0    52.17928320347469
 chr1    10301   10441   10371   48.0    52.888443917362515
-chr1    11651   11791   11721   16.0    33.147857967067466
-chr1    11931   12071   12001   16.0    53.334280294623404
-chr1    12041   12181   12111   16.0    53.27415502117644
-chr1    12671   12811   12741   8.0     37.3875124467585
-chr1    13041   13181   13111   16.0    33.147857967067466
-chr1    13441   13581   13511   56.0    42.90872331572411
-```
-&nbsp;<br>
-```pooled/<sampleID>.smooth.wig```<br>
-Wig format files containing protein occupancy values at 10 base pair intervals across the entire genome.<br>
-```r
-fixedStep chrom=chr1 start=1  step=10 span=10
-0.0
-0.0
-0.0
-0.0
-0.0
-0.0
-0.0
-0.0
-0.0
 ```
 
-### Windowed Protection Score
-```WPS.txt```<br>
-The "chr" column specifies the chromosome on which each region is located.<br>
-The "start" column represents the starting position of each region.<br>
-The "end" column represents the ending position of each region.<br>
-The "long_WPS" column represents the Windowed Protection Score for long reads in each region.<br>
-The "short_WPS" column represents the Windowed Protection Score for short reads in each region.<br>
+#### Windowed Protection Score (WPS)
+```WPS.txt``` stores the WPS values with five columns specifying the chromosome, start coordinate, end coordinate, WPS for long fragments, and WPS for short fragments for each region.
 ```r
 chr    start    end    long_WPS    short_WPS
 chr1	68091	70091	-0.781609	0
 chr1	138379	140379	-1.94753	0.0164918
 chr1	366640	368640	-0.338331	0
-chr1	621053	623053	-0.909045	0
-chr1	738137	740137	-0.298851	0
-chr1	817043	819043	-1.27236	0
-chr1	860118	862118	-0.188906	0
-chr1	865445	867445	-0.332834	0
-chr1	893670	895670	-0.146427	0
 ```
 
-### End Motif frequency and diversity
+#### End Motif frequency and diversity for regions (EMR)
+Our toolkit outputs two types of EMR features at different levels:
+(1) Motif frequency and diversity for all input regions aggregated together.
 ```all_motifs_frequency.txt```<br>
-Summary of motif frequency across all regions.<br>
 ```r
 Motif   Frequency
 CTAT    0.0030392622975323673
 ATAG    0.0030392622975323673
 TATT    0.0059179091631653994
-AATA    0.0059179091631653994
-ATTA    0.0048532138590239365
-TAAT    0.0048532138590239365
-TTAT    0.00530396391450145
-ATAA    0.00530396391450145
-TATC    0.0026101367116673144
 ```
-&nbsp;<br>
 ```all_motifs_mds.txt```<br>
-Summary of motif diversity scores across all regions.<br>
 ```r
 MDS     0.9747882739505999
 ```
 &nbsp;<br>
+(2) Motif frequency and diversity for each region separately. "index" refers to the line number of the region. 
 ```region_<index>_motif_frequency_and_mds.txt```<br>
-Motif frequency and diversity score for each region in the BED file.<br>
 ```r
 Motif   Frequency
 CTAT    0.006259389083625438
 ATAG    0.006259389083625438
 TATT    0.009764646970455683
-AATA    0.009764646970455683
-ATTA    0.008763144717075613
-TAAT    0.008763144717075613
-TTAT    0.011266900350525789
-ATAA    0.011266900350525789
-TATC    0.005758637956935403
 ```
+#### End Motif frequency and diversity of whole genome (EM)
 
-### Fragmentation Profile
-```Fragmentation_Profile.txt```<br>
-The "seqnames" column specifies the chromosome on which each region is located.<br>
-The "start" column represents the starting position of each region.<br>
-The "end" column represents the ending position of each region.<br>
-The "short" column represents the number of short reads identified in each region.<br>
-The "long" column represents the number of long reads identified in each region.<br>
-The "ratio" column represents the ratio of short reads to long reads for each region.<br>
+#### Fragmentation Profile for regions (FPR)
+```Fragmentation_Profile.txt``` has six columns specifying the chromosome, start coordinate, end coordinate, number of short fragments, number of long fragments, and ratio of short to long fragments for each input region.
 ```r
 seqnames	start	end	short	long	ratio
 chr1	738137	740137	1	3	0.333333333333333
 chr1	817043	819043	5	5	1
 chr1	865445	867445	1	3	0.333333333333333
-chr1	893670	895670	1	1	1
-chr1	916497	918497	1	4	0.25
-chr1	947803	949803	2	4	0.5
-chr1	1050478	1052478	1	1	1
-chr1	1140951	1142951	1	3	0.333333333333333
-chr1	1148512	1150512	3	2	1.5
 ```
 
-### Nucleosome Profile
-```NucleosomeProfile.txt```<br>
-The "site_name" column specifies the name of each site list.<br>
-The "mean_coverage" column represents the mean coverage for each site list.<br>
-The "central_coverage" column represents the central coverage for each site list..<br>
-The "amplitude" column represents the amplitude for each site list.<br>
+#### Fragmentation Profile of whole genome (FP)
+
+#### Nucleosome Profile (NP)
+```NucleosomeProfile.txt``` has four columns specifying the file name of sites set, the mean coverage, central coverage, and nucleosome peak amplitude for each sites set in the input directory. 
 ```r
 site_name	mean_coverage	central_coverage	amplitude
 IKZF1.hg38.10000.txt	0.99428	1.01050	0.45213
 TCF7L1.hg38.10000.txt	1.00737	1.03907	0.20425
 NKX3-1.hg38.10000.txt	0.99402	1.00351	0.27422
-ZSCAN4.hg38.10000.txt	0.99694	0.96824	0.62736
-ZNF324.hg38.10000.txt	0.99915	0.97439	0.49796
-OSR2.hg38.10000.txt	1.00190	1.03863	0.43505
-FOXA1.hg38.10000.txt	0.99277	1.00712	0.27473
-MAFG.hg38.10000.txt	1.00207	0.98347	0.79326
-HEY1.hg38.10000.txt	1.01042	1.03988	0.81144
 ```
-&nbsp;<br>
-```plots/<site_list>.pdf```<br>
-Coverage profile for the input BAM file based on the provided site lists.<br>
+```plots/<site_list>.pdf``` stores the cfDNA fragment coverage profile for each sites set in the input directory. <br>
 
-### Orientation-aware CfDNA Fragmentation
+#### Orientation-aware CfDNA Fragmentation (OCF)
 ```OCF.txt```<br>
 The "TSS_ID" column is the id of each TSS 2k region.<br>
 The "OCF_Ratio" column is orientation-aware cfDNA fragmentation ratio for each TSS 2k region.<br>
@@ -380,50 +248,27 @@ TSS_ID	OCF_Ratio
 A1BG_1	-0.142857142857143
 A1CF_1	-0.2
 A2M_1	0.333333333333333
-A2ML1_1	0.333333333333333
-A3GALT2_1  -0.75
-A4GALT_1  -0.2
-A4GNT_1	0
-AAAS_1	0.333333333333333
-AACS_1	-0.2
 ```
 
-### Promoter Fragmentation Entropy
-```PFE.txt```<br>
-The "TSS_ID" column represents the identifier for each 2 kb TSS region.<br>
-The "PFE" column represents the Promoter Fragmentation Entropy value for each 2 kb TSS region.<br>
+#### Promoter Fragmentation Entropy (PFE)
+```PFE.txt``` has two columns specifying the TSS ID (The fourth column in the input file?) and PFE value for the 2kb surrounding TSS.
 ```r
 TSS_ID	PFE
 A1BG_1	0.341049657283462
 A1CF_1	0.34067802945418
 A2M_1	0.340071343470199
-A2ML1_1	0.339540877323118
-A3GALT2_1  0.34133890610363
-A4GALT_1  0.338760558643257
-A4GNT_1	0.340589330348338
-AAAS_1	0.341169890073755
-AACS_1	0.342021289789175
 ```
 
-### TSS Coverage
-```average_coverage.txt```<br>
-The "chr" column specifies the chromosome on which each region is located.<br>
-The "start" column represents the starting position of each region.<br>
-The "end" column represents the ending position of each region.<br>
-The "coverage" column represents the average coverage value for each region.<br>
+### TSS Coverage (TSSC)
+```average_coverage.txt``` has four columns specifying the chromosome, start coordinate, end coordinate, and cfDNA fragment coverage value for each TSS surrounding regions. 
 ```r
 chr	start	end	coverage
 chr1	68091	70091	1.8115
 chr1	138379	140379	5.7315
 chr1	366640	368640	0.79
-chr1	621053	623053	1.95
-chr1	738137	740137	1.4055
-chr1	817043	819043	3.057
-chr1	860118	862118	1.061
-chr1	865445	867445	0.8
-chr1	893670	895670	0.33
 ```
 
+### Disease detection and classification
 
 
 ## Versions of packages in our environment:
@@ -642,16 +487,14 @@ httr                           1.4.7
 tidyverse                      2.0.0
 RCurl                          1.98-1.14
 BiocManager                    3.18.1
+HMMcopy                        1.44.0
+GenomeInfoDb                   1.38.8
+GenomicRanges                  1.54.1
+Rsamtools                      2.18.0
+GenomicAlignments              1.38.2
+biovizBase                     1.50.0
+BSgenome.Hsapiens.UCSC.hg19    1.4.3
+BSgenome.Hsapiens.UCSC.hg38    1.4.5
 ```
-
-### BiocManager packages
-```r
-HMMcopy
-GenomeInfoDb 
-GenomicRanges
-Rsamtools
-GenomicAlignments
-biovizBase
-BSgenome.Hsapiens.UCSC.hg19
-BSgenome.Hsapiens.UCSC.hg38
-```
+## Contact
+Yumei Li: ymli12@suda.edu.cn
