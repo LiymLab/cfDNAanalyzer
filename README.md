@@ -1,6 +1,6 @@
 # cfDNAanalyzer
-cfDNAanalyzer (<ins>c</ins>ell-<ins>f</ins>ree <ins>DNA</ins> sequencing data <ins>analyzer</ins>) is a toolkit for cfDNA whole-genome sequencing data analysis which includes two main parts: 
-(1) the extraction of genomic and fragmentatomic features at whole-genome or genomic-region levels;
+cfDNAanalyzer (<ins>c</ins>ell-<ins>f</ins>ree <ins>DNA</ins> sequencing data <ins>analyzer</ins>) is a toolkit for cfDNA whole-genome sequencing data analysis which includes two main parts: <br>
+(1) the extraction of genomic and fragmentatomic features at whole-genome or genomic-region levels;<br>
 (2) the processing of extracted features and the building of machine learning models for disease detection and classification.<br>
 <summary><h2>Table of Contents</h2></summary>
 <li>
@@ -34,7 +34,7 @@ cfDNAanalyzer (<ins>c</ins>ell-<ins>f</ins>ree <ins>DNA</ins> sequencing data <i
 ## Description
 ### Environment requirement and installation
 Please ensure [<ins>samtools (v1.3.1)</ins>](https://github.com/samtools/samtools), [<ins>bedtools (v2.29.2)</ins>](https://bedtools.readthedocs.io/en/latest/index.html), and [<ins>deeptools (3.5.1)</ins>](https://github.com/deeptools/deepTools) are in your environment. Then, you can install the toolkit following the steps below:
-```
+```ruby
 git clone https://github.com/LiymLab/cfDNAanalyzer.git
 cd cfDNAanalyzer/
 conda create -n cfDNAanalyzer --clone ./envs/cfDNAanalyzer
@@ -118,10 +118,13 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
 
 -- Options specific for Nucleosome Profile (NP)
   -l  DIR       Directory containing a list of files with each file for a set of sites.
-                The file must have at least two columns with the following column names: "Chrom" for the chromosome name and "position" for the site positions. If not provided, the 377 TF binding site lists from the referenced Nucleosome Profile paper will be used (xxx). 
+                The file must have at least two columns with the following column names: 
+                "Chrom" for the chromosome name and "position" for the site positions. 
+                If not provided, the 377 TF binding site lists from the referenced Nucleosome Profile paper will be used (xxx). 
 
 -- Options for Promoter Fragmentation Entropy (PFE)
-  --PFE  STR    Addtional parameter setting for PFE analysis. The full parameter list is available by running xxx.[optional]
+  --PFE  STR    Addtional parameter setting for PFE analysis. 
+                The full parameter list is available by running xxx.[optional]
 
 -- Options for TSS Coverage (TSSC)
   -u  INT                    Number of base pairs upstream of TSS used for calculating TSSC. Default: [1000]
