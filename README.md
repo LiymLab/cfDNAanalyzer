@@ -1,22 +1,23 @@
 # cfDNAanalyzer
-cfDNAanalyzer (<ins>c</ins>ell-<ins>f</ins>ree <ins>DNA</ins> sequencing data <ins>analyzer</ins>) is a toolkit for cfDNA whole-genome sequencing data analysis which includes two main parts: (1) the extraction of genomic and fragmentatomic features at whole-genome or genomic-region levels;(2) the processing of extracted features and the building of machine learning models for disease detection and classification.   
-
+cfDNAanalyzer (<ins>c</ins>ell-<ins>f</ins>ree <ins>DNA</ins> sequencing data <ins>analyzer</ins>) is a toolkit for cfDNA whole-genome sequencing data analysis which includes two main parts: 
+(1) the extraction of genomic and fragmentatomic features at whole-genome or genomic-region levels;
+(2) the processing of extracted features and the building of machine learning models for disease detection and classification.<br>
 <summary><h2>Table of Contents</h2></summary>
 <li>
   <a href="#Description">Description</a>
   <ul>
-    <li><a href="#Environment-and-installation">Environment requirement and installation</a></li>
+    <li><a href="#Environment-requirement-and-installation">Environment requirement and installation</a></li>
     <li><a href="#Supported-features">Supported features</a></li>
-    <li><a href="#Supported-models">Supported feature processing methods and machine learning models</a></li>
+    <li><a href="#Supported-feature-processing-methods-and-machine-learning-models">Supported feature processing methods and machine learning models</a></li>
     <li><a href="#Usage">Usage</a></li>
-    <li><a href="#Run-example">Run the usage example</a></li>
+    <li><a href="#Run-the-usage-example">Run the usage example</a></li>
   </ul>
 </li>
 <li>
   <a href="#Output-files">Output files</a>
   <ul>
     <li><a href="#Features">Features</a></li>
-    <li><a href="#Classification-results">Disease detection and classification</a></li>
+    <li><a href="#Disease-detection-and-classification">Disease detection and classification</a></li>
   </ul>
 </li>
 <li>
@@ -41,65 +42,67 @@ conda activate cfDNAanalyzer
 Rscript install_R_packages.R
 ```
 ### Supported features
-### 1. Features for whole genome:
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 <ins>C</ins>opy <ins>N</ins>umber <ins>A</ins>lterations (CNA) ([<ins>Adalsteinsson *et al, Nat Commun*, 2017</ins>](https://www.nature.com/articles/s41467-017-00965-y))<br>
+### 1.  Features for whole genome:
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1  <ins>C</ins>opy <ins>N</ins>umber <ins>A</ins>lterations (CNA) ([<ins>Adalsteinsson *et al, Nat Commun*, 2017</ins>](https://www.nature.com/articles/s41467-017-00965-y))<br>
 * Copy number alterations comprise deletions or amplifications of a particular region of the genome, with a size as low as a few kilobases up to entire chromosomes. 
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2 <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM) ([<ins>Zhou et al, 2023</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120))
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2  <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM) ([<ins>Zhou et al, 2023</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120))
 * End motifs are the terminal n-nucleotide sequence (4-mer end motif in this toolkit) at each 5′ fragment end of cfDNA molecules. End motif frequency refers to the frequency of all 256 4-mer end motifs.<br>
 * End motif diversity is the normalized Shannon entropy of the categorical distribution of all possible 4-mer end-motifs of all cfDNA fragments.
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3 <ins>F</ins>ragmentation <ins>P</ins>rofile (FP) ([<ins>Cristiano *et al,Nature*, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
-* Fragmentation profile describes fragmentation patterns of cfDNA across the genome, which is the fraction of small cfDNA fragments (100–150 bp) to larger cfDNA fragments (151–220 bp) for each 5Mb window across the genome.
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3  <ins>F</ins>ragmentation <ins>P</ins>rofile (FP) ([<ins>Cristiano *et al, Nature*, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
+* Fragmentation profile describes fragmentation patterns of cfDNA across the genome, which is the fraction of short cfDNA fragments (100–150 bp) to long cfDNA fragments (151–220 bp) for each 5Mb window across the genome.
 
-### 2. Features for specific regions: 
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 <ins>N</ins>ucleosome <ins>O</ins>ccupancy and <ins>F</ins>uzziness (NOF) ([<ins>Li *et al, Genome Med*, 2024</ins>](https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-023-01280-6))<br>
+### 2.  Features for specific regions: 
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1  <ins>N</ins>ucleosome <ins>O</ins>ccupancy and <ins>F</ins>uzziness (NOF) ([<ins>Li *et al, Genome Med*, 2024</ins>](https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-023-01280-6))
 * Nucleosome occupancy reflects the frequency with which nucleosomes occupy a given genomic region in a cell population. Nucleosome occupancy for a specific region is calculated as the average occupancy values of all based in this region.<br>
 * Nucleosome fuzziness is defined as the deviation of nucleosome positions within a region in a cell population and could reflect cell heterogeneity at the chromatin level. Nucleosome fuzziness for a specific region is calculated as the average fuzziness of all the nucleosomes whose center is located within the region.<br>
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 <ins>N</ins>ucleosome <ins>P</ins>rofile (NP) ([<ins>Doebley *et al, Nat Commun*, 2022</ins>](https://www.nature.com/articles/s41467-022-35076-w))
-* Nucleosome profile is a composite coverage profile computed as the mean of the GC-corrected cfDNA fragment midpoint coverage across a set of sites (Binding sites sets of 377 transcription factors as the dafalut). For each set of sites, three features are identified from the coverage profile:
+* Nucleosome profile is a composite coverage profile computed as the mean of the GC-corrected cfDNA fragment midpoint coverage across a set of sites (Binding sites sets of 377 transcription factors as the dafalut). For each set of sites, three features are identified from the composite coverage profile:
    * (1) The average coverage value from ± 30 bp of the central site of each set (central coverage).
    * (2) The average coverage value from ± 1000 bp of the central site of each set (mean coverage).
    * (3) The overall nucleosome peak amplitude is calculated by using a Fast Fourier Transform on the window ± 960 bp from the site and taking the amplitude of the 10th frequency term (amplitude).
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3 <ins>W</ins>indowed <ins>P</ins>rotection <ins>S</ins>core (WPS) ([<ins>Snyder *et al, Cell*, 2016</ins>](https://doi.org/10.1016/j.cell.2015.11.050))
-* Windowed Protection Score is the number of DNA fragments completely spanning a window centered at a given genomic coordinate minus the number of fragments with an endpoint within that same window. WPS can be calculated using long fragments (120–180 bp; 120 bp window) or short fragments (35–80 bp; 16 bp window). The WPS for a specific region is defined as the average WPS of all bases in this region. High WPS values indicate increased protection of DNA from digestion while low values indicate that DNA is unprotected.
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4 <ins>O</ins>rientation-aware <ins>C</ins>fDNA <ins>F</ins>ragmentation (OCF) ([<ins>Sun *et al, Genome Res.*, 2019</ins>](https://genome.cshlp.org/content/29/3/418.long))
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3  <ins>W</ins>indowed <ins>P</ins>rotection <ins>S</ins>core (WPS) ([<ins>Snyder *et al, Cell*, 2016</ins>](https://doi.org/10.1016/j.cell.2015.11.050))
+* Windowed protection score is the number of DNA fragments completely spanning a window centered at a given genomic coordinate minus the number of fragments with an endpoint within that same window. WPS can be calculated using long fragments (120–180 bp; 120 bp window) or short fragments (35–80 bp; 16 bp window). The WPS for a specific region is defined as the average WPS of all bases in this region. High WPS values indicate increased protection of DNA from digestion while low values indicate that DNA is unprotected.
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4  <ins>O</ins>rientation-aware <ins>C</ins>fDNA <ins>F</ins>ragmentation (OCF) ([<ins>Sun *et al, Genome Res.*, 2019</ins>](https://genome.cshlp.org/content/29/3/418.long))
 * Orientation-aware cfDNA fragmentation is the differences of read densities of the upstream and downstream fragment ends in specific genomic regions.
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5 <ins>E</ins>nd <ins>M</ins>otif frequency and diversity for <ins>R</ins>egions (EMR)([<ins>Zhou et al, 2023</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120))
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5  <ins>E</ins>nd <ins>M</ins>otif frequency and diversity for <ins>R</ins>egions (EMR)([<ins>Zhou et al, 2023</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120))
 * We introduced end motif frequency and diversity for regions, which is defined as the frequency and diversity of all 256 4-mer end motifs for each region.<br>
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.6 <ins>F</ins>ragmentation <ins>P</ins>rofile for <ins>R</ins>egions (FPR) ([<ins>Cristiano *et al,Nature*, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
-* We introduced fragmentation profile for regions, which is defined as the fraction of small cfDNA fragments (100–150 bp) to larger cfDNA fragments (151–220 bp) for each region.
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.6  <ins>F</ins>ragmentation <ins>P</ins>rofile for <ins>R</ins>egions (FPR) ([<ins>Cristiano *et al,Nature*, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
+* We introduced fragmentation profile for regions, which is defined as the fraction of short cfDNA fragments (100–150 bp) to long cfDNA fragments (151–220 bp) for each region.
 
-### 3. Features for transcription start sites (TSSs): 
+### 3.  Features for transcription start sites (TSSs): 
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 <ins>P</ins>romoter <ins>F</ins>ragmentation <ins>E</ins>ntropy (PFE) ([<ins>Esfahani *et al, Nat Biotechnol*, 2022</ins>](https://doi.org/10.1038/s41587-022-01222-4))<br>
-* PFE quantifies the diversity of cfDNA fragment lengths around the TSSs of genes. It is calculated by a modified Shannon index for cfDNA fragments where both ends fell within ±1 kb of the TSS. Then this cfDNA entropy measure is adjusted using a Dirichlet-multinomial model for normalization.
+* Promoter fragmentation entropy quantifies the diversity of cfDNA fragment lengths around the TSSs of genes. It is calculated by a modified Shannon index for lengths of cfDNA fragment where both ends fell within ±1 kb of the TSS. Then this cfDNA entropy measure is adjusted using a Dirichlet-multinomial model for normalization.
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 <ins>TSS</ins> <ins>C</ins>overage (TSSC) ([<ins>Ulz *et al, Nat Genet*, 2016</ins>](https://www.nature.com/articles/ng.3648))
-* TSS Coverage refers to the cfDNA sequencing read coverage in the region surrounding TSSs.
+* TSS coverage refers to the cfDNA sequencing read coverage in the region surrounding TSSs.
 
 ### Supported feature processing methods and machine learning models
 
 ### Usage
 ```ruby
-   bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options]
+bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options]
 ``` 
 #### Options: 
 ```
 -- General options
   -I  FILE      A text file containing all input BAM files with one BAM file per line. 
                 BAM files generated using both Bowtie2 and BWA are accepted.  
-  -o  PATH      Output directory for all the results. Default: [./]
+  -o  DIR       Output directory for all the results. Default: [./]
   -F  STR       Features to extract, including CNA, NOF, WPS, EM, EMR, FP, FPR, NP, OCF, PFE, and TSSC. 
-                Features should be set as strings separated by comma, e.g., CNA,NOF. 
+                Features should be set as a string separated by comma, e.g., CNA,NOF. 
                 Default: All available features will be extracted.
                 Note: The following features are specifically designed for paired-end sequencing data: FP, FPR, NP, PFE, and OCF.
   -g  STR       Genome version of input BAM files (hg19/hg38). Default: [hg38] 
-  -b  FILE      A BED3 file specifying the regions to calculate features for specific regions.
+  -b  FILE      A BED3 file specifying the regions to extract features.
                 The file should contain three TAB-delimited columns: chromosome start end.              
 
 -- Options specific for Copy Number Alterations (CNA)
   -B  INT       Bin size in kilobases (10, 50, 500, or 1000). Default: [1000]
-  --CNA  STR    Additional parameter setting for software ichorCNA. The full parameter list is available by running xxx. [optional]
+  --CNA  STR    Additional parameter setting for software ichorCNA. 
+                The full parameter list is available by running xxx. [optional]
 
 -- Options specific for Nucleosome Occupancy and Fuzziness (NOF)
-  --NOF  STR    Additional parameter setting for software DANPOS2. The full parameter list is available by running xxx. [optional]
+  --NOF  STR    Additional parameter setting for software DANPOS2. 
+                The full parameter list is available by running xxx. [optional]
 
 -- Options specific for Windowed Protection Score (WPS)
   -x  INT       Min fragment length used for long fragments WPS calculation. Default: [120]
@@ -110,7 +113,8 @@ Rscript install_R_packages.R
   -W  INT       Window size for short fragments WPS calculation. Default: [16]
 
 -- Options specific for End Motif frequency and diversity (EM)
-  -f  FILE      Reference genome in FASTA format. For example, hg38 reference genome can be downloaded from http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz.
+  -f  FILE      Reference genome in FASTA format. 
+                For example, hg38 reference genome can be downloaded from http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz.
 
 -- Options specific for Nucleosome Profile (NP)
   -l  DIR       Directory containing a list of files with each file for a set of sites.
@@ -271,7 +275,7 @@ chr1	366640	368640	0.79
 ### Disease detection and classification
 
 
-## Versions of packages in our environment:
+## Versions of packages in our environment
 ### Python:
 ```r
 python                         3.7.16
