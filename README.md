@@ -136,7 +136,7 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
                         
 ### Run the usage example
 You can directly run cfDNAanalyzer by ```cfDNAanalyzer.sh``` provided in the ```cfDNAanalyzer/``` directory with the example files in xxx.
-```
+```ruby
 bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -g hg19 -f <Reference.fa> -b ./End_motif_frequency/tss_2k_regions.bed > ./cfDNAanalyzer.log
 ``` 
 
