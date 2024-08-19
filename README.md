@@ -266,7 +266,7 @@ TATT    0.009764646970455683
 ```
 
 #### Fragmentation Profile for regions (FPR)
-```Fragmentation_Profile.txt``` has six columns specifying the chromosome, start coordinate, end coordinate, number of short fragments, number of long fragments, and ratio of short to long fragments for each input region.
+```Fragmentation_Profile_regions.txt``` has six columns specifying the chromosome, start coordinate, end coordinate, number of short fragments, number of long fragments, and ratio of short to long fragments for each input region.
 ```r
 seqnames	start	end	short	long	ratio
 chr1	738137	740137	1	3	0.333333333333333
