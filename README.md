@@ -33,7 +33,7 @@ cfDNAanalyzer (<ins>c</ins>ell-<ins>f</ins>ree <ins>DNA</ins> sequencing data <i
 
 ## Description
 ### Environment requirement and installation
-Please ensure [<ins>samtools (v1.3.1)</ins>](https://github.com/samtools/samtools), [<ins>bedtools (v2.29.2)</ins>](https://bedtools.readthedocs.io/en/latest/index.html), and [<ins>deeptools (3.5.1)</ins>](https://github.com/deeptools/deepTools) are in your environment. Then, you can install the toolkit following the steps below:
+Please ensure [<ins>samtools (v1.3.1)</ins>](https://github.com/samtools/samtools), [<ins>bedtools (v2.29.2)</ins>](https://bedtools.readthedocs.io/en/latest/index.html), and [<ins>deeptools (3.5.1)</ins>](https://github.com/deeptools/deepTools) are in your environment. Then, you can install the toolkit following the steps below ( R(4.3.0) is required ):
 ```ruby
 git clone https://github.com/LiymLab/cfDNAanalyzer.git
 cd cfDNAanalyzer/
@@ -45,7 +45,7 @@ Rscript install_R_packages.R
 ### 1.  Features for whole genome:
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1  <ins>C</ins>opy <ins>N</ins>umber <ins>A</ins>lterations (CNA) ([<ins>Adalsteinsson *et al, Nat Commun*, 2017</ins>](https://www.nature.com/articles/s41467-017-00965-y))<br>
 * Copy number alterations comprise deletions or amplifications of a particular region of the genome, with a size as low as a few kilobases up to entire chromosomes. 
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2  <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM) ([<ins>Zhou et al, 2023</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120))
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2  <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM) ([<ins>Lee *et al, PNAS*, 2018</ins>](https://www.pnas.org/doi/abs/10.1073/pnas.1815031116))
 * End motifs are the terminal n-nucleotide sequence (4-mer end motif in this toolkit) at each 5′ fragment end of cfDNA molecules. End motif frequency refers to the frequency of all 256 4-mer end motifs.<br>
 * End motif diversity is the normalized Shannon entropy of the categorical distribution of all possible 4-mer end-motifs of all cfDNA fragments.
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3  <ins>F</ins>ragmentation <ins>P</ins>rofile (FP) ([<ins>Cristiano *et al, Nature*, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
@@ -64,9 +64,9 @@ Rscript install_R_packages.R
 * Windowed protection score is the number of DNA fragments completely spanning a window centered at a given genomic coordinate minus the number of fragments with an endpoint within that same window. WPS can be calculated using long fragments (120–180 bp; 120 bp window) or short fragments (35–80 bp; 16 bp window). The WPS for a specific region is defined as the average WPS of all bases in this region. High WPS values indicate increased protection of DNA from digestion while low values indicate that DNA is unprotected.
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4  <ins>O</ins>rientation-aware <ins>C</ins>fDNA <ins>F</ins>ragmentation (OCF) ([<ins>Sun *et al, Genome Res.*, 2019</ins>](https://genome.cshlp.org/content/29/3/418.long))
 * Orientation-aware cfDNA fragmentation is the differences of read densities of the upstream and downstream fragment ends in specific genomic regions.
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5  <ins>E</ins>nd <ins>M</ins>otif frequency and diversity for <ins>R</ins>egions (EMR)([<ins>Zhou et al, 2023</ins>](https://www.pnas.org/doi/10.1073/pnas.2220982120))
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5  <ins>E</ins>nd <ins>M</ins>otif frequency and diversity for <ins>R</ins>egions (EMR)([<ins>Serpas *et al, PNAS*, 2018</ins>](https://www.pnas.org/doi/abs/10.1073/pnas.1815031116))
 * We introduced end motif frequency and diversity for regions, which is defined as the frequency and diversity of all 256 4-mer end motifs for each region.<br>
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.6  <ins>F</ins>ragmentation <ins>P</ins>rofile for <ins>R</ins>egions (FPR) ([<ins>Cristiano *et al,Nature*, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.6  <ins>F</ins>ragmentation <ins>P</ins>rofile for <ins>R</ins>egions (FPR) ([<ins>Cristiano *et al, Nature*, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
 * We introduced fragmentation profile for regions, which is defined as the fraction of short cfDNA fragments (100–150 bp) to long cfDNA fragments (151–220 bp) for each region.
 
 ### 3.  Features for transcription start sites (TSSs): 
@@ -98,11 +98,11 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
 -- Options specific for Copy Number Alterations (CNA)
   -B  INT       Bin size in kilobases (10, 50, 500, or 1000). Default: [1000]
   --CNA  STR    Additional parameter setting for software ichorCNA. 
-                The full parameter list is available by running xxx. [optional]
+                The full parameter list is available by running `Rscript cfDNAanalyzer/ichorCNA/ichorCNA/scripts/runIchorCNA.R --help`. [optional]
 
 -- Options specific for Nucleosome Occupancy and Fuzziness (NOF)
   --NOF  STR    Additional parameter setting for software DANPOS2. 
-                The full parameter list is available by running xxx. [optional]
+                The full parameter list is available by running `python cfDNAanalyzer/DANPOS3/danpos.py dpos -h`. [optional]
 
 -- Options specific for Windowed Protection Score (WPS)
   -x  INT       Min fragment length used for long fragments WPS calculation. Default: [120]
@@ -123,8 +123,12 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
                 If not provided, the 377 TF binding site lists from the referenced Nucleosome Profile paper will be used (xxx). 
 
 -- Options for Promoter Fragmentation Entropy (PFE)
+  -T  FILE      A TAB-delimited TSS sites gene information file without any header.
+                The file must have six columns: (1) chromosome, (2) 1-base TSS coordinate, (3) Hugo symbol of the gene corresponding to the TSS,
+                (4) Category (e.g., WGS), (5) gene transcript strand (+1/-1) and (6) a column for TSS ID (e.g., for genes with multiple TSS, this should be geneID_1, geneID_2, etc.)
+                If not provided, 20139 genes in TSS sites from the referenced Promoter Fragmentation Entropy paper will be used.
   --PFE  STR    Addtional parameter setting for PFE analysis. 
-                The full parameter list is available by running xxx.[optional]
+                The full parameter list is available by running `Rscript cfDNAanalyzer/Epic-seq/code/runEPIC.R -h`.[optional]
 
 -- Options for TSS Coverage (TSSC)
   -u  INT                    Number of base pairs upstream of TSS used for calculating TSSC. Default: [1000]
@@ -135,27 +139,42 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
 ```
                         
 ### Run the usage example
-You can directly run cfDNAanalyzer by ```cfDNAanalyzer.sh``` provided in the ```cfDNAanalyzer/``` directory with the example files in xxx.
+You can directly run cfDNAanalyzer by ```cfDNAanalyzer.sh``` provided in the ```cfDNAanalyzer/``` directory with the example files in ```cfDNAanalyzer/example/input```. You can download the reference fasta file ```hg38.fa``` from UCSC and save it in the directory ```cfDNAanalyzer/example/input```. 
 ```ruby
-bash cfDNAanalyzer.sh -I ./input/bam_input.txt -o ./output/ -F CNV,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -g hg19 -f <Reference.fa> -b ./End_motif_frequency/tss_2k_regions.bed > ./cfDNAanalyzer.log
+bash cfDNAanalyzer.sh -I ./example/input/bam_input.txt -o ./output/ -F CNA,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -g hg19 -b ./example/input/test.bed -f ./example/input/hg38.fa > ./cfDNAanalyzer.log
 ``` 
 
 ## Output files
 ### Features
 #### Copy Number Alterations (CNA)
-```CNV.txt``` is xxx with four columns specifying the chromosome, start coordinate, end coordinate, and the estimated copy number for each bin. 
+```CNA.txt``` has with four columns specifying the chromosome, start coordinate, end coordinate, and the estimated copy number for each bin. 
 ```r
 chr	start	end	sample.copy.number
 1	1000001	2000000	2
 1	2000001	3000000	2
 1	4000001	5000000	2
 ```
-```CNV.wig``` stores xxx.<br>
+
+#### End Motif frequency and diversity of whole genome (EM)
+```motifs_frequency.txt``` stores motif frequency for input BAM file across the whole genome.
 ```r
-fixedStep chrom=chr1 start=1 step=1000000 span=1000000
-1792
-4523
-5506
+Motif   Frequency
+CTAT    0.0030392622975323673
+ATAG    0.0030392622975323673
+TATT    0.0059179091631653994
+```
+```motifs_mds.txt``` stores motif frequency diversity scores for input BAM file across the whole genome.
+```r
+MDS     0.9747882739505999
+```
+
+#### Fragmentation Profile of whole genome (FP)
+```Fragmentation_Profile.txt``` has six columns specifying the chromosome, start coordinate, end coordinate, number of short fragments, number of long fragments, and ratio of short to long fragments across the whole genome.
+```r
+seqnames	start	end	short	long	ratio
+chr1	700000	799999	1	3	0.333333333333333
+chr1	800000	899999	5	5	1
+chr1	900000	999999	1	3	0.333333333333333
 ```
 
 #### Nucleosome Occupancy and Fuzziness (NOF)
@@ -191,6 +210,17 @@ chr1    10161   10301   10231   56.0    52.17928320347469
 chr1    10301   10441   10371   48.0    52.888443917362515
 ```
 
+#### Nucleosome Profile (NP)
+```NucleosomeProfile.txt``` has four columns specifying the file name of sites set, the mean coverage, central coverage, and nucleosome peak amplitude for each sites set in the input directory. 
+```r
+site_name	mean_coverage	central_coverage	amplitude
+IKZF1.hg38.10000.txt	0.99428	1.01050	0.45213
+TCF7L1.hg38.10000.txt	1.00737	1.03907	0.20425
+NKX3-1.hg38.10000.txt	0.99402	1.00351	0.27422
+```
+&nbsp;<br>
+```plots/<site_list>.pdf``` stores the cfDNA fragment coverage profile for each sites set in the input directory. <br>
+
 #### Windowed Protection Score (WPS)
 ```WPS.txt``` stores the WPS values with five columns specifying the chromosome, start coordinate, end coordinate, WPS for long fragments, and WPS for short fragments for each region.
 ```r
@@ -198,6 +228,15 @@ chr    start    end    long_WPS    short_WPS
 chr1	68091	70091	-0.781609	0
 chr1	138379	140379	-1.94753	0.0164918
 chr1	366640	368640	-0.338331	0
+```
+
+#### Orientation-aware CfDNA Fragmentation (OCF)
+```OCF.txt``` stores the OCF values with five columns specifying the chromosome, start coordinate, end coordinate and OCF values for each region.
+```r
+chr start end OCF
+chr1  68091 70091 526.315789473684
+chr1  138379  140379  -373.864430468204
+chr1  366640  368640  0
 ```
 
 #### End Motif frequency and diversity for regions (EMR)
@@ -218,12 +257,13 @@ MDS     0.9747882739505999
 (2) Motif frequency and diversity for each region separately. "index" refers to the line number of the region. 
 ```region_<index>_motif_frequency_and_mds.txt```<br>
 ```r
+MDS     0.9747882739505999
+
 Motif   Frequency
 CTAT    0.006259389083625438
 ATAG    0.006259389083625438
 TATT    0.009764646970455683
 ```
-#### End Motif frequency and diversity of whole genome (EM)
 
 #### Fragmentation Profile for regions (FPR)
 ```Fragmentation_Profile.txt``` has six columns specifying the chromosome, start coordinate, end coordinate, number of short fragments, number of long fragments, and ratio of short to long fragments for each input region.
@@ -234,31 +274,9 @@ chr1	817043	819043	5	5	1
 chr1	865445	867445	1	3	0.333333333333333
 ```
 
-#### Fragmentation Profile of whole genome (FP)
-
-#### Nucleosome Profile (NP)
-```NucleosomeProfile.txt``` has four columns specifying the file name of sites set, the mean coverage, central coverage, and nucleosome peak amplitude for each sites set in the input directory. 
-```r
-site_name	mean_coverage	central_coverage	amplitude
-IKZF1.hg38.10000.txt	0.99428	1.01050	0.45213
-TCF7L1.hg38.10000.txt	1.00737	1.03907	0.20425
-NKX3-1.hg38.10000.txt	0.99402	1.00351	0.27422
-```
-```plots/<site_list>.pdf``` stores the cfDNA fragment coverage profile for each sites set in the input directory. <br>
-
-#### Orientation-aware CfDNA Fragmentation (OCF)
-```OCF.txt```<br>
-The "TSS_ID" column is the id of each TSS 2k region.<br>
-The "OCF_Ratio" column is orientation-aware cfDNA fragmentation ratio for each TSS 2k region.<br>
-```r
-TSS_ID	OCF_Ratio
-A1BG_1	-0.142857142857143
-A1CF_1	-0.2
-A2M_1	0.333333333333333
-```
 
 #### Promoter Fragmentation Entropy (PFE)
-```PFE.txt``` has two columns specifying the TSS ID (The fourth column in the input file?) and PFE value for the 2kb surrounding TSS.
+```PFE.txt``` has two columns specifying the TSS ID and PFE value for the 2kb surrounding TSS.
 ```r
 TSS_ID	PFE
 A1BG_1	0.341049657283462
@@ -266,7 +284,7 @@ A1CF_1	0.34067802945418
 A2M_1	0.340071343470199
 ```
 
-### TSS Coverage (TSSC)
+#### TSS Coverage (TSSC)
 ```average_coverage.txt``` has four columns specifying the chromosome, start coordinate, end coordinate, and cfDNA fragment coverage value for each TSS surrounding regions. 
 ```r
 chr	start	end	coverage
@@ -478,7 +496,7 @@ zstandard                      0.19.0
 
 ### R:
 ```r
-R                              4.3.0
+R                              4.2.3
 
 DescTools                      0.99.40
 zoo                            1.8.12
@@ -493,7 +511,7 @@ optparse                       1.7.4
 httr                           1.4.7
 tidyverse                      2.0.0
 RCurl                          1.98-1.14
-BiocManager                    3.18.1
+BiocManager                    3.16
 HMMcopy                        1.44.0
 GenomeInfoDb                   1.38.8
 GenomicRanges                  1.54.1
@@ -505,3 +523,5 @@ BSgenome.Hsapiens.UCSC.hg38    1.4.5
 ```
 ## Contact
 Yumei Li: ymli12@suda.edu.cn
+Junpeng Zhou: jpzhouzzz@stu.suda.edu.cn
+Keyao Zhu: 2130408024@stu.suda.edu.cn
