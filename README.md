@@ -120,7 +120,7 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
   -l  DIR       Directory containing a list of files with each file for a set of sites.
                 The file must have at least two columns with the following column names: 
                 "Chrom" for the chromosome name and "position" for the site positions. 
-                If not provided, the 377 TF binding site lists from the referenced Nucleosome Profile paper will be used (xxx). 
+                If not provided, the 377 TF binding site lists from the referenced Nucleosome Profile paper will be used . 
 
 -- Options for Promoter Fragmentation Entropy (PFE)
   -T  FILE      A TAB-delimited TSS sites gene information file without any header.
