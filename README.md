@@ -524,4 +524,4 @@ BSgenome.Hsapiens.UCSC.hg38    1.4.5
 ## Contact
 Yumei Li: ymli12@suda.edu.cn <br>
 Junpeng Zhou: jpzhouzzz@stu.suda.edu.cn <br>
-Keyao Zhu: 2130408024@stu.suda.edu.cn <br>
+Keyao Zhu: kyzhu@stu.suda.edu.cn <br>
