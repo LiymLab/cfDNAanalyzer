@@ -98,11 +98,11 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
 -- Options specific for Copy Number Alterations (CNA)
   -B  INT       Bin size in kilobases (10, 50, 500, or 1000). Default: [1000]
   --CNA  STR    Additional parameter setting for software ichorCNA. 
-                The full parameter list is available by running `Rscript cfDNAanalyzer/ichorCNA/ichorCNA/scripts/runIchorCNA.R --help`. [optional]
+                The full parameter list is available by running Rscript cfDNAanalyzer/ichorCNA/ichorCNA/scripts/runIchorCNA.R --help. [optional]
 
 -- Options specific for Nucleosome Occupancy and Fuzziness (NOF)
   --NOF  STR    Additional parameter setting for software DANPOS2. 
-                The full parameter list is available by running `python cfDNAanalyzer/DANPOS3/danpos.py dpos -h`. [optional]
+                The full parameter list is available by running python cfDNAanalyzer/DANPOS3/danpos.py dpos -h. [optional]
 
 -- Options specific for Windowed Protection Score (WPS)
   -x  INT       Min fragment length used for long fragments WPS calculation. Default: [120]
@@ -128,7 +128,7 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
                 (4) Category (e.g., WGS), (5) gene transcript strand (+1/-1) and (6) a column for TSS ID (e.g., for genes with multiple TSS, this should be geneID_1, geneID_2, etc.)
                 If not provided, 20139 genes in TSS sites from the referenced Promoter Fragmentation Entropy paper will be used.
   --PFE  STR    Addtional parameter setting for PFE analysis. 
-                The full parameter list is available by running `Rscript cfDNAanalyzer/Epic-seq/code/runEPIC.R -h`.[optional]
+                The full parameter list is available by running Rscript cfDNAanalyzer/Epic-seq/code/runEPIC.R -h.[optional]
 
 -- Options for TSS Coverage (TSSC)
   -u  INT                    Number of base pairs upstream of TSS used for calculating TSSC. Default: [1000]
