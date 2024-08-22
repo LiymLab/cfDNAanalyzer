@@ -139,9 +139,9 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
 ```
                         
 ### Run the usage example
-You can directly run cfDNAanalyzer by ```cfDNAanalyzer.sh``` provided in the ```cfDNAanalyzer/``` directory with the example files in ```cfDNAanalyzer/example/input```. You can download the reference fasta file ```hg38.fa``` from UCSC and save it in the directory ```cfDNAanalyzer/example/input```. 
+You can directly run cfDNAanalyzer by ```cfDNAanalyzer.sh``` provided in the ```cfDNAanalyzer/``` directory with the example files in ```cfDNAanalyzer/example/input```. You can download the reference fasta file ```hg19.fa``` from UCSC and save it in the directory ```cfDNAanalyzer/example/input```. 
 ```ruby
-bash cfDNAanalyzer.sh -I ./example/input/bam_input.txt -o ./output/ -F CNA,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -g hg19 -b ./example/input/test.bed -f ./example/input/hg38.fa > ./cfDNAanalyzer.log
+bash cfDNAanalyzer.sh -I ./example/input/bam_input.txt -o ./output/ -F CNA,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -g hg19 -b ./example/input/test.bed -f ./example/input/hg19.fa > ./cfDNAanalyzer.log
 ``` 
 
 ## Output files
