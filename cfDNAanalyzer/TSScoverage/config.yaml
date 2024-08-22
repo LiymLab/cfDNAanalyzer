@@ -1,0 +1,2 @@
+program:
+  ucsc_bigwig: ./wigToBigWig

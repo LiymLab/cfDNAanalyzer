@@ -1,0 +1,60 @@
+#!/bin/bash
+
+##
+## Author : Ahfyth
+## Contact: sunkun@cuhk.edu.hk
+## Date   : Jan 18, 2019
+##
+## This program is designed to analyze the plasma DNA fragmentation pattern in tissue-specific
+## open chromatin regions for infering the tissue origin of cfDNA, which information could be
+## valuable in predicting the tumor origin after a positive cancer testing
+##
+## Note: this program only works for Paired-end sequencing data
+## OCF: Orientation-aware CfDNA Fragmentation
+##
+## Please cite the following paper if you use this program in your work:
+## Sun et al. Orientation-aware plasma cell-free DNA fragmentation analysis in open chromatin
+## regions informs tissue of origin. Genome Res 2019.
+##
+## Revise by Yumei Li @ 11/15/2022 for any regions
+
+set -o nounset
+set -o errexit
+
+if [ $1 == "-h" ];then
+	echo "Please set four parameters: inputRegion.bed4 data.list prefixForOutput outDir"
+	exit 2
+fi
+
+prg=`dirname $0`
+inputRegion=$1
+dataList=$2
+code=$3
+outDir=$4
+
+while read sid extra
+do
+	echo Processing: $sid
+
+	if [ ${sid:0:1} == "#" ]
+	then
+		continue
+	fi
+
+	for bed in `ls $sid.*bed`	## this allows $sid.srt.bed and multiple lanes like $sid.lane1.bed, $sid.lane2.bed
+	do
+		#$prg/bedtools intersect -a $prg/all.OC.bed -b $bed -wo -sorted
+		$prg/bedtools intersect -a $inputRegion -b $bed -wo -sorted
+	done >$outDir/$code.ol.$sid
+
+	#perl $prg/sync.pl     $code.ol.$sid $sid.vs.$code &
+	perl $prg/sync.end_custom.pl $outDir/$code.ol.$sid $outDir/$sid.vs.$code 
+	#R --slave --args $sid $sid <$prg/plot.sync.end.R
+
+	ls $outDir/$sid.vs.${code}*.sync.end | while read file;do
+		perl $prg/quant.pl $file >>$outDir/${code}.${sid}.OCF
+	done;
+	rm $outDir/$sid.vs.${code}*.sync.end
+done < $dataList
+
+
