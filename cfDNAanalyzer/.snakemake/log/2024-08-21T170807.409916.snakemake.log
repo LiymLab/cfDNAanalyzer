@@ -1,3 +1,0 @@
-WorkflowError in line 16 of /home/zjp/projects/cfDNAanalyzer/Griffin/snakemakes/griffin_nucleosome_profiling/griffin_nucleosome_profiling_pair_bwa_hg19.snakefile:
-Config file /home/zjp/projects/cfDNAanalyzer/Griffin/snakemakes/griffin_nucleosome_profiling/config/samples.GC_pair_bwa_hg19.yaml not found.
-  File "/home/zjp/projects/cfDNAanalyzer/Griffin/snakemakes/griffin_nucleosome_profiling/griffin_nucleosome_profiling_pair_bwa_hg19.snakefile", line 16, in <module>
