@@ -1,0 +1,55 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	GC_bias
+	1	GC_counts
+	1	all
+	1	make_samples_yaml
+	4
+
+[Tue Jun  4 11:56:03 2024]
+rule GC_counts:
+    input: /home/zjp/projects/202312_cfDNA_integrated_tools/input/NCBI_pair/pair_bwa_hg19.bam
+    output: results/GC_counts/sample_name_1.GC_counts.txt
+    jobid: 1
+    wildcards: out_dir=results, samples=sample_name_1
+
+Write-protecting output file results/GC_counts/sample_name_1.GC_counts.txt.
+[Tue Jun  4 12:10:41 2024]
+Finished job 1.
+1 of 4 steps (25%) done
+
+[Tue Jun  4 12:10:41 2024]
+rule GC_bias:
+    input: results/GC_counts/sample_name_1.GC_counts.txt
+    output: results/GC_bias/sample_name_1.GC_bias.txt, results/GC_plots/sample_name_1.GC_bias.summary.pdf
+    jobid: 2
+    wildcards: out_dir=results, samples=sample_name_1
+
+[Tue Jun  4 12:14:42 2024]
+Finished job 2.
+2 of 4 steps (50%) done
+
+[Tue Jun  4 12:14:42 2024]
+rule make_samples_yaml:
+    input: results/GC_bias/sample_name_1.GC_bias.txt
+    output: results/samples.GC.yaml
+    jobid: 3
+    wildcards: out_dir=results
+
+[Tue Jun  4 12:14:42 2024]
+Finished job 3.
+3 of 4 steps (75%) done
+
+[Tue Jun  4 12:14:42 2024]
+localrule all:
+    input: results/GC_counts/sample_name_1.GC_counts.txt, results/GC_bias/sample_name_1.GC_bias.txt, results/GC_plots/sample_name_1.GC_bias.summary.pdf, results/samples.GC.yaml
+    jobid: 0
+
+[Tue Jun  4 12:14:42 2024]
+Finished job 0.
+4 of 4 steps (100%) done
+Complete log: /home/zjp/projects/202312_cfDNA_integrated_tools/Griffin/snakemakes/griffin_GC_and_mappability_correction/.snakemake/log/2024-06-04T115603.471305.snakemake.log

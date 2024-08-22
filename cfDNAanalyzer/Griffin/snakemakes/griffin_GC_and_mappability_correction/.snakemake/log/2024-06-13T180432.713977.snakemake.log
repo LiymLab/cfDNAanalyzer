@@ -1,0 +1,5 @@
+Building DAG of jobs...
+File path /home/zjp/projects/202312_cfDNA_integrated_tools//home/zjp/projects/202312_cfDNA_integrated_tools/input/NCBI_pair/sorted_pair_bwa_hg38.bam/NCBI_pair/pair_bwa_hg19.bam contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/zjp/projects/202312_cfDNA_integrated_tools//home/zjp/projects/202312_cfDNA_integrated_tools/input/NCBI_pair/sorted_pair_bwa_hg38.bam/NCBI_pair/pair_bwa_hg19.bam contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+Nothing to be done.
+Complete log: /home/zjp/projects/202312_cfDNA_integrated_tools/Griffin/snakemakes/griffin_GC_and_mappability_correction/.snakemake/log/2024-06-13T180432.713977.snakemake.log
