@@ -9,7 +9,6 @@
 
 options(repos = c(CRAN = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 
-
 if (!requireNamespace("remotes", quietly = TRUE)) {
     install.packages("remotes")
 }
@@ -39,16 +38,25 @@ if (!requireNamespace("BiocManager", quietly = TRUE)) {
     install.packages("BiocManager")
 }
 
-BiocManager::install(version = "3.18")
+BiocManager::install()
 
-# Bioconductor packages list
-bioconductor_packages <- c("HMMcopy", "GenomeInfoDb", "GenomicRanges", 
-                           "Rsamtools", "GenomicAlignments", "biovizBase", 
-                           "BSgenome.Hsapiens.UCSC.hg19","BSgenome.Hsapiens.UCSC.hg38")
-BiocManager::install(bioconductor_packages)
+bioconductor_packages_versions <- list(
+  "HMMcopy" = "1.44.0",
+  "GenomeInfoDb" = "1.38.8",
+  "GenomicRanges" = "1.54.1",
+  "Rsamtools" = "2.18.0",
+  "GenomicAlignments" = "1.38.2",
+  "biovizBase" = "1.50.0",
+  "BSgenome.Hsapiens.UCSC.hg19" = "1.4.3",
+  "BSgenome.Hsapiens.UCSC.hg38" = "1.4.5"
+)
+
+for (pkg in names(bioconductor_packages_versions)) {
+  BiocManager::install(pkg, version = bioconductor_packages_versions[[pkg]], force = TRUE)
+}
 
 installed <- rownames(installed.packages())
-missing_packages <- setdiff(c(names(cran_packages_versions), bioconductor_packages), installed)
+missing_packages <- setdiff(c(names(cran_packages_versions), names(bioconductor_packages_versions)), installed)
 
 if (length(missing_packages) > 0) {
   cat("The following packages were not successfully installed:", paste(missing_packages, collapse = ", "), "\n")
