@@ -100,11 +100,11 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
 -- Options specific for Copy Number Alterations (CNA)
   -B  INT       Bin size in kilobases (10, 50, 500, or 1000). Default: [1000]
   --CNA  STR    Additional parameter setting for software ichorCNA. 
-                The full parameter list is available by running Rscript cfDNAanalyzer/ichorCNA/ichorCNA/scripts/runIchorCNA.R --help. [optional]
+                The full parameter list is available by running: Rscript cfDNAanalyzer/ichorCNA/ichorCNA/scripts/runIchorCNA.R --help. [optional]
 
 -- Options specific for Nucleosome Occupancy and Fuzziness (NOF)
   --NOF  STR    Additional parameter setting for software DANPOS3 dpos. 
-                The full parameter list is available by running python cfDNAanalyzer/DANPOS3/danpos.py dpos -h. [optional]
+                The full parameter list is available by running: python cfDNAanalyzer/DANPOS3/danpos.py dpos -h. [optional]
 
 -- Options specific for Windowed Protection Score (WPS)
   -x  INT       Min fragment length used for long fragments WPS calculation. Default: [120]
