@@ -33,7 +33,7 @@ cfDNAanalyzer (<ins>c</ins>ell-<ins>f</ins>ree <ins>DNA</ins> sequencing data <i
 
 ## Description
 ### Environment requirement and installation
-Please ensure [<ins>samtools (v1.3.1)</ins>](https://github.com/samtools/samtools), [<ins>bedtools (v2.29.2)</ins>](https://bedtools.readthedocs.io/en/latest/index.html), and [<ins>deeptools (3.5.1)</ins>](https://github.com/deeptools/deepTools) are in your environment. Then, you can install the toolkit following the steps below ( R(4.3.0) is required ):
+Please ensure [<ins>samtools (v1.3.1)</ins>](https://github.com/samtools/samtools), [<ins>bedtools (v2.29.2)</ins>](https://bedtools.readthedocs.io/en/latest/index.html), and [<ins>deeptools (3.5.1)</ins>](https://github.com/deeptools/deepTools) are in your environment. Then, you can install the toolkit following the steps below ( R(>= 4.2.0) is required ):
 ```ruby
 git clone https://github.com/LiymLab/cfDNAanalyzer.git
 cd cfDNAanalyzer/
@@ -90,10 +90,12 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
   -F  STR       Features to extract, including CNA, NOF, WPS, EM, EMR, FP, FPR, NP, OCF, PFE, and TSSC. 
                 Features should be set as a string separated by comma, e.g., CNA,NOF. 
                 Default: All available features will be extracted.
-                Note: The following features are specifically designed for paired-end sequencing data: FP, FPR, NP, PFE, and OCF.
+                Note: The following features are specifically designed for paired-end sequencing data: FP, FPR, EM, EMR, NP, PFE, and OCF.
   -g  STR       Genome version of input BAM files (hg19/hg38). Default: [hg38] 
   -b  FILE      A BED3 file specifying the regions to extract features.
-                The file should contain three TAB-delimited columns: chromosome start end.              
+                The file should contain three TAB-delimited columns: chromosome start end.
+  -s STR        Sequencing method of input BAM files (single/pair). Default: [pair]
+  -t  INT       Number of threads to use as possible.              
 
 -- Options specific for Copy Number Alterations (CNA)
   -B  INT       Bin size in kilobases (10, 50, 500, or 1000). Default: [1000]
@@ -101,7 +103,7 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
                 The full parameter list is available by running Rscript cfDNAanalyzer/ichorCNA/ichorCNA/scripts/runIchorCNA.R --help. [optional]
 
 -- Options specific for Nucleosome Occupancy and Fuzziness (NOF)
-  --NOF  STR    Additional parameter setting for software DANPOS2. 
+  --NOF  STR    Additional parameter setting for software DANPOS3 dpos. 
                 The full parameter list is available by running python cfDNAanalyzer/DANPOS3/danpos.py dpos -h. [optional]
 
 -- Options specific for Windowed Protection Score (WPS)
@@ -120,34 +122,35 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
   -l  DIR       Directory containing a list of files with each file for a set of sites.
                 The file must have at least two columns with the following column names: 
                 "Chrom" for the chromosome name and "position" for the site positions. 
-                If not provided, the 377 TF binding site lists from the referenced Nucleosome Profile paper will be used . 
+                If not provided, the 377 TF binding site lists (cfDNAanalyzer/Griffin/Ref/sites) from the referenced Nucleosome Profile paper will be used . 
 
 -- Options for Promoter Fragmentation Entropy (PFE)
-  -T  FILE      A TAB-delimited TSS sites gene information file without any header.
-                The file must have six columns: (1) chromosome, (2) 1-base TSS coordinate, (3) Hugo symbol of the gene corresponding to the TSS,
-                (4) Category (e.g., WGS), (5) gene transcript strand (+1/-1) and (6) a column for TSS ID (e.g., for genes with multiple TSS, this should be geneID_1, geneID_2, etc.)
-                If not provided, 20139 genes in TSS sites from the referenced Promoter Fragmentation Entropy paper will be used.
+  -T     FILE   A TAB-delimited TSS information file without any header.
+                The file must have six columns: (1) chromosome, (2) 1-base TSS coordinate, (3) gene name, (4) strand (+1/-1) and (5) TSS ID (e.g., for genes with multiple TSS, this should be geneName_1, geneName_2, etc.)
+                If not provided, 20139 TSSs (cfDNAanalyzer/Epic-seq/code/priordata/sample_hg19.txt) from the referenced Promoter Fragmentation Entropy paper will be used.
   --PFE  STR    Addtional parameter setting for PFE analysis. 
-                The full parameter list is available by running Rscript cfDNAanalyzer/Epic-seq/code/runEPIC.R -h.[optional]
+                The full parameter list is available by running: Rscript cfDNAanalyzer/Epic-seq/code/runEPIC.R -h.[optional]
 
 -- Options for TSS Coverage (TSSC)
   -u  INT                    Number of base pairs upstream of TSS used for calculating TSSC. Default: [1000]
   -d  INT                    Number of base pairs downstream of TSS used for calculating TSSC. Default: [1000]
   -S  FILE                   A BED6 file specifying the coordinates of TSSs used for calculating TSSC.  
-  --bamCoverage  STR         Additional parameter seting for the "bamCoverage" command of deeptools. [optional] 
-  --multiBigwigSummary  STR  Additional parameter seting for the "multiBigwigSummary" command of deeptools. [optional]
+  --bamCoverage  STR         Additional parameter seting for the "bamCoverage" command of deeptools.
+                             The full parameter list is available by running: bamCoverage -h. [optional] 
+  --multiBigwigSummary  STR  Additional parameter seting for the "multiBigwigSummary" command of deeptools.
+                             he full parameter list is available by running: multiBigwigSummary -h.[optional].
 ```
                         
 ### Run the usage example
-You can directly run cfDNAanalyzer by ```cfDNAanalyzer.sh``` provided in the ```cfDNAanalyzer/``` directory with the example files in ```cfDNAanalyzer/example/input```. You can download the reference fasta file ```hg19.fa``` from UCSC and save it in the directory ```cfDNAanalyzer/example/input```. 
+You can directly run cfDNAanalyzer by ```cfDNAanalyzer.sh``` provided in the ```cfDNAanalyzer/``` directory with the example files in ```cfDNAanalyzer/example/input```. You can download the example BAM files from Zenodo (DOI:xxx) and update their paths into ```cfDNAanalyzer/example/input/bam_input.txt```. You can download the reference fasta file ```hg19.fa``` from UCSC.
 ```ruby
-bash cfDNAanalyzer.sh -I ./example/input/bam_input.txt -o ./output/ -F CNA,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -g hg19 -b ./example/input/test.bed -f ./example/input/hg19.fa > ./cfDNAanalyzer.log
+bash cfDNAanalyzer.sh -I ./example/input/bam_input.txt -o ./example/output/ -F CNA,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -g hg19 -b ./example/input/test.bed -f <reference.fa> > ./cfDNAanalyzer.log
 ``` 
 
 ## Output files
 ### Features
 #### Copy Number Alterations (CNA)
-```CNA.txt``` has four columns specifying the chromosome, start coordinate, end coordinate, and the estimated copy number for each bin. 
+```CNA.txt``` has with four columns specifying the chromosome, start coordinate, end coordinate, and the estimated copy number for each bin. 
 ```r
 chr	start	end	sample.copy.number
 1	1000001	2000000	2
@@ -169,7 +172,7 @@ MDS     0.9747882739505999
 ```
 
 #### Fragmentation Profile of whole genome (FP)
-```Fragmentation_Profile.txt``` has six columns specifying the chromosome, start coordinate, end coordinate, number of short fragments, number of long fragments, and ratio of short to long fragments across the whole genome.
+```Fragmentation_Profile.txt``` has six columns specifying the chromosome, start coordinate, end coordinate, number of short fragments, number of long fragments, and ratio of short to long fragments across the whole genome with a window of 100kb.
 ```r
 seqnames	start	end	short	long	ratio
 chr1	700000	799999	1	3	0.333333333333333
@@ -242,27 +245,32 @@ chr1  366640  368640  0
 #### End Motif frequency and diversity for regions (EMR)
 Our toolkit outputs two types of EMR features at different levels:
 (1) Motif frequency and diversity for all input regions aggregated together.
-```all_motifs_frequency.txt```<br>
+```aggregated_motif_frequency.txt```<br>
 ```r
 Motif   Frequency
 CTAT    0.0030392622975323673
 ATAG    0.0030392622975323673
 TATT    0.0059179091631653994
 ```
-```all_motifs_mds.txt```<br>
+```aggregated_mds.txt```<br>
 ```r
 MDS     0.9747882739505999
 ```
 &nbsp;<br>
-(2) Motif frequency and diversity for each region separately. "index" refers to the line number of the region. 
-```region_<index>_motif_frequency_and_mds.txt```<br>
+(2) Motif frequency and diversity for each region separately.
+```region_motif_frequency.txt```<br>
 ```r
-MDS     0.9747882739505999
-
-Motif   Frequency
-CTAT    0.006259389083625438
-ATAG    0.006259389083625438
-TATT    0.009764646970455683
+ID      Motif   Frequency
+chr1:68092-70091        CTAT    0.006259389083625438
+chr1:68092-70091        ATAG    0.006259389083625438
+chr1:68092-70091        TATT    0.009764646970455683
+```
+```region_mds.txt```<br>
+```r
+ID	MDS
+chr1:68092-70091	0.9572211390862633
+chr1:138380-140379	0.9435961322663271
+chr1:366641-368640	0.9585725392779957
 ```
 
 #### Fragmentation Profile for regions (FPR)
