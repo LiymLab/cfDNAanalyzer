@@ -5,6 +5,7 @@ cfDNAanalyzer (<ins>c</ins>ell-<ins>f</ins>ree <ins>DNA</ins> sequencing data <i
 <summary><h2>Table of Contents</h2></summary>
 <li>
   <a href="#Description">Description</a>
+
   <ul>
     <li><a href="#Environment-requirement-and-installation">Environment requirement and installation</a></li>
     <li><a href="#Supported-features">Supported features</a></li>
@@ -15,6 +16,7 @@ cfDNAanalyzer (<ins>c</ins>ell-<ins>f</ins>ree <ins>DNA</ins> sequencing data <i
 </li>
 <li>
   <a href="#Output-files">Output files</a>
+
   <ul>
     <li><a href="#Features">Features</a></li>
     <li><a href="#Disease-detection-and-classification">Disease detection and classification</a></li>
@@ -77,33 +79,154 @@ Rscript install_R_packages.R
 
 ### Supported feature processing methods and machine learning models
 
+### 1. Preprocessing 
+
+#### 1.1 Missing value filter and format transformation
+* We initiate the preprocessing by loading configuration settings and sample labels to establish a structured approach. The configuration files are generated according to the specific features that users want to calculate.
+
+* We first convert all input files for each sample into the corresponding format as described below. After formatting, we concatenate the formatted CSV files for each sample by merging them column-wise. Finally, we clean the dataset by removing any columns that contain missing values, ensuring the data is ready for downstream analysis. 
+
+  ```shell
+  sample,label,column1,column2,column3,...,columnN
+  sample1,1,column11,column12,column13,...,column1N
+  sample2,0,column21,column22,column23,...,column2N
+  ...
+  sampleX,0,columnX1,columnX2,columnX3,...,columnXN
+  ```
+
+ > The formatted CSV file consists of rows representing different samples, where each row contains data for one sample. The first column holds the sample identifiers (e.g., `sample1`, `sample2`, ..., `sampleX`), followed by a label column that indicates the sample's classification (e.g., `1` for positive, `0` for negative). 
+ >
+ > After the label, columns `column1` to `columnN` contain feature data for each sample. Each feature column (e.g., `column1`, `column2`, ..., `columnN`) represents a specific region or ID corresponding to the sample in that row.
+
+#### 1.2 Variance filter
+
+* In the variance filtering step, we begin by assessing the features to identify those with variance **in the lowest 15%—this threshold can be adjusted according to the user's requirements (default set at 0.15)**. By eliminating these low-variance features, our aim is to retain only those that have variability in our analysis. This step is **optional**, enabling users to tailor their preprocessing to the specific needs of their dataset and analysis objectives. contribute subs
+
+#### 1.3 Z-score Standardization
+
+* We then perform **Z-score standardization** on each feature separately. This process transforms the data so that it has a mean of zero and a standard deviation of one. Standardizing the data in this way ensures that all features are on a comparable scale, which is important for many machine-learning techniques. Similar to the previous steps, this Z-score standardization is **optional**, providing users with the flexibility they need.
+
+### 2. Feature Selection
+
+Feature selection is an important step in data preprocessing. It involves removing irrelevant or redundant features based on importance rankings, which can help reduce model complexity and enhance the model's ability to make accurate predictions. Here we provide **four methods (filter, embedded, wrapper, and hybrid methods)** for feature selection ( [<ins>Pudjihartono *et al, Frontiers in Bioinformatics*, 2022</ins>](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9580915/)), as follows:
+
+#### 2.1 Filter Methods
+
+Filter methods apply statistical tests to assess and rank features for their relevance to the target variable, independent of the classification algorithm. These methods can be executed by computing the correlation between features and the target variable, subsequently eliminating features with low scores.
+
+| Methods                                           | Alias | Brief Introduction                                           | Source                                                      |
+| ------------------------------------------------- | ----- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Missing Value Ratio                               | MR    | The Missing Value Ratio method removes features with a high percentage of missing data, ensuring that only features with sufficient information content are retained for further analysis. | pandas                                                       |
+| Information Gain                                  | IG    | Information Gain measures the reduction in uncertainty of the target variable when a specific feature is known. Higher information gain indicates a more informative feature for predicting the target variable. | scikit-learn                                                 |
+| Chi-square Test                                   | CHI   | The Chi-square Test evaluates the independence between categorical features and the target variable. Features that show significant association with the target variable are selected based on their Chi-square statistics. | scikit-learn                                                 |
+| Fisher's Score                                    | FS    | Fisher’s Score ranks features according to their ability to distinguish between classes by comparing the mean differences across classes relative to their variances. | [scikit-feature](https://github.com/jundongl/scikit-feature/tree/master) |
+| FCBF Fast Correlation Filter                      | FCBF  | The FCBF method quickly identifies relevant features by analyzing their correlation with the target variable while removing redundant features that contribute little additional information. | [FCBF_module](https://github.com/SantiagoEG/FCBF_module)     |
+| Permutation Importance                            | PI    | Permutation Importance assesses the significance of each feature by measuring the drop in model performance when the feature’s values are randomly permuted. Features causing significant degradation in performance are deemed important. | scikit-learn                                                 |
+| Correlation Coefficient                           | CC    | Correlation Coefficient quantifies the linear relationship between features and the target variable. Features with higher correlation coefficients are considered more predictive and are selected for modeling. | pandas                                                       |
+| Low Variance Filter                               | LVF   | The Low Variance Filter eliminates features with minimal variability across samples, as such features are unlikely to be useful for distinguishing between classes. | scikit-learn                                                 |
+| Mean Absolute Difference                          | MAD   | Mean Absolute Difference evaluates the average difference in feature values between classes. Features with larger differences are prioritized for greater discriminatory power. | pandas                                                       |
+| Dispersion Ratio                                  | DR    | Dispersion Ratio assesses the spread or variability of a feature across samples. Features with distinct dispersion patterns across classes are selected as they are likely to contribute to better classification. | numpy                                                        |
+| Mutual Information                                | MI    | Mutual Information measures the amount of information a feature shares with the target variable. Features with higher mutual information values are more relevant for model inclusion. | scikit-learn                                                 |
+| Relief-based feature selection (four sub-methods) |       |                                                              | [scikit-rebate](https://epistasislab.github.io/scikit-rebate/using/) |
+| ReliefF                                           | RLF   | ReliefF identifies features that consistently differentiate between instances of different classes by considering the nearest neighbors of each instance. |                                                              |
+| SURF                                              | SURF  | The SURF variant extends ReliefF by considering all instances within a predefined distance, enhancing its ability to capture more relevant features. |                                                              |
+| MultiSURF                                         | MSURF | MultiSURF dynamically adjusts the neighborhood size during selection, allowing it to capture complex, multi-feature interactions. |                                                              |
+| TuRF                                              | TRF   | TuRF iteratively removes the least informative features, refining the feature set to focus on those with the highest discriminative power. |                                                              |
+#### 2.2 Embedded Methods
+
+Embedded methods incorporate feature selection directly into model training, allowing the learning algorithm to determine the most crucial features. Models such as Random Forest and LASSO regression effectively execute these methods, assigning importance to features throughout the learning phase.
+
+| Methods                  | Alias      | Brief Introduction                                           | Source       |
+| ------------------------ | ---------- | ------------------------------------------------------------ | ------------ |
+| Lasso                    | LASSO      | Lasso performs feature selection by applying L1 regularization, which encourages sparsity in the model by driving the coefficients of less important features to zero. | scikit-learn |
+| Ridge                    | RIDGE      | Ridge applies L2 regularization, which penalizes large coefficients, thereby reducing the impact of less important features while retaining all features in the model. | scikit-learn |
+| ElasticNet               | ELASTICNET | ElasticNet combines the strengths of both Lasso (L1 regularization) and Ridge (L2 regularization), allowing for balanced feature selection with both sparsity and regularization. | scikit-learn |
+| Random Forest Importance | RF         | Random Forest Importance ranks features based on their contribution to model accuracy. The method leverages the structure of decision trees to identify the most predictive features during the training process. | scikit-learn |
+
+#### 2.3 Wrapper Methods
+
+Wrapper methods choose features according to their impact on a selected classifier’s performance, systematically seeking the optimal subset of features. This is done by evaluating various feature combinations and identifying the subset that enhances the model’s performance, typically using techniques such as recursive feature elimination.
+
+| Methods                     | Alias | Brief Introduction                                                                                                                                                       | Source     |
+|----------------------------|-------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| Forward Feature Selection    | FFS   | Forward Feature Selection starts with an empty model, sequentially adding features that improve model performance until no further gain is achieved. This method builds the optimal feature set step by step. | mlxtend    |
+| Backward Feature Selection    | BFS   | Backward Feature Selection begins with all features included and iteratively removes the least significant ones. The process continues until the removal of further features results in performance degradation. | mlxtend    |
+| Exhaustive Feature Selection   | EFS   | Exhaustive Feature Selection evaluates all possible feature combinations, ensuring the identification of the best subset. Though computationally intensive, it provides the most thorough feature selection. | mlxtend    |
+| Recursive Feature Elimination   | RFE   | Recursive Feature Selection recursively eliminates the least important features, refining the model by retaining only those that contribute the most to prediction accuracy. | scikit-learn|
+| Boruta Algorithm            | BOR   | The Boruta Algorithm iteratively compares the importance of real features with shuffled versions, selecting all features that consistently prove to be more informative than random noise. | [boruta](https://www.jstatsoft.org/article/view/v036i11)     |
+
+#### 2.4 Hybrid Methods
+
+Hybrid approaches merge filter and wrapper (or embedded) methods to leverage their unique advantages. For instance, features are initially filtered using statistical tests, followed by a wrapper method that enhances the selection by examining interactions with the classifier.
+
+| Methods                  | Alias                            | Brief Introduction                                           |
+| ------------------------ | -------------------------------- | ------------------------------------------------------------ |
+| Filter & Wrapper Methods | Filter-Wrapper; Embedded-Wrapper | Hybrid methods combine the strengths of filter, embedded, and wrapper approaches. Initially, filter or embedded methods are used to reduce the feature set based on relevance, and then wrapper methods refine the selection to identify the optimal features for the model. |
+
+### 3. Single Modality Machine Learning
+
+In this section, we will use supervised machine learning to analyze the **individual features** of all samples. Our focus is on using the information from a single feature to detect disease. The classifiers we will be using in this analysis include **Random Forest, K-Nearest Neighbors, Gaussian Naive Bayes, Logistic Regression, Support Vector Machine, and eXtreme Gradient Boosting**. The goal of this approach is to assess how effective each classifier is in accurately identifying disease status based on individual features. Our methods are applicable to both **binary and multi-class classification** scenarios.
+
+### 4. Multiple Modality Machine Learning
+
+Then, we aim to use **multiple features** to improve disease detection and classification.various feature types, we seek to enhance classification accuracy and gain a better understanding of disease characteristics. Our methods include **Concatenation-based, Model-based, and Transformation-based methods** ([Reel *et al, Biotechnology Advances*, 2021](https://pubmed.ncbi.nlm.nih.gov/33794304/)), applicable to **binary and multi-class classification** tasks, to maximize model effectiveness across different scenarios. The methods can be introduced as follows:
+
+#### 4.1 Concatenation-based Methods
+
+Concatenation-based methods combine features from different sources by directly appending them into a single feature vector. This straightforward approach allows models to access all available data but relies heavily on the subsequent learning algorithm to handle the potentially high-dimensional space effectively.
+
+#### 4.2 Model-based Methods
+
+Model-based integration methods create multiple intermediate models for the different omics data and then build a final model from various intermediate models ([Reel *et al, Biotechnology Advances*, 2021](https://pubmed.ncbi.nlm.nih.gov/33794304/)). It boosts predictive accuracy by utilizing the strengths of individual models, enabling a deeper understanding of the interactions across different layers.
+
+| Methods         | Brief Introduction                                           | Reference                                                    |
+| --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| average_voting  | Average Voting combines predictions from multiple models by calculating the mean of their outputs. In multi-feature integration, this method can balance diverse feature impacts, reducing the effect of anomalies in individual features. |                                                              |
+| weighted_voting | Weighted Voting in ensemble learning assigns weights to individual model predictions based on their performance, using either their proportion of the total AUC or inversely to their error rates. This strategy prioritizes more reliable features when integrating multiple feature sets, enhancing overall prediction accuracy. |                                                              |
+| majority_voting | Majority Voting selects the most common outcome among various model predictions. It ensures robustness in multi-feature integration by reducing the influence of sporadically erroneous model outputs. |                                                              |
+| stack ensemble  | Stack Ensemble uses a meta-model to learn how to best combine the predictions of multiple base models. This method effectively integrates diverse feature-derived predictions to optimize final decision-making processes. | [<ins>Li *et al, Genome Med*, 2024</ins>](https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-023-01280-6) |
+
+#### 4.3 Transformation-based Methods
+
+Transformation-based integration methods transform each of the omics datasets firstly into graphs or kernel matrices and then combine all of them into one before constructing a model ([Reel *et al, Biotechnology Advances*, 2021](https://pubmed.ncbi.nlm.nih.gov/33794304/)). This approach supports the integration of varied data by standardizing how they are represented.
+
+| Category            | Methods                            | Brief Introduction                                           | Reference                                                    |
+| ------------------- | ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Dimension reduction | PCA                                | PCA reduces dimensionality by transforming features into a set of linearly uncorrelated components. It simplifies multi-feature integration by focusing on components that retain the most variance, thereby enhancing model efficiency and clarity. | [Subramanian *et al, Bioinform Biol Insights*, 2020](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7003173/) |
+| Kernel matrix       | Linear Kernel                      | The Linear Kernel measures direct linear relationships between features. It aids in multi-feature integration by emphasizing linear associations, making it suitable for linearly separable data. |                                                              |
+|                     | Polynomial Kernel                  | The Polynomial Kernel allows the capture of interactions between features at different degrees of complexity. It enhances multi-feature integration by providing a flexible framework to model nonlinear relationships in the data. |                                                              |
+|                     | Radial Basis Function (RBF) Kernel | The RBF Kernel maps features into a higher-dimensional space using a radial basis function, enabling effective classification of non-linearly separable datasets. This kernel is crucial for multi-feature integration as it can handle complex and non-linear interactions between features. |                                                              |
+|                     | Sigmoid Kernel                     | The Sigmoid Kernel projects data using a sigmoid function, similar to neural network activation functions. It supports multi-feature integration by transforming features into formats that highlight threshold-based classifications. |                                                              |
+| Network             | Similarity network fusion (SNF)    | SNF integrates multiple types of data by fusing similarity networks, reinforcing common structural features. It excels in multi-feature integration by constructing a holistic network view, revealing deep insights across combined datasets. | [Wang *et al, Nat Methods*, 2014](https://www.nature.com/articles/nmeth.2810) |
+
 ### Usage
 ```ruby
 bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options]
-``` 
+```
 #### Options: 
 ```
 -- General options
   -I  FILE      A text file containing all input BAM files with one BAM file per line. 
                 BAM files generated using both Bowtie2 and BWA are accepted.  
   -o  DIR       Output directory for all the results. Default: [./]
-  -F  STR       Features to extract, including CNA, NOF, WPS, EM, EMR, FP, FPR, NP, OCF, PFE, and TSSC. 
+  -F  STR       Features to extract, including CNA, NOF, WPS, EM, EMR, FP, FPR, NP, OCF, PFE, and TSSC.
                 Features should be set as a string separated by comma, e.g., CNA,NOF. 
                 Default: All available features will be extracted.
+                The detailed description of each feature can be accessed at https://github.com/LiymLab/cfDNAanalyzer. 
                 Note: The following features are specifically designed for paired-end sequencing data: FP, FPR, EM, EMR, NP, PFE, and OCF.
   -g  STR       Genome version of input BAM files (hg19/hg38). Default: [hg38] 
   -b  FILE      A BED3 file specifying the regions to extract features.
                 The file should contain three TAB-delimited columns: chromosome start end.
-  -s STR        Sequencing method of input BAM files (single/pair). Default: [pair]
-  -t  INT       Number of threads to use as possible.              
+  -s  STR       Sequencing method of input BAM files (single/pair). Default: [pair]
+  -t  INT       Number of threads to use. Default: [1]              
 
 -- Options specific for Copy Number Alterations (CNA)
-  -B  INT       Bin size in kilobases (10, 50, 500, or 1000). Default: [1000]
-  --CNA  STR    Additional parameter setting for software ichorCNA. 
+  -B     INT    Bin size in kilobases (10, 50, 500, or 1000). Default: [1000]
+  --CNA  STR    Additional parameter setting for CNA analysis. 
                 The full parameter list is available by running: Rscript cfDNAanalyzer/ichorCNA/ichorCNA/scripts/runIchorCNA.R --help. [optional]
 
 -- Options specific for Nucleosome Occupancy and Fuzziness (NOF)
-  --NOF  STR    Additional parameter setting for software DANPOS3 dpos. 
+  --NOF  STR    Additional parameter setting for NOF analysis. 
                 The full parameter list is available by running: python cfDNAanalyzer/DANPOS3/danpos.py dpos -h. [optional]
 
 -- Options specific for Windowed Protection Score (WPS)
@@ -122,30 +245,31 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
   -l  DIR       Directory containing a list of files with each file for a set of sites.
                 The file must have at least two columns with the following column names: 
                 "Chrom" for the chromosome name and "position" for the site positions. 
-                If not provided, the 377 TF binding site lists (cfDNAanalyzer/Griffin/Ref/sites) from the referenced Nucleosome Profile paper will be used . 
+                If not provided, the 377 TF binding site lists (cfDNAanalyzer/Griffin/Ref_hg19/sites or cfDNAanalyzer/Griffin/Ref_hg38/sites) from the original Nucleosome Profile paper will be used . 
 
 -- Options for Promoter Fragmentation Entropy (PFE)
   -T     FILE   A TAB-delimited TSS information file without any header.
-                The file must have six columns: (1) chromosome, (2) 1-base TSS coordinate, (3) gene name, (4) strand (+1/-1) and (5) TSS ID (e.g., for genes with multiple TSS, this should be geneName_1, geneName_2, etc.)
-                If not provided, 20139 TSSs (cfDNAanalyzer/Epic-seq/code/priordata/sample_hg19.txt) from the referenced Promoter Fragmentation Entropy paper will be used.
+                The file must have six columns: (1) chromosome, (2) 1-base TSS coordinate, (3) gene name, (4) strand (+1/-1) and (5) TSS ID (e.g., for genes with multiple TSS, this could be geneName_1, geneName_2, etc.)
+                If not provided, TSSs (cfDNAanalyzer/Epic-seq/code/priordata/sample_hg19.txt or cfDNAanalyzer/Epic-seq/code/priordata/sample_hg38.txt) from the original Promoter Fragmentation Entropy paper will be used.
   --PFE  STR    Addtional parameter setting for PFE analysis. 
                 The full parameter list is available by running: Rscript cfDNAanalyzer/Epic-seq/code/runEPIC.R -h.[optional]
 
 -- Options for TSS Coverage (TSSC)
-  -u  INT                    Number of base pairs upstream of TSS used for calculating TSSC. Default: [1000]
-  -d  INT                    Number of base pairs downstream of TSS used for calculating TSSC. Default: [1000]
-  -S  FILE                   A BED6 file specifying the coordinates of TSSs used for calculating TSSC.  
-  --bamCoverage  STR         Additional parameter seting for the "bamCoverage" command of deeptools.
+  -u                    INT  Number of base pairs upstream of TSS used for calculating TSSC. Default: [1000]
+  -d                    INT  Number of base pairs downstream of TSS used for calculating TSSC. Default: [1000]
+  -S                    FILE A BED6 file specifying the coordinates of TSSs used for calculating TSSC. 
+                        If not provided, all TSSs of refSeq genes  (cfDNAanalyzer/TSScoverage/TSS_hg19.bed or cfDNAanalyzer/TSScoverage/TSS_hg38.bed) will be used. 
+  --bamCoverage         STR  Additional parameter seting for the "bamCoverage" command of deeptools.
                              The full parameter list is available by running: bamCoverage -h. [optional] 
   --multiBigwigSummary  STR  Additional parameter seting for the "multiBigwigSummary" command of deeptools.
-                             he full parameter list is available by running: multiBigwigSummary -h.[optional].
+                             The full parameter list is available by running: multiBigwigSummary -h.[optional].
 ```
-                        
+
 ### Run the usage example
 You can directly run cfDNAanalyzer by ```cfDNAanalyzer.sh``` provided in the ```cfDNAanalyzer/``` directory with the example files in ```cfDNAanalyzer/example/input```. You can download the example BAM files from Zenodo (DOI:xxx) and update their paths into ```cfDNAanalyzer/example/input/bam_input.txt```. You can download the reference fasta file ```hg19.fa``` from UCSC.
 ```ruby
 bash cfDNAanalyzer.sh -I ./example/input/bam_input.txt -o ./example/output/ -F CNA,NOF,TSS,WPS,EM,FP,NP,PFE,OCF -g hg19 -b ./example/input/test.bed -f <reference.fa> > ./cfDNAanalyzer.log
-``` 
+```
 
 ## Output files
 ### Features
@@ -206,6 +330,7 @@ fixedStep chrom=chr1 start=1  step=10 span=10
 ```
 &nbsp;<br>
 ```pooled/<sampleID>.smooth.positions.xls``` store the fuzziness values of all identified nucleosomes in each processed BAM file. This file has six columns specifying the chromosome, start coordinate, end coordinate, summit position, occupancy value at the summit position, and fuzziness score for each nucleosome.
+
 ```r
 chr     start   end     smt_pos smt_value       fuzziness_score
 chr1    10011   10151   10081   24.0    56.2199218395978
@@ -303,8 +428,85 @@ chr1	366640	368640	0.79
 
 ### Disease detection and classification
 
+#### Feature Selection Results
+
+`[filename]_[method]_selectced.csv`  consists of rows representing different samples, where each row contains data for one sample. The first column holds the sample identifiers, followed by a label column that indicates the sample's classification. After the label, columns `column1` to `columnN` contain **selected** feature data for each sample.
+
+```shell
+Sample,label,chr16_27560234_27562235,chr5_150900709_150902710
+sample1,1,-0.5046462083397414,1.3816213426919597
+sample2,1,0.119404026538408,0.9470529008767274
+sample3,0,-0.5046462083397414,-0.2443601515770356
+```
+
+#### Two-class Classification Model
+
+**(1) Single modality machine learning result**
+
+`single_modality_results.csv` contains performance metrics for different classifiers and feature sets, detailing the classifier used, associated feature file, and various performance metrics such as accuracy, precision, recall, F1 score, AUC, and average score.
+
+```r
+Classifier,File,accuracy,precision,recall,f1,auc,average
+KNN,feature1.csv,0.49,0.47619047619047616,0.40816326530612246,0.43956043956043955,0.4489795918367347,0.4525787545787545
+SVM,feature4.csv,0.59,0.58,0.5918367346938775,0.5858585858585857,0.5118047218887555,0.5719000084882437
+SVM,feature3.csv,0.24,0.23529411764705882,0.24489795918367346,0.24,0.765906362545018,0.34521968787515006
+GaussianNB,feature2.csv,0.42,0.4,0.3673469387755102,0.3829787234042553,0.3569427771108443,0.38545368785812195
+```
+`single_modality_roc_curves.png` compares the performance of different classifiers applied to various feature sets based on their AUC (Area Under the Curve) values. Each line represents the ROC curve for a specific classifier-feature combination.
+
+<img src="/Users/zkey/Library/Application Support/typora-user-images/image-20240926160123749.png" alt="image-20240926160123749" style="zoom:50%;" />
+
+**(2) Multiple modality machine learning result (per method)**
+
+`[Method]_based_classification_results.csv` contains performance metrics for specific method parameters combinations. The metrics include accuracy, precision, recall, F1 score, AUC, computation time, and memory usage (peak memory).
+
+```r
+Classifier,Accuracy,Precision,Recall,F1,AUC,Time_Taken,Memory_Usage_MB
+KNN,0.4,0.3877551020408163,0.3877551020408163,0.3877551020408163,0.37775110044017607,0.07472038269042969,0.270047
+SVM,0.53,0.5227272727272727,0.46938775510204084,0.49462365591397844,0.5480192076830731,0.10915851593017578,0.263
+```
+
+`[Method]_based_roc_curves.png` compares the performance of different classifiers applied to the whole dataset based on their AUC (Area Under the Curve) values. Each line represents the ROC curve for a specific method combination.
+
+<img src="/Users/zkey/Library/Application Support/typora-user-images/image-20240926161026506.png" alt="image-20240926161026506" style="zoom: 67%;" />
+
+#### Multi-class Classification Model
+
+**(1) Single modality machine learning result**
+
+`single_modality_results.csv` contains performance metrics for different classifiers and feature sets, detailing the classifier used, associated feature file, and various performance metrics such as accuracy, precision_macro, recall_macro, f1_macro, weighted_auc, per_class_accuracy, computation time, and memory usage (peak memory).
+
+```r
+Classifier,File,accuracy,precision_macro,recall_macro,f1_macro,precision_micro,recall_micro,f1_micro,per_class_accuracy,Time_Taken,Memory_Usage_MB
+RandomForest,feature1.csv,0.23,0.1964573268921095,0.20023148148148145,0.19274220032840722,0.23,0.23,0.23,"{0: 0.25925925925925924, 1: 0.0, 2: 0.20833333333333334, 3: 0.3333333333333333}",31.92484450340271,0.534846
+GaussianNB,feature4.csv,0.23,0.2159722222222222,0.2122790404040404,0.21283431180691456,0.23,0.23,0.23,"{0: 0.2222222222222222, 1: 0.0625, 2: 0.2916666666666667, 3: 0.2727272727272727}",0.7156319618225098,0.140312
+LogisticRegression,feature3.csv,0.18,0.15425084175084175,0.15898569023569023,0.15506253006253007,0.18,0.18,0.18,"{0: 0.18518518518518517, 1: 0.0, 2: 0.20833333333333334, 3: 0.24242424242424243}",2.8905766010284424,0.683896
+KNN,feature2.csv,0.24,0.2187888198757764,0.22206439393939392,0.2186508695538028,0.24,0.24,0.24,"{0: 0.3333333333333333, 1: 0.0625, 2: 0.25, 3: 0.24242424242424243}",0.7432112693786621,0.110663
+```
+
+`[Model]_[FileName]_accuracy_bar_chart.png` compares the performance of different classifiers applied to various feature sets based on their overall accuracy and per-class accuracy. 
+
+![image-20240926180340886](/Users/zkey/Library/Application Support/typora-user-images/image-20240926180340886.png)
+
+**(2) Multiple modality machine learning result (per method)**
+
+`[Method]_based_classification_results.csv` contains performance metrics for specific method parameter combinations. The metrics include accuracy, precision_macro, recall_macro, f1_macro, weighted_auc, per_class_accuracy, computation time, and memory usage (peak memory).
+
+```r
+Classifier,Transformation_method,accuracy,precision_macro,recall_macro,f1_macro,weighted_auc,per_class_accuracy,Time_Taken,Memory_Usage_MB
+KNN,PCA,0.23,0.22678649852562896,0.22422138047138046,0.21779100529100529,,"{0: 0.37037037037037035, 1: 0.125, 2: 0.25, 3: 0.15151515151515152}",0.4012486934661865,0.694977
+KNN,linear,0.275,0.2547953333928944,0.25266992845117847,0.2462678256393272,,"{0: 0.42592592592592593, 1: 0.078125, 2: 0.21875, 3: 0.2878787878787879}",0.07927608489990234,2.15928
+KNN,poly,0.2725,0.2581991514807329,0.2559185606060606,0.2553815651501308,,"{0: 0.3333333333333333, 1: 0.15625, 2: 0.20833333333333334, 3: 0.32575757575757575}",0.061415910720825195,2.157609
+KNN,rbf,0.265,0.2442531360370235,0.2457517887205387,0.24320289369660486,,"{0: 0.35185185185185186, 1: 0.109375, 2: 0.21875, 3: 0.30303030303030304}",0.060224294662475586,2.157441
+KNN,sigmoid,0.27,0.24602678293691788,0.24860585016835016,0.24359078304814158,,"{0: 0.37037037037037035, 1: 0.0625, 2: 0.28125, 3: 0.2803030303030303}",0.06217336654663086,2.157601
+```
+
+`[Method]_accuracy_bar_chart.png ` compares the performance of different methods applied to the whole dataset based on their overall accuracy and per-class accuracy.
+
+![image-20240926181529615](/Users/zkey/Library/Application Support/typora-user-images/image-20240926181529615.png)
 
 ## Versions of packages in our environment
+
 ### Python:
 ```r
 python                         3.7.16
