@@ -276,7 +276,7 @@ bash cfDNAanalyzer.sh -I ./example/input/bam_input.txt -o ./example/output/ -F C
 #### Copy Number Alterations (CNA)
 ```CNA.txt``` has with four columns specifying the chromosome, start coordinate, end coordinate, and the estimated copy number for each bin. 
 ```r
-chr	start	end	sample.copy.number
+chr	start	end	test.copy.number
 1	1000001	2000000	2
 1	2000001	3000000	2
 1	4000001	5000000	2
