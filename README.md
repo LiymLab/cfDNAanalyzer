@@ -385,17 +385,17 @@ MDS     0.9747882739505999
 (2) Motif frequency and diversity for each region separately.
 ```region_motif_frequency.txt```<br>
 ```r
-ID      Motif   Frequency
-chr1:68092-70091        CTAT    0.006259389083625438
-chr1:68092-70091        ATAG    0.006259389083625438
-chr1:68092-70091        TATT    0.009764646970455683
+chr     start   end     Motif   Frequency
+chr1    16436   18437   AGCT    0.007201245620864149
+chr1    16436   18437   GCTC    0.008952899961074349
+chr1    16436   18437   CTCT    0.008174386920980926
 ```
 ```region_mds.txt```<br>
 ```r
-ID	MDS
-chr1:68092-70091	0.9572211390862633
-chr1:138380-140379	0.9435961322663271
-chr1:366641-368640	0.9585725392779957
+chr     start   end     MDS
+chr1    16436   18437   0.9394186865745507
+chr1    28370   30371   0.9564529250925959
+chr1    29365   31366   0.9649944209201429
 ```
 
 #### Fragmentation Profile for regions (FPR)
