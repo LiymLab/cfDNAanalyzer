@@ -50,7 +50,7 @@ Rscript install_R_packages.R
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2  <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM) ([<ins>Lee *et al, PNAS*, 2018</ins>](https://www.pnas.org/doi/abs/10.1073/pnas.1815031116))
 * End motifs are the terminal n-nucleotide sequence (4-mer end motif in this toolkit) at each 5′ fragment end of cfDNA molecules. End motif frequency refers to the frequency of all 256 4-mer end motifs.<br>
 * End motif diversity is the normalized Shannon entropy of the categorical distribution of all possible 4-mer end-motifs of all cfDNA fragments.
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3  <ins>F</ins>ragmentation <ins>P</ins>rofile (FP) ([<ins>Cristiano *et al, Nature*, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3  <ins>F</ins>ragmentation <ins>P</ins>rofile (FP) ([<ins>Cristiano *et al, Nature*, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6),[<ins>Cristiano *et al, Nature*, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
 * Fragmentation profile describes fragmentation patterns of cfDNA across the genome, which is the fraction of short cfDNA fragments (100–150 bp) to long cfDNA fragments (151–220 bp) for each 5Mb window across the genome.
 
 ### 2.  Features for specific regions: 
