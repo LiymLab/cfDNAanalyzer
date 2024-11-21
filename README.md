@@ -39,7 +39,7 @@ Please ensure [<ins>samtools (v1.3.1)</ins>](https://github.com/samtools/samtool
 ```ruby
 git clone https://github.com/LiymLab/cfDNAanalyzer.git
 cd cfDNAanalyzer/
-conda create -n cfDNAanalyzer --clone ./envs/cfDNAanalyzer
+conda env create -f environment.yml
 conda activate cfDNAanalyzer
 Rscript install_R_packages.R
 ```
