@@ -47,7 +47,7 @@ Rscript install_R_packages.R
 ### 1.  Features for whole genome:
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1  <ins>C</ins>opy <ins>N</ins>umber <ins>A</ins>lterations (CNA) ([<ins>Adalsteinsson *et al, Nat Commun*, 2017</ins>](https://www.nature.com/articles/s41467-017-00965-y))<br>
 * Copy number alterations comprise deletions or amplifications of a particular region of the genome, with a size as low as a few kilobases up to entire chromosomes. 
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2  <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM) ([<ins>Lee *et al, PNAS*, 2018</ins>](https://www.pnas.org/doi/abs/10.1073/pnas.1815031116); [<ins>Jiang *et al, Cancer Discov*, 2020</ins>](https://doi.org/10.1158/2159-8290.CD-19-0622))
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2  <ins>E</ins>nd <ins>M</ins>otif frequency and diversity (EM) ([<ins>Lee *et al, PNAS*, 2018</ins>](https://www.pnas.org/doi/abs/10.1073/pnas.1815031116) ; [<ins>Jiang *et al, Cancer Discov*, 2020</ins>](https://doi.org/10.1158/2159-8290.CD-19-0622))
 * End motifs are the terminal n-nucleotide sequence (4-mer end motif in this toolkit) at each 5′ fragment end of cfDNA molecules. End motif frequency refers to the frequency of all 256 4-mer end motifs.<br>
 * End motif diversity is the normalized Shannon entropy of the categorical distribution of all possible 4-mer end-motifs of all cfDNA fragments.
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3  <ins>F</ins>ragmentation <ins>P</ins>rofile (FP) ([<ins>Cristiano *et al, Nature*, 2019</ins>](https://doi.org/10.1038/s41586-019-1272-6))
