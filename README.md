@@ -298,7 +298,7 @@ MDS     0.9747882739505999
 #### Fragmentation Profile of whole genome (FP)
 ```Fragmentation_Profile.txt``` has six columns specifying the chromosome, start coordinate, end coordinate, number of short fragments, number of long fragments, and ratio of short to long fragments across the whole genome with a window of 100kb.
 ```r
-seqnames	start	end	short	long	ratio
+seqnames	start	end	short.corrected	long.corrected	ratio.corrected
 chr1	700000	799999	1	3	0.333333333333333
 chr1	800000	899999	5	5	1
 chr1	900000	999999	1	3	0.333333333333333
@@ -401,7 +401,7 @@ chr1    29365   31366   0.9649944209201429
 #### Fragmentation Profile for regions (FPR)
 ```Fragmentation_Profile_regions.txt``` has six columns specifying the chromosome, start coordinate, end coordinate, number of short fragments, number of long fragments, and ratio of short to long fragments for each input region.
 ```r
-seqnames	start	end	short	long	ratio
+seqnames	start	end	short.corrected	long.corrected	ratio.corrected
 chr1	738137	740137	1	3	0.333333333333333
 chr1	817043	819043	5	5	1
 chr1	865445	867445	1	3	0.333333333333333
@@ -411,7 +411,7 @@ chr1	865445	867445	1	3	0.333333333333333
 #### Promoter Fragmentation Entropy (PFE)
 ```PFE.txt``` has two columns specifying the TSS ID and PFE value for the 2kb surrounding TSS.
 ```r
-TSS_ID	PFE
+TSS_ID	intersected_PFE
 A1BG_1	0.341049657283462
 A1CF_1	0.34067802945418
 A2M_1	0.340071343470199
