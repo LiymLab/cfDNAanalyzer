@@ -205,7 +205,7 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
 ```
 #### Options: 
 ```
--- General options
+-- General options for feature extraction
   -I  FILE      A text file containing all input BAM files with one BAM file per line. 
                 BAM files generated using both Bowtie2 and BWA are accepted.  
   -o  DIR       Output directory for all the results. Default: [./]
