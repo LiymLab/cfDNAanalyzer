@@ -292,7 +292,7 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
   --hybridMethod1,hybridMethod2  STR    Subtype methods designated for method 1 and method 2 in the "--hybridType".
                                         Methods should be set as a string separated by space, e.g., BOR RFS.
                                         Default: All available subtype methods in method 1 and method 2 will be applied.
-  ----hybridFrac1,hybridFrac2    FLOAT  Fraction of features to retain for method 1 and method 2 in the "--hybridType". Default: [0.2]
+  --hybridFrac1,hybridFrac2    FLOAT  Fraction of features to retain for method 1 and method 2 in the "--hybridType". Default: [0.2]
   
 -- Options for machine learning
   --classNum          INT  Number of classification categories (2 or more). Default: [2]
