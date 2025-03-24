@@ -257,12 +257,52 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
 -- Options for TSS Coverage (TSSC)
   -u                    INT  Number of base pairs upstream of TSS used for calculating TSSC. Default: [1000]
   -d                    INT  Number of base pairs downstream of TSS used for calculating TSSC. Default: [1000]
-  -S                    FILE A BED6 file specifying the coordinates of TSSs used for calculating TSSC. 
-                        If not provided, all TSSs of refSeq genes  (cfDNAanalyzer/TSScoverage/TSS_hg19.bed or cfDNAanalyzer/TSScoverage/TSS_hg38.bed) will be used. 
+  -S                         FILE A BED6 file specifying the coordinates of TSSs used for calculating TSSC. 
+                             If not provided, all TSSs of refSeq genes  will be used.
+  -n                         Methods to normalize the number of reads per bin for the "bamCoverage" command of deeptools (RPKM,CPM,BPM,RPGC) . Default: [RPKM]
   --bamCoverage         STR  Additional parameter seting for the "bamCoverage" command of deeptools.
                              The full parameter list is available by running: bamCoverage -h. [optional] 
   --multiBigwigSummary  STR  Additional parameter seting for the "multiBigwigSummary" command of deeptools.
                              The full parameter list is available by running: multiBigwigSummary -h.[optional].
+                          
+
+-- Options for downstream analysis
+
+-- Options for preprocessing
+  --varFrac  FLOAT  Variance threshold as a proportion of the maximum variance. Features with variance below this threshold will be removed. Default: [0.15]
+
+-- Options for feature selection
+  --filterMethod                 STR    Filter methods employed for feature selection.
+                                        Methods should be set as a string separated by space, e.g., MR IG CHI. 
+                                        Default: All available filter methods will be applied.
+  --filterFrac                   FLOAT  Fraction of features to retain when employing the filter method. Default: [0.2]
+  --wrapperMethod                STR    Wrapper methods employed for feature selection.
+                                        Methods should be set as a string separated by space, e.g., BOR RFS. 
+                                        Default: All available wrapper methods will be applied.
+  --wrapperFrac                  FLOAT  Fraction of features to retain when employing the wrapper method. Default: [0.2]
+  --embeddedMethod               STR    Embedded methods employed for feature selection.
+                                        Methods should be set as a string separated by space, e.g., LASSO RIDGE. 
+                                        Default: All available embedded methods will be applied.
+  --embeddedFrac                 FLOAT  Fraction of features to retain when employing the embedded method. Default: [0.2]
+  --hybridType                   STR    Two methods used for hybrid method.
+                                        (filter wrapper, filter embedded). Default: [filter embedded]
+  --hybridMethod1,hybridMethod2  STR    Subtype methods designated for method 1 and method 2 in the "--hybridType".
+                                        Methods should be set as a string separated by space, e.g., BOR RFS.
+                                        Default: All available subtype methods in method 1 and method 2 will be applied.
+  ----hybridFrac1,hybridFrac2    FLOAT  Fraction of features to retain for method 1 and method 2 in the "--hybridType". Default: [0.2]
+  
+-- Options for machine learning
+  --classNum          INT  Number of classification categories (2 or more). Default: [2]
+  --cvSingle          STR  Cross-validation method applied in single modality, options include leave-one-out (LOO) or K-fold (KFold). Default: [LOO]
+  --nsplitSingle      INT  Number of folds designated for K-fold cross-validation in single modality. Default: [5]
+  --classifierSingle  STR  Classifiers employed in single modality.
+                           Classifiers should be set as a string separated by space, e.g., KNN XGB.
+                           Default: All available classifiers will be applied.
+  --cvMulti           STR  Cross-validation method applied in multiple modalities, options include leave-one-out (LOO) or K-fold (KFold). Default: [LOO]
+  --nsplitMulti       INT  Number of folds designated for K-fold cross-validation in multiple modalities. Default: [5]
+  --classifierMulti   STR  Classifiers employed in multiple modalities.
+                           Classifiers should be set as a string separated by space, e.g., KNN XGB.
+                           Default: All available classifiers will be applied.  
 ```
 
 ### Run the usage example
