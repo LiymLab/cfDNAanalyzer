@@ -161,7 +161,7 @@ Hybrid approaches merge filter with wrapper or embedded methods to leverage thei
 
 | Methods                  | Alias                            | Brief Introduction                                           |
 | ------------------------ | -------------------------------- | ------------------------------------------------------------ |
-| Filter, Wrapper or Filter, Embedded Methods | Filter Wrapper;Filter Embedded | Hybrid methods combine the strengths of filter, embedded, and wrapper approaches. Initially, filter or embedded methods are used to reduce the feature set based on relevance, and then wrapper methods refine the selection to identify the optimal features for the model. |
+| Filter, Wrapper or Filter, Embedded Methods | Filter Wrapper;Filter Embedded | Hybrid methods combine the strengths of filter, embedded, and wrapper approaches. Initially, filter methods are used to reduce the feature set based on relevance, and then wrapper or embedded methods refine the selection to identify the optimal features for the model. |
 
 ### 3. Single Modality Machine Learning
 
