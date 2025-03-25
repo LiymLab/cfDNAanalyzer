@@ -157,11 +157,11 @@ Wrapper methods choose features according to their impact on a selected classifi
 
 #### 2.4 Hybrid Methods
 
-Hybrid approaches merge filter and wrapper (or embedded) methods to leverage their unique advantages. For instance, features are initially filtered using statistical tests, followed by a wrapper method that enhances the selection by examining interactions with the classifier.
+Hybrid approaches merge filter with wrapper or embedded methods to leverage their unique advantages. For instance, features are initially filtered using statistical tests, followed by a wrapper method that enhances the selection by examining interactions with the classifier.
 
 | Methods                  | Alias                            | Brief Introduction                                           |
 | ------------------------ | -------------------------------- | ------------------------------------------------------------ |
-| Filter & Wrapper Methods | Filter-Wrapper; Embedded-Wrapper | Hybrid methods combine the strengths of filter, embedded, and wrapper approaches. Initially, filter or embedded methods are used to reduce the feature set based on relevance, and then wrapper methods refine the selection to identify the optimal features for the model. |
+| Filter, Wrapper or Filter, Embedded Methods | Filter Wrapper;Filter Embedded | Hybrid methods combine the strengths of filter, embedded, and wrapper approaches. Initially, filter or embedded methods are used to reduce the feature set based on relevance, and then wrapper methods refine the selection to identify the optimal features for the model. |
 
 ### 3. Single Modality Machine Learning
 
@@ -288,7 +288,7 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
                                         Default: All available embedded methods will be applied.
   --embeddedFrac                 FLOAT  Fraction of features to retain when employing the embedded method. Default: [0.2]
   --hybridType                   STR    Two methods used for hybrid method.
-                                        (filter wrapper, filter embedded). Default: [filter embedded]
+                                        (Filter Wrapper, Filter Embedded). Default: [Filter Embedded]
   --hybridMethod1,hybridMethod2  STR    Subtype methods designated for method 1 and method 2 in the "--hybridType".
                                         Methods should be set as a string separated by space, e.g., BOR RFS.
                                         Default: All available subtype methods in method 1 and method 2 will be applied.
