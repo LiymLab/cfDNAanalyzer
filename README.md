@@ -550,6 +550,7 @@ GaussianNB,file4.csv,0.42,0.4,0.3673469387755102,0.3829787234042553,0.3569427771
 ```
 `single_modality_roc_curves.pdf` compares the performance of different classifiers applied to various feature sets based on their AUC (Area Under the Curve) values. Each line represents the ROC curve for a specific classifier-feature combination.
 ![image](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/two_single_modality_roc_curves.jpg)
+[<img src="https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/two_single_modality_roc_curves.jpg" width="450">]
 #### Multiple Modalities
 ##### Concatenation based
 `concatenation_based_classification_results.csv` contains performance metrics for different classifiers used in concatenation based method. The metrics include accuracy, precision, recall, F1 score, AUC, computation time, and memory usage (peak memory).
@@ -563,6 +564,7 @@ SVM,0.53,0.5227272727272727,0.46938775510204084,0.49462365591397844,0.5480192076
 `concatenation_based_roc_curves.pdf` compares the performance of different classifiers used in concatenation based method based on their AUC (Area Under the Curve) values. Each line represents the ROC curve for a specific classifier.
 
 ![image](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/two_concatenation_based_roc_curves.jpg)
+[<img src="https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/two_concatenation_based_roc_curves.jpg" width="450">]
 
 ##### Model based
 `model_based_classification_results.csv` contains performance metrics for different model based methods (every model based method can only use one classifier). The metrics include accuracy, precision, recall, F1 score, AUC, computation time, and memory usage (peak memory).
