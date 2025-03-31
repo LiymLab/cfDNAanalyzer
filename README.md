@@ -171,7 +171,7 @@ In this section, we will use supervised machine learning to analyze the **indivi
 
 ### 4. Multiple modality machine learning model
 
-Then, we aim to use **multiple feature types** to improve the model performance. Our toolkit include **Concatenation-based, Model-based, and Transformation-based methods** ([Reel *et al, Biotechnology Advances*, 2021](https://pubmed.ncbi.nlm.nih.gov/33794304/)), applicable to **binary and multi-class classification** tasks, to maximize model effectiveness across different scenarios. 
+Then, we aim to use **multiple feature types** to improve the model performance. Our toolkit include **Concatenation-based, Model-based, and Transformation-based methods** ([Reel *et al, Biotechnol. Adv.*, 2021](https://www.sciencedirect.com/science/article/abs/pii/S0734975021000458?via%3Dihub/)), applicable to **binary and multi-class classification** tasks, to maximize model effectiveness across different scenarios. 
 
 #### 4.1 Concatenation-based methods
 
@@ -179,7 +179,7 @@ Concatenation-based methods combine features from different sources by directly 
 
 #### 4.2 Model-based methods
 
-Model-based integration methods create multiple intermediate models for the different omics data and then build a final model from various intermediate models ([Reel *et al, Biotechnology Advances*, 2021](https://pubmed.ncbi.nlm.nih.gov/33794304/)). It boosts predictive accuracy by utilizing the strengths of individual models, enabling a deeper understanding of the interactions across different layers.
+Model-based integration methods create multiple intermediate models for the different omics data and then build a final model from various intermediate models ([Reel *et al, Biotechnol. Adv.*, 2021](https://www.sciencedirect.com/science/article/abs/pii/S0734975021000458?via%3Dihub/)). It boosts predictive accuracy by utilizing the strengths of individual models, enabling a deeper understanding of the interactions across different layers.
 
 | Methods         | Brief Introduction                                           | Reference                                                    |
 | --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
