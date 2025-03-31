@@ -363,8 +363,9 @@ bash cfDNAanalyzer.sh -I ./example/input/bam_input.txt -o ./example/output/ -F C
             └── transformation_based_classification_results.pdf or [classifierMulti]_[Transformation_based_Method]_accuracy_bar_chart.pdf
 ```
 ### Features
+Output files under `Features` directory consists of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification.
 #### Copy Number Alterations (CNA)
-```CNA.csv``` consists of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification. Columns after the label contain the estimated copy number for each bin. Column name `[chr]_[chrStart]_[chrEnd]` of these columns specifies the chromosome, start coordinate and end coordinate for each bin.
+In ```CNA.csv```, columns after `label` contain the estimated copy number for each bin. Column name `[chr]_[chrStart]_[chrEnd]` of these columns specifies the chromosome, start coordinate and end coordinate for each bin.
 ```r
 sample,label,chr10_100000001_100100000,chr10_10000001_10100000,chr10_1000001_1100000,...
 sample1,1,2,2,2,...
@@ -374,7 +375,7 @@ sample4,0,3,3,3,...
 ```
 
 #### End Motif frequency and diversity of whole genome (EM)
-```EM_motifs_frequency.csv``` consists of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification. Columns after the label contain motif frequency for input BAM file across the whole genome. Column name `[Motifs]` of these columns specifies different end motifs.
+In ```EM_motifs_frequency.csv```, columns after `label` contain motif frequency for input BAM file across the whole genome. Column name `[Motifs]` of these columns specifies different end motifs.
 ```r
 sample,label,AAAA,AAAC,AAAG,...
 sample1,1,0.018236894002843927,0.006713449465985273,0.008389349825354902,...
@@ -382,7 +383,7 @@ sample2,1,0.017000827317117054,0.006374204623569929,0.008194779752533857,...
 sample3,0,0.01710512948689375,0.006104100121349162,0.008247394089259742,...
 sample4,0,0.017105455019315003,0.0060242744221732985,0.008044839655444735,...
 ```
-```EM_motifs_mds.csv``` consists of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification. Column `MDS` after the label contain motif frequency diversity scores for input BAM file across the whole genome.
+In ```EM_motifs_mds.csv```, column `MDS` after `label` contain motif frequency diversity scores for input BAM file across the whole genome.
 ```r
 sample,label,MDS
 sample1,1,0.9656993783146016
@@ -392,7 +393,7 @@ sample4,0,0.9749328602806467
 ```
 
 #### Fragmentation Profile of whole genome (FP)
-```Fragmentation_Profile.txt``` consists of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification. Columns after the label contain ratio of short to long fragments across the whole genome with a window of 100kb. Column name `[chr]_[chrStart]_[chrEnd]` of these columns specifies the chromosome, start coordinate and end coordinate for each window.
+In ```Fragmentation_Profile.txt```, columns after `label` contain ratio of short to long fragments across the whole genome with a window of 100kb. Column name `[chr]_[chrStart]_[chrEnd]` of these columns specifies the chromosome, start coordinate and end coordinate for each window.
 ```r
 sample,label,chr10_100000001_100100000,chr10_10000001_10100000,chr10_1000001_1100000,...
 sample1,1,0.418811500602882,0.423061870382213,0.4643819178586,...
@@ -402,7 +403,7 @@ sample4,0,1.093014538658,1.17698788772542,1.25233575408901,...
 ```
 
 #### Nucleosome Occupancy and Fuzziness (NOF)
-```NOF_meanfuziness.csv``` and ```NOF_occupancy.csv``` consist of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification. Columns after the label contain average fuzziness value (```NOF_meanfuziness.csv```) or occupany value (```NOF_occupancy.csv```) for each region. Column name `[chr]_[chrStart]_[chrEnd]` of these columns specifies the chromosome, start coordinate and end coordinate for each region.
+In ```NOF_meanfuziness.csv``` and ```NOF_occupancy.csv```, columns after `label` contain average fuzziness value (```NOF_meanfuziness.csv```) or occupany value (```NOF_occupancy.csv```) for each region. Column name `[chr]_[chrStart]_[chrEnd]` of these columns specifies the chromosome, start coordinate and end coordinate for each region.
 ```r
 sample,label,chr10_100026951_100028952,chr10_100154064_100156065,chr10_100173939_100175940,...
 sample1,1,5.10545,15.2444,13.1614,...
@@ -411,7 +412,7 @@ sample3,0,8.85557,15.4003,12.8956,...
 sample4,0,91.5162,132.746,135.676,...
 ```
 #### Nucleosome Profile (NP)
-```NP_amplitude.csv```, ```NP_central_coverage.csv``` and ```NP_mean_coverage.csv``` consist of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification. Columns after the label contain nucleosome peak amplitude (```NP_amplitude.csv```), central coverage (```NP_central_coverage.csv```), and the mean coverage (```NP_mean_coverage.csv```) for each site set in the input directory. Column name `[site].10000.txt` of these columns specifies different sites set.
+In ```NP_amplitude.csv```, ```NP_central_coverage.csv``` and ```NP_mean_coverage.csv```, columns after `label` contain nucleosome peak amplitude (```NP_amplitude.csv```), central coverage (```NP_central_coverage.csv```), and the mean coverage (```NP_mean_coverage.csv```) for each site set in the input directory. Column name `[site].10000.txt` of these columns specifies different sites set.
 ```r
 sample,label,AHR.10000.txt,AR.10000.txt,ARID3A.10000.txt,...
 sample1,1,0.98707,1.00713,0.97745,...
@@ -420,7 +421,7 @@ sample3,0,0.97693,1.00172,0.97278,...
 sample4,0,0.98448,1.01047,0.98699,...
 ```
 #### Windowed Protection Score (WPS)
-```WPS_long.csv``` and ```WPS_short.csv``` consist of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification. Columns after the label contain WPS for long fragments (```WPS_long.csv```), WPS for short fragments (```WPS_short.csv```) for each region. Column name `[chr]_[chrStart]_[chrEnd]` of these columns specifies the chromosome, start coordinate and end coordinate for each region.
+In ```WPS_long.csv``` and ```WPS_short.csv```, columns after `label` contain WPS for long fragments (```WPS_long.csv```), WPS for short fragments (```WPS_short.csv```) for each region. Column name `[chr]_[chrStart]_[chrEnd]` of these columns specifies the chromosome, start coordinate and end coordinate for each region.
 ```r
 sample,label,chr10_100026951_100028952,chr10_100154064_100156065,chr10_100173939_100175940,...
 sample1,1,-0.453047,-1.16434,-0.827173,...
@@ -430,7 +431,7 @@ sample4,0,-7.13536,-8.07143,-7.43057,...
 ```
 
 #### Orientation-aware CfDNA Fragmentation (OCF)
-```OCF.csv``` consists of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification. Columns after the label contain OCF values for each region. Column name `[chr]_[chrStart]_[chrEnd]` of these columns specifies the chromosome, start coordinate and end coordinate for each region.
+In ```OCF.csv```, columns after `label` contain OCF values for each region. Column name `[chr]_[chrStart]_[chrEnd]` of these columns specifies the chromosome, start coordinate and end coordinate for each region.
 ```r
 sample,label,chr10_100026951_100028952,chr10_100154064_100156065,chr10_100173939_100175940,...
 sample1,1,0,434.782608695652,0,...
@@ -441,8 +442,6 @@ sample4,0,0,-270.564042303173,52.9100529100527,...
 
 #### End Motif frequency and diversity for regions (EMR)
 Our toolkit outputs two types of EMR features at different levels:
-```EMR_aggregated_motif_frequency.csv```, ```EMR_aggregated_mds.csv```, ```EMR_region_motif_frequency.csv``` and ```EMR_region_mds.csv``` consist of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification.
-&nbsp;<br>
 (1) Motif frequency and diversity for all input regions aggregated together.
 ```EMR_aggregated_motif_frequency.csv```<br>
 ```r
@@ -454,11 +453,11 @@ sample4,0,0.012241659095563946,0.005127588398094708,0.006955051282185939,...
 ```
 ```EMR_aggregated_mds.csv```<br>
 ```r
-sample,label,MDS,...
-sample1,1,0.9656993783146016,...
-sample2,1,0.9676102549001604,...
-sample3,0,0.9699398580311792,...
-sample4,0,0.9749328602806467,...
+sample,label,MDS
+sample1,1,0.9656993783146016
+sample2,1,0.9676102549001604
+sample3,0,0.9699398580311792
+sample4,0,0.9749328602806467
 ```
 &nbsp;<br>
 (2) Motif frequency and diversity for each region separately.
@@ -480,7 +479,7 @@ sample4,0,0.937257,0.951996,0.954475,...
 ```
 
 #### Fragmentation Profile for regions (FPR)
-```FPR_fragmentation_profile_regions.csv``` consists of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification. Columns after the label contain ratio of short to long fragments for each input region. Column name `[chr]_[chrStart]_[chrEnd]` of these columns specifies the chromosome, start coordinate and end coordinate for each region.
+In ```FPR_fragmentation_profile_regions.csv```, columns after `label` contain ratio of short to long fragments for each input region. Column name `[chr]_[chrStart]_[chrEnd]` of these columns specifies the chromosome, start coordinate and end coordinate for each region.
 ```r
 sample,label,chr10_100026951_100028952,chr10_100154064_100156065,chr10_100190117_100192118,...
 sample1,1,0.622159430128502,0.205120478226236,0.255837665883836,...
@@ -491,7 +490,7 @@ sample4,0,1.25467384738066,0.769168897029371,0.870592227235521,...
 
 
 #### Promoter Fragmentation Entropy (PFE)
-```PFE.csv``` consists of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification. Columns after the label contain PFE value for the 2kb surrounding TSS. Column name `[TSS]` of these columns specifies different TSS gene ID.
+In ```PFE.csv```, columns after `label` contain PFE value for the 2kb surrounding TSS. Column name `[TSS]` of these columns specifies different TSS ID.
 ```r
 sample,label,A1BG_1,A1CF_1,A2ML1_1,...
 sample1,1,0.32419976285609,0.321489009591541,0.322693262670918,...
@@ -501,7 +500,7 @@ sample4,0,0.283555552446221,0.274671104972553,0.27558683027636,...
 ```
 
 #### TSS Coverage (TSSC)
-```TSSC_average_coverage.csv``` consists of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification. Columns after the label contain cfDNA fragment coverage value for each TSS surrounding regions. Column name `[chr]_[chrStart]_[chrEnd]` of these columns specifies the chromosome, start coordinate and end coordinate for each TSS surrounding regions.
+In ```TSSC_average_coverage.csv```, columns after `label` contain cfDNA fragment coverage value for each TSS surrounding regions. Column name `[chr]_[chrStart]_[chrEnd]` of these columns specifies the chromosome, start coordinate and end coordinate for each TSS surrounding regions.
 ```r
 sample,label,chr10_100026951_100028952,chr10_100154064_100156065,chr10_100173939_100175940,...
 sample1,1,0.4184664362135796,1.2892859019022593,0.9334820673085641,...
@@ -511,10 +510,11 @@ sample4,0,0.7481164091500803,1.01417140904693,1.0611052799677623,...
 ```
 
 ### Feature Processing and Selection
+Output files under `Feature_Processing_and_Selection/Feature_Processing` and `Feature_Processing_and_Selection/Feature_Selection` directory consists of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification.
 
 #### Feature Processing
 
-`std_filtered_[FeatureName].csv` consists of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification. Columns after the label contain **processed** feature data for each sample.
+In `std_filtered_[FeatureName].csv`, columns after `label` contain **processed** feature data for each sample.
 ```r
 Sample,label,chr16_27560234_27562235,chr5_150900709_150902710
 sample1,1,-0.5046462083397414,1.3816213426919597
@@ -524,7 +524,7 @@ sample3,0,-0.5046462083397414,-0.2443601515770356
 
 #### Feature Selection
 
-`std_filtered_[FeatureName]_[embeddedMethod]_selectd.csv`,`std_filtered_[FeatureName]_[filterMethod]_selectd.csv` and `std_filtered_[FeatureName]_[wrapperMethod]_selectd.csv` consist of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification. Columns after the label contain **selected** feature data for each sample.
+In`std_filtered_[FeatureName]_[embeddedMethod]_selectd.csv`,`std_filtered_[FeatureName]_[filterMethod]_selectd.csv` and `std_filtered_[FeatureName]_[wrapperMethod]_selectd.csv`, columns after `label` contain **selected** feature data for each sample.
 
 ```r
 Sample,label,chr16_27560234_27562235,chr5_150900709_150902710
@@ -599,7 +599,7 @@ XGB,PCA,0.94,0.9230769230769231,0.96,0.9411764705882353,0.8864,88.6492531299591,
 ### Multi-class Machine Learning
 
 #### Single modality
-`single_modality_results.csv` contains performance metrics for different classifiers and feature sets, detailing the classifier used, associated feature file, and various performance metrics such as accuracy, macro-precision, macro-recall, macro-f1, micro-precision, micro-recall, micro-f1, weighted auc, per class accuracy, computation time, and memory usage (peak memory).
+`single_modality_results.csv` contains performance metrics for different classifiers and feature sets, detailing the classifier used, associated feature file, and various performance metrics such as accuracy, macro-precision, macro-recall, macro-f1, micro-precision, micro-recall, micro-f1, weighted auc, per-class accuracy, computation time, and memory usage (peak memory).
 
 ```r
 Classifier,File,accuracy,precision_macro,recall_macro,f1_macro,precision_micro,recall_micro,f1_micro,per_class_accuracy,Time_Taken,Memory_Usage_MB
