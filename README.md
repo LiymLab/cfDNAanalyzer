@@ -441,8 +441,8 @@ sample4,0,0,-270.564042303173,52.9100529100527,...
 ```
 
 #### End Motif frequency and diversity for regions (EMR)
-Our toolkit outputs two types of EMR features at different levels:
-(1) Motif frequency and diversity for all input regions aggregated together.
+Our toolkit outputs two types of EMR features at different levels:<br>
+(1) Motif frequency and diversity for all input regions aggregated together.<br>
 ```EMR_aggregated_motif_frequency.csv```<br>
 ```r
 sample,label,AAAA,AAAC,AAAG,...
@@ -460,7 +460,7 @@ sample3,0,0.9699398580311792
 sample4,0,0.9749328602806467
 ```
 &nbsp;<br>
-(2) Motif frequency and diversity for each region separately.
+(2) Motif frequency and diversity for each region separately.<br>
 ```EMR_region_motif_frequency.csv```<br>
 ```r
 sample,label,chr10_100026951_100028952_AAAA,chr10_100026951_100028952_AAAC,chr10_100026951_100028952_AAAG,...
