@@ -550,7 +550,7 @@ GaussianNB,file4.csv,0.42,0.4,0.3673469387755102,0.3829787234042553,0.3569427771
 ```
 `single_modality_roc_curves.pdf` compares the performance of different classifiers applied to various feature sets based on their AUC (Area Under the Curve) values. Each line represents the ROC curve for a specific classifier-feature combination.
 
-![image](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/two_single_modality_roc_curves.pdf)
+![image](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/KNN_std_filtered_WPS_merged_BOR_selected.csv_accuracy_bar_chart.png)
 
 #### Multiple Modalities
 ##### Concatenation based
