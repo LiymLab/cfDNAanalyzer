@@ -549,7 +549,7 @@ SVM,file3.csv,0.24,0.23529411764705882,0.24489795918367346,0.24,0.76590636254501
 GaussianNB,file4.csv,0.42,0.4,0.3673469387755102,0.3829787234042553,0.3569427771108443,0.38545368785812195,0.7432112693786621,0.110663
 ```
 `single_modality_roc_curves.pdf` compares the performance of different classifiers applied to various feature sets based on their AUC (Area Under the Curve) values. Each line represents the ROC curve for a specific classifier-feature combination.
-<img src="https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/KNN_std_filtered_WPS_merged_BOR_selected.csv_accuracy_bar_chart.png" alt="GitHub Logo" width="450">
+![image](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/two_single_modality_roc_curves.jpg)
 #### Multiple Modalities
 ##### Concatenation based
 `concatenation_based_classification_results.csv` contains performance metrics for different classifiers used in concatenation based method. The metrics include accuracy, precision, recall, F1 score, AUC, computation time, and memory usage (peak memory).
