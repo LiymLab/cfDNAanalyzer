@@ -564,7 +564,7 @@ SVM,0.53,0.5227272727272727,0.46938775510204084,0.49462365591397844,0.5480192076
 
 `concatenation_based_roc_curves.pdf` compares the performance of different classifiers used in concatenation based method based on their AUC (Area Under the Curve) values. Each line represents the ROC curve for a specific classifier.
 
-<img src="/Users/zkey/Library/Application Support/typora-user-images/image-20240926161026506.png" alt="image-20240926161026506" style="zoom: 67%;" />
+![image](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/two_concatenation_based_roc_curves.jpg)
 
 ##### Model based
 `model_based_classification_results.csv` contains performance metrics for different model based methods (every model based method can only use one classifier). The metrics include accuracy, precision, recall, F1 score, AUC, computation time, and memory usage (peak memory).
@@ -579,7 +579,7 @@ stack_ensemble,1.0,1.0,0.96,0.9795918367346939,1.0,103.55750870704651,1.25
 
 `model_based_roc_curves.pdf` compares the performance of different different model based methods based on their AUC (Area Under the Curve) values. Each line represents the ROC curve for a specific model based method.
 
-<img src="/Users/zkey/Library/Application Support/typora-user-images/image-20240926161026506.png" alt="image-20240926161026506" style="zoom: 67%;" />
+![image](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/two_model_based_roc_curves.jpg)
 
 ##### Transformation based
 `transformation_based_classification_results.csv` contains performance metrics for different classifiers in different transformation based methods. The metrics include accuracy, precision, recall, F1 score, AUC, computation time, and memory usage (peak memory).
@@ -596,7 +596,7 @@ XGB,PCA,0.94,0.9230769230769231,0.96,0.9411764705882353,0.8864,88.6492531299591,
 
 `transformation_based_classification_results.pdf` compares the performance of different classifiers in different transformation based methods based on their AUC (Area Under the Curve) values. Each line represents the ROC curve for a specific classifier in one transformation based method.
 
-<img src="/Users/zkey/Library/Application Support/typora-user-images/image-20240926161026506.png" alt="image-20240926161026506" style="zoom: 67%;" />
+![image](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/two_transformation_based_classification_results.jpg)
 
 ### Multi-class Machine Learning
 
@@ -613,7 +613,7 @@ KNN,file4.csv,0.24,0.2187888198757764,0.22206439393939392,0.2186508695538028,0.2
 
 `[classifierSingle]_std_filtered_[featureName]_[filterMethod]/[wrapperMethod]/[embeddedFrac]_selected.csv_accuracy_bar_chart.pdf` compares the performance of different classifiers applied to various feature sets based on their overall accuracy and per-class accuracy. 
 
-![image-20240926180340886](/Users/zkey/Library/Application Support/typora-user-images/image-20240926180340886.png)
+![image](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/multi_%5BclassifierSingle%5D_std_filtered_%5BfeatureName%5D_%5BfilterMethod%5D_%5BwrapperMethod%5D_%5BembeddedFrac%5D_selected.csv_accuracy_bar_chart.jpg)
 
 #### Multiple modalities
 ##### Concatenation based
@@ -631,7 +631,7 @@ XGB,0.47368421052631576,0.5,0.3796296296296296,0.3466666666666667,0.473684210526
 
 `[classifierMulti]_accuracy_bar_chart.pdf ` compares the performance of different classifiers used in concatenation based method based on their overall accuracy and per-class accuracy.
 
-![image-20240926181529615](/Users/zkey/Library/Application Support/typora-user-images/image-20240926181529615.png)
+![image](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/multi_%5BclassifierMulti%5D_accuracy_bar_chart.jpg)
 
 ##### Model based
 `model_based_classification_results.csv` contains performance metrics for different model based methods (every model based method can only use one classifier). The metrics include accuracy, macro-precision, macro-recall, macro-f1, micro-precision, micro-recall, micro-f1, weighted auc, per-class accuracy, computation time, and memory usage (peak memory).
@@ -646,7 +646,7 @@ stack_ensemble,0.7894736842105263,0.8974358974358975,0.6944444444444445,0.709090
 
 `[Model_based_Method]_accuracy_bar_chart.pdf ` compares the performance of different model based methods based on their overall accuracy and per-class accuracy.
 
-![image-20240926181529615](/Users/zkey/Library/Application Support/typora-user-images/image-20240926181529615.png)
+![image](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/multi_%5BModel_based_Method%5D_accuracy_bar_chart.jpg)
 
 ##### Transformation based
 `transformation_based_classification_results.csv` contains performance metrics for different classifiers in different transformation based methods. The metrics include accuracy, macro-precision, macro-recall, macro-f1, micro-precision, micro-recall, micro-f1, weighted auc, per-class accuracy, computation time, and memory usage (peak memory).
@@ -663,7 +663,7 @@ XGB,PCA,0.8947368421052632,0.9111111111111111,0.8611111111111112,0.8792815371762
 
 `[classifierMulti]_[Transformation_based_Method]_accuracy_bar_chart.pdf ` compares the performance of different classifiers in different transformation based methods based on their overall accuracy and per-class accuracy.
 
-![image-20240926181529615](/Users/zkey/Library/Application Support/typora-user-images/image-20240926181529615.png)
+![image](https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/multi_%5BclassifierMulti%5D_%5BTransformation_based_Method%5D_accuracy_bar_chart.jpg)
 
 ## Versions of packages in our environment
 
