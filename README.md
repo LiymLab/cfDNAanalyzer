@@ -19,11 +19,11 @@ cfDNAanalyzer (<ins>c</ins>ell-<ins>f</ins>ree <ins>DNA</ins> sequencing data <i
   <a href="#Output-files">Output files</a>
 
   <ul>
-    <li><a href="#Structure of output directory">Structure of output directory</a></li>
+    <li><a href="#Structure-of-output-directory">Structure of output directory</a></li>
     <li><a href="#Features">Features</a></li>
-    <li><a href="#Feature Processing and Selection">Feature Processing and Selection</a></li>
-    <li><a href="#Two-class Machine Learning">Two-class Machine Learning</a></li>
-    <li><a href="#Multi-class Machine Learning">Multi-class Machine Learning</a></li>
+    <li><a href="#Feature-Processing-and-Selection">Feature Processing and Selection</a></li>
+    <li><a href="#Two-class-Machine-Learning">Two-class Machine Learning</a></li>
+    <li><a href="#Multi-class-Machine-Learning">Multi-class Machine Learning</a></li>
   </ul>
 </li>
 <li>
