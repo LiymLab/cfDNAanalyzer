@@ -86,9 +86,7 @@ Rscript install_R_packages.R
 ### 1. Feature processing 
 
 #### 1.1 Format transformation and missing value filter
-* We initiate the preprocessing by loading configuration settings and sample labels to establish a structured approach. The configuration files are generated according to the specific features that users want to calculate.
-
-* We first convert all input files for each sample into the corresponding format as described below. After formatting, we concatenate the formatted CSV files for each sample by merging them column-wise. Finally, we clean the dataset by removing any columns that contain missing values, ensuring the data is ready for downstream analysis. 
+* First, we clean the dataset by removing any columns that contain missing values, ensuring the data is ready for downstream analysis. 
 
   ```shell
   sample,label,column1,column2,column3,...,columnN
@@ -104,15 +102,15 @@ Rscript install_R_packages.R
 
 #### 1.2 Variance filter
 
-* In the variance filtering step, we begin by assessing the features to identify those with variance **lower than a variance threshold (0.15 as default)**. By eliminating these low-variance features, our aim is to retain only those that have variability in our analysis. This step is **optional**, enabling users to tailor their processing steps to the specific needs of their dataset and analysis objectives.
+* In the variance filtering step, we begin by assessing the features to identify those with variance **lower than a variance threshold (0.15 as default)**. By eliminating these low-variance features, our aim is to retain only those that have variability in our analysis.
 
 #### 1.3 Z-score standardization
 
-* We then perform **Z-score standardization** on each feature separately. This process transforms the data so that it has a mean of zero and a standard deviation of one. Standardizing the data in this way ensures that all features are on a comparable scale, which is important for many machine-learning techniques. Similar to the previous steps, this Z-score standardization is **optional**, providing users with the flexibility they need.
+* We then perform **Z-score standardization** on each feature separately. This process transforms the data so that it has a mean of zero and a standard deviation of one. Standardizing the data in this way ensures that all features are on a comparable scale, which is important for many machine-learning techniques.
 
 ### 2. Feature selection
 
-Feature selection is an important step in machine leanring. It involves removing irrelevant or redundant features based on importance rankings, which can help reduce model complexity and enhance the model's ability to make accurate predictions. Here we provide **four methods (filter, embedded, wrapper, and hybrid methods)** for feature selection ( [<ins>Pudjihartono *et al, Frontiers in Bioinformatics*, 2022</ins>](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9580915/)), as follows:
+Feature selection is an important step in machine leanring. It involves removing irrelevant or redundant features based on importance rankings, which can help reduce model complexity and enhance the model's ability to make accurate predictions. Here we provide **four methods (filter, embedded, wrapper, and hybrid methods)** for feature selection ( [<ins>Pudjihartono *et al, Front. Bioinform.*, 2022</ins>](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9580915/)), as follows:
 
 #### 2.1 Filter methods
 
@@ -130,7 +128,7 @@ Filter methods apply statistical tests to assess and rank features for their rel
 | Low Variance Filter                               | LVF   | The Low Variance Filter eliminates features with minimal variability across samples, as such features are unlikely to be useful for distinguishing between classes. | [scikit-learn](https://github.com/jundongl/scikit-feature/tree/master)                                                 |
 | Mean Absolute Difference                          | MAD   | Mean Absolute Difference evaluates the average difference in feature values between classes. Features with larger differences are prioritized for greater discriminatory power. | [pandas](https://pandas.pydata.org/)                                                       |
 | Dispersion Ratio                                  | DR    | Dispersion Ratio assesses the spread or variability of a feature across samples. Features with distinct dispersion patterns across classes are selected as they are likely to contribute to better classification. | [numpy](https://numpy.org/)                                                        |
-| Mutual Information                                | MI    | Mutual Information measures the amount of information a feature shares with the target variable. Features with higher mutual information values are more relevant for model inclusion. | scikit-learn                                                 |
+| Mutual Information                                | MI    | Mutual Information measures the amount of information a feature shares with the target variable. Features with higher mutual information values are more relevant for model inclusion. | [scikit-learn](https://scikit-learn.org/stable/index.html)                                                 |
 | ReliefF                                           | RLF   | ReliefF identifies features that consistently differentiate between instances of different classes by considering the nearest neighbors of each instance. | [scikit-rebate](https://epistasislab.github.io/scikit-rebate/using/)                                                             |
 | SURF                                              | SURF  | The SURF variant extends ReliefF by considering all instances within a predefined distance, enhancing its ability to capture more relevant features. | [scikit-rebate](https://epistasislab.github.io/scikit-rebate/using/)                                                             |
 | MultiSURF                                         | MSURF | MultiSURF dynamically adjusts the neighborhood size during selection, allowing it to capture complex, multi-feature interactions. | [scikit-rebate](https://epistasislab.github.io/scikit-rebate/using/)                                                             |
