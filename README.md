@@ -628,6 +628,7 @@ XGB,0.47368421052631576,0.5,0.3796296296296296,0.3466666666666667,0.473684210526
 `[classifierMulti]_accuracy_bar_chart.pdf ` compares the performance of different classifiers used in concatenation based method based on their overall accuracy and per-class accuracy.
 
 <img src="https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/multi_%5BclassifierMulti%5D_accuracy_bar_chart.jpg" width="600">
+
 ##### Model based
 `model_based_classification_results.csv` contains performance metrics for different model based methods (every model based method can only use one classifier). The metrics include accuracy, macro-precision, macro-recall, macro-f1, micro-precision, micro-recall, micro-f1, weighted auc, per-class accuracy, computation time, and memory usage (peak memory).
 
@@ -642,6 +643,7 @@ stack_ensemble,0.7894736842105263,0.8974358974358975,0.6944444444444445,0.709090
 `[Model_based_Method]_accuracy_bar_chart.pdf ` compares the performance of different model based methods based on their overall accuracy and per-class accuracy.
 
 <img src="https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/multi_%5BModel_based_Method%5D_accuracy_bar_chart.jpg" width="600">
+
 ##### Transformation based
 `transformation_based_classification_results.csv` contains performance metrics for different classifiers in different transformation based methods. The metrics include accuracy, macro-precision, macro-recall, macro-f1, micro-precision, micro-recall, micro-f1, weighted auc, per-class accuracy, computation time, and memory usage (peak memory).
 
