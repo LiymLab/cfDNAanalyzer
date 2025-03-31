@@ -597,6 +597,7 @@ XGB,PCA,0.94,0.9230769230769231,0.96,0.9411764705882353,0.8864,88.6492531299591,
 `transformation_based_classification_results.pdf` compares the performance of different classifiers in different transformation based methods based on their AUC (Area Under the Curve) values. Each line represents the ROC curve for a specific classifier in one transformation based method.
 
 <img src="https://github.com/LiymLab/cfDNAanalyzer/blob/main/pics/two_transformation_based_classification_results.jpg" width="600">
+
 ### Multi-class Machine Learning
 
 #### Single modality
