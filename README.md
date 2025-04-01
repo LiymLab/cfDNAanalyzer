@@ -363,7 +363,7 @@ bash cfDNAanalyzer.sh -I ./example/input/bam_input.txt -o ./example/output/ -F C
             └── transformation_based_classification_results.pdf or [classifierMulti]_[Transformation_based_Method]_accuracy_bar_chart.pdf
 ```
 ### Features
-Output files under `Features` directory consists of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification.
+Output files under `Features` directory consist of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification.
 #### Copy Number Alterations (CNA)
 In ```CNA.csv```, columns after `label` contain the estimated copy number for each bin. Column name `[chr]_[chrStart]_[chrEnd]` of these columns specifies the chromosome, start coordinate and end coordinate for each bin.
 ```r
@@ -510,7 +510,7 @@ sample4,0,0.7481164091500803,1.01417140904693,1.0611052799677623,...
 ```
 
 ### Feature Processing and Selection
-Output files under `Feature_Processing_and_Selection/Feature_Processing` and `Feature_Processing_and_Selection/Feature_Selection` directory consists of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification.
+Output files under `Feature_Processing_and_Selection/Feature_Processing` and `Feature_Processing_and_Selection/Feature_Selection` directory consist of rows representing different samples. The `sample` column holds the sample's file name, followed by a `label` column that indicates the sample's classification.
 
 #### Feature Processing
 
