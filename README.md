@@ -599,7 +599,7 @@ wrapper_BOR_0.021070375,XGB,0.421053,0.3125,0.342593,0.297778,571.5343,963.2724
 `single_modality_probabilities.csv` contains samples IDs and their true labels, followed by the classifier, feature selection method used and predicted probabilities for each class.
 
 ```r
-SampleID,TrueLabel,FS_Combination,Classifier,Prob_Class0,Prob_Class1,Prob_Class2,FS_Combination
+SampleID,TrueLabel,FS_Combination,Classifier,Prob_Class0,Prob_Class1,Prob_Class2
 sample1,wrapper_BOR_0.021070375,0,KNN,0.2,0.8,0.0
 sample2,wrapper_BOR_0.021070375,2,KNN,0.2,0.6,0.2
 sample3,wrapper_BOR_0.021070375,2,KNN,0.0,0.6,0.4
