@@ -1,8 +1,8 @@
 # cfDNAanalyzer
 cfDNAanalyzer (<ins>c</ins>ell-<ins>f</ins>ree <ins>DNA</ins> sequencing data <ins>analyzer</ins>) is a toolkit for cfDNA genomic sequencing data analysis which includes three core modules: <br>
-(1) Feature Extraction, which extracts multiple genomic and fragmentomic features at whole-genome or specific genomic-region levels;<br> 
-(2) Feature Processing and Selection, allowing for refinement and optimization of extracted features, suporting multiple processing and selection methods;<br> 
-(3) Machine Learning Model Building, supporting the development of both single-modality and multiple-modality predictive models for disease detection and classification.<br>
+(1) ***Feature Extraction***, which extracts multiple genomic and fragmentomic features at whole-genome or specific genomic-region levels;<br> 
+(2) ***Feature Processing and Selection***, allowing for refinement and optimization of extracted features, suporting multiple processing and selection methods;<br> 
+(3) ***Machine Learning Model Building***, supporting the development of both single-modality and multiple-modality predictive models for disease detection and classification.<br>
 <summary><h2>Table of Contents</h2></summary>
 <li>
   <a href="#Description">Description</a>
@@ -86,11 +86,11 @@ Rscript install_R_packages.R
 ### 1. Feature processing 
 
 #### 1.1 Missing data removal
-* The output formatted CSV file consists of rows representing different samples, where each row represent one sample. The first column holds the sample identifiers, followed by a label column that indicates the sample's classification (e.g., `1` for positive, `0` for negative). After the label, the following columns contain feature data for each sample. Each feature column represents a specific feature ID corresponding to the sample in that row. Then, columns containing missing values are removed to ensure the data is ready for downstream analysis.
+* In this step, columns containing missing values are removed to ensure the data is ready for downstream analysis.
 
 #### 1.2 Data standardization
 
-* This process transforms the data using one the following data standardization/normalization method,which is important for many machine-learning techniques. 
+* This process transforms the data using one the following data standardization/normalization method, which is important for many machine-learning techniques. 
 
 | Methods | Alias | Brief Introduction |
 | :---: | :---: | :---: | 
