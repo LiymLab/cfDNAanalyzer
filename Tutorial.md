@@ -1,46 +1,40 @@
-<summary><h2>Table of Contents</h2></summary>
-<li>
-  <a href="#Section 1: Visualization for the extracted features">Section 1: Visualization for the extracted features</a>
+<h2>Table of Contents</h2>
 
-  <ul> 
-  <li>
-  <a href="##Section 1.1:  Copy Number Alterations (CNA)">Section 1.1: Copy Number Alterations (CNA)</a></li>
-  <li>
-  <a href="##Section 1.2: Fragmentation Profile (FP)">Section 1.2: Fragmentation Profile (FP)</a></li>
-  <li>
-    <a href="##Section 1.3: End Motif frequency and diversity (EM)">Section 1.3: End Motif frequency and diversity (EM)</a></li>
-  <li>
-    <a href="##Section 1.4: Nucleosome Occupancy and Fuzziness (NOF), Windowed Protection Score (WPS), Orientation-aware CfDNA Fragmentation (OCF), End Motif frequency and diversity for Regions (EMR), Fragmentation Profile for Regions (FPR)">Section 1.4: NOF, WPS, OCF, EMR, FPR</a></li>
-  <li>
-    <a href="##Section 1.5: Promoter Fragmentation Entropy (PFE)">Section 1.5: Promoter Fragmentation Entropy (PFE)</a></li>
-  <li>
-    <a href="##Section 1.6: Nucleosome Profile (NP)">Section 1.6: Nucleosome Profile (NP)</a></li>
-  </ul>
+<ul>
+    <li>
+        <a href="#Section 1: Visualization for the extracted features">Section 1: Visualization for the extracted features</a>
+        <ul>
+            <li><a href="##Section 1.1:  Copy Number Alterations (CNA)">Section 1.1: Copy Number Alterations (CNA)</a></li>
+            <li><a href="##Section 1.2: Fragmentation Profile (FP)">Section 1.2: Fragmentation Profile (FP)</a></li>
+            <li><a href="##Section 1.3: End Motif frequency and diversity (EM)">Section 1.3: End Motif frequency and diversity (EM)</a></li>
+            <li><a href="##Section 1.4: Nucleosome Occupancy and Fuzziness (NOF), Windowed Protection Score (WPS), Orientation-aware CfDNA Fragmentation (OCF), End Motif frequency and diversity for Regions (EMR), Fragmentation Profile for Regions (FPR)">Section 1.4: NOF, WPS, OCF, EMR, FPR</a></li>
+            <li><a href="##Section 1.5: Promoter Fragmentation Entropy (PFE)">Section 1.5: Promoter Fragmentation Entropy (PFE)</a></li>
+            <li><a href="##Section 1.6: Nucleosome Profile (NP)">Section 1.6: Nucleosome Profile (NP)</a></li>
+        </ul>
+    </li>
+</ul>
+<ul>
+    <li>
+        <a href="#Section 2: Optimized feature selection and downstream analysis">Section 2: Optimized feature selection and downstream analysis</a> 
+        <ul>
+            <li><a href="##Section 2.1: Feature selection">Section 2.1: Feature selection</a></li>
+            <li><a href="##Section 2.2: PCA analysis">Section 2.2: PCA analysis</a></li>
+            <li><a href="##Section 2.3: Functional enrichment analysis">Section 2.3: Functional enrichment analysis</a></li>
+        </ul>
+    </li>
+</ul>
+<ul>    
+    <li>
+        <a href="#Section 3: Performance of different features in cancer detection and classification">Section 3: Performance of different features in cancer detection and classification</a>
+        <ul>
+            <li><a href="##Section 3.1: Cancer prediction probabilities among features">Section 3.1: Cancer prediction probabilities among features</a></li>
+            <li><a href="##Section 3.2: Performance of cfDNA signatures for prediction of different cancer stages">Section 3.2: Performance of cfDNA signatures for prediction of different cancer stages</a></li>
+            <li><a href="##Section 3.3: Create scoring system in features based on meachine learning metrics and usability">Section 3.3: Create scoring system in features based on meachine learning metrics and usability</a></li>
+        </ul>
+    </li>
+</ul>
 
-<li>
-  <a href="#Section 2: Optimized feature selection and downstream analysis">Section 2: Optimized feature selection and downstream analysis</a>
 
-  <ul> 
-  <li>
-  <a href="##Section 2.1: Feature selection">Section 2.1: Feature selection</a></li>
-  <li>
-  <a href="##Section 2.2: PCA analysis">Section 2.2: PCA analysis</a></li>
-  <li>
-  <a href="##Section 2.3: Functional enrichment analysis">Section 2.3: Functional enrichment analysis</a></li>
-  </ul>
-
-
-<li>
-  <a href="#Section 3: Performance of different features in cancer detection and classification">Section 3: Performance of different features in cancer detection and classification</a>
-
-  <ul> 
-  <li>
-    <a href="##Section 3.1: Cancer prediction probabilities among features">Section 3.1: Cancer prediction probabilities among features</a></li>
-  <li>
-    <a href="##Section 3.2: Performance of cfDNA signatures for prediction of different cancer stages">Section 3.2: Performance of cfDNA signatures for prediction of different cancer stages</a></li>
-  <li>
-    <a href="##Section 3.3: Create scoring system in features based on meachine learning metrics and usability">Section 3.3: Create scoring system in features based on meachine learning metrics and usability</a></li>
-  </ul>
 
 
 # Section 1: Visualization for the extracted features
