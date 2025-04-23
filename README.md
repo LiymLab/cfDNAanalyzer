@@ -264,7 +264,7 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
   --noDA                LOGIC  Skip all the downstream analysis.
   --noML                LOGIC  Skip machine learning model building, only feature processing and selection will be conducted.
                                Methods in feature selection will leverage the label information of all samples.
-  --labelFile           FILE   Label information file for all the samples.
+  --labelFile           FILE   Label information file for all the samples, seperated by comma.
                                This file must have two columns. The sample column contains the basename of all the samples. The label column contains all the samples' label information (like 0,1 for two class and 0,1,2 for three class).
 
 ----- Options for feature processing and selection -----
@@ -634,6 +634,7 @@ sample5,1,concat,filter_DR_0.2,KNN,concat,0.4,0.5,0.1
 ```r
 python                         3.7.16
 
+alabaster                      0.7.13
 alembic                        1.8.1
 anyio                          3.5.0
 appdirs                        1.4.4
@@ -656,7 +657,7 @@ bwa                            1.1.1
 bx                             0.3.0
 bx-python                      0.10.0
 cachetools                     5.3.3
-certifi                        2023.7.22
+certifi                        2022.12.7
 certipy                        0.1.3
 cffi                           1.15.1
 charset-normalizer             2.0.4
@@ -670,10 +671,9 @@ cycler                         0.11.0
 datrie                         0.8.2
 debugpy                        1.5.1
 decorator                      5.1.1
-deepTools                      3.5.1
 deeptoolsintervals             0.1.9
 defusedxml                     0.7.1
-docutils                       0.20.1
+docutils                       0.19
 entrypoints                    0.4
 exceptiongroup                 1.2.0
 fastjsonschema                 2.16.2
@@ -686,6 +686,7 @@ h11                            0.14.0
 httpcore                       0.17.3
 httpx                          0.24.1
 idna                           3.4
+imagesize                      1.4.1
 importlib-metadata             4.11.3
 importlib-resources            5.2.0
 iniconfig                      2.0.0
@@ -737,6 +738,7 @@ notebook                       6.5.2
 notebook_shim                  0.2.2
 numexpr                        2.8.4
 numpy                          1.21.6
+numpydoc                       1.5.0
 oauthlib                       3.2.0
 packaging                      22.0
 pamela                         1.0.0
@@ -763,13 +765,14 @@ pybedtools                     0.8.0
 pyBigWig                       0.3.17
 pycosat                        0.6.4
 pycparser                      2.21
-Pygments                       2.11.2
+pyfaidx                        0.8.1.3
+Pygments                       2.17.2
 PyJWT                          2.4.0
 pyOpenSSL                      23.0.0
 pyparsing                      3.0.9
 PyQt5-sip                      12.11.0
 pyrsistent                     0.18.0
-pysam                          0.19.0
+pysam                          0.16.0
 PySocks                        1.7.1
 pytest                         7.4.4
 python-dateutil                2.8.2
@@ -787,15 +790,27 @@ ruamel.yaml                    0.17.21
 ruamel.yaml.clib               0.2.6
 scikit-learn                   1.0.2
 scipy                          1.7.1
+seaborn                        0.12.2
 Send2Trash                     1.8.0
 setuptools                     65.6.3
 sip                            6.6.2
 six                            1.16.0
 sklearn                        0.0.post5
+sklearn-relief                 1.0.0b2
+skrebate                       0.62
 smmap                          5.0.1
 snakemake                      5.19.2
+snfpy                          0.2.2
 sniffio                        1.2.0
+snowballstemmer                2.2.0
 soupsieve                      2.3.2.post1
+Sphinx                         5.3.0
+sphinxcontrib-applehelp        1.0.2
+sphinxcontrib-devhelp          1.0.2
+sphinxcontrib-htmlhelp         2.0.0
+sphinxcontrib-jsmath           1.0.1
+sphinxcontrib-qthelp           1.0.3
+sphinxcontrib-serializinghtml  1.1.5
 SQLAlchemy                     1.4.39
 Tcl                            0.2
 tenacity                       8.0.1
