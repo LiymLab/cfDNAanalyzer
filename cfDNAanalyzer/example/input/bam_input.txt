@@ -1,1 +1,0 @@
-./example/input/NCBI_pair/pair_bwa_hg19.bam

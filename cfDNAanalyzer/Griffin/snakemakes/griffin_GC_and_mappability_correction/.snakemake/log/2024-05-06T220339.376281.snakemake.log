@@ -1,5 +1,0 @@
-Building DAG of jobs...
-Relative file path './demo_bam_input/demo4/demo4.bam' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
-MissingInputException in line 81 of /home/zjp/projects/202312_cfDNA_integrated_tools/Griffin/snakemakes/griffin_GC_and_mappability_correction/griffin_GC_and_mappability_correction.snakefile:
-Missing input files for rule GC_counts:
-./demo_bam_input/demo4/demo4.bam
