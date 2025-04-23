@@ -1,5 +1,0 @@
-Building DAG of jobs...
-File path /home/zjp/projects/202312_cfDNA_integrated_tools//home/zjp/projects/202312_cfDNA_integrated_tools/input/NCBI_pair/pair_bwa_hg19.bam/NCBI_pair/pair_bowtie2_hg19.bam contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
-MissingInputException in line 81 of /home/zjp/projects/202312_cfDNA_integrated_tools/Griffin/snakemakes/griffin_GC_and_mappability_correction/griffin_GC_and_mappability_correction.snakefile:
-Missing input files for rule GC_counts:
-/home/zjp/projects/202312_cfDNA_integrated_tools//home/zjp/projects/202312_cfDNA_integrated_tools/input/NCBI_pair/pair_bwa_hg19.bam/NCBI_pair/pair_bowtie2_hg19.bam

@@ -1,3 +1,0 @@
-Building DAG of jobs...
-File path /home/zjp/projects//input/NCBI_pair/sorted_SRR3819940_bwa_hg19.bam contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
-Unlocking working directory.
