@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 81 of /home/zjp/projects/202312_cfDNA_integrated_tools/Griffin/snakemakes/griffin_GC_and_mappability_correction/griffin_GC_and_mappability_correction.snakefile:
+Missing input files for rule GC_counts:
+/home/zjp/projects/202312_cfDNA_integrated_tools/demo_bam_/home/zjp/projects/202312_cfDNA_integrated_tools/demo_bam_input/NCBI_pair/pair_bowtie2_hg19.bam/NCBI_single/single_bwa_hg19.bam

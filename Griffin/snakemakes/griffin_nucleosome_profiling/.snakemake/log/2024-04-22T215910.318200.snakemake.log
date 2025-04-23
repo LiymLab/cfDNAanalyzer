@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 27 of /home/zjp/projects/202312_cfDNA_integrated_tools/Griffin/snakemakes/griffin_nucleosome_profiling/griffin_nucleosome_profiling.snakefile:
+Missing input files for rule calc_cov:
+/home/zjp/projects/202312_cfDNA_integrated_tools/demo_bam_input/demo_bam_input/demo4/demo4.bam

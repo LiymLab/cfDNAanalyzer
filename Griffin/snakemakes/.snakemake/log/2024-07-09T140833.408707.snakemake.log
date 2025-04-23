@@ -1,0 +1,3 @@
+WorkflowError in line 17 of /home/zjp/projects/cfDNA_integrated_tools/Griffin/snakemakes/griffin_GC_and_mappability_correction/griffin_GC_and_mappability_correction.snakefile:
+Config file config_samples not found.
+  File "/home/zjp/projects/cfDNA_integrated_tools/Griffin/snakemakes/griffin_GC_and_mappability_correction/griffin_GC_and_mappability_correction.snakefile", line 17, in <module>

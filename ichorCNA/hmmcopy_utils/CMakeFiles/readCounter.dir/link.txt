@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -rdynamic CMakeFiles/readCounter.dir/src/bin/readCounter.cpp.o -o bin/readCounter  lib/libbamtools.a lib/libsplit.a -lz 
