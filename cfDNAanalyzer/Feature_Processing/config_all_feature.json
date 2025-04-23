@@ -1,0 +1,191 @@
+{
+    "CNA": {
+      "type": "region",
+      "path": "CNA/CNA.txt",
+      "columns": {
+        "test.copy.number": "copy_number"
+      },
+      "sep": "\t",
+      "has_header": true,
+      "chrom_column": "chr"
+    },
+    "EM_motifs_frequency": {
+      "type": "non_region",
+      "path": "EM/motifs_frequency.txt",
+      "columns": {
+        "1": "frequency"
+      },
+      "sep": "\t",
+      "has_header": false,
+      "id_columns": [0]
+    },
+    "EM_motifs_mds": {
+      "type": "single",
+      "path": "EM/motifs_mds.txt",
+      "columns": {
+        "MDS": "MDS"
+      },
+      "sep": "\t",
+      "has_header": true
+    },
+    "EMR_aggregated_mds": {
+      "type": "single",
+      "path": "EMR/aggregated_mds.txt",
+      "columns": {
+        "MDS": "MDS"
+      },
+      "sep": "\t",
+      "has_header": true
+    },
+    "EMR_aggregated_motif_frequency": {
+      "type": "non_region",
+      "path": "EMR/aggregated_motif_frequency.txt",
+      "columns": {
+        "Frequency": "Frequency"
+      },
+      "sep": "\t",
+      "has_header": true,
+      "id_columns": ["Motif"]
+    },
+    "EMR_region_mds": {
+      "type": "region",
+      "path": "EMR/region_mds.txt",
+      "columns": {
+        "MDS": "MDS"
+      },
+      "sep": "\t",
+      "has_header": true,
+      "chrom_column": "chr"
+    },
+    "EMR_region_motif_frequency": {
+      "type": "custom",
+      "path": "EMR/region_motif_frequency.txt",
+      "columns": {
+        "Frequency": "Frequency"
+      },
+      "sep": "\t",
+      "has_header": true,
+      "id_columns": ["chr","start","end","Motif"]
+    },
+    "FP_fragmentation_profile": {
+      "type": "region",
+      "path": "FP/Fragmentation_Profile.txt",
+      "columns": {
+        "ratio.corrected": "ratio"
+      },
+      "sep": "\t",
+      "has_header": true,
+      "chrom_column": "seqnames"
+    },
+    "FPR_fragmentation_profile_regions": {
+      "type": "region",
+      "path": "FPR/Fragmentation_Profile_regions.txt",
+      "columns": {
+        "ratio.corrected": "ratio"
+      },
+      "sep": "\t",
+      "has_header": true,
+      "chrom_column": "seqnames"
+    },
+    "NOF_meanfuziness": {
+      "type": "region",
+      "path": "NOF/meanfuziness.txt",
+      "columns": {
+        "meanfuziness": "meanfuziness"
+      },
+      "sep": "\t",
+      "has_header": true,
+      "chrom_column": "chr"
+    },
+    "NOF_occupancy": {
+      "type": "region",
+      "path": "NOF/occupancy.bed",
+      "columns": {
+        "occupancy": "occupancy"
+      },
+      "sep": "\t",
+      "has_header": true,
+      "chrom_column": "chr"
+    },
+    "NP_mean_coverage": {
+      "type": "non_region",
+      "path": "NP/NucleosomeProfile.txt",
+      "columns": {
+        "mean_coverage": "mean_coverage"
+      },
+      "sep": "\t",
+      "has_header": true,
+      "id_columns": ["site_name"]
+    },
+    "NP_central_coverage": {
+      "type": "non_region",
+      "path": "NP/NucleosomeProfile.txt",
+      "columns": {
+        "central_coverage": "central_coverage"
+      },
+      "sep": "\t",
+      "has_header": true,
+      "id_columns": ["site_name"]
+    },
+    "NP_amplitude": {
+      "type": "non_region",
+      "path": "NP/NucleosomeProfile.txt",
+      "columns": {
+        "amplitude": "amplitude"
+      },
+      "sep": "\t",
+      "has_header": true,
+      "id_columns": ["site_name"]
+    },
+    "OCF": {
+      "type": "region",
+      "path": "OCF/OCF.txt",
+      "columns": {
+        "OCF": "OCF"
+      },
+      "sep": "\t",
+      "has_header": true,
+      "chrom_column": "chr"
+    },
+    "PFE": {
+      "type": "non_region",
+      "path": "PFE/PFE.txt",
+      "columns": {
+        "intersected_PFE": "PFE"
+      },
+      "sep": "\t",
+      "has_header": true,
+      "id_columns": ["TSS_ID"]
+    },
+    "TSSC_average_coverage": {
+      "type": "region",
+      "path": "TSSC/average_coverage.txt",
+      "columns": {
+        "coverage": "coverage"
+      },
+      "sep": "\t",
+      "has_header": true,
+      "chrom_column": "chr"
+    },
+    "WPS_long": {
+      "type": "region",
+      "path": "WPS/WPS.txt",
+      "columns": {
+        "long_WPS": "long_WPS"
+      },
+      "sep": "\t",
+      "has_header": true,
+      "chrom_column": "chr"
+    },
+    "WPS_short": {
+      "type": "region",
+      "path": "WPS/WPS.txt",
+      "columns": {
+        "short_WPS": "short_WPS"
+      },
+      "sep": "\t",
+      "has_header": true,
+      "chrom_column": "chr"
+    }
+  }
+  
