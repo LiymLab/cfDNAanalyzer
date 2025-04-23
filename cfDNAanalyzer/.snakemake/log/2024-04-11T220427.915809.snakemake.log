@@ -1,3 +1,0 @@
-WorkflowError in line 16 of /home/zjp/projects/202312_cfDNA_integrated_tools/Griffin/snakemakes/griffin_nucleosome_profiling/griffin_nucleosome_profiling.snakefile:
-Config file config/samples.GC.yaml not found.
-  File "/home/zjp/projects/202312_cfDNA_integrated_tools/Griffin/snakemakes/griffin_nucleosome_profiling/griffin_nucleosome_profiling.snakefile", line 16, in <module>
