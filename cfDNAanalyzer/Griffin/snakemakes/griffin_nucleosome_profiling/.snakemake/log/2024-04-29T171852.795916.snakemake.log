@@ -1,0 +1,57 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	calc_cov
+	1	generate_plots
+	1	merge_sites
+	4
+
+[Mon Apr 29 17:18:52 2024]
+rule calc_cov:
+    input: /home/zjp/projects/202312_cfDNA_integrated_tools/demo_bam_input/NCBI_pair/pair_bwa_hg19.bam, /home/zjp/projects/202312_cfDNA_integrated_tools/Griffin/snakemakes/griffin_GC_and_mappability_correction/results/GC_bias/sample_name_1.GC_bias.txt
+    output: tmp/sample_name_1/tmp_bigWig/sample_name_1.uncorrected.bw, tmp/sample_name_1/tmp_bigWig/sample_name_1.GC_corrected.bw, tmp/sample_name_1/tmp_pybedtools
+    jobid: 3
+    wildcards: samples=sample_name_1
+
+Removing temporary output file tmp/sample_name_1/tmp_pybedtools.
+[Mon Apr 29 17:18:59 2024]
+Finished job 3.
+1 of 4 steps (25%) done
+
+[Mon Apr 29 17:18:59 2024]
+rule merge_sites:
+    input: tmp/sample_name_1/tmp_bigWig/sample_name_1.uncorrected.bw, tmp/sample_name_1/tmp_bigWig/sample_name_1.GC_corrected.bw
+    output: results/sample_name_1/sample_name_1.uncorrected.coverage.tsv, results/sample_name_1/sample_name_1.GC_corrected.coverage.tsv, tmp/sample_name_1/tmp_pybedtools2
+    jobid: 1
+    wildcards: samples=sample_name_1
+
+Removing temporary output file tmp/sample_name_1/tmp_bigWig/sample_name_1.uncorrected.bw.
+Removing temporary output file tmp/sample_name_1/tmp_bigWig/sample_name_1.GC_corrected.bw.
+Removing temporary output file tmp/sample_name_1/tmp_pybedtools2.
+[Mon Apr 29 17:19:09 2024]
+Finished job 1.
+2 of 4 steps (50%) done
+
+[Mon Apr 29 17:19:09 2024]
+rule generate_plots:
+    input: results/sample_name_1/sample_name_1.uncorrected.coverage.tsv, results/sample_name_1/sample_name_1.GC_corrected.coverage.tsv
+    output: results/plots/CTCF_demo.pdf
+    jobid: 2
+
+[Mon Apr 29 17:19:10 2024]
+Finished job 2.
+3 of 4 steps (75%) done
+
+[Mon Apr 29 17:19:10 2024]
+localrule all:
+    input: results/sample_name_1/sample_name_1.GC_corrected.coverage.tsv, results/plots/CTCF_demo.pdf
+    jobid: 0
+
+[Mon Apr 29 17:19:10 2024]
+Finished job 0.
+4 of 4 steps (100%) done
+Complete log: /home/zjp/projects/202312_cfDNA_integrated_tools/Griffin/snakemakes/griffin_nucleosome_profiling/.snakemake/log/2024-04-29T171852.795916.snakemake.log

@@ -1,0 +1,32 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	calc_cov
+	1	generate_plots
+	1	merge_sites
+	4
+
+[Tue Jun 11 16:37:11 2024]
+rule calc_cov:
+    input: /home/zjp/projects/202312_cfDNA_integrated_tools/input/NCBI_pair/pair_bwa_hg19.bam, /home/zjp/projects/202312_cfDNA_integrated_tools/Griffin/snakemakes/griffin_GC_and_mappability_correction/results/GC_bias/sample_name_1.GC_bias.txt
+    output: tmp/sample_name_1/tmp_bigWig/sample_name_1.uncorrected.bw, tmp/sample_name_1/tmp_bigWig/sample_name_1.GC_corrected.bw, tmp/sample_name_1/tmp_pybedtools
+    jobid: 3
+    wildcards: samples=sample_name_1
+
+[Tue Jun 11 16:37:12 2024]
+Error in rule calc_cov:
+    jobid: 3
+    output: tmp/sample_name_1/tmp_bigWig/sample_name_1.uncorrected.bw, tmp/sample_name_1/tmp_bigWig/sample_name_1.GC_corrected.bw, tmp/sample_name_1/tmp_pybedtools
+    shell:
+        time ../../scripts/griffin_coverage.py 		--sample_name sample_name_1 		--bam /home/zjp/projects/202312_cfDNA_integrated_tools/input/NCBI_pair/pair_bwa_hg19.bam 		--GC_bias /home/zjp/projects/202312_cfDNA_integrated_tools/Griffin/snakemakes/griffin_GC_and_mappability_correction/results/GC_bias/sample_name_1.GC_bias.txt 		--mappability_bias none 		--mappability_correction False 		--tmp_dir tmp 		--reference_genome ../../Ref/hg38.fa 		--mappability_bw ../../Ref/k100.Umap.MultiTrackMappability.bw 		--chrom_sizes_path ../../Ref/hg38.standard.chrom.sizes 		--sites_yaml config/sites.yaml 		--griffin_scripts ../../scripts 		--chrom_column Chrom 		--position_column position 		--strand_column Strand 		--chroms chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr20 chr21 chr22 		--norm_window -5000 5000 		--size_range 100 200 		--map_quality 20 		--number_of_sites none 		--sort_by none 		--ascending none 		--CPU 8 
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job calc_cov since they might be corrupted:
+tmp/sample_name_1/tmp_pybedtools
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/zjp/projects/202312_cfDNA_integrated_tools/Griffin/snakemakes/griffin_nucleosome_profiling/.snakemake/log/2024-06-11T163711.422847.snakemake.log

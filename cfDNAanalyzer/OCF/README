@@ -1,0 +1,47 @@
+
+Orientation-aware CfDNA Fragmentation (OCF) analysis package
+
+Written by Kun Sun (sunkun@cuhk.edu.hk), Jan 18, 2019.
+
+This program is designed to analyze the plasma DNA fragmentation pattern in tissue-specific
+open chromatin regions for infering the tissue origin of cfDNA, which information could be
+valuable in predicting the tumor origin after a positive cancer testing.
+Please note that this program only supports Paired-end sequencing data at the moment.
+
+Please cite the following paper if you use this program in your work:
+Sun et al. Orientation-aware plasma cell-free DNA fragmentation analysis in open chromatin
+regions informs tissue of origin. Genome Res 2019.
+
+Please read the LICENSE file carefully before using this program.
+
+This program is written for GNU/Linux system.
+
+The main program is "OCF" under this directory. To use it, prepare a working directory and
+a "data.list" file which records the sample IDs (one line for one ID). Here is an example:
+
+S1
+S2
+S3
+
+For each sample, you should have its aligned cfDNA data in the working directory. Multiple
+lanes of data from the same sample are allowed. The data must be in BED format and pre-sorted
+using "sort -k1,1 -k2,2n". Each line should record one cfDNA fragment (i.e., chromosome, start
+position and end position). Here is an example of the cfDNA files that correspond to the
+example "data.list" file before (note that the EXACT sample IDs are required to match the files):
+
+S1.srt.bed
+S2.lane1.bed
+S2.lane2.bed
+S3.bed
+
+Then you can run OCF within your working directory:
+
+    user@linux$ /path/to/OCF
+
+The program will automatically load the "data.list" file and process all the related BED files.
+
+The final output is "All.OCF" which records the OCF values for the 7 built-in tissue types for
+all the samples in the "data.list" file. The program also outoupts visualization files in PDF
+format that records the raw and smoothened fragment end signals in your data.
+
+Please refer to our paper for more information.
