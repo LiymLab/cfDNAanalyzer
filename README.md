@@ -309,7 +309,7 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
 You can directly run cfDNAanalyzer by ```cfDNAanalyzer.sh``` provided in the ```cfDNAanalyzer/``` directory with the example files available at Zenodo (DOI: ([<ins>10.5281/zenodo.15287611</ins>](https://doi.org/10.5281/zenodo.13369741))).  
 
 ```ruby
-bash cfDNAanalyzer.sh -I ./example/bam_input.txt -F CNA,FP,OCF -g hg19 -b ./example/test.bed -f ./example/example.fa --labelFile ./example/label.txt --filterMethod MR IG CHI --wrapperMethod BOR --embeddedMethod LASSO RIDGE --classNum 2 --cvSingle LOO --classifierSingle KNN SVM RandomForest --cvMulti LOO --classifierMulti KNN SVM RandomForest > ./cfDNAanalyzer.log
+bash cfDNAanalyzer.sh -I ./example/bam_input.txt -F CNA,FP,OCF -g hg19 -b ./example/test.bed -f ./example/example.fa --labelFile ./example/label.txt --filterMethod IG CHI --wrapperMethod BOR --embeddedMethod LASSO RIDGE --classNum 2 --cvSingle LOO --classifierSingle KNN SVM RandomForest --cvMulti LOO --classifierMulti KNN SVM RandomForest > ./cfDNAanalyzer.log
 ```
 
 ## Output files
