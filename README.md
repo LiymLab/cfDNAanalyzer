@@ -637,7 +637,7 @@ sample1,1,concat,concat,filter_DR_0.2,KNN,0.4,0.5,0.1
 sample2,1,concat,concat,filter_DR_0.2,KNN,0.6,0.3,0.1
 sample3,1,concat,concat,filter_DR_0.2,KNN,0.4,0.5,0.1
 sample4,1,concat,concat,filter_DR_0.2,KNN,0.6,0.3,0.1
-sample5,1,concat,filter_DR_0.2,KNN,0.4,0.5,0.1
+sample5,1,concat,concat,filter_DR_0.2,KNN,0.4,0.5,0.1
 ```
 
 ## Versions of packages in our environment
