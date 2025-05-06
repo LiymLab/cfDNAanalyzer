@@ -171,25 +171,25 @@ Concatenation-based methods combine features from different sources by directly 
 
 Model-based integration methods create multiple intermediate models for the different omics data and then build a final model from various intermediate models ([Reel *et al, Biotechnol. Adv.*, 2021](https://www.sciencedirect.com/science/article/abs/pii/S0734975021000458?via%3Dihub/)). It boosts predictive accuracy by utilizing the strengths of individual models, enabling a deeper understanding of the interactions across different layers.
 
-| Methods | Brief Introduction | 
-| :---: | :---: | 
-| Average Voting | Average Voting combines predictions from multiple models by calculating the mean of their outputs. This method can balance diverse feature impacts, reducing the effect of anomalies in individual features. | 
-| Weighted Voting | Weighted Voting assigns weights to individual model predictions based on their performance, using either their proportion of the total AUC or inversely to their error rates. This strategy prioritizes more reliable features when integrating multiple feature sets, enhancing overall prediction accuracy. | 
-| Majority Voting | Majority Voting selects the most common outcome among various model predictions. It ensures robustness by reducing the influence of sporadically erroneous model outputs. | 
-| Stack Ensemble | Stack Ensemble uses a meta-model to learn how to best combine the predictions of multiple base models. This method effectively integrates diverse feature-derived predictions to optimize final decision-making processes. | 
+| Methods |  Alias | Brief Introduction | 
+| :---: | :---: | :---: | 
+| Average Voting | *average* | Average Voting combines predictions from multiple models by calculating the mean of their outputs. This method can balance diverse feature impacts, reducing the effect of anomalies in individual features. | 
+| Weighted Voting | *weighted* | Weighted Voting assigns weights to individual model predictions based on their performance, using either their proportion of the total AUC or inversely to their error rates. This strategy prioritizes more reliable features when integrating multiple feature sets, enhancing overall prediction accuracy. | 
+| Majority Voting | *majority* | Majority Voting selects the most common outcome among various model predictions. It ensures robustness by reducing the influence of sporadically erroneous model outputs. | 
+| Stack Ensemble | *stack* | Stack Ensemble uses a meta-model to learn how to best combine the predictions of multiple base models. This method effectively integrates diverse feature-derived predictions to optimize final decision-making processes. | 
 
 #### 4.3 Transformation-based methods
 
 Transformation-based methods transform each of the omics datasets firstly into graphs or kernel matrices and then combine all of them into one before constructing a model ([Reel *et al, Biotechnol. Adv.*, 2021](https://www.sciencedirect.com/science/article/abs/pii/S0734975021000458?via%3Dihub/)). This approach supports the integration of varied data by standardizing how they are represented.
 
-| Category | Methods | Brief Introduction | Reference |
-| :---: | :---: | :---: | :---: |
-| Dimension reduction | PCA | PCA reduces dimensionality by transforming features into a set of linearly uncorrelated components. It simplifies multi-feature integration by focusing on components that explain the most variance, thereby enhancing model efficiency and clarity. | [Subramanian *et al, Bioinform. Biol. Insights*, 2020](https://journals.sagepub.com/doi/10.1177/1177932219899051/) |
-| Kernel matrix | Linear Kernel | The Linear Kernel measures direct linear relationships between features. It aids in multi-feature integration by emphasizing linear associations, making it suitable for linearly separable data. |  |
-| Kernel matrix | Polynomial Kernel | The Polynomial Kernel allows the capture of interactions between features at different degrees of complexity. It enhances multi-feature integration by providing a flexible framework to model nonlinear relationships in the data. |  |
-| Kernel matrix | Radial Basis Function (RBF) Kernel | The RBF Kernel maps features into a higher-dimensional space using a radial basis function, enabling effective classification of non-linearly separable datasets. This kernel is crucial for multi-feature integration as it can handle complex and non-linear interactions between features. |  |
-| Kernel matrix | Sigmoid Kernel | The Sigmoid Kernel projects data using a sigmoid function, similar to neural network activation functions. It supports multi-feature integration by transforming features into formats that highlight threshold-based classifications. |  |
-| Network | Similarity network fusion (SNF) | SNF integrates multiple types of data by fusing similarity networks, reinforcing common structural features. It excels in multi-feature integration by constructing a holistic network view, revealing deep insights across combined datasets. | [Wang *et al, Nat. Methods*, 2014](https://www.nature.com/articles/nmeth.2810) |
+| Category | Methods | Alias | Brief Introduction | Reference |
+| :---: | :---: | :---: | :---: | :---: |
+| Dimension reduction | PCA | *pca* | PCA reduces dimensionality by transforming features into a set of linearly uncorrelated components. It simplifies multi-feature integration by focusing on components that explain the most variance, thereby enhancing model efficiency and clarity. | [Subramanian *et al, Bioinform. Biol. Insights*, 2020](https://journals.sagepub.com/doi/10.1177/1177932219899051/) |
+| Kernel matrix | Linear Kernel | *linear* | The Linear Kernel measures direct linear relationships between features. It aids in multi-feature integration by emphasizing linear associations, making it suitable for linearly separable data. |  |
+| Kernel matrix | Polynomial Kernel | *polynomial* | The Polynomial Kernel allows the capture of interactions between features at different degrees of complexity. It enhances multi-feature integration by providing a flexible framework to model nonlinear relationships in the data. |  |
+| Kernel matrix | Radial Basis Function (RBF) Kernel | *rbf* | The RBF Kernel maps features into a higher-dimensional space using a radial basis function, enabling effective classification of non-linearly separable datasets. This kernel is crucial for multi-feature integration as it can handle complex and non-linear interactions between features. |  |
+| Kernel matrix | Sigmoid Kernel | *sigmoid* | The Sigmoid Kernel projects data using a sigmoid function, similar to neural network activation functions. It supports multi-feature integration by transforming features into formats that highlight threshold-based classifications. |  |
+| Network | Similarity network fusion (SNF) | *snf* | SNF integrates multiple types of data by fusing similarity networks, reinforcing common structural features. It excels in multi-feature integration by constructing a holistic network view, revealing deep insights across combined datasets. | [Wang *et al, Nat. Methods*, 2014](https://www.nature.com/articles/nmeth.2810) |
 
 ### Usage
 ```ruby
@@ -271,45 +271,57 @@ bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options
   --standardM                    STR    The standardization method (Zscore, MMS, RS, or QT). Default:   [Zscore]
                                         The detailed description of each method can be accessed at https://github.com/LiymLab/cfDNAanalyzer.
   --filterMethod                 STR    Filter methods employed for feature selection (IG CHI FS FCBF PI CC LVF MAD DR MI RLF SURF MSURF TRF).
-                                        Methods should be set as a string separated by space, e.g., MR IG CHI. 
+                                        Methods should be set as a string separated by space in quotes, e.g., 'MR IG CHI'. 
                                         Default: [IG].
                                         The detailed description of each filter method can be accessed at https://github.com/LiymLab/cfDNAanalyzer.
-  --filterFrac                   FLOAT  Fraction of features to retain when employing the filter method. Default: [0.2]
+  --filterNum                   FLOAT   Number of features to retain when employing the filter method. 
+                                        If integer, the parameter is the absolute number of features to select. If float between 0 and 1, it is the fraction of features to select. Default: [0.2]
   --wrapperMethod                STR    Wrapper methods employed for feature selection (FFS BFS EFS RFS BOR).
-                                        Methods should be set as a string separated by space, e.g., BOR RFS. 
+                                        Methods should be set as a string separated by space in quotes, e.g., 'BOR RFS'. 
                                         Default: [BOR].
                                         The detailed description of each wrapper method can be accessed at https://github.com/LiymLab/cfDNAanalyzer.
-  --wrapperFrac                  FLOAT  Fraction of features to retain when employing the wrapper method. Default: [0.2]
+  --wrapperNum                  FLOAT   Number of features to retain when employing the wrapper method.
+                                        If integer, the parameter is the absolute number of features to select. If float between 0 and 1, it is the fraction of features to select. Default: [0.2]
   --embeddedMethod               STR    Embedded methods employed for feature selection (LASSO RIDGE ELASTICNET RF).
-                                        Methods should be set as a string separated by space, e.g., LASSO RIDGE. 
+                                        Methods should be set as a string separated by space in quotes, e.g., 'LASSO RIDGE'. 
                                         Default: [LASSO]
                                         The detailed description of each embedded method can be accessed at https://github.com/LiymLab/cfDNAanalyzer.
-  --embeddedFrac                 FLOAT  Fraction of features to retain when employing the embedded method. Default: [0.2]
+  --embeddedNum                 FLOAT   Number of features to retain when employing the embedded method. 
+                                        If integer, the parameter is the absolute number of features to select. If float between 0 and 1, it is the fraction of features to select. Default: [0.2]
   --hybridType                   STR    Two methods used for hybrid method (FW/FE). Default: [FE]
   --hybridMethod1,hybridMethod2  STR    Subtype methods designated for method 1 and method 2 in the "--hybridType".
-                                        Methods should be set as a string separated by space, e.g., BOR RFS.
+                                        Methods should be set as a string separated by space in quotes, e.g., 'BOR RFS'.
                                         Default: [IG,BOR] for FW; [IG,LASSO] for FE.
-  --hybridFrac1,hybridFrac2       FLOAT Fraction of features to retain for method 1 and method 2 in the "--hybridType". Default: [0.2,0.2]
+  --hybridNum1,hybridNum2       FLOAT   Number of features to retain for method 1 and method 2 in the "--hybridType". 
+                                        If integer, the parameter is the absolute number of features to select. If float between 0 and 1, it is the fraction of features to select. Default: [0.2,0.2]
   
 ----- Options for machine learning model building -----
   --classNum          INT   Number of classification categories (2 or more). Default: [2]
   --cvSingle          STR   Cross-validation method applied in single modality, options include leave-one-out (LOO) or K-fold (KFold). Default: [LOO]
   --nsplitSingle      INT   Number of folds designated for K-fold cross-validation in single modality. Default: [5]
   --classifierSingle  STR   Classifiers employed in single modality (KNN SVM RandomForest GaussianNB LogisticRegression XGB).
-                            Classifiers should be set as a string separated by space, e.g., KNN XGB.
+                            Classifiers should be set as a string separated by space in quotes, e.g., 'KNN XGB'.
                             Default: All available classifiers will be applied.
   --cvMulti           STR   Cross-validation method applied in multiple modalities, options include leave-one-out (LOO) or K-fold (KFold). Default: [LOO]
   --nsplitMulti       INT   Number of folds designated for K-fold cross-validation in multiple modalities. Default: [5]
   --classifierMulti   STR   Classifiers employed in multiple modalities (KNN SVM RandomForest GaussianNB LogisticRegression XGB).
-                            Classifiers should be set as a string separated by space, e.g., KNN XGB.
-                            Default: All available classifiers will be applied.  
+                            Classifiers should be set as a string separated by space in quotes, e.g., 'KNN XGB'.
+                            Default: All available classifiers will be applied.
+  --modelMethod       STR   Model-based integration methods employed in multiple modality. (average weighted majority stack) 
+                            Methods should be set as a string separated by space in quotes, e.g., 'average weighted'. 
+                            Default: [average]
+                            The detailed description of each method can be accessed at https://github.com/LiymLab/cfDNAanalyzer.
+  --transMethod       STR   Transformation-based integration methods employed in multiple modality. (pca linear polynomial rbf sigmoid snf) 
+                            Methods should be set as a string separated by space in quotes, e.g., 'pca linear'. 
+                            Default: [pca]
+                            The detailed description of each method can be accessed at https://github.com/LiymLab/cfDNAanalyzer.  
 ```
 
 ### Run the usage example
 You can directly run cfDNAanalyzer by ```cfDNAanalyzer.sh``` provided in the ```cfDNAanalyzer/``` directory with the example files available at Zenodo (DOI: ([<ins>10.5281/zenodo.15287611</ins>](https://doi.org/10.5281/zenodo.13369741))).  
 
 ```ruby
-bash cfDNAanalyzer.sh -I ./example/bam_input.txt -F CNA,FP,OCF -g hg19 -b ./example/test.bed -f ./example/example.fa --labelFile ./example/label.txt --filterMethod IG CHI --wrapperMethod BOR --embeddedMethod LASSO RIDGE --classNum 2 --cvSingle LOO --classifierSingle KNN SVM RandomForest --cvMulti LOO --classifierMulti KNN SVM RandomForest > ./cfDNAanalyzer.log
+bash cfDNAanalyzer.sh -I ./example/bam_input.txt -F CNA,OCF -g hg19 -b ./example/test.bed -f ./example/example.fa --labelFile ./example/label.txt --filterMethod 'CHI' --wrapperMethod 'BOR' --embeddedMethod 'LASSO' --classNum 2 --cvSingle LOO --classifierSingle 'KNN' --cvMulti LOO --classifierMulti 'KNN' > ./cfDNAanalyzer.log
 ```
 
 ## Output files
@@ -347,8 +359,8 @@ bash cfDNAanalyzer.sh -I ./example/bam_input.txt -F CNA,FP,OCF -g hg19 -b ./exam
     │   ├── [FeatureName1]
     │   │   ├── single_modality_metrics.csv
     │   │   └── single_modality_probabilities.csv
-    │   │   ......
     │   ├── [FeatureName2]
+    │   │   ......
     │   └── [FeatureNameN]
     └── multiple_modality
         ├── Concatenation_based
