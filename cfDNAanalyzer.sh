@@ -84,38 +84,50 @@ Usage:
   --standardM                    STR    The standardization method (Zscore, MMS, RS, or QT). Default:   [Zscore]
                                         The detailed description of each method can be accessed at https://github.com/LiymLab/cfDNAanalyzer.
   --filterMethod                 STR    Filter methods employed for feature selection (IG CHI FS FCBF PI CC LVF MAD DR MI RLF SURF MSURF TRF).
-                                        Methods should be set as a string separated by space, e.g., MR IG CHI. 
+                                        Methods should be set as a string separated by space in quotes, e.g., 'MR IG CHI'. 
                                         Default: [IG].
                                         The detailed description of each filter method can be accessed at https://github.com/LiymLab/cfDNAanalyzer.
-  --filterFrac                   FLOAT  Fraction of features to retain when employing the filter method. Default: [0.2]
+  --filterNum                   FLOAT   Number of features to retain when employing the filter method. 
+                                        If integer, the parameter is the absolute number of features to select. If float between 0 and 1, it is the fraction of features to select. Default: [0.2]
   --wrapperMethod                STR    Wrapper methods employed for feature selection (FFS BFS EFS RFS BOR).
-                                        Methods should be set as a string separated by space, e.g., BOR RFS. 
+                                        Methods should be set as a string separated by space in quotes, e.g., 'BOR RFS'. 
                                         Default: [BOR].
                                         The detailed description of each wrapper method can be accessed at https://github.com/LiymLab/cfDNAanalyzer.
-  --wrapperFrac                  FLOAT  Fraction of features to retain when employing the wrapper method. Default: [0.2]
+  --wrapperNum                  FLOAT   Number of features to retain when employing the wrapper method.
+                                        If integer, the parameter is the absolute number of features to select. If float between 0 and 1, it is the fraction of features to select. Default: [0.2]
   --embeddedMethod               STR    Embedded methods employed for feature selection (LASSO RIDGE ELASTICNET RF).
-                                        Methods should be set as a string separated by space, e.g., LASSO RIDGE. 
+                                        Methods should be set as a string separated by space in quotes, e.g., 'LASSO RIDGE'. 
                                         Default: [LASSO]
                                         The detailed description of each embedded method can be accessed at https://github.com/LiymLab/cfDNAanalyzer.
-  --embeddedFrac                 FLOAT  Fraction of features to retain when employing the embedded method. Default: [0.2]
+  --embeddedNum                 FLOAT   Number of features to retain when employing the embedded method. 
+                                        If integer, the parameter is the absolute number of features to select. If float between 0 and 1, it is the fraction of features to select. Default: [0.2]
   --hybridType                   STR    Two methods used for hybrid method (FW/FE). Default: [FE]
   --hybridMethod1,hybridMethod2  STR    Subtype methods designated for method 1 and method 2 in the "--hybridType".
-                                        Methods should be set as a string separated by space, e.g., BOR RFS.
+                                        Methods should be set as a string separated by space in quotes, e.g., 'BOR RFS'.
                                         Default: [IG,BOR] for FW; [IG,LASSO] for FE.
-  --hybridFrac1,hybridFrac2       FLOAT Fraction of features to retain for method 1 and method 2 in the "--hybridType". Default: [0.2,0.2]
+  --hybridNum1,hybridNum2       FLOAT   Number of features to retain for method 1 and method 2 in the "--hybridType". 
+                                        If integer, the parameter is the absolute number of features to select. If float between 0 and 1, it is the fraction of features to select. Default: [0.2,0.2]
   
 ----- Options for machine learning model building -----
   --classNum          INT   Number of classification categories (2 or more). Default: [2]
   --cvSingle          STR   Cross-validation method applied in single modality, options include leave-one-out (LOO) or K-fold (KFold). Default: [LOO]
   --nsplitSingle      INT   Number of folds designated for K-fold cross-validation in single modality. Default: [5]
   --classifierSingle  STR   Classifiers employed in single modality (KNN SVM RandomForest GaussianNB LogisticRegression XGB).
-                            Classifiers should be set as a string separated by space, e.g., KNN XGB.
+                            Classifiers should be set as a string separated by space in quotes, e.g., 'KNN XGB'.
                             Default: All available classifiers will be applied.
   --cvMulti           STR   Cross-validation method applied in multiple modalities, options include leave-one-out (LOO) or K-fold (KFold). Default: [LOO]
   --nsplitMulti       INT   Number of folds designated for K-fold cross-validation in multiple modalities. Default: [5]
   --classifierMulti   STR   Classifiers employed in multiple modalities (KNN SVM RandomForest GaussianNB LogisticRegression XGB).
-                            Classifiers should be set as a string separated by space, e.g., KNN XGB.
-                            Default: All available classifiers will be applied.    
+                            Classifiers should be set as a string separated by space in quotes, e.g., 'KNN XGB'.
+                            Default: All available classifiers will be applied.
+  --modelMethod       STR   Model-based integration methods employed in multiple modality. (average weighted majority stack) 
+                            Methods should be set as a string separated by space in quotes, e.g., 'average weighted'. 
+                            Default: [average]
+                            The detailed description of each method can be accessed at https://github.com/LiymLab/cfDNAanalyzer.
+  --transMethod       STR   Transformation-based integration methods employed in multiple modality. (pca linear polynomial rbf sigmoid snf) 
+                            Methods should be set as a string separated by space in quotes, e.g., 'pca linear'. 
+                            Default: [pca]
+                            The detailed description of each method can be accessed at https://github.com/LiymLab/cfDNAanalyzer.     
 EOF
     exit 0
 }
@@ -161,16 +173,16 @@ noML=0
 labelFile=""
 standardM=Zscore
 filterMethod="IG"
-filterFrac=0.2
+filterNum=0.2
 wrapperMethod="BOR"
-wrapperFrac=0.2
+wrapperNum=0.2
 embeddedMethod="LASSO"
-embeddedFrac=0.2
+embeddedNum=0.2
 hybridType="FE"
 hybridMethod1=""
 hybridMethod2=""
-hybridFrac1=0.2
-hybridFrac2=0.2
+hybridNum1=0.2
+hybridNum2=0.2
 classNum=2
 cvSingle=LOO
 nsplitSingle=5
@@ -178,10 +190,12 @@ classifierSingle="KNN SVM RandomForest GaussianNB LogisticRegression XGB"
 cvMulti=LOO
 nsplitMulti=5
 classifierMulti="KNN SVM RandomForest GaussianNB LogisticRegression XGB"
+modelMethod=average
+transMethod=pca
 
 # Use getopt to handle long options
 TEMP=$(getopt -o hI:o:F:g:f:s:b:t:B:u:d:S:x:X:w:m:M:W:l:T:n: \
-               --long help,CNA:,NOF:,bamCoverage:,multiBigwigSummary:,PFE:,noDA,noML,labelFile:,standardM:,filterMethod:,filterFrac:,wrapperMethod:,wrapperFrac:,embeddedMethod:,embeddedFrac:,hybridType:,hybridMethod1:,hybridMethod2:,hybridFrac1:,hybridFrac2:,classNum:,cvSingle:,nsplitSingle:,classifierSingle:,cvMulti:,nsplitMulti:,classifierMulti: \
+               --long help,CNA:,NOF:,bamCoverage:,multiBigwigSummary:,PFE:,noDA,noML,labelFile:,standardM:,filterMethod:,filterNum:,wrapperMethod:,wrapperNum:,embeddedMethod:,embeddedNum:,hybridType:,hybridMethod1:,hybridMethod2:,hybridNum1:,hybridNum2:,classNum:,cvSingle:,nsplitSingle:,classifierSingle:,cvMulti:,nsplitMulti:,classifierMulti:,modelMethod:,transMethod: \
                -- "$@")
 
 # Check whether getopt succeeded
@@ -228,16 +242,16 @@ while true; do
         --labelFile)              labelFile=$2; shift 2;;
         --standardM)              standardM=$2; shift 2;;
         --filterMethod)           filterMethod=$2; shift 2;;
-        --filterFrac)             filterFrac=$2; shift 2;;
+        --filterNum)              filterNum=$2; shift 2;;
         --wrapperMethod)          wrapperMethod=$2; shift 2;;
-        --wrapperFrac)            wrapperFrac=$2; shift 2;;
+        --wrapperNum)             wrapperNum=$2; shift 2;;
         --embeddedMethod)         embeddedMethod=$2; shift 2;;
-        --embeddedFrac)           embeddedFrac=$2; shift 2;;
+        --embeddedNum)            embeddedNum=$2; shift 2;;
         --hybridType)             hybridType=$2; shift 2;;
         --hybridMethod1)          hybridMethod1=$2; shift 2;;
         --hybridMethod2)          hybridMethod2=$2; shift 2;;
-        --hybridFrac1)            hybridFrac1=$2; shift 2;;
-        --hybridFrac2)            hybridFrac2=$2; shift 2;;
+        --hybridNum1)             hybridNum1=$2; shift 2;;
+        --hybridNum2)             hybridNum2=$2; shift 2;;
         --classNum)               classNum=$2; shift 2;;
         --cvSingle)               cvSingle=$2; shift 2;;
         --nsplitSingle)           nsplitSingle=$2; shift 2;;
@@ -245,6 +259,8 @@ while true; do
         --cvMulti)                cvMulti=$2; shift 2;;
         --nsplitMulti)            nsplitMulti=$2; shift 2;;
         --classifierMulti)        classifierMulti=$2; shift 2;;
+        --modelMethod)            modelMethod=$2; shift 2;;
+        --transMethod)            transMethod=$2; shift 2;;
         --)                       shift; break;;
         *)                        echo "Unexpected option: $1"; exit 1;;
     esac
@@ -301,26 +317,26 @@ run_analysis() {
       
       start_time=$(date +%s)
       
-      # samtools index -@ $threads "$inputBam"
+      samtools index -@ $threads "$inputBam"
 
       local filename=$(basename "$inputBam" .bam)
       local bam_output_dir="$outputDir/Samples/$filename"
       mkdir -p "$bam_output_dir"
       
-      # # Features for whole genome
+      # Features for whole genome
       if [[ ",$Feature," == *",CNA,"* ]]; then calculate_cna "$inputBam" "$bam_output_dir"; fi
       if [[ ",$Feature," == *",EM,"* ]]; then calculate_em "$inputBam" "$bam_output_dir"; fi
       if [[ ",$Feature," == *",FP,"* ]]; then calculate_fp "$inputBam" "$bam_output_dir"; fi
-      
+
       # Features for specific regions
       if [[ ",$Feature," == *",NOF,"* ]]; then calculate_nof "$inputBam" "$bam_output_dir"; fi
       if [[ ",$Feature," == *",NP,"* ]]; then calculate_np "$inputBam" "$bam_output_dir"; fi
       if [[ ",$Feature," == *",WPS,"* ]]; then calculate_wps "$inputBam" "$bam_output_dir"; fi
       if [[ ",$Feature," == *",OCF,"* ]]; then calculate_ocf "$inputBam" "$bam_output_dir"; fi
-      if [[ ",$Feature," == *",EMR,"* ]]; then calculate_emr "$inputBam" "$bam_output_dir"; fi      
+      if [[ ",$Feature," == *",EMR,"* ]]; then calculate_emr "$inputBam" "$bam_output_dir"; fi
       if [[ ",$Feature," == *",FPR,"* ]]; then calculate_fpr "$inputBam" "$bam_output_dir"; fi
-      
-      # Features for transcription start sites 
+
+      # Features for transcription start sites
       if [[ ",$Feature," == *",PFE,"* ]]; then calculate_pfe "$inputBam" "$bam_output_dir"; fi
       if [[ ",$Feature," == *",TSSC,"* ]]; then calculate_tssc "$inputBam" "$bam_output_dir"; fi
       echo "
@@ -929,19 +945,19 @@ if [[ "$noDA" == 0 ]];then
     python $script_dir/Feature_Selection/filter_methods.py \
     --input_dir $outputDir/Feature_Processing_and_Selection/Feature_Processing \
     --output_dir $outputDir/Feature_Processing_and_Selection/Feature_Selection/ \
-    --methods $filterMethod --percentages $filterFrac
+    --methods $filterMethod --percentages $filterNum
 
     # wrapper method
     python $script_dir/Feature_Selection/wrapper_methods.py \
     --input_dir $outputDir/Feature_Processing_and_Selection/Feature_Processing \
     --output_dir $outputDir/Feature_Processing_and_Selection/Feature_Selection/ \
-    --methods $wrapperMethod --percentage $wrapperFrac
+    --methods $wrapperMethod --percentage $wrapperNum
 
     # embeded method
     python $script_dir/Feature_Selection/embedded_methods.py \
     --input_dir $outputDir/Feature_Processing_and_Selection/Feature_Processing \
     --output_dir $outputDir/Feature_Processing_and_Selection/Feature_Selection/ \
-    --methods $embeddedMethod --percentages $embeddedFrac
+    --methods $embeddedMethod --percentages $embeddedNum
 
     # hybrid method
     if [[ "$hybridType" != "FW" ]] && [[ "$hybridType" != "FE" ]];then
@@ -957,7 +973,7 @@ if [[ "$noDA" == 0 ]];then
     python $script_dir/Feature_Selection/filter_methods.py \
     --input_dir $outputDir/Feature_Processing_and_Selection/Feature_Processing \
     --output_dir $outputDir/Feature_Processing_and_Selection/Feature_Selection/hybrid_filter_select \
-    --methods $hybridMethod1 --percentages $hybridFrac1
+    --methods $hybridMethod1 --percentages $hybridNum1
     
     if [[ "$hybridType" = "FE" ]] ;then
       if [[ -z "$hybridMethod2" ]] ;then
@@ -966,7 +982,7 @@ if [[ "$noDA" == 0 ]];then
       python $script_dir/Feature_Selection/embedded_methods.py \
       --input_dir $outputDir/Feature_Processing_and_Selection/Feature_Selection/hybrid_filter_select \
       --output_dir $outputDir/Feature_Processing_and_Selection/Feature_Selection \
-      --methods LASSO --percentages $hybridFrac2      
+      --methods LASSO --percentages $hybridNum2      
     elif [[ "$hybridType" = "FW" ]]; then
       if [[ -z "$hybridMethod2" ]] ;then
         hybridMethod2="BOR"
@@ -974,7 +990,7 @@ if [[ "$noDA" == 0 ]];then
       python $script_dir/Feature_Selection/wrapper_methods.py \
       --input_dir $outputDir/Feature_Processing_and_Selection/Feature_Selection/hybrid_filter_select \
       --output_dir $outputDir/Feature_Processing_and_Selection/Feature_Selection/ \
-      --methods $hybridMethod2 --percentage $hybridFrac2
+      --methods $hybridMethod2 --percentage $hybridNum2
     fi
     
     rm -r $outputDir/Feature_Processing_and_Selection/Feature_Selection/hybrid_filter_select
@@ -1025,16 +1041,16 @@ if [[ "$noDA" == 0 ]];then
       --cvSingle LOO \
       --classifierSingle $classifierSingle \
       --filterMethod $filterMethod \
-      --filterFrac $filterFrac \
+      --filterFrac $filterNum \
       --wrapperMethod $wrapperMethod \
-      --wrapperFrac $wrapperFrac \
+      --wrapperFrac $wrapperNum \
       --embeddedMethod $embeddedMethod \
-      --embeddedFrac $embeddedFrac \
+      --embeddedFrac $embeddedNum \
       --hybridType $hybridType \
       --hybridMethod1 $hybridMethod1 \
-      --hybridFrac1 $hybridFrac1 \
+      --hybridFrac1 $hybridNum1 \
       --hybridMethod2 $hybridMethod2 \
-      --hybridFrac2 $hybridFrac2
+      --hybridFrac2 $hybridNum2
     elif [[ "$cvSingle" == "KFold" ]];then
       python $script_dir/Machine_learning/run_single_modality.py \
       --modality single \
@@ -1045,16 +1061,16 @@ if [[ "$noDA" == 0 ]];then
       --nsplitSingle $nsplitSingle \
       --classifierSingle $classifierSingle \
       --filterMethod $filterMethod \
-      --filterFrac $filterFrac \
+      --filterFrac $filterNum \
       --wrapperMethod $wrapperMethod \
-      --wrapperFrac $wrapperFrac \
+      --wrapperFrac $wrapperNum \
       --embeddedMethod $embeddedMethod \
-      --embeddedFrac $embeddedFrac \
+      --embeddedFrac $embeddedNum \
       --hybridType $hybridType \
       --hybridMethod1 $hybridMethod1 \
-      --hybridFrac1 $hybridFrac1 \
+      --hybridFrac1 $hybridNum1 \
       --hybridMethod2 $hybridMethod2 \
-      --hybridFrac2 $hybridFrac2
+      --hybridFrac2 $hybridNum2
     fi
 
     # Multiple modalities
@@ -1068,45 +1084,45 @@ if [[ "$noDA" == 0 ]];then
       --input_dir $outputDir/Feature_Processing_and_Selection/Feature_Processing \
       --DA_output_dir $outputDir/Machine_Learning/multiple_modality \
       --fusion_type concat model trans \
-      --model_method average weighted majority stack \
-      --trans_method pca linear polynomial rbf sigmoid snf \
+      --model_method $modelMethod \
+      --trans_method $transMethod \
       --classNum $classNum \
       --cvMulti LOO \
       --classifierMulti $classifierMulti \
       --filterMethod $filterMethod \
-      --filterFrac $filterFrac \
+      --filterFrac $filterNum \
       --wrapperMethod $wrapperMethod \
-      --wrapperFrac $wrapperFrac \
+      --wrapperFrac $wrapperNum \
       --embeddedMethod $embeddedMethod \
-      --embeddedFrac $embeddedFrac \
+      --embeddedFrac $embeddedNum \
       --hybridType $hybridType \
       --hybridMethod1 $hybridMethod1 \
-      --hybridFrac1 $hybridFrac1 \
+      --hybridFrac1 $hybridNum1 \
       --hybridMethod2 $hybridMethod2 \
-      --hybridFrac2 $hybridFrac2
+      --hybridFrac2 $hybridNum2
     elif [[ "$cvMulti" == "KFold" ]];then
       python $script_dir/Machine_learning/run_multi_modality.py \
       --modality multi \
       --input_dir $outputDir/Feature_Processing_and_Selection/Feature_Processing \
       --DA_output_dir $outputDir/Machine_Learning/multiple_modality \
       --fusion_type concat model trans \
-      --model_method average weighted majority stack \
-      --trans_method pca linear polynomial rbf sigmoid snf \
+      --model_method $modelMethod \
+      --trans_method $transMethod \
       --classNum $classNum \
       --cvMulti KFold \
       --nsplitMulti $nsplitMulti \
       --classifierMulti $classifierMulti \
       --filterMethod $filterMethod \
-      --filterFrac $filterFrac \
+      --filterFrac $filterNum \
       --wrapperMethod $wrapperMethod \
-      --wrapperFrac $wrapperFrac \
+      --wrapperFrac $wrapperNum \
       --embeddedMethod $embeddedMethod \
-      --embeddedFrac $embeddedFrac \
+      --embeddedFrac $embeddedNum \
       --hybridType $hybridType \
       --hybridMethod1 $hybridMethod1 \
-      --hybridFrac1 $hybridFrac1 \
+      --hybridFrac1 $hybridNum1 \
       --hybridMethod2 $hybridMethod2 \
-      --hybridFrac2 $hybridFrac2
+      --hybridFrac2 $hybridNum2
     fi
 
     first_file=true

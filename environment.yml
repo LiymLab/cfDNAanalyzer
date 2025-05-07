@@ -1,6 +1,9 @@
 name: cfDNAanalyzer
 channels:
   - defaults
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda 
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge  
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch 
 dependencies:
   - _libgcc_mutex=0.1=conda_forge
   - _openmp_mutex=4.5=2_kmp_llvm

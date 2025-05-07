@@ -294,7 +294,15 @@ def process_single_file(args):
 
             # Determine the number of top features to select
             total_features = len(X.columns)
-            threshold = max(1, round(total_features * percentage))  # Ensure at least one feature is selected
+            # threshold = max(1, round(total_features * percentage))  # Ensure at least one feature is selected
+            if ( percentage >= 1) or (isinstance(percentage, (int, float)) and 0 < percentage < 1):
+                if ( percentage >= 1):
+                    threshold = int(percentage)
+                elif (isinstance(percentage, (int, float)) and 0 < percentage < 1) :
+                    threshold = max(1, round(total_features * percentage))
+            else:
+                raise ValueError(" filterNum must be positive integer or float from 0 to 1")
+              
             selected_features = [feature for feature, score in results[:threshold]]
 
             # Create the final dataset with selected features

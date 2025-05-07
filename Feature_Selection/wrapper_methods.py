@@ -75,7 +75,14 @@ def boruta_feature_selection(X, y, classifier, percentage, callback=None):
 
     # Calculate top percentage features count
     n_features = len(rankings)
-    top_percent_count = max(1, int(percentage * n_features))  # Ensure at least 1 feature is selected
+    # top_percent_count = max(1, int(percentage * n_features))  # Ensure at least 1 feature is selected
+    if ( percentage >= 1) or (isinstance(percentage, (int, float)) and 0 < percentage < 1):
+        if ( percentage >= 1):
+            top_percent_count = int(percentage)
+        elif (isinstance(percentage, (int, float)) and 0 < percentage < 1) :
+            top_percent_count = max(1, int(percentage * n_features))
+    else:
+        raise ValueError(" wrapperNum must be positive integer or float from 0 to 1")    
 
     # Get top ranked features
     top_features = np.argsort(rankings)[:top_percent_count]  # Return indices
@@ -86,7 +93,14 @@ def boruta_feature_selection(X, y, classifier, percentage, callback=None):
     return selected_features
   
 def forward_feature_selection(X, y, classifier, percentage, callback=None):
-    n_features = max(1, int(X.shape[1] * percentage))
+    # n_features = max(1, int(X.shape[1] * percentage))
+    if ( percentage >= 1) or (isinstance(percentage, (int, float)) and 0 < percentage < 1):
+        if ( percentage >= 1):
+            n_features = int(percentage)
+        elif (isinstance(percentage, (int, float)) and 0 < percentage < 1) :
+            n_features = max(1, int(X.shape[1] * percentage))
+    else:
+        raise ValueError(" wrapperNum must be positive integer or float from 0 to 1")  
 
     n_splits = max(2, min(5, min(np.bincount(y))))
     skf = StratifiedKFold(n_splits=n_splits, random_state=42, shuffle=True)
@@ -106,8 +120,15 @@ def forward_feature_selection(X, y, classifier, percentage, callback=None):
     return X.columns[list(sfs.k_feature_idx_)]
 
 def backward_feature_selection(X, y, classifier, percentage, callback=None):
-    n_features = max(1, int(X.shape[1] * percentage))
-
+    # n_features = max(1, int(X.shape[1] * percentage))
+    if ( percentage >= 1) or (isinstance(percentage, (int, float)) and 0 < percentage < 1):
+        if ( percentage >= 1):
+            n_features = int(percentage)
+        elif (isinstance(percentage, (int, float)) and 0 < percentage < 1) :
+            n_features = max(1, int(X.shape[1] * percentage))
+    else:
+        raise ValueError(" wrapperNum must be positive integer or float from 0 to 1") 
+      
     n_splits = max(2, min(5, min(np.bincount(y))))
     skf = StratifiedKFold(n_splits=n_splits, random_state=42, shuffle=True)
     sfs = SFS(
@@ -126,8 +147,15 @@ def backward_feature_selection(X, y, classifier, percentage, callback=None):
     return X.columns[list(sfs.k_feature_idx_)]
 
 def exhaustive_feature_selection(X, y, classifier, percentage, callback=None):
-    n_features = max(1, int(X.shape[1] * percentage))
-    print(n_features)
+    # n_features = max(1, int(X.shape[1] * percentage))
+    if ( percentage >= 1) or (isinstance(percentage, (int, float)) and 0 < percentage < 1):
+        if ( percentage >= 1):
+            n_features = int(percentage)
+        elif (isinstance(percentage, (int, float)) and 0 < percentage < 1) :
+            n_features = max(1, int(X.shape[1] * percentage))
+    else:
+        raise ValueError(" wrapperNum must be positive integer or float from 0 to 1") 
+      
     n_splits = max(2, min(5, min(np.bincount(y))))
     skf = StratifiedKFold(n_splits=n_splits, random_state=42, shuffle=True)
     efs = EFS(
@@ -144,8 +172,7 @@ def exhaustive_feature_selection(X, y, classifier, percentage, callback=None):
     return X.columns[list(efs.best_idx_)]
 
 def recursive_feature_elimination(X, y, classifier, percentage, callback=None):
-    n_features = max(1, int(X.shape[1] * percentage))
-
+  
     n_splits = max(2, min(5, min(np.bincount(y))))
     skf = StratifiedKFold(n_splits=n_splits, random_state=42, shuffle=True)
     
@@ -169,8 +196,15 @@ def recursive_feature_elimination(X, y, classifier, percentage, callback=None):
 
     # Calculate top percentage features count
     n_features = len(rankings)
-    top_percent_count = max(1, int(percentage * n_features))  # Ensure at least 1 feature is selected
-
+    # top_percent_count = max(1, int(percentage * n_features))  # Ensure at least 1 feature is selected
+    if ( percentage >= 1) or (isinstance(percentage, (int, float)) and 0 < percentage < 1):
+        if ( percentage >= 1):
+            top_percent_count = int(percentage)
+        elif (isinstance(percentage, (int, float)) and 0 < percentage < 1) :
+            top_percent_count = max(1, int(percentage * n_features))
+    else:
+        raise ValueError(" wrapperNum must be positive integer or float from 0 to 1")  
+      
     # Get top ranked features
     top_features = np.argsort(rankings)[:top_percent_count]  # Return indices
     selected_features = X.columns[top_features]  # Select feature names by indices

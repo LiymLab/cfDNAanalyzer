@@ -145,18 +145,36 @@ def run_feature_selection(X, y, args, fs_type=None, verbose=True, fs_tag="modali
             if method not in FILTER_METHODS:
                 raise ValueError(f"[filter] Unsupported method: {method}")
             ranked = FILTER_METHODS[method](X, y)
-            k = int(len(ranked) * args.filterFrac)
+            # k = int(len(ranked) * args.filterFrac)
+            if ( args.filterFrac >= 1) or (isinstance(args.filterFrac, (int, float)) and 0 < args.filterFrac < 1):
+                if ( args.filterFrac >= 1):
+                    k = int(args.filterFrac)
+                elif (isinstance(args.filterFrac, (int, float)) and 0 < args.filterFrac < 1) :
+                    k = int(len(ranked) * args.filterFrac)
+            else:
+                raise ValueError(" filterNum must be positive integer or float from 0 to 1")        
+                
             top_features = [f for f, _ in ranked[:k]]
+            # print(top_features)
             selected_features.extend(top_features)
             scored_features.extend(ranked)
 
     elif fs_type == 'embedded':
         for method in args.embeddedMethod:
             if method not in EMBEDDED_METHODS:
-                raise ValueError(f"[embedded] Unsupported method: {method}")
+                raise ValueError(f"[filter] Unsupported method: {method}")
             ranked = EMBEDDED_METHODS[method](X, y)
-            k = int(len(ranked) * args.embeddedFrac)
+            # k = int(len(ranked) * args.embeddedFrac)
+            if ( args.embeddedFrac >= 1) or (isinstance(args.embeddedFrac, (int, float)) and 0 < args.embeddedFrac < 1):
+                if (args.embeddedFrac >= 1):
+                    k = int(args.embeddedFrac)
+                elif (isinstance(args.embeddedFrac, (int, float)) and 0 < args.embeddedFrac < 1) :
+                    k = int(len(ranked) * args.embeddedFrac)
+            else:
+                raise ValueError(" embeddedNum must be positive integer or float from 0 to 1")
+            
             top_features = [f for f, _ in ranked[:k]]
+            # print(top_features)
             selected_features.extend(top_features)
             scored_features.extend(ranked)
 
@@ -165,13 +183,30 @@ def run_feature_selection(X, y, args, fs_type=None, verbose=True, fs_tag="modali
             if method not in WRAPPER_METHODS:
                 raise ValueError(f"[wrapper] Unsupported method: {method}")
             top_features = WRAPPER_METHODS[method](X, y, percentage=args.wrapperFrac)
+            # print(top_features)
             selected_features.extend(top_features)
 
     elif fs_type in ['FE', 'FW']:
         method1 = args.hybridMethod1
         method2 = args.hybridMethod2
-        k1 = int(len(X.columns) * args.hybridFrac1)
-        k2 = int(len(X.columns) * args.hybridFrac2)
+        # k1 = int(len(X.columns) * args.hybridFrac1)
+        # k2 = int(len(X.columns) * args.hybridFrac2)
+        if ( args.hybridFrac1 >= 1) or (isinstance(args.hybridFrac1, (int, float)) and 0 < args.hybridFrac1 < 1):
+            if (args.hybridFrac1 >= 1):
+                k1 = int(args.hybridFrac1)
+            elif (isinstance(args.hybridFrac1, (int, float)) and 0 < args.hybridFrac1 < 1) :
+                k1 = int(len(X.columns) * args.hybridFrac1)
+        else:
+            raise ValueError(" hybridNum1 must be positive integer or float from 0 to 1")
+        
+        if ( args.hybridFrac2 >= 1) or (isinstance(args.hybridFrac2, (int, float)) and 0 < args.hybridFrac2 < 1):
+            if (args.hybridFrac2 >= 1):
+                k2 = int(args.hybridFrac2)
+            elif (isinstance(args.hybridFrac2, (int, float)) and 0 < args.hybridFrac2 < 1) :
+                k2 = int(len(X.columns) * args.hybridFrac2)
+        else:
+            raise ValueError(" hybridNum2 must be positive integer or float from 0 to 1")
+        
 
         ranked1 = FILTER_METHODS[method1](X, y)
         top_feats = [f for f, _ in ranked1[:k1]]

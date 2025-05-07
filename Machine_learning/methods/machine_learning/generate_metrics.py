@@ -20,11 +20,11 @@ def evaluate_classification(prediction_df, class_num=2, verbose=True):
         else:
             auc = roc_auc_score(y_true, y_prob)
 
-        acc = round(accuracy_score(y_true, y_pred), 6)
-        f1 = round(f1_score(y_true, y_pred), 6)
-        precision = round(precision_score(y_true, y_pred), 6)
-        recall = round(recall_score(y_true, y_pred), 6)
-        auc = round(roc_auc_score(y_true, y_prob), 6) if class_num == 2 and len(set(y_true)) > 1 else None
+        acc = round(acc, 6)
+        precision = round(precision, 6)
+        recall = round(recall, 6)
+        f1 = round(f1, 6)
+        auc = round(auc, 6) if class_num == 2 and len(set(y_true)) > 1 else None
 
         if verbose:
             print(f"Accuracy: {acc:.6f}")
