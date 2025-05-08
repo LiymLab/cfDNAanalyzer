@@ -90,7 +90,7 @@ Rscript install_R_packages.R
 
 #### 1.2 Data standardization
 
-* This process transforms the data using one the following data standardization/normalization method, which is important for many machine-learning techniques. 
+* This process transforms the data using one of the following data standardization/normalization method, which is important for many machine-learning techniques. 
 
 | Methods | Alias | Brief Introduction |
 | :---: | :---: | :---: | 
@@ -112,7 +112,7 @@ Filter methods apply statistical tests to assess and rank features for their rel
 | Information Gain | *IG* | Information Gain measures the reduction in uncertainty of the target variable when a specific feature is known. Higher information gain indicates a more informative feature for predicting the target variable. | [scikit-learn](https://scikit-learn.org/stable/index.html)                                                 |
 | Chi-square Test | *CHI* | The Chi-square Test evaluates the independence between categorical features and the target variable. Features that show significant association with the target variable are selected based on their Chi-square statistics. | [scikit-learn](https://scikit-learn.org/stable/index.html)                                                 |
 | Fisher's Score | *FS* | Fisher’s Score ranks features according to their ability to distinguish between classes by comparing the mean differences across classes relative to their variances. | [scikit-feature](https://github.com/jundongl/scikit-feature/tree/master) |
-| FCBF Fast Correlation Filter | *FCBF* | The FCBF method quickly identifies relevant features by analyzing their correlation with the target variable while removing redundant features that contribute little additional information. | [FCBF_module](https://github.com/SantiagoEG/FCBF_module)     |
+| Fast Correlation Based Filter | *FCBF* | The FCBF method quickly identifies relevant features by analyzing their correlation with the target variable while removing redundant features that contribute little additional information. | [FCBF_module](https://github.com/SantiagoEG/FCBF_module)     |
 | Permutation Importance | *PI* | Permutation Importance assesses the significance of each feature by measuring the drop in model performance when the feature’s values are randomly permuted. Features causing significant degradation in performance are deemed important. | [scikit-learn](https://github.com/jundongl/scikit-feature/tree/master)                                                  |
 | Correlation Coefficient | *CC* | Correlation Coefficient quantifies the linear relationship between features and the target variable. Features with higher correlation coefficients are considered more predictive and are selected for modeling. | [pandas](https://pandas.pydata.org/)                                                       |
 | Low Variance Filter | *LVF* | The Low Variance Filter eliminates features with minimal variability across samples, as such features are unlikely to be useful for distinguishing between classes. | [scikit-learn](https://github.com/jundongl/scikit-feature/tree/master)                                                 |
@@ -182,13 +182,13 @@ Model-based integration methods create multiple intermediate models for the diff
 
 Transformation-based methods transform each of the omics datasets firstly into graphs or kernel matrices and then combine all of them into one before constructing a model ([Reel *et al, Biotechnol. Adv.*, 2021](https://www.sciencedirect.com/science/article/abs/pii/S0734975021000458?via%3Dihub/)). This approach supports the integration of varied data by standardizing how they are represented.
 
-| Category | Methods | Alias | Brief Introduction | Reference |
+| Category | Methods | Alias | Brief Introduction | Source |
 | :---: | :---: | :---: | :---: | :---: |
-| Dimension reduction | PCA | *pca* | PCA reduces dimensionality by transforming features into a set of linearly uncorrelated components. It simplifies multi-feature integration by focusing on components that explain the most variance, thereby enhancing model efficiency and clarity. | [Subramanian *et al, Bioinform. Biol. Insights*, 2020](https://journals.sagepub.com/doi/10.1177/1177932219899051/) |
-| Kernel matrix | Linear Kernel | *linear* | The Linear Kernel measures direct linear relationships between features. It aids in multi-feature integration by emphasizing linear associations, making it suitable for linearly separable data. |  |
-| Kernel matrix | Polynomial Kernel | *polynomial* | The Polynomial Kernel allows the capture of interactions between features at different degrees of complexity. It enhances multi-feature integration by providing a flexible framework to model nonlinear relationships in the data. |  |
-| Kernel matrix | Radial Basis Function (RBF) Kernel | *rbf* | The RBF Kernel maps features into a higher-dimensional space using a radial basis function, enabling effective classification of non-linearly separable datasets. This kernel is crucial for multi-feature integration as it can handle complex and non-linear interactions between features. |  |
-| Kernel matrix | Sigmoid Kernel | *sigmoid* | The Sigmoid Kernel projects data using a sigmoid function, similar to neural network activation functions. It supports multi-feature integration by transforming features into formats that highlight threshold-based classifications. |  |
+| Dimension reduction | PCA | *pca* | PCA reduces dimensionality by transforming features into a set of linearly uncorrelated components. It simplifies multi-feature integration by focusing on components that explain the most variance, thereby enhancing model efficiency and clarity. | [Subramanian *et al, Bioinform. Biol. Insights*, 2020](https://journals.sagepub.com/doi/full/10.1177/1177932219899051?rfr_dat=cr_pub++0pubmed&url_ver=Z39.88-2003&rfr_id=ori%3Arid%3Acrossref.org) |
+| Kernel matrix | Linear Kernel | *linear* | The Linear Kernel measures direct linear relationships between features. It aids in multi-feature integration by emphasizing linear associations, making it suitable for linearly separable data. | [scikit-learn](https://github.com/jundongl/scikit-feature/tree/master) |
+| Kernel matrix | Polynomial Kernel | *polynomial* | The Polynomial Kernel allows the capture of interactions between features at different degrees of complexity. It enhances multi-feature integration by providing a flexible framework to model nonlinear relationships in the data. | [scikit-learn](https://github.com/jundongl/scikit-feature/tree/master) |
+| Kernel matrix | Radial Basis Function (RBF) Kernel | *rbf* | The RBF Kernel maps features into a higher-dimensional space using a radial basis function, enabling effective classification of non-linearly separable datasets. This kernel is crucial for multi-feature integration as it can handle complex and non-linear interactions between features. | [scikit-learn](https://github.com/jundongl/scikit-feature/tree/master) |
+| Kernel matrix | Sigmoid Kernel | *sigmoid* | The Sigmoid Kernel projects data using a sigmoid function, similar to neural network activation functions. It supports multi-feature integration by transforming features into formats that highlight threshold-based classifications. | [scikit-learn](https://github.com/jundongl/scikit-feature/tree/master) |
 | Network | Similarity network fusion (SNF) | *snf* | SNF integrates multiple types of data by fusing similarity networks, reinforcing common structural features. It excels in multi-feature integration by constructing a holistic network view, revealing deep insights across combined datasets. | [Wang *et al, Nat. Methods*, 2014](https://www.nature.com/articles/nmeth.2810) |
 
 ### Usage
@@ -565,11 +565,11 @@ filter_FS_0.023618328,KNN,0.5,0.0,0.0,0.0,0.5,3.4107,601.1992
 
 ```r
 SampleID,TrueLabel,FS_Combination,Classifier,Prob_Class0,Prob_Class1
-sample1,0,KNN,filter_IG_0.023618328,0.6,0.4
-sample2,1,KNN,filter_IG_0.023618328,0.4,0.6
-sample3,1,KNN,filter_IG_0.023618328,0.8,0.2
-sample4,0,KNN,filter_IG_0.023618328,0.4,0.6
-sample5,1,KNN,filter_IG_0.023618328,0.6,0.4
+sample1,0,filter_IG_0.023618328,KNN,0.6,0.4
+sample2,1,filter_IG_0.023618328,KNN,0.4,0.6
+sample3,1,filter_IG_0.023618328,KNN,0.8,0.2
+sample4,0,filter_IG_0.023618328,KNN,0.4,0.6
+sample5,1,filter_IG_0.023618328,KNN,0.6,0.4
 ```
 
 #### Multiple Modality/Concatenation based, Multiple Modality/Model based, Multiple Modality/Transformation based
@@ -591,7 +591,7 @@ sample1,1,concat,concat,filter_DR_0.2,KNN,0.4,0.6
 sample2,1,concat,concat,filter_DR_0.2,KNN,0.6,0.4
 sample3,1,concat,concat,filter_DR_0.2,KNN,0.4,0.6
 sample4,1,concat,concat,filter_DR_0.2,KNN,0.6,0.4
-sample5,1,concat,filter_DR_0.2,KNN,concat,0.4,0.6
+sample5,1,concat,concat,filter_DR_0.2,KNN,0.4,0.6
 ```
 
 ### Multi-class Machine Learning
@@ -612,10 +612,10 @@ wrapper_BOR_0.021070375,XGB,0.421053,0.3125,0.342593,0.297778,571.5343,963.2724
 
 ```r
 SampleID,TrueLabel,FS_Combination,Classifier,Prob_Class0,Prob_Class1,Prob_Class2
-sample1,wrapper_BOR_0.021070375,0,KNN,0.2,0.8,0.0
-sample2,wrapper_BOR_0.021070375,2,KNN,0.2,0.6,0.2
-sample3,wrapper_BOR_0.021070375,2,KNN,0.0,0.6,0.4
-sample4,wrapper_BOR_0.021070375,0,KNN,0.2,0.8,0.0
+sample1,1,wrapper_BOR_0.021070375,0,KNN,0.2,0.8,0.0
+sample2,1,wrapper_BOR_0.021070375,2,KNN,0.2,0.6,0.2
+sample3,1,wrapper_BOR_0.021070375,2,KNN,0.0,0.6,0.4
+sample4,1,wrapper_BOR_0.021070375,0,KNN,0.2,0.8,0.0
 ```
 
 #### Multiple Modality/Concatenation based, Multiple Modality/Model based, Multiple Modality/Transformation based
