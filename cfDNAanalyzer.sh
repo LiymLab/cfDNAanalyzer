@@ -3,9 +3,10 @@
 usage(){
   cat << EOF
 Description:
-  cfDNAanalyzer (cell-free DNA sequencing data analyzer) is a toolkit for cfDNA whole-genome sequencing data analysis which includes two main parts:
-  (1) the extraction of genomic and fragmentatomic features at whole-genome or genomic-region levels;
-  (2) the processing of extracted features and the building of machine learning models for disease detection and classification.
+cfDNAanalyzer (cell-free DNA sequencing data analyzer) is a toolkit for cfDNA genomic sequencing data analysis which includes three core modules:
+(1) Feature Extraction, which extracts multiple genomic and fragmentomic features at whole-genome or specific genomic-region levels;
+(2) Feature Processing and Selection, allowing for refinement and optimization of extracted features, suporting multiple processing and selection methods;
+(3) Machine Learning Model Building, supporting the development of both single-modality and multiple-modality predictive models for disease detection and classification.
 
 Usage:
    bash cfDNAanalyzer.sh -I <InputFile> -o <OutputDirectory> -F <Features> [Options]
@@ -878,7 +879,13 @@ cp $labelFile $outputDir/Samples/label.txt
 mkdir -p $outputDir/Features
 python $script_dir/Data_transformation.py --config $outputDir/Samples/config_feature.json --root $outputDir/Samples --output $outputDir/Features
 
-if [[ "$Feature" == *"NP"* ]]; then
+if [[ ",$Feature," == *",PFE,"* ]]; then
+   Rscript $script_dir/Epic-seq/code/standard_PFE.R $outputDir/Features/PFE.csv $outputDir/Features/PFE_standard.csv
+   rm $outputDir/Features/PFE.csv
+   mv $outputDir/Features/PFE_standard.csv $outputDir/Features/PFE.csv
+fi
+
+if [[ ",$Feature," == *",NP,"* ]]; then
    mkdir -p $outputDir/Features/NP_site_list
    Rscript $script_dir/Griffin/merge_NP_sites.R $outputDir/Samples $outputDir/Features/NP_site_list  
 fi
