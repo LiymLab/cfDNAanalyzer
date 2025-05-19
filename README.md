@@ -42,6 +42,7 @@ cfDNAanalyzer (<ins>c</ins>ell-<ins>f</ins>ree <ins>DNA</ins> sequencing data <i
 Please ensure [<ins>samtools (v1.3.1)</ins>](https://github.com/samtools/samtools), [<ins>bedtools (v2.29.2)</ins>](https://bedtools.readthedocs.io/en/latest/index.html), and [<ins>deeptools (3.5.1)</ins>](https://github.com/deeptools/deepTools) are in your environment. Then, you can install the toolkit following the steps below ( R(>= 4.2.0) is required ):
 ```ruby
 git clone https://github.com/LiymLab/cfDNAanalyzer.git
+chmod a+x -R ./cfDNAanalyzer
 cd cfDNAanalyzer/
 conda env create -f environment.yml
 conda activate cfDNAanalyzer
