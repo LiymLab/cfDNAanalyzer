@@ -274,8 +274,6 @@ dependencies:
       - pygments==2.17.2
       - pysam==0.16.0
       - ratelimiter==1.2.0.post0
-      - sklearn==0.0.post5
-      - smmap==5.0.1
       - snowballstemmer==2.2.0
       - sphinx==5.3.0
       - sphinxcontrib-applehelp==1.0.2
@@ -285,4 +283,12 @@ dependencies:
       - sphinxcontrib-qthelp==1.0.3
       - sphinxcontrib-serializinghtml==1.1.5
       - toposort==1.10
+      - seaborn==0.12.2
+      - xgboost==1.6.2
+      - skrebate==0.62
+      - sklearn-relief==1.0.0b2
+      - mlxtend==0.23.1
+      - Boruta==0.3
+      - snfpy==0.2.2
+      - smmap==5.0.1
 prefix: /home/zjp/.conda/envs/cfDNAanalyzer
