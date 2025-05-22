@@ -338,6 +338,7 @@ bash cfDNAanalyzer.sh -I ./example/bam_input.txt -F CNA,OCF -g hg19 -b ./example
 │   ├── NP_amplitude.csv
 │   ├── NP_central_coverage.csv
 │   ├── NP_mean_coverage.csv
+│   ├── NP_mean_coverage.csv
 │   ├── WPS_long.csv
 │   ├── WPS_short.csv
 │   ├── OCF.csv
