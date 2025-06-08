@@ -122,11 +122,11 @@ if [[ "$sequencing" == "single" ]]; then
 
       if [[ "$map_soft" == "BWA" ]]; then
         bwa mem -t $threads \
-              /home/zjp/projects/202402_cfDNAIntegratedTool/input/hg38_bwa_index/hg38 \
+              $output_dir/index/index \
               $output_dir/trim_galore/${filename}_trimmed.fq.gz | samtools view -S -bF 4 - > $output_dir/${filename}.bam
       elif [[ "$map_soft" == "Bowtie2" ]]; then
         bowtie2 -p $threads \
-              -x /home/zjp/projects/202402_cfDNAIntegratedTool/input/hg38_bowtie2_index/hg38 \
+              -x $output_dir/index/index \
               -U $output_dir/trim_galore/${filename}_trimmed.fq.gz | samtools view -S -bF 4 - > $output_dir/${filename}.bam
       fi
       
@@ -167,12 +167,12 @@ elif [[ "$sequencing" == "pair" ]]; then
                   
       if [[ "$map_soft" == "BWA" ]]; then
         bwa mem -t $threads \
-                /home/zjp/projects/202402_cfDNAIntegratedTool/input/hg38_bwa_index/hg38 \
+                $output_dir/index/index \
                 $output_dir/trim_galore/${prefix}_1_val_1.fq.gz $output_dir/trim_galore/${prefix}_2_val_2.fq.gz \
                  | samtools view -S -bF 4 - > $output_dir/${prefix}.bam
       elif [[ "$map_soft" == "Bowtie2" ]]; then
         bowtie2 -1 $output_dir/trim_galore/${prefix}_1_val_1.fq.gz -2 $output_dir/trim_galore/${prefix}_2_val_2.fq.gz \
-                -x /home/zjp/projects/202402_cfDNAIntegratedTool/input/hg38_bowtie2_index/hg38 \
+                -x $output_dir/index/index \
                 -p $threads | samtools view -S -bF 4 - > $output_dir/${prefix}.bam
       fi
       
