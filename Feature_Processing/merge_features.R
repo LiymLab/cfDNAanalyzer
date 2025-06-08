@@ -19,7 +19,7 @@ if ("EM" %in% strsplit(Features, ",")[[1]]) {
   
   
   EM_motifs_frequency = read.csv(EM_motifs_frequency_path, header = T)
-  EM_motifs_mds = read.csv(EM_motifs_mds, header = T)
+  EM_motifs_mds = read.csv(EM_motifs_mds_path, header = T)
   EM = merge(EM_motifs_frequency, EM_motifs_mds, by=c("sample","label"))
   write.csv(EM, file= paste0(output_dir, "/EM.csv"), quote = F, row.names = F)
 }
