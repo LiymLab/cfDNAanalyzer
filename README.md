@@ -812,7 +812,6 @@ Send2Trash                     1.8.0
 setuptools                     65.6.3
 sip                            6.6.2
 six                            1.16.0
-sklearn                        0.0.post5
 sklearn-relief                 1.0.0b2
 skrebate                       0.62
 smmap                          5.0.1
