@@ -4,7 +4,8 @@ cfDNAanalyzer (<ins>c</ins>ell-<ins>f</ins>ree <ins>DNA</ins> sequencing data <i
 (2) ***Feature Processing and Selection***, allowing for refinement and optimization of extracted features, supporting multiple processing and selection methods;<br> 
 (3) ***Machine Learning Model Building***, supporting the development of both single-modality and multiple-modality predictive models for disease detection and classification.<br>
 <br>
-You can view the [<ins>tutorial</ins>](https://liymlab.github.io/cfDNAanalyzer/Tutorial/) for cfDNAanalyzer.
+
+Refer to the [<ins>cfDNAanalyzer tutorial</ins>](https://liymlab.github.io/cfDNAanalyzer/Tutorial/) for detailed instructions. 
 
 <summary><h2>Table of Contents</h2></summary>
 <li>
