@@ -87,7 +87,7 @@ if [ -z "$inputList" ]; then
 fi
 
 if [ -z "$fasta" ]; then
-  echo "Error: Input reference fasta file list is not provided."
+  echo "Error: Input reference fasta file is not provided."
   exit 1
 fi
 
