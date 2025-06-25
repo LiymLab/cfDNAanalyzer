@@ -113,7 +113,13 @@ tcmeres <- gaps[grepl("centromere|telomere", gaps$type)]
 # AB$arm <- armlevels[subjectHits(findOverlaps(AB, arms))]
 # end 
 
-AB <- AB[-queryHits(findOverlaps(AB, gaps))]
+
+# AB <- AB[-queryHits(findOverlaps(AB, gaps))]
+overlaps <- findOverlaps(AB, gaps)
+if (length(queryHits(overlaps)) > 0) {
+  AB <- AB[-queryHits(overlaps)]
+}
+
 seqinfo(AB) <- seqinfo(Hsapiens)[seqlevels(seqinfo(AB))]
 AB <- trim(AB)
 
